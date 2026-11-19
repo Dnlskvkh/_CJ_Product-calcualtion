@@ -3,7 +3,8 @@
   "changed": 1834,
   "sha256": "ed29cae8d9feef718f2d2eaf52362cad38577a62aab56409d737b42c77f1c100",
   "files": {
-    "dist/catalog.js": "8553bb59de460cabe67f5cddcd9e29f85908957c561104519666e6af9665b6fd",
+    "dist/catalog.js": "14fbf89503a31435eb92c4bc6d0d66b620c9ee14550d5f770b6b758f0bead46f",
     "dist/metal-catalog.js": "9dc40b3009ba7c8c83180006cae2a145fe7c162cf2ba52c0ca3363b700ef63c4"
   }
 }
+
