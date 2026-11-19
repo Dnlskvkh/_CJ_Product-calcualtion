@@ -1,2 +1,2 @@
-# Keep protected generated catalog line endings stable on Windows checkouts
-source-project/dist/catalog.js text eol=crlf
+# Protected generated catalog must retain exact bytes
+source-project/dist/catalog.js -text
