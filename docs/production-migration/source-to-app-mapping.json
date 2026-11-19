@@ -2666,7 +2666,7 @@
     }
   ],
   "protectedHashes": {
-    "dist/catalog.js": "1cdf498e56bbbe11b734b9dde2e32eb8100fe0fdb354986847ee07d448d16f7e",
+    "dist/catalog.js": "14fbf89503a31435eb92c4bc6d0d66b620c9ee14550d5f770b6b758f0bead46f",
     "dist/purchases-data.js": "a86ccc59031adbbe764844235cfe5e90987bba3504defa74df4efa3a776f0b5d",
     "dist/metal-catalog.js": "79a0afeb461ccfcbd49c1d7eeccfc22d96305d6bbc3cf54081d2ed767c09739f",
     "materialRecords": "24d868dc6e0a7cdf56d45d01afa30b467c1585afd5e3596a1739e9f4b8acad7e"
