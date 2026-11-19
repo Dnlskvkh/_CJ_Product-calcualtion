@@ -1,0 +1,2 @@
+# Keep protected generated catalog line endings stable on Windows checkouts
+source-project/dist/catalog.js text eol=crlf
