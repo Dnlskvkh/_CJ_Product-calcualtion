@@ -1,0 +1,92 @@
+{
+  "format": "cj-model-spec",
+  "version": 1,
+  "source": {
+    "id": "fictional-demo",
+    "model_name": "ИСКУССТВЕННЫЙ ПРИМЕР: деревянная панель с крепежом",
+    "revision": "demo-1",
+    "access": "export",
+    "scope": "Вымышленная учебная выгрузка одного представительного изделия. Не данные реальной модели.",
+    "original_units": "мм",
+    "completeness": "partial",
+    "limitations": ["Все исходные факты примера придуманы для иллюстрации формата; применять их к заказу нельзя.", "Марка самореза, покрытие панели, нормы, цены и тираж заказа не заданы."]
+  },
+  "products": [
+    {"id": "P1", "name": "Учебная панель", "batch_qty": null, "evidence_refs": ["E1"]}
+  ],
+  "assemblies": [
+    {"id": "A1", "product_id": "P1", "parent_id": null, "name": "Учебный узел панели", "supply_mode": "fabricate", "evidence_refs": ["E1"]}
+  ],
+  "parts": [
+    {
+      "id": "D1", "product_id": "P1", "assembly_id": "A1", "role": "fabricated_part", "name": "Фанерная панель",
+      "quantity": {"value": 1, "unit": "шт.", "basis": "per_product", "status": "observed", "evidence_refs": ["E1"]},
+      "occurrence_refs": ["demo/representative-product/panel-1"],
+      "attributes": [
+        {"key": "material_family", "value": "фанера", "unit": null, "status": "observed", "evidence_refs": ["E1"]},
+        {"key": "length", "value": 1000, "unit": "мм", "status": "observed", "evidence_refs": ["E1"]},
+        {"key": "width", "value": 500, "unit": "мм", "status": "observed", "evidence_refs": ["E1"]},
+        {"key": "thickness", "value": 18, "unit": "мм", "status": "observed", "evidence_refs": ["E1"]}
+      ],
+      "metrics": [
+        {"key": "face_area", "value": 0.5, "unit": "м²", "basis": "per_part", "status": "derived", "evidence_refs": ["E2"]},
+        {"key": "coating_area", "value": null, "unit": "м²", "basis": "per_part", "status": "unknown", "evidence_refs": []},
+        {"key": "cut_length", "value": null, "unit": "м", "basis": "per_part", "status": "unknown", "evidence_refs": []}
+      ],
+      "evidence_refs": ["E1", "E2"]
+    },
+    {
+      "id": "D2", "product_id": "P1", "assembly_id": "A1", "role": "fastener", "name": "Саморез, привод TX25; тип и размер не заданы",
+      "quantity": {"value": 4, "unit": "шт.", "basis": "per_product", "status": "observed", "evidence_refs": ["E1"]},
+      "occurrence_refs": ["demo/representative-product/screw-1", "demo/representative-product/screw-2", "demo/representative-product/screw-3", "demo/representative-product/screw-4"],
+      "attributes": [
+        {"key": "drive_type", "value": "TX", "unit": null, "status": "observed", "evidence_refs": ["E1"]},
+        {"key": "drive_size", "value": "25", "unit": null, "status": "observed", "evidence_refs": ["E1"]}
+      ],
+      "metrics": [], "evidence_refs": ["E1"]
+    }
+  ],
+  "process_candidates": [
+    {
+      "id": "W1", "product_id": "P1", "assembly_id": "A1", "part_ids": ["D1"], "process_code": "coating", "name": "Покрытие панели — только если требуется проектом", "alternative_group": null, "status": "inferred",
+      "measure": {"value": null, "unit": "м²", "basis": "per_product", "driver": "Согласованная coating_area D1 × quantity D1; сейчас coating_area неизвестна", "status": "unknown", "evidence_refs": []},
+      "missing_inputs": ["Необходимость и система покрытия", "Покрываемые стороны и торцы", "Число слоёв и состав ставки"], "evidence_refs": ["E3"]
+    },
+    {
+      "id": "W2", "product_id": "P1", "assembly_id": "A1", "part_ids": ["D1", "D2"], "process_code": "assembly", "name": "Установка крепежа — уточнить этап сборки", "alternative_group": null, "status": "inferred",
+      "measure": {"value": 4, "unit": "шт.", "basis": "per_product", "driver": "Количество учтённых саморезов D2 на изделие; это не трудозатраты", "status": "derived", "evidence_refs": ["E4"]},
+      "missing_inputs": ["Сборка в цехе или монтаж на площадке", "Требования соединения и норма времени"], "evidence_refs": ["E4"]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1", "process_id": "W1", "part_ids": ["D1"], "role": "consumable", "name": "Материал выбранной системы покрытия", "attributes": [], "alternative_group": null, "inclusion": "unknown",
+      "quantity": {"value": null, "unit": null, "basis": "per_product", "status": "unknown", "evidence_refs": []}, "norm": null,
+      "missing_inputs": ["Выбранный продукт и единица", "Площадь, норма и слои", "Включён ли материал в ставку работы"], "status": "inferred", "evidence_refs": ["E3"]
+    },
+    {
+      "id": "R2", "process_id": "W2", "part_ids": ["D2"], "role": "tool", "name": "Бита TX25 — проверить наличие и применимость",
+      "attributes": [{"key": "drive_type", "value": "TX", "unit": null, "status": "observed", "evidence_refs": ["E1"]}, {"key": "drive_size", "value": "25", "unit": null, "status": "observed", "evidence_refs": ["E1"]}],
+      "alternative_group": null, "inclusion": "unknown",
+      "quantity": {"value": null, "unit": "шт.", "basis": "batch", "status": "unknown", "evidence_refs": []}, "norm": null,
+      "missing_inputs": ["Наличие, доступ к крепежу и требуемое количество инструмента", "Способ обеспечения и включение в ставку"], "status": "inferred", "evidence_refs": ["E4"]
+    }
+  ],
+  "evidence": [
+    {"id": "E1", "type": "export", "reference": "fictional-demo/input", "text": "Искусственный вход примера: представительное изделие demo/representative-product, одна прямоугольная фанерная панель 1000 × 500 × 18 мм без вырезов и четыре самореза с явно заданным TX25. Узел изготовляемый. Тираж не указан. Пути экземпляров вымышлены в рамках примера."},
+    {"id": "E2", "type": "calculation", "reference": "D1", "text": "Площадь одной плоской стороны прямоугольной панели из E1: (1000 / 1000) × (500 / 1000) = 0.5 м². Это не подтверждённая площадь покрытия и не закупочная площадь листа."},
+    {"id": "E3", "type": "inference", "reference": "D1", "text": "Для деревянной детали можно рассмотреть покрытие; в исходных условиях его необходимость и система не заданы. Это условный кандидат, не утверждённая операция."},
+    {"id": "E4", "type": "inference", "reference": "D2", "text": "Количество установок крепежа-кандидата на изделие равно четырём саморезам из E1: 4 × 1 = 4 шт. Привод TX25 позволяет предложить биту TX25; наличие, количество инструмента и норма времени из этого не следуют."}
+  ],
+  "questions": [
+    {"id": "Q1", "target_id": "P1", "field": "batch_qty", "text": "Сколько изделий входит в заказ?", "blocks": "quantity"},
+    {"id": "Q2", "target_id": "D1", "field": "attributes", "text": "Какие сорт, марка и требования к фанере нужны для сопоставления со справочником?", "blocks": "matching"},
+    {"id": "Q3", "target_id": "D1", "field": "metrics.cut_length", "text": "Панель изготавливается раскроем или покупается готовой? Если нужен раскрой, каков технологический контур?", "blocks": "technology"},
+    {"id": "Q4", "target_id": "D2", "field": "attributes", "text": "Укажите тип, диаметр, длину, материал и покрытие самореза, а также ответную деталь узла.", "blocks": "matching"},
+    {"id": "Q5", "target_id": "W1", "field": "measure", "text": "Нужно ли покрытие, какие поверхности обрабатывать, какая система и число слоёв?", "blocks": "technology"},
+    {"id": "Q6", "target_id": "R1", "field": "quantity", "text": "Какой продукт и подтверждённая норма, включает ли она слои/потери и входит ли материал в ставку?", "blocks": "quantity"},
+    {"id": "Q7", "target_id": "W2", "field": "missing_inputs", "text": "Где выполняется установка крепежа, каковы требования соединения и подтверждённая норма времени?", "blocks": "technology"},
+    {"id": "Q8", "target_id": "R2", "field": "quantity", "text": "Есть ли подходящая бита, сколько требуется для бригады и как учитывать обеспечение инструментом?", "blocks": "procurement"},
+    {"id": "Q9", "target_id": null, "field": "source.completeness", "text": "Уточните остальные детали, ответный узел, скрытые объекты и границы заказа: пример показывает только фрагмент состава.", "blocks": "completeness"}
+  ]
+}

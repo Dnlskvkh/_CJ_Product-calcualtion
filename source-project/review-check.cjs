@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+const engine=require('./dist/engine.js'),core=require('./dist/review-core.js');core.install(engine);
+const line=(x={})=>({id:'a',name:'Материал',kind:'material',group:'Детали',qty:1,price:100,unit:'м²',pack:1,scope:'unit',reserve:0,allocation:'share',confirmed:true,date:'2026-10-20',...x});
+const state=()=>({version:1,name:'Скамья',code:'УМ016-А',client:'',type:'Сервисные работы',scope:'Сервис',qty:10,notes:'',overhead:7,transport:6,markup:40,markupBase:'cost',vat:22,royalty:5,lines:[line()]});
+let s=state(),r=engine.calculate(s);assert.equal(r.productionCost,1060);assert.equal(r.royalty,53);assert.equal(r.C,1113);
+let before=r.total;s.lines.push(line({id:'d',name:'Доставка',kind:'work',costCategory:'delivery',pricingMode:'client',scope:'batch',qty:1,price:20000}));s.requiredServices={delivery:true,design:false,installation:false};r=engine.calculate(s);assert.ok(Math.abs(r.total-before-20000)<1e-8);assert.equal(r.royalty,53);assert.equal(r.fixedGross,20000);
+assert.equal(r.approvalIssues.length,0);s.approval={signature:core.signature(s),date:'now'};assert.equal(engine.calculate(s).preliminary,false);assert.equal(engine.calculate(s,11).preliminary,true);s.lines[0].qty=2;assert.equal(engine.calculate(s).preliminary,true);
+s=state();s.requiredServices={installation:true};assert.ok(engine.calculate(s).scopeIssues.some(x=>x.includes('Монтаж')));s.lines[0].qty=null;assert.ok(engine.calculate(s).errors.length);
+s=state();s.lines[0].qty=.888;s.lines[0].pack=3.125;r=engine.calculate(s);assert.equal(r.rows[0].purchase,9.375);assert.ok(Math.abs(r.rows[0].need-8.88)<1e-8);assert.ok(Math.abs(r.M-888)<1e-8);s.lines[0].allocation='whole';assert.equal(engine.calculate(s).M,937.5);
+assert.equal(core.normalize('Труба 150 x 100'),core.normalize('труба 150х100'));assert.equal(core.normalize('150 × 100'),core.normalize('150х100'));
+s=state();s.lines.push(line({id:'w',name:'Сборка',kind:'work',qty:null,price:1810}));assert.ok(engine.calculate(s).approvalIssues.some(x=>x.includes('объём')));
+// Public document services must reconcile, including discount and price override.
+const business=require('./dist/business-core.js');let context={ReviewCore:core,BusinessCore:business};vm.createContext(context);const ui=fs.readFileSync('dist/review-ui.js','utf8');let parts=ui.slice(ui.indexOf('function reviewPublicRows'),ui.indexOf("const WORKING_KEY"));vm.runInContext(parts,context);
+s=state();s.lines.push(line({id:'d',name:'Доставка',kind:'work',costCategory:'delivery',pricingMode:'client',scope:'batch',qty:1,price:20000}));s.requiredServices={delivery:true};for(const discount of [0,10]){let doc=business.publicDocument({number:'1',date:'2026-10-20',validUntil:'',subject:'КП',client:'',contact:'',payment:'',delivery:'',leadtime:'',warranty:'',comment:'',discount,items:[{name:s.name,qty:10,override:null,calculation:s,description:''}]},{},engine.calculate);assert.equal(doc.items.length,2);assert.equal(doc.total,Math.round(doc.items.reduce((t,l)=>t+l.total,0)*100)/100);assert.equal(doc.items[1].total,discount?18000:20000);assert.equal(doc.preliminary,true);}
+console.log('Review checks passed: royalty, fixed gross delivery, approval invalidation, scope, purchase rounding, missing norms, search, public quote reconciliation.');
+

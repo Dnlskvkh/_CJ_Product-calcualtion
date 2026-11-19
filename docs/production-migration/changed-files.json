@@ -1,0 +1,94 @@
+[
+  {
+    "file": "dist/business.js",
+    "status": "changed"
+  },
+  {
+    "file": "dist/cloud.js",
+    "status": "changed"
+  },
+  {
+    "file": "dist/domain-schema.js",
+    "status": "changed"
+  },
+  {
+    "file": "dist/engine.js",
+    "status": "changed"
+  },
+  {
+    "file": "dist/index.html",
+    "status": "changed"
+  },
+  {
+    "file": "dist/internal-report.js",
+    "status": "changed"
+  },
+  {
+    "file": "dist/production-catalog.js",
+    "status": "added"
+  },
+  {
+    "file": "dist/production-model-core.js",
+    "status": "added"
+  },
+  {
+    "file": "dist/production-model-ui.js",
+    "status": "added"
+  },
+  {
+    "file": "dist/production-model.css",
+    "status": "added"
+  },
+  {
+    "file": "dist/review-core.js",
+    "status": "changed"
+  },
+  {
+    "file": "dist/sw.js",
+    "status": "changed"
+  },
+  {
+    "file": "dist/server/index.js",
+    "status": "changed"
+  },
+  {
+    "file": "tools/build-production-model.cjs",
+    "status": "added"
+  },
+  {
+    "file": "tools/migrate-production-calculation.cjs",
+    "status": "added"
+  },
+  {
+    "file": "tools/sync-production-source.cjs",
+    "status": "added"
+  },
+  {
+    "file": "ARCHITECTURE.txt",
+    "status": "changed"
+  },
+  {
+    "file": "build-worker.cjs",
+    "status": "changed"
+  },
+  {
+    "file": "portable-check.cjs",
+    "status": "changed"
+  },
+  {
+    "file": "production-model-check.cjs",
+    "status": "added"
+  },
+  {
+    "file": "production-ui-check.cjs",
+    "status": "added"
+  },
+  {
+    "file": "README.txt",
+    "status": "changed"
+  },
+  {
+    "file": "run-checks.cjs",
+    "status": "changed"
+  }
+]

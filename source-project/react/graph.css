@@ -1,0 +1,20 @@
+.graph-viewport.react-graph{height:690px;background:#151b1d;border-color:#394441}
+.react-graph .react-flow{height:100%;width:100%;background:#151b1d;color:#eaf0eb}
+.react-graph .react-flow__node-calculator{width:268px;border:0;background:transparent}
+.flow-node{border:1px solid #50615a;border-radius:13px;background:#1d2527;box-shadow:0 12px 26px #0005;overflow:hidden;color:#eaf0eb}
+.flow-node-selected{outline:3px solid #a6d0b8;outline-offset:2px}
+.flow-node-head{display:block;width:100%;border:0;border-radius:0;text-align:left;padding:13px;background:#2c4238;color:#f4faf5;cursor:grab}
+.flow-node-head small{display:block;font-size:10px;letter-spacing:.1em;margin-bottom:4px;color:#b9d1c3}
+.flow-node-head strong{display:block;line-height:1.35;font-size:14px;max-height:57px;overflow:hidden}
+.flow-node-process .flow-node-head{background:#3a3e36}
+.flow-node-body{padding:11px 13px;display:grid;gap:8px}
+.flow-node-ports{display:flex;justify-content:space-between}
+.flow-node-ports button{min-height:36px;padding:5px 7px;font-size:12px}
+.flow-node-metric{line-height:1.45}
+.react-graph .react-flow__handle{width:12px;height:12px;border:2px solid #eaf0eb;background:#73b18b}
+.react-graph .react-flow__edge-path{stroke:#9eb9a6;stroke-width:2.5}
+.react-graph .react-flow__controls,.react-graph .react-flow__minimap{background:#263033;border:1px solid #53645a;border-radius:8px;overflow:hidden}
+.react-graph .react-flow__controls-button{background:#263033;color:#eaf0eb;border-bottom-color:#53645a}
+.react-graph .react-flow__controls-button svg{fill:currentColor}
+.react-graph .react-flow__attribution{display:none}
+@media(max-width:900px){.graph-viewport.react-graph{height:540px}.react-graph .react-flow__minimap{display:none}}

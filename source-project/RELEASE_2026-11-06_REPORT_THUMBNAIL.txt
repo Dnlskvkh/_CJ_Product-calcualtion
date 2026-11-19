@@ -1,0 +1,10 @@
+ОПУБЛИКОВАНО · 06.11.2026 · МИНИАТЮРА PDF
+Сайт: https://izdelie-cost-studio.workspace-086429.chatgpt.site
+Sites status=succeeded: 2026-11-06T03:05:42.592977Z
+Commit: e4678877801b11e7b2bd5609b62538349c620896
+Version: appgprj_6ad5cdf44a0481918b111793519e558c~appgver_9574623470e0819193efda6d72c27685
+Deployment: appgdep_6aed43ffec148191bc16f6a23744d8a2
+PWA: a97756d41c48af18
+Изображение во внутреннем отчёте увеличено с 36 до 46 мм (максимальная высота также 46 мм), колонка 50 мм. Пропорции сохранены через object-fit:contain.
+Проверки: сборка в корне и выпуске; internal-report-check.cjs, internal-report-print-check.cjs в обеих копиях; pwa-check.cjs в выпуске; git diff --check. Контрольный PDF с тестовым изображением: 4 страницы, первая страница визуально проверена после рендера Poppler, наложений нет.
+Другие браузеры и реальные скриншоты с крайними пропорциями вручную не проверялись. site-edit и рабочая база не менялись.

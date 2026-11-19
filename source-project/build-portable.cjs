@@ -1,0 +1,22 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {execFileSync}=require('node:child_process');
+if(process.platform!=='win32'||process.arch!=='x64')throw Error('Build requires Windows x64 Node.js');
+execFileSync(process.execPath,[path.join(__dirname,'build-worker.cjs')],{stdio:'inherit'});
+const stamp=new Date().toISOString().replace(/[:.]/g,'-');
+const root=path.join(__dirname,'outputs','Calculator-Windows-x64-'+stamp);
+for(const name of ['app','runtime','migrations','data'])fs.mkdirSync(path.join(root,name),{recursive:true});
+fs.copyFileSync(path.join(__dirname,'dist/server/index.js'),path.join(root,'app/worker.mjs'));
+fs.copyFileSync(process.execPath,path.join(root,'runtime/node.exe'));
+fs.copyFileSync(path.join(__dirname,'portable/Node-LICENSE.txt'),path.join(root,'runtime/LICENSE.txt'));
+for(const name of fs.readdirSync(path.join(__dirname,'drizzle')).filter(f=>f.endsWith('.sql')))fs.copyFileSync(path.join(__dirname,'drizzle',name),path.join(root,'migrations',name));
+fs.copyFileSync(path.join(__dirname,'portable/server.cjs'),path.join(root,'server.cjs'));
+fs.copyFileSync(path.join(__dirname,'portable/START.cmd'),path.join(root,'Запустить калькулятор.cmd'));
+fs.copyFileSync(path.join(__dirname,'portable/ИНСТРУКЦИЯ.txt'),path.join(root,'ИНСТРУКЦИЯ.txt'));
+const files=fs.readdirSync(root,{recursive:true}).filter(f=>fs.statSync(path.join(root,f)).isFile()).sort();
+fs.writeFileSync(path.join(root,'SHA256SUMS.txt'),files.map(f=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,f))).digest('hex')+'  '+f.replaceAll('\\','/')).join('\n')+'\n');
+execFileSync(path.join(root,'runtime/node.exe'),[path.join(__dirname,'portable-check.cjs'),root],{stdio:'inherit'});
+// Literal paths are passed through environment variables, not interpolated into shell code.
+execFileSync('powershell.exe',['-NoProfile','-Command','Compress-Archive -LiteralPath $env:CALC_PORTABLE_ROOT -DestinationPath ($env:CALC_PORTABLE_ROOT + ".zip") -CompressionLevel Optimal'],{env:{...process.env,CALC_PORTABLE_ROOT:root},stdio:'inherit'});
+const archive=root+'.zip',sha=crypto.createHash('sha256').update(fs.readFileSync(archive)).digest('hex');
+fs.writeFileSync(archive+'.sha256',sha+'  '+path.basename(archive)+'\n');
+console.log('Portable folder: '+root+'\nArchive: '+archive+'\nSHA256: '+sha);

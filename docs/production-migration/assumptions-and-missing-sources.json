@@ -1,0 +1,2062 @@
+{
+  "sourceUnavailable": [
+    "Данные.xlsx",
+    "Сметный калькулятор СК-V-3.06.xlsx"
+  ],
+  "referenceStatus": "Вложенный снимок 19.11.2026; актуальный Данные.xlsx недоступен",
+  "preliminaryOrReview": [
+    {
+      "code": "Р83",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F83. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р84",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F84. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р86",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F86. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р85",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F85. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р87",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F87. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р88",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F88. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р89",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F89. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р82",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F82. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р81",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F81. Применяется за фактический нормо-час специалиста."
+    },
+    {
+      "code": "Р94",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F94. Ставка за час. Бюджетная месячная база для №94 принята по примечанию источника."
+    },
+    {
+      "code": "Р108",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F108. Применяется за фактический нормо-час специалиста."
+    },
+    {
+      "code": "Р111",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F111. Гидроабразивная УП 120 × 11/12 = 110 м/ч."
+    },
+    {
+      "code": "Р112",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F112. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р113",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F113. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р115",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F115. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р116",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F116. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р114",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F114. 36 м/ч по решению о плазменной УП."
+    },
+    {
+      "code": "Р117",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F117. Норма 270 м/ч из 4,5 листа × 60 м в примечании G117. Убран множитель 3 за совмещение. Это моё назначение для самостоятельной УП."
+    },
+    {
+      "code": "Р110",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F110. Часовая ставка из справочника и физическая выработка из листа «Параметры»."
+    },
+    {
+      "code": "Р118",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F118.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р119",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F119.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р120",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F120.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р121",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F121.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р122",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F122.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р123",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F123.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р124",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F124.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р125",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F125.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р126",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F126.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры». В параметрах 40 м/ч, в исходном расчёте цены L126 — 1,418 м/ч. При наличии УП ввести время в Q. Бюджет песка, который не покрыт ставкой реза, вынесен в АБР.P01 по колонке AB."
+    },
+    {
+      "code": "Р129",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F129.  Исходная цена внешнего ориентира. Рабочий остаток — большее из доли станка 400 ₽/ч и исходной цены за вычетом №103. Сопоставление Л1/Л2."
+    },
+    {
+      "code": "Р133",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F133.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р134",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F134.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р135",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F135.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р136",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F136.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р137",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F137.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р138",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F138.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р130",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F130.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р131",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F131.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р132",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F132.  Из совокупной погонной цены выделена доля №103. Для неё используется выработка листа «Параметры»."
+    },
+    {
+      "code": "Р191",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F191.  Исходная цена внешнего ориентира. Рабочий остаток — большее из доли станка 400 ₽/ч и исходной цены за вычетом №103. Сопоставление Л1/Л2."
+    },
+    {
+      "code": "Р16.С",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "600 ₽/маш.-ч и 4,86 м/ч из диалога. Абразив учтён по фактическим часам в строке Р16.А. УП №111 и №103 отдельно."
+    },
+    {
+      "code": "Р16.А",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Г2. Расход 16 кг/маш.-ч × 156 ₽/кг. Эти деньги входят в бюджет себестоимости станка Р16.С и вычтены там перед разнесением."
+    },
+    {
+      "code": "Р16.П",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F16. Предложение подрядчика 3 000 ₽/м. Актуализировать конкретным КП."
+    },
+    {
+      "code": "Р140.1",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №129. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.2",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №133. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.3",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №134. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.4",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №135. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.5",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №136. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.6",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №137. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.8",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №138. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.10",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №130. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.12",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №131. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.16",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №132. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р140.20",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и норма по одной строке листовой стали №191. Выработка по метрам реза. Станочная ставка второй раз не начисляется."
+    },
+    {
+      "code": "Р142",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и выработка из №133 для листовой стали ровно 2 мм. Собственная УП и №103 на посту."
+    },
+    {
+      "code": "Р145",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Тариф и выработка из №133 для листовой стали ровно 2 мм. Собственная УП и №103 на посту."
+    },
+    {
+      "code": "Р56",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F56. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П56",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F56. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р65",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F65. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П65",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F65. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р69",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F69. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П69",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F69. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р71",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F71. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П71",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F71. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р73",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F73. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П73",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F73. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р75",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F75. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П75",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F75. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р53",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F53. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П53",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F53. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р55",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F55. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П55",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F55. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р59",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F59. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П59",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F59. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р61",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F61. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П61",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F61. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р63",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F63. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П63",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F63. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р67",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F67. Сохраняется действующий общий тариф по толщине. Для собственного маршрута распределена стоимость №103. Рыночный ориентир П1."
+    },
+    {
+      "code": "П67",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F67. Тип исходной работы «Станок (Подрядчик)». Рез передаётся внешнему исполнителю."
+    },
+    {
+      "code": "Р58",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 1 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р66",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 1.05 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р70",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 1.4 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р72",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 1.75 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р74",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 2.1 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р76",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 2.8 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р54",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 3.5 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р57",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 4.2 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р60",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 4.9 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р62",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 5.6 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р64",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 6.3 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р68",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Бюджет одного старта по толщине, минимум 5 ₽. Для 10/12/16/20 мм прямой внешний аналог. Износ электрода и сопла принят 7.0 ₽/старт. Историческая единица ₽/м исключена."
+    },
+    {
+      "code": "Р146.3",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.4",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.6",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.9",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.10",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.12",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.15",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.18",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.21",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.27",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р146.30",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2."
+    },
+    {
+      "code": "Р147",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Часовой вариант №146 по известному времени или сумме длин проходов / 270. Выбрать одно представление для одной партии."
+    },
+    {
+      "code": "Р143",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F143. P143 = 100 ₽/ч станка. 213 м/ч — лист «Параметры». Итоговый труд отдельно."
+    },
+    {
+      "code": "Р128.П",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Решения по №128. Старый комплекс 10,24 ₽/м заменён на 100 ₽/маш.-ч и отдельную №103."
+    },
+    {
+      "code": "Р128.3D",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "5 000 ₽ = 200 м траектории × 25 ₽. Шаг 5 мм. Ориентир 0,75 м²/маш.-ч. №103 добавляется за 40 мин/ч."
+    },
+    {
+      "code": "Р15",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F15. Выработка L15 — гибов/час. Из исходных 100 ₽ выделены станок и участие оператора. Минимум станка по P192. Прайс ГБ."
+    },
+    {
+      "code": "Р10",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F10. Выработка L10 — гибов/час. Из исходных 100 ₽ выделены станок и участие оператора. Минимум станка по P192. Прайс ГБ."
+    },
+    {
+      "code": "Р11",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F11. Выработка L11 — гибов/час. Из исходных 100 ₽ выделены станок и участие оператора. Минимум станка по P192. Прайс ГБ."
+    },
+    {
+      "code": "Р12",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F12. Выработка L12 — гибов/час. Из исходных 100 ₽ выделены станок и участие оператора. Минимум станка по P192. Прайс ГБ."
+    },
+    {
+      "code": "Р13",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F13. Выработка L13 — гибов/час. Из исходных 100 ₽ выделены станок и участие оператора. Минимум станка по P192. Прайс ГБ."
+    },
+    {
+      "code": "Р14",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F14. Выработка L14 — гибов/час. Из исходных 100 ₽ выделены станок и участие оператора. Минимум станка по P192. Прайс ГБ."
+    },
+    {
+      "code": "Р9",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F9. Выработка L9 — гибов/час. Из исходных 100 ₽ выделены станок и участие оператора. Минимум станка по P192. Прайс ГБ."
+    },
+    {
+      "code": "Р192",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, P192. Часовой маршрут при известном времени. №103 по фактической занятости или бюджетным 60 минутам."
+    },
+    {
+      "code": "Р17",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "ГР. Рыночный нижний ориентир 20 ₽/см² и 250 см²/ч как план прохода. В цене разделены станок и №103. Исходные 6 ₽/см² сохранены в JSON."
+    },
+    {
+      "code": "ВАЛ.Ч",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Оценка 200 ₽/ч машинной составляющей. Грузоёмкость операции отражена в бюджете оборудования, оператор в №103."
+    },
+    {
+      "code": "Р103.P01",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Перечень_работ!O118, O126 — ставка сотрудника до станочной надбавки. 15 мин/маш.-ч по диалогу."
+    },
+    {
+      "code": "Р103.P02",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Перечень_работ!F103, P103 — ставка сотрудника до станочной надбавки. 15 мин/маш.-ч по диалогу."
+    },
+    {
+      "code": "Р103.P03",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Перечень_работ!O140 — ставка сотрудника до станочной надбавки. 15 мин/маш.-ч по диалогу."
+    },
+    {
+      "code": "Р103.P04",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Перечень_работ!O142 — ставка сотрудника до станочной надбавки. 15 мин/маш.-ч по диалогу."
+    },
+    {
+      "code": "Р103.P05",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Перечень_работ!O145 — ставка сотрудника до станочной надбавки. 15 мин/маш.-ч по диалогу."
+    },
+    {
+      "code": "Р103.P06",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Перечень_работ!F114 — ставка сотрудника до станочной надбавки. 15 мин/маш.-ч по диалогу."
+    },
+    {
+      "code": "Р103.P07",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно."
+    },
+    {
+      "code": "Р103.P08",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно."
+    },
+    {
+      "code": "Р103.P09",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно."
+    },
+    {
+      "code": "Р103.P10",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно."
+    },
+    {
+      "code": "Р103.P41",
+      "origin": "dialogue",
+      "status": "needs_review",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно."
+    },
+    {
+      "code": "Р19",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F19. Часовая ставка и выработка из «Параметров». Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р95",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F95. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р96",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F96. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р163",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F163. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р155",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F155. 100 м/н·ч и 1 810 ₽/н·ч из диалога. Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р157",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F157. Часовая ставка и выработка из «Параметров». Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р156",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F156. Часовая ставка и выработка из «Параметров». Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р153",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F153. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р92",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F92. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р127",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F127. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р20",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F20. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р21",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F21. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р152",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F152. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р5",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F5. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р158",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F158. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р185",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F185. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р186",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F186. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р187",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F187. Часовая ставка и выработка из «Параметров». Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р188",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F188. Часовая ставка и выработка из «Параметров». Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р18",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F18. Часовая ставка и выработка из «Параметров». Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р100",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F100. Часовая ставка и выработка из «Параметров». Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р190",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F190. Часовая ставка и выработка из «Параметров». Норматив износа учтён в плановых затратах."
+    },
+    {
+      "code": "Р79",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F79. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р80",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F80. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р78",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F78. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р46",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F46. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р150",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F150. Часовая ставка и выработка из «Параметров»."
+    },
+    {
+      "code": "Р3",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F3. Рабочая цена из «Параметров». Затраты определены по трудоёмкости операции."
+    },
+    {
+      "code": "Р4",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F4. Рабочая цена из «Параметров». Затраты определены по трудоёмкости операции."
+    },
+    {
+      "code": "Р25",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F25. Рабочая цена из «Параметров». База 320 шт./ч из G25, 90 мм принято для перевода."
+    },
+    {
+      "code": "Р42",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F42. Рабочая цена из «Параметров». Затраты определены по трудоёмкости операции."
+    },
+    {
+      "code": "Р43",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F43. Рабочая цена из «Параметров». Затраты определены по трудоёмкости операции."
+    },
+    {
+      "code": "Р47",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F47. Рабочая цена из «Параметров». Затраты определены по трудоёмкости операции."
+    },
+    {
+      "code": "Р52",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F52. Рабочая цена из «Параметров». 814,50 ₽/час цикла = 1 629 × 0,5. Состав ванны учтён бюджетом 12 ₽/м²."
+    },
+    {
+      "code": "Р93",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F93. Рабочая цена из «Параметров». В источнике 2 300 ₽/ч на энергию и оборудование. Бюджет порошка 0,16 кг/м² × 500 ₽/кг."
+    },
+    {
+      "code": "Р107",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F107. Рабочая цена из «Параметров». В диалоге исправлена единица тарифа на м²."
+    },
+    {
+      "code": "Р151",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F151. Рабочая цена из «Параметров». Затраты определены по трудоёмкости операции."
+    },
+    {
+      "code": "Р22",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F22. Ставка за час из рабочих данных. Назначена стартовая длительность для расчёта объёма."
+    },
+    {
+      "code": "Р77",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F77. Ставка за час из рабочих данных. Назначена стартовая длительность для расчёта объёма."
+    },
+    {
+      "code": "Р98",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F98. Ставка за час из рабочих данных. Назначена стартовая длительность для расчёта объёма."
+    },
+    {
+      "code": "Р154",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F154. Ставка за час из рабочих данных. Назначена стартовая длительность для расчёта объёма."
+    },
+    {
+      "code": "Р177",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F177. Ставка за час из рабочих данных. Назначена стартовая длительность для расчёта объёма."
+    },
+    {
+      "code": "Р149",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F149. Ставка за час из рабочих данных. Труд учитывается по введённым человеко-часам."
+    },
+    {
+      "code": "Р161",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F161. Ставка за час из рабочих данных. Назначена стартовая длительность для расчёта объёма."
+    },
+    {
+      "code": "Р34",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F34. Ставка за час из рабочих данных. Труд учитывается по введённым человеко-часам."
+    },
+    {
+      "code": "Р35",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F35. Ставка за час из рабочих данных. Труд учитывается по введённым человеко-часам."
+    },
+    {
+      "code": "Р97",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Перечень_работ!F97 — 860 ₽/ч. Для общего производственного часа при отсутствии назначения на более точный пост применена большая из исходной ставки и расчётных затрат. База труда 100 000 ₽/мес. — оценка."
+    },
+    {
+      "code": "Р189",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F189. Ставка за час из рабочих данных. Труд учитывается по введённым человеко-часам."
+    },
+    {
+      "code": "Р49",
+      "origin": "model",
+      "status": "inactive",
+      "plannedCostKnown": true,
+      "financialBasis": "Перечень_работ!F49. План затрат по эквивалентным часам монтажника при 1 810 ₽/ч. Для проекта с известной бригадой выбрать детализацию."
+    },
+    {
+      "code": "Р144",
+      "origin": "dialogue",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Диалог. База №144 равна 79,64 ₽/рез. ЛП — внешний контроль по размерам."
+    },
+    {
+      "code": "Р144.П",
+      "origin": "dialogue",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Коэффициент 0,8 и выработка из диалога; 4 профиля — изменяемый пример. Пакеты разного размера рассчитывать по партиям."
+    },
+    {
+      "code": "М01",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 7. 2 чел. × 7 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М02",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 8. 2 чел. × 30 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М03",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 9. 2 чел. × 10 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М04",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 10. 2 чел. × 30 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М05",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 11. 1 чел. × 10 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М06",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 12. 1 чел. × 60 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М07",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 13. 1 чел. × 12 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М08",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 14. 1 чел. × 4.5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М09",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 15. 1 чел. × 2.25 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М10",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 16. 1 чел. × 3 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М11",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 17. 1 чел. × 3 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М12",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 18. 1 чел. × 4 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М13",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 19. 1 чел. × 13 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М14",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 20. 1 чел. × 2.5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М15",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 21. 2 чел. × 8 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М16",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 22. 2 чел. × 18 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М17",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 23. 2 чел. × 13 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М19",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 24. 1 чел. × 1.125 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М20",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 25. 1 чел. × 0.3 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М21",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 26. 1 чел. × 0.55 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М22",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 27. 1 чел. × 4.5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М23",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 28. 1 чел. × 3.5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М24",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 29. 2 чел. × 5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М25А",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 30. 1 чел. × 0.4 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М25Б",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 31. 1 чел. × 0.35 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М26",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 32. 1 чел. × 0.5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М27",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 33. 1 чел. × 0.65 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М28",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 34. 1 чел. × 0.75 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М29",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 35. 1 чел. × 0.75 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М30",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 36. 1 чел. × 6 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М31",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 37. 2 чел. × 15 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М32",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 38. 2 чел. × 12 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М33",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 39. 2 чел. × 10 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М34",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 40. 1 чел. × 60 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М35",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 41. 2 чел. × 3.5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М36",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 42. 2 чел. × 9 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М37",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 43. 1 чел. × 5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М38",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 44. 1 чел. × 4 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М39",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 45. 1 чел. × 6 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М40",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 46. 1 чел. × 8 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М41",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 47. 1 чел. × 3 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М42",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 48. 2 чел. × 6 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М43",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 49. 1 чел. × 5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М44",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 50. 1 чел. × 7 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М45",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 51. 1 чел. × 14 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "М46",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Монтаж, строка 52. 1 чел. × 1.5 мин/60 × ставка монтажника. Расходы — в карте операции."
+    },
+    {
+      "code": "Т01",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "О2. Ø38×2 от 747 ₽/м, масштабирование по площади металла и 25% бюджет доставки/исполнения. Точное КП заменяет оценку."
+    },
+    {
+      "code": "Т02",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "О1. Местная справочная закупочная цена за метр. Хлыст для проекта 3 м."
+    },
+    {
+      "code": "Т03",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "О1. По сопоставимой цене 450 ₽/кг и массе 2,01 кг/м."
+    },
+    {
+      "code": "Т04",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "О3. Бюджет для отдельного троса Ø6 AISI 304 до спецификации. Трос в полотне Ø2 уже входит в цену сетки."
+    },
+    {
+      "code": "Т05",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Старая вкладка «Цены ограждения», строки 9–10. Картридж 300 мл, 1 165 и 1 508 ₽; расход отдельно."
+    },
+    {
+      "code": "Т06",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Металлопрокат!M275. Исходная цена 23,55 кг/м² × 640 ₽/кг."
+    },
+    {
+      "code": "Т07",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Крепежные_элементы!F4. Материал отдельно от завинчивания."
+    },
+    {
+      "code": "Т08",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Крепежные_элементы!F9."
+    },
+    {
+      "code": "Т09",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Крепежные_элементы!F150. Тип шайбы уточнить спецификацией."
+    },
+    {
+      "code": "Т10",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет 13 ₽ крепёж + 2 ₽ шайба, до замены размером по спецификации."
+    },
+    {
+      "code": "Т11",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет 7 ₽ дюбель + 5 ₽ шуруп."
+    },
+    {
+      "code": "Т12",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет 600 ₽ за 100 шт. Подставить материал и диаметр из спецификации."
+    },
+    {
+      "code": "Т13",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Сопутствующие_материалы!F43. На объект по факту шва."
+    },
+    {
+      "code": "Т14",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет сменной насадки на картридж; исключить купленные в комплекте."
+    },
+    {
+      "code": "Т15",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет одной выработанной оснастки; количество на выезд."
+    },
+    {
+      "code": "Т16",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Сопутствующие_материалы!F41, 840 ₽/л."
+    },
+    {
+      "code": "Т17",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет 900 ₽ за упаковку 5 кг."
+    },
+    {
+      "code": "Т18",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Пример 18 000 ₽ / 600 рабочих часов + 8 ₽/ч обслуживание. Только инструмент вне расхода конкретной операции."
+    },
+    {
+      "code": "Т19",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "М3/М4. Для оценки машины принят бюджет 2 500 ₽/ч. Время к оплате с договорным минимумом. Подача отдельно."
+    },
+    {
+      "code": "Т20",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Рабочий бюджет 2 часа дороги × 1 750 ₽. При единой сменной цене исключить покрытую подачу."
+    },
+    {
+      "code": "Т21",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Сумма ведомости закупки в себестоимости предприятия. Включать только материалы, которых нет в других строках."
+    },
+    {
+      "code": "Т22",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Сумма предложения подрядчика или перевозчика по проекту. Включённую доставку повторно исключить."
+    },
+    {
+      "code": "Т23",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет материала 0,07 л/м² × 600 ₽/л. Труд нанесения в рецептуре №91."
+    },
+    {
+      "code": "Т24",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет материала 0,15 л/м² × 500 ₽/л. На обрабатываемую поверхность."
+    },
+    {
+      "code": "Т25",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Расход по фактической накладной сверх уже учтённого газа и дисков."
+    },
+    {
+      "code": "Р23",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F23. Себестоимость по ресурсам строк 7–16 листа «Комплексы». У №23 расход формы зависит от проекта. В общей смете часы оператора выведены в №103 P08, эта же стоимость вычтена из комплекса."
+    },
+    {
+      "code": "Р24",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F24. Плановые количества и состав строк 17–20 на листе «Комплексы»."
+    },
+    {
+      "code": "Р48",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F48. Плановые количества и состав строк 21–25 на листе «Комплексы»."
+    },
+    {
+      "code": "Р91",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F91. Плановые количества и состав строк 26–29 на листе «Комплексы»."
+    },
+    {
+      "code": "Р99",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F99. Плановые количества и состав строк 30–33 на листе «Комплексы»."
+    },
+    {
+      "code": "Р101",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F101. Плановые количества и состав строк 34–38 на листе «Комплексы»."
+    },
+    {
+      "code": "Р36",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F36. Плановые количества и состав строк 39–42 на листе «Комплексы»."
+    },
+    {
+      "code": "Р38",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F38. Плановые количества и состав строк 43–45 на листе «Комплексы»."
+    },
+    {
+      "code": "Р39",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F39. Плановые количества и состав строк 46–48 на листе «Комплексы»."
+    },
+    {
+      "code": "Р40",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F40. Плановые количества и состав строк 49–50 на листе «Комплексы»."
+    },
+    {
+      "code": "Р41",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Данные.xlsx, Перечень_работ!F41. Плановые количества и состав строк 51–53 на листе «Комплексы»."
+    },
+    {
+      "code": "Р91.Ф",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Напрямую суммируются работа и материал операции на листе «Комплексы»."
+    },
+    {
+      "code": "Р91.Б",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Напрямую суммируются работа и материал операции на листе «Комплексы»."
+    },
+    {
+      "code": "ОГР",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": false,
+      "financialBasis": "Сумма закупки, изготовления заглушек и простых работ на месте. Проектирование включено. В общей смете часы оператора выведены в №103 P02, эта же стоимость вычтена из комплекса."
+    },
+    {
+      "code": "НАСТ",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": false,
+      "financialBasis": "Детальный маршрут по решению №37. База складывается из выбранных операций без прежней комплексной цены."
+    },
+    {
+      "code": "П58",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П66",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П70",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П72",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П74",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П76",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П54",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П57",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П60",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П62",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П64",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "П68",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "П2/П3. Рабочий закупочный ориентир на старт, с заменой на фактический состав КП. Собственных машино-часов и №103 нет."
+    },
+    {
+      "code": "АБР.P01",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Бюджет песка 16 кг/ч × 156 ₽/кг (Г2). Из этой потребности исключена доля, которую уже покрывает тариф резки после вычета №103. Это расходный материал заказа."
+    },
+    {
+      "code": "ФРС.1",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Форматник, строка 24. Часы реза × час станка + длина × ресурс пил. Полный труд оператора в ФРС.ОП. Рыночные ориентиры ФР1–ФР3."
+    },
+    {
+      "code": "ФРС.2",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Форматник, строка 25. Часы реза × час станка + длина × ресурс пил. Полный труд оператора в ФРС.ОП. Рыночные ориентиры ФР1–ФР3."
+    },
+    {
+      "code": "ФРС.3",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Форматник, строка 26. Часы реза × час станка + длина × ресурс пил. Полный труд оператора в ФРС.ОП. Рыночные ориентиры ФР1–ФР3."
+    },
+    {
+      "code": "ФРС.ПЗ",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Форматник B32–B34, B50, B54. Относится амортизация поста, ТО и энергия при наладке."
+    },
+    {
+      "code": "ФРС.ОП",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Лист «Форматник», B51. Тариф сотрудника × занятые человеко-часы. Затраты из листа «Экономика»."
+    },
+    {
+      "code": "ФРС.ПОМ",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Лист «Форматник», B52. Тариф сотрудника × занятые человеко-часы. Затраты из листа «Экономика»."
+    },
+    {
+      "code": "ФРС.КАРТА",
+      "origin": "model",
+      "status": "preliminary",
+      "plannedCostKnown": true,
+      "financialBasis": "Лист «Форматник», B53. Тариф сотрудника × занятые человеко-часы. Затраты из листа «Экономика»."
+    }
+  ],
+  "panelSaw": {
+    "bands": [
+      {
+        "id": "ФРС.1",
+        "min_thickness_mm": 3,
+        "max_thickness_mm": 6,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "output_m_per_hour": 72.48322147651007,
+        "machine_and_blade_rub_per_m": 4.348810703703704,
+        "operator_rub_per_m": 24.971296296296295,
+        "cut_total_before_setup_and_markup_rub_per_m": 29.320107,
+        "forward": 12,
+        "backward": 20,
+        "position_seconds": 50,
+        "stroke_m": 1.2
+      },
+      {
+        "id": "ФРС.2",
+        "min_thickness_mm": 6,
+        "max_thickness_mm": 18,
+        "min_inclusive": false,
+        "max_inclusive": true,
+        "output_m_per_hour": 61.016949152542374,
+        "machine_and_blade_rub_per_m": 4.733822111111111,
+        "operator_rub_per_m": 29.663888888888888,
+        "cut_total_before_setup_and_markup_rub_per_m": 34.397711,
+        "forward": 10,
+        "backward": 20,
+        "position_seconds": 60,
+        "stroke_m": 1.2
+      },
+      {
+        "id": "ФРС.3",
+        "min_thickness_mm": 18,
+        "max_thickness_mm": 30,
+        "min_inclusive": false,
+        "max_inclusive": true,
+        "output_m_per_hour": 48.97959183673469,
+        "machine_and_blade_rub_per_m": 5.331964833333334,
+        "operator_rub_per_m": 36.954166666666666,
+        "cut_total_before_setup_and_markup_rub_per_m": 42.2861315,
+        "forward": 7.5,
+        "backward": 20,
+        "position_seconds": 75,
+        "stroke_m": 1.2
+      }
+    ],
+    "setup_minutes": 12,
+    "sheet_minutes": 3,
+    "meters_per_sheet": 20,
+    "kerf_mm": 3,
+    "machine_rate": 148.5044,
+    "setup_machine_rate": 108.5044,
+    "blade_per_m": 2.3,
+    "operator_rate": 1810,
+    "helper_rate": 1448,
+    "map_rate": 1810,
+    "operator_cost": 1248.3552631578946,
+    "helper_cost": 998.6842105263155,
+    "origin": "model",
+    "status": "preliminary"
+  },
+  "marketEvidence": 32,
+  "marketComparisons": 13
+}

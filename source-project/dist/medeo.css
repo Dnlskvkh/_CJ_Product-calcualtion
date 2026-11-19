@@ -1,0 +1,9 @@
+/* Medeo 1.0 · SIL Open Font License 1.1 · see OFL.txt */
+@font-face{font-family:'Medeo Sans';src:url('MedeoSansVariable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Medeo Sans';src:url('MedeoSansVariable-Italic.woff2') format('woff2');font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Medeo Mono';src:url('MedeoMonoVariable.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+:root{--font-sans:'Medeo Sans','Segoe UI',Arial,sans-serif;--font-mono:'Medeo Mono',Consolas,monospace}
+body{font-family:var(--font-sans);font-optical-sizing:auto}
+h1,h2,h3,.brand{font-family:var(--font-sans);font-variation-settings:'opsz' 32}
+code,pre,kbd,samp{font-family:var(--font-mono)}
+.chart text{font-family:var(--font-sans)}

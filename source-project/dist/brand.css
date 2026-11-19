@@ -1,0 +1,73 @@
+/* Concrete Jungle: white workspace and supplied grey palette, 06.11.2026. */
+:root{--cj-paper:#F2F2F2;--cj-silver:#BFBFBF;--cj-grey:#8C8C8C;--cj-graphite:#595959;--cj-charcoal:#262626;--ink:var(--cj-charcoal);--green:var(--cj-charcoal);--pale:var(--cj-paper);--bg:#fff;--line:var(--cj-silver);--muted:var(--cj-graphite)}
+.brand{display:block;max-width:220px;background:transparent;padding:0;border-radius:0;line-height:0}
+.brand img{display:block;width:100%;height:auto}
+.document{color:var(--cj-charcoal);background:white}.document .small,.document .source,.document .subtitle,.document .muted{color:var(--cj-graphite)}
+.document th{background:var(--cj-paper);color:var(--cj-graphite)}.document td,.document .divider,.document .total{border-color:var(--cj-silver)}
+@media screen{
+ :root{color-scheme:light;--ink:var(--cj-charcoal);--green:var(--cj-charcoal);--pale:var(--cj-paper);--bg:#fff;--line:var(--cj-silver);--muted:var(--cj-graphite);--orange:var(--cj-graphite);--surface:#fff;--raised:var(--cj-paper)}
+ body,aside,header,.header-actions button,.steps,.price-review,input,select,textarea,.choice,.summary,.kpi,.overview-item,dialog,.pwa-dialog,pre,.graph-viewport,.graph-node{background-color:#fff}
+ aside,header,.card,.summary,.kpi,.overview-item,.graph-viewport,td{border-color:var(--cj-silver)}
+ button,.modal-top button{background:var(--cj-paper);border-color:var(--cj-grey);color:var(--cj-charcoal)}
+ button:hover,.overview-item:hover,nav button:hover,.catalog-results tr:hover,tbody tr:hover{background:var(--cj-paper);border-color:var(--cj-silver)}
+ button.primary,.new{background:var(--cj-paper);border-color:var(--cj-charcoal);color:var(--cj-charcoal)}
+ button.primary:hover,.new:hover{background:var(--cj-silver);border-color:var(--cj-silver)}
+ button.textbutton,.eyebrow,.section-num,.breadcrumb strong,.empty b,.summary .big,.summary .metricline b,.overview-value{color:var(--cj-charcoal)}
+ nav button,nav .num,.navlabel,label,.subtitle,.hint,.small,.source,.metricline span,.summary .metricline span,.summary .eyebrow,.overview-label,.overview-caption,.breadcrumb span,.choice span,.kpi.featured .small,.pwa-note{color:var(--cj-graphite)}
+ nav button.active,.steps button.active,.choice.selected,.selected-scenario,.kpi.featured,.kpis button.featured,.overview-item.overview-price{background:var(--cj-paper);border-color:var(--cj-grey);color:var(--cj-charcoal)}
+ .steps b,.badge,.graph-node-head,.graph-process .graph-node-head,.pwa-state{background:var(--cj-paper);color:var(--cj-charcoal)}
+ .steps .active b,#toast{background:var(--cj-paper);color:var(--cj-charcoal)}
+ input,select,textarea{color:var(--cj-charcoal);border-color:var(--cj-grey)}input::placeholder,textarea::placeholder{color:var(--cj-graphite)}
+ input:focus,select:focus,textarea:focus{border-color:var(--cj-charcoal);box-shadow:0 0 0 3px #BFBFBF33}
+ input[type=checkbox]{accent-color:var(--cj-graphite)}button:focus-visible,a:focus-visible,summary:focus-visible{outline-color:var(--cj-charcoal)}
+ th{background:var(--cj-paper);color:var(--cj-charcoal);border-color:var(--cj-grey)}
+ .note.info,.info{background:var(--cj-paper);color:var(--cj-charcoal);border-color:var(--cj-grey)}
+ .divider,.bar{background:var(--cj-paper)}.online{background:var(--cj-silver)}
+ .chart text{fill:var(--cj-graphite)}.chart line{stroke:var(--cj-graphite)}.chart polygon{fill:var(--cj-graphite)}.chart polyline{stroke:var(--cj-charcoal)}.chart circle{fill:var(--cj-charcoal)}
+ .graph-node-head small,.graph-process .graph-node-head small,.graph-ports span,.graph-empty{color:var(--cj-graphite)}.graph-wires>path{stroke:var(--cj-silver)}.graph-wires marker path{fill:var(--cj-graphite)}.graph-selected{outline-color:var(--cj-charcoal)}
+ nav .nav-group>summary,.line-advanced>summary,.overview-toggle>span:last-child{color:var(--cj-graphite)}nav .nav-group>summary:hover{background:var(--cj-paper)}
+ .overview-toggle,.action-menu>summary,.action-menu-body,.modalform>.mini-actions{background:#fff;border-color:var(--cj-grey)}
+ .line-advanced{border-color:var(--cj-silver)}.material-table td[data-label]:not(:first-child):before{color:var(--cj-graphite)}
+ .graph-viewport.react-graph,.react-graph .react-flow,.flow-node{background:#fff;color:var(--cj-charcoal);border-color:var(--cj-grey)}
+ .flow-node-head,.flow-node-process .flow-node-head{background:var(--cj-paper);color:var(--cj-charcoal)}.flow-node-head small{color:var(--cj-graphite)}.flow-node-selected{outline-color:var(--cj-charcoal)}
+ .react-graph .react-flow__handle{background:var(--cj-silver);border-color:var(--cj-charcoal)}
+ @media(max-width:900px){.material-table tbody tr{background:#fff;border-color:var(--cj-grey)}}
+ .document{--ink:var(--cj-charcoal);--green:var(--cj-charcoal);--muted:var(--cj-graphite);--line:var(--cj-silver);color:var(--cj-charcoal);background:white}
+ .document .small,.document .source,.document .subtitle,.document .muted,.document .metricline span{color:var(--cj-graphite)}.document th{background:var(--cj-paper);color:var(--cj-graphite)}.document tbody tr:hover{background:var(--cj-paper)}
+ @media(max-width:900px){.brand{width:220px;padding:0}}
+}
+
+/* Light theme states, including warning and form feedback. */
+@media screen{
+ body,header{background:#fff;color:var(--cj-charcoal)}aside,.steps,.price-review,pre,.pwa-state{background:var(--cj-paper);color:var(--cj-charcoal)}
+ .overview-price .overview-value{color:var(--cj-charcoal)}.overview-label svg{color:var(--cj-graphite)}
+ aside,.tablewrap{scrollbar-color:var(--cj-grey) var(--cj-paper)}.chart polygon{fill:var(--cj-paper)}.graph-wires>path{stroke:var(--cj-graphite)}
+ .brand{background:transparent}.card,.summary,.kpi,.overview-item{box-shadow:none}
+ button,.modal-top button{background:#fff;color:var(--cj-charcoal)}button:hover,.overview-item:hover,nav button:hover{background:var(--cj-paper);color:var(--cj-charcoal)}
+ button.primary,.new,.steps .active b,#toast,.skip-link{background:var(--cj-charcoal);border-color:var(--cj-charcoal);color:#fff}
+ button.primary:hover,.new:hover{background:var(--cj-graphite);border-color:var(--cj-graphite);color:#fff}
+ nav button.active{background:var(--cj-silver);border-color:var(--cj-grey);color:var(--cj-charcoal)}nav .nav-group>summary:hover{background:var(--cj-silver)}
+ .note,.note.info,.info,.tag,.pwa-network-banner{background:var(--cj-paper);color:var(--cj-charcoal);border-color:var(--cj-grey)}.note{border-left:3px solid var(--cj-grey)}
+ .issue,.warning,.field-error,#lineError .textbutton,#graph-error,.price-review summary,.price-review summary span{color:var(--cj-charcoal)}.price-review p{color:var(--cj-graphite)}
+ [aria-invalid=true]{border:2px solid var(--cj-charcoal)}.field-error,#lineError{font-weight:600}
+ input:focus,select:focus,textarea:focus{border-color:var(--cj-charcoal);box-shadow:0 0 0 3px #BFBFBF55}
+ .modalform>.mini-actions{box-shadow:0 -10px 20px #fff}.graph-inspector:focus-visible{outline-color:var(--cj-charcoal)}
+ .graph-viewport{background-color:var(--cj-paper);background-image:radial-gradient(var(--cj-silver) 1px,transparent 1px)}
+ .graph-node-head:hover,.graph-process .graph-node-head:hover{background:var(--cj-silver)}
+ .graph-viewport.react-graph,.react-graph .react-flow{background:var(--cj-paper)}
+ .react-graph .react-flow__edge-path{stroke:var(--cj-graphite)}.react-graph .react-flow__handle{background:var(--cj-graphite);border-color:#fff}
+ .react-graph .react-flow__controls,.react-graph .react-flow__minimap,.react-graph .react-flow__controls-button{background:#fff;color:var(--cj-charcoal);border-color:var(--cj-silver)}
+ .react-graph .react-flow__minimap-node{fill:var(--cj-silver)}
+ @media(max-width:900px){.overview-toggle{background:var(--cj-paper);color:var(--cj-charcoal)}}
+ @media(max-width:600px){#material-suggestions .metricline{flex-wrap:wrap}#material-suggestions .metricline>div{min-width:0;flex:1 1 220px}}
+}
+
+/* One compact price summary; details stay available on demand. */
+@media screen{
+ .workspace-overview .overview-toggle{display:flex;width:100%;align-items:center;justify-content:space-between;gap:12px;min-height:48px;text-align:left;background:#fff;color:#222;border:1px solid #ddd;padding:12px 16px}
+ .workspace-overview .overview-toggle>span:last-child{color:#555}
+ .workspace-overview .overview-grid{display:none;margin-top:12px}
+ .workspace-overview .overview-grid.expanded{display:grid}
+ .calculation-form{max-width:1100px}
+ .calculation-form>.card>.card{box-shadow:none;border:0;border-top:1px solid #ddd;padding:20px 0 0;margin:20px 0 0}
+}

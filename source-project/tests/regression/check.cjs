@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict'),{calculate}=require('./dist/engine.js');
+const base={qty:1,overhead:7,transport:6,markup:40,vat:22,lines:[]};
+const mat={name:'Материал',kind:'material',qty:1,price:10000,reserve:0,pack:1,scope:'unit',allocation:'whole',confirmed:true,mass:1,date:'2026',group:'Группа'};
+let r=calculate({...base,transport:0,lines:[mat]});assert.equal(r.C,10000);assert.equal(r.P,4000);assert.equal(r.tax,3080);assert.equal(r.total,17080);
+const prep={...mat,name:'Подготовка',kind:'work',price:1000,scope:'batch'};
+r=calculate({...base,lines:[{...mat,qty:.3,pack:1,price:100},prep]},10);assert.equal(r.M,300);assert.equal(r.W,1000);assert.equal(r.overhead,70);assert.equal(r.transport,18);assert.equal(r.C,1388);
+assert.equal(calculate({...base,lines:[{...mat,price:null}]}).partial,true);
+assert.equal(calculate({...base,lines:[{...mat,price:0}]}).partial,false);
+assert.ok(calculate({...base,lines:[{...mat,price:0}]}).warnings.length);
+assert.ok(calculate({...base,lines:[{...mat,pack:0}]}).errors.length);
+assert.ok(calculate({...base,qty:1.5,lines:[mat]}).errors.length);
+assert.ok(calculate({...base,lines:[mat,mat]}).errors.some(x=>x.includes('повтор')));
+r=calculate({...base,lines:[{...mat,qty:.3,pack:1,price:100,allocation:'share'}]});assert.equal(r.M,30);assert.equal(r.cash,100);
+r=calculate({...base,lines:[{...mat,deliveryIncluded:true}]});assert.equal(r.transport,0);
+const s={...base,lines:[{...mat,qty:.3,price:100},prep]};assert.ok(calculate(s,10).unit<calculate(s,1).unit);
+console.log('PASS: corporate formula, batch setup, rounding, missing/zero prices, invalid inputs, duplicate detection, shared purchase, included delivery, batch comparison');

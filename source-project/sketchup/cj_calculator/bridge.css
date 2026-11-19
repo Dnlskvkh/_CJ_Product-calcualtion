@@ -1,0 +1,8 @@
+.cj-model-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;background:var(--surface,#f2f2f2);border-bottom:1px solid var(--line,#bfbfbf)}
+.cj-model-bar div{display:grid;gap:4px}.cj-model-bar span{font-size:12px;color:var(--muted,#595959)}
+.cj-model-bar button,.cj-selection button,.cj-selection select{min-height:44px}.cj-selection .checkrow{min-height:44px}
+.cj-parts{display:grid;gap:12px;margin:16px 0;max-height:45vh;overflow:auto}.cj-parts article{border:1px solid var(--line,#bfbfbf);border-radius:8px;padding:16px}
+.cj-parts dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}.cj-parts dt{font-size:12px;color:var(--muted,#595959)}.cj-parts dd{margin:3px 0 0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.cj-material{border-top:1px solid var(--line,#bfbfbf);margin-top:14px;padding-top:8px;min-width:0}.cj-material select,.cj-material input{width:100%;min-width:0;max-width:100%}.cj-material .small{overflow-wrap:anywhere}
+@media(max-width:800px){.cj-model-bar{align-items:stretch;flex-direction:column;padding:12px}.cj-parts dl{grid-template-columns:1fr}}
+@media print{.cj-model-bar{display:none}}

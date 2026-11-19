@@ -1,0 +1,381 @@
+{
+  "document_type": "project_handoff",
+  "project": "Пром-дизайн",
+  "prepared_on": "2026-11-19",
+  "language": "ru",
+  "purpose": "Transfer the decisions, financial model, operation hierarchy and implementation constraints from the previous production-costing conversation to a new Codex task.",
+  "target_application": {
+    "name": "Калькулятор стоимости изделий",
+    "known_local_url": "http://127.0.0.1:4189/#/section/2",
+    "known_workspace_path_windows": "C:\\Users\\Danil.S\\Desktop\\Личная папка ДАНИЛ.С\\1. - Рассчеты\\Рассчеты изделий\\Калькулятор стоимости",
+    "source_data_directory_windows": "P:\\Производство\\- Процессы\\Расчет стоимости изделий\\- Сметный калькулятор",
+    "stack_and_repository_details": "Not established in the recovered context. Codex must inspect the actual project before editing; do not assume framework, database, API or entry point.",
+    "implementation_rule": "Update the existing application and preserve its current core and architecture. Do not create a new calculator or substitute an Excel application."
+  },
+  "source_of_truth": {
+    "primary_source": "Данные.xlsx",
+    "secondary_validation_source": "Сметный калькулятор СК-V-3.06.xlsx",
+    "secondary_source_rule": "Use only for cross-checking and examples; it must not overwrite primary source values.",
+    "previous_calculation_artifacts": [
+      "reference/Производственная_калькуляция.json",
+      "reference/Производственная_калькуляция.xlsx"
+    ],
+    "source_priority_rules": [
+      "Данные.xlsx is authoritative for work names, source units, source rates, productivity and source formula metadata.",
+      "Synchronize application units from Данные.xlsx; source units replace application units.",
+      "If an operation exists only in the application, preserve it as an application-only operation.",
+      "If a source operation is missing in the application, add it to the matching existing shop/post/category automatically.",
+      "Do not invent source IDs, source rates, productivity or unit conversions."
+    ],
+    "supporting_structure_file": {
+      "name": "Согласование_цехов_постов_и_расчётов.xlsx",
+      "role": "Supporting reference for shop/post grouping and previously agreed operation structure; not a replacement for Данные.xlsx as the primary source of work names, units and rates."
+    }
+  },
+  "catalog_and_calculation_counts": {
+    "source_work_records_original": 190,
+    "records_excluded_before_active_scope_by_user": 39,
+    "active_source_records_after_that_filter": 151,
+    "mapped_source_records_in_previous_calculation": 142,
+    "outside_active_estimate_records": 9,
+    "calculation_rows_in_previous_workbook": 284,
+    "source_posts_in_original_analysis": 42,
+    "market_evidence_records": 32,
+    "market_price_comparisons": 13,
+    "interpretation": "284 are calculation rows, variants and resource lines, not 284 source jobs. The 9 outside-active records are a subset of the 151 active source records and must remain visible as out-of-scope references rather than be silently deleted."
+  },
+  "confirmed_decisions": [
+    {
+      "id": "FIN-001",
+      "topic": "Global markup",
+      "decision": "Apply 40% once to the total pre-markup order calculation after summing selected line items. Never apply 40% to individual operations, shop groups, posts, bundles or material lines.",
+      "formula": "order_quote = round(sum(selected_line_base_amounts) * 1.40, 2)",
+      "origin": "dialogue",
+      "priority": "critical"
+    },
+    {
+      "id": "FIN-002",
+      "topic": "Profitability",
+      "decision": "Keep quote basis and planned costs separate. Calculate order profit and margin from the final order quote and total planned costs.",
+      "formulas": {
+        "planned_cost": "sum(line_planned_cost)",
+        "profit": "order_quote - planned_cost",
+        "margin": "profit / order_quote"
+      },
+      "origin": "dialogue"
+    },
+    {
+      "id": "OP-001",
+      "topic": "Operation financial basis",
+      "decision": "Every operation must have a physical quantity basis, calculation logic, unit rate, planned cost basis and explanatory financial source. Market price alone is not proof of internal profitability.",
+      "origin": "dialogue"
+    },
+    {
+      "id": "OP-002",
+      "topic": "CNC operator accompaniment",
+      "decision": "Operator accompaniment is a separate calculation position for each CNC post. It must not be hidden inside the machine tariff or duplicated in another labor line.",
+      "operator_person_hour_rate_rub": 2081,
+      "occupancy_minutes_per_machine_hour": {
+        "P01-P06_hydro_laser_plasma": 15,
+        "P07_flat_milling": 30,
+        "P08_flat_milling": 30,
+        "P08_3d_milling": 40,
+        "P09_sheet_bender": 60,
+        "P10_roller": 60,
+        "P41_engraver": 15
+      },
+      "formula": "operator_person_hours = machine_hours * occupancy_minutes_per_machine_hour / 60; operator_cost = operator_person_hours * 2081",
+      "overlap_rule": "Overlapping time intervals of the same employee across posts are counted once; different employees are summed.",
+      "origin": "dialogue"
+    },
+    {
+      "id": "OP-003",
+      "topic": "Programming operations 112 and 113",
+      "decision": "Keep programming preparation as separate lines, outside machine cutting tariffs. Calculate from total unique contour length divided by the relevant preparation productivity. Do not multiply programming volume by the number of identical parts in a batch.",
+      "operations": [
+        {
+          "source_work_id": 112,
+          "code": "Р112",
+          "name": "Управляющая программа для лазерной резки",
+          "post": "P02",
+          "unit": "м контура",
+          "productivity_m_per_person_hour": 120,
+          "person_hour_rate_rub": 2081
+        },
+        {
+          "source_work_id": 113,
+          "code": "Р113",
+          "name": "Управляющая программа для лазерной резки профильного металлопроката",
+          "post": "P03",
+          "unit": "м контура",
+          "productivity_m_per_person_hour": 30,
+          "person_hour_rate_rub": 2081
+        }
+      ],
+      "formula": "program_person_hours = unique_contour_length / productivity_m_per_person_hour; program_amount = program_person_hours * 2081",
+      "origin": "dialogue"
+    },
+    {
+      "id": "OP-004",
+      "topic": "Band saw 144",
+      "decision": "Do not use work 139 for metal cutting. Use work 144. Until actual measurements are available, use 25 cuts per hour and 79.64 RUB per single cut.",
+      "package_cut": {
+        "control": "checkbox",
+        "label": "Пакетный распил",
+        "formula": "package_pass_price = 0.8 * single_cut_price * profiles_per_package"
+      },
+      "origin": "dialogue"
+    },
+    {
+      "id": "INST-001",
+      "topic": "Installation operation 35",
+      "decision": "Keep work 35 only as a preliminary aggregate estimate. The working labor rate is 1810 RUB per person-hour, not per crew-hour. Detailed operations replace the aggregate line for the same scope.",
+      "example": "2 installers * 2 hours = 4 person-hours; 4 * 1810 = 7240 RUB before global order markup.",
+      "decomposition_categories": [
+        "unloading",
+        "storage",
+        "movement",
+        "templates",
+        "cutting_and_fitting",
+        "positioning_by_weight",
+        "machine_assisted_lifting",
+        "threaded_connections",
+        "fasteners",
+        "drilling_and_chemical_anchors",
+        "sealing_and_consumables",
+        "tools_and_amortization",
+        "mesh_and_deck_installation",
+        "custom_formwork",
+        "height_and_winter_labor_factors"
+      ],
+      "origin": "dialogue"
+    },
+    {
+      "id": "INST-002",
+      "topic": "Installation work 37 / decking",
+      "decision": "Remove the bundled 2300 RUB/m2 rate from product manufacturing. Foundation/base works belong to the construction estimate. Installation of steel frames, joists and deck boards is performed by the installation crew and must be decomposed into simple operations in a separate site-installation estimate.",
+      "origin": "dialogue"
+    },
+    {
+      "id": "INST-003",
+      "topic": "Work 175",
+      "decision": "Exclude the bundled work 175 completely. The manufacturing estimate includes only the individually specified formwork production operations; remaining site works belong to a separate construction estimate.",
+      "origin": "dialogue"
+    },
+    {
+      "id": "INST-004",
+      "topic": "Work 34 and 49 alternatives",
+      "decision": "Work 34 (actual installation person-hours) and work 35 (preliminary aggregate) are fallback/alternative representations, not additive to detailed installation operations. Work 49 (20% general installation) exists in the previous source mapping but was not recovered as a confirmed user decision; keep it disabled or clearly marked as a legacy alternative until explicitly reviewed. Never let it duplicate detailed installation.",
+      "origin": "mixed"
+    },
+    {
+      "id": "DATA-001",
+      "topic": "Units and source formula display",
+      "decision": "Source units replace application units. If a unit changes, show a warning until the next configuration save; do not change the price and do not perform implicit unit conversion. Store source formula and source parameters separately; display the original text and substituted formula as an explanation, but do not recalculate the original Excel formula in the UI.",
+      "warning_text": "Единица измерения изменена на базовую. Требуется проверка стоимости и корректности расчёта",
+      "origin": "dialogue"
+    },
+    {
+      "id": "DATA-002",
+      "topic": "Price overrides",
+      "decision": "Keep base price and current price separately. Manual price editing changes only current price and shows the individual-price note. Reset restores the original base price, formula and note.",
+      "manual_note": "Стоимость за ед. указана индивидуально",
+      "reset_label": "Сброс стоимости к базовым значениям",
+      "origin": "dialogue"
+    },
+    {
+      "id": "DATA-003",
+      "topic": "Missing prices and precision",
+      "decision": "Keep full numeric precision internally and display 2 decimals. Price value 0 and text \"по запросу\" mean no price and must display as absent. For order quantity, an empty value means not entered while numeric 0 means a known zero volume.",
+      "origin": "dialogue"
+    }
+  ],
+  "outside_active_source_records": [
+    {
+      "work_id": 37,
+      "name": "Монтаж настила (бетонирование основания, монтаж металлорам, монтаж лаг, монтаж палубной доски)",
+      "reason": "Основание в строительной смете, детальные позиции монтажа — карточка «Настил»."
+    },
+    {
+      "work_id": 44,
+      "name": "Нарезка изделий на станках с ЧПУ (фрезеровка, плоттер)",
+      "reason": "Комплексная строка выведена. Раскрой по действующим материалам и толщине."
+    },
+    {
+      "work_id": 45,
+      "name": "Нарезка на станках с ЧПУ (плазморез)",
+      "reason": "Комплексная строка выведена. Раскрой по действующим материалам и толщине."
+    },
+    {
+      "work_id": 104,
+      "name": "Геодезическая разбивка тахеометром по площади",
+      "reason": "Геодезия и подготовка площадки относятся к стройке."
+    },
+    {
+      "work_id": 105,
+      "name": "Геодезическая разбивка тахеометром по точкам",
+      "reason": "Геодезия и подготовка площадки относятся к стройке."
+    },
+    {
+      "work_id": 106,
+      "name": "Разметка на местности, подготовка площадки к монтажу",
+      "reason": "Геодезия и подготовка площадки относятся к стройке."
+    },
+    {
+      "work_id": 139,
+      "name": "Раскрой металла",
+      "reason": "Применять ленточную пилу №144."
+    },
+    {
+      "work_id": 141,
+      "name": "Раскрой металлопроката на ЧПУ плазменном станке",
+      "reason": "Комплексная строка выведена. Раскрой по действующим материалам и толщине."
+    },
+    {
+      "work_id": 175,
+      "name": "Устройство криволинейных клумб и парапетов, комплекс работ",
+      "reason": "Индивидуальная опалубка включается своими производственными процессами. Работы площадки относятся к стройке."
+    }
+  ],
+  "economic_parameters": {
+    "currency": "RUB",
+    "region": "Владивосток и Приморский край",
+    "global_markup": {
+      "value": 0.4,
+      "origin": "dialogue",
+      "apply_once_at_order_level": true
+    },
+    "useful_load": {
+      "value": 0.8,
+      "origin": "model"
+    },
+    "working_days_per_year": {
+      "value": 247,
+      "origin": "catalog"
+    },
+    "hours_per_workday": {
+      "value": 8,
+      "origin": "catalog"
+    },
+    "additional_personnel_cost_factor": {
+      "value": 0.43,
+      "origin": "catalog"
+    },
+    "shop_overhead_factor": {
+      "value": 0.15,
+      "origin": "model",
+      "rule": "Only unallocated shared costs; avoid double counting."
+    },
+    "electricity_rub_per_kwh": {
+      "value": 10,
+      "origin": "model"
+    },
+    "height_labor_factor": {
+      "value": 1.2,
+      "origin": "model",
+      "apply_to": "labor_only"
+    },
+    "winter_labor_factor": {
+      "value": 1.15,
+      "origin": "model",
+      "apply_to": "labor_only"
+    },
+    "rule": "Model assumptions are not user-confirmed facts. Keep origin and status metadata; replace with actual enterprise data when available.",
+    "source_tariff_last_multiplier": {
+      "value": 1.17761873780091,
+      "origin": "catalog",
+      "purpose": "Reproduce the historical source tariff formula only."
+    },
+    "additional_source_tariff_multiplier": {
+      "value": 1.1,
+      "origin": "model",
+      "purpose": "Historical source tariff formula component; not added to planned costs."
+    },
+    "source_tariff_formula": "round_up(monthly_salary * 12 / (247 * 8) * (1 + 0.43 + 0.10) * 1.17761873780091, 0)",
+    "planned_labor_cost_formula": "monthly_salary * 12 / (247 * 8 * 0.8) * (1 + 0.43) * (1 + 0.15)",
+    "formula_separation": "The source tariff reproduction formula and planned labor cost formula are different models. Do not mix their multipliers or add the 40% order markup to either hourly rate."
+  },
+  "existing_calculation_artifacts": {
+    "baseline_json": "reference/Производственная_калькуляция.json",
+    "baseline_workbook": "reference/Производственная_калькуляция.xlsx",
+    "baseline_json_coverage": {
+      "source_records": 151,
+      "mapped_source_records": 142,
+      "outside_active_estimate": 9,
+      "calculation_rows": 284
+    },
+    "baseline_market_evidence_count": 32,
+    "baseline_market_comparison_count": 13,
+    "baseline_panel_saw": {
+      "post": "P43",
+      "shop": "Древообработка",
+      "sheet": "Форматник",
+      "input_unit": "м реального прямого пропила",
+      "codes": [
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3",
+        "ФРС.ПЗ",
+        "ФРС.ОП",
+        "ФРС.ПОМ",
+        "ФРС.КАРТА"
+      ],
+      "batches": "12 строк карты, толщина 3–30 мм по факту, чистый рез по одному слою",
+      "kerf_mm": 3,
+      "pricing": "Ресурс станка и пил по метражу и рабочему времени, наладка и листы, полное время станочника, отдельно вспомогательный труд и разработка новой карты по потребности. 40% только в итоге всего заказа.",
+      "cycle_hours": "length_m/(60*forward_m_per_min) + length_m/(60*return_m_per_min) + strokes*position_seconds/3600",
+      "override": "Чистое время цикла заменяет формулу. Измерение исключает наладку и подачу листа.",
+      "market_ids": [
+        "ФР1",
+        "ФР2",
+        "ФР3",
+        "ФР4",
+        "ФР5",
+        "ФР6",
+        "ФР7",
+        "ФР8"
+      ],
+      "rule_origin": "model",
+      "payroll_reference": "Данные.xlsx / Перечень_работ!F127",
+      "rates_by_thickness": [
+        {
+          "band": "3–6 мм",
+          "output_m_per_hour": 72.48322147651007,
+          "machine_and_blades_rub_per_m": 4.348810703703704,
+          "operator_rub_per_m": 24.971296296296295,
+          "cut_before_setup_and_order_markup_rub_per_m": 29.320107
+        },
+        {
+          "band": "свыше 6 до 18 мм",
+          "output_m_per_hour": 61.016949152542374,
+          "machine_and_blades_rub_per_m": 4.733822111111111,
+          "operator_rub_per_m": 29.663888888888888,
+          "cut_before_setup_and_order_markup_rub_per_m": 34.397711
+        },
+        {
+          "band": "свыше 18 до 30 мм",
+          "output_m_per_hour": 48.97959183673469,
+          "machine_and_blades_rub_per_m": 5.331964833333334,
+          "operator_rub_per_m": 36.954166666666666,
+          "cut_before_setup_and_order_markup_rub_per_m": 42.286131499999996
+        }
+      ]
+    }
+  },
+  "open_items_for_later_measurement_or_review": [
+    "Amber/model-assigned norms must remain visibly preliminary until replaced by actual time studies or supplier quotations.",
+    "Verify actual machine-hour costs, electricity, depreciation, maintenance, consumables and useful life for each post.",
+    "Verify P09/P10/P41 operator occupancy and retain their explicit per-post settings; do not infer these values from another post.",
+    "For P08 distinguish flat milling (30 min/operator per machine-hour) from 3D milling (40 min/operator per machine-hour).",
+    "For P43 format saw replace estimated feed/return speeds, positioning time, sheet handling, setup and blade wear with actual measurements when available.",
+    "Review legacy work 49 (20% general installation) before activating it; do not add it to detailed installation operations.",
+    "Replace model assumptions for payroll burden and shop overhead with accounting data when available; do not count allocated costs twice.",
+    "Do not restore the 39 previously excluded source records automatically."
+  ],
+  "scope_limits": [
+    "Update production and installation work logic only.",
+    "Do not bulk-update material or fastener catalogs in this task.",
+    "Preserve existing material links and operation-specific consumables already used by the calculation model.",
+    "Do not create a new calculator; update the existing application."
+  ]
+}

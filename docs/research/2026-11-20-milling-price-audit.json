@@ -1,0 +1,3596 @@
+{
+  "date": "2026-11-20",
+  "language": "ru",
+  "scope": "Сверка существующего сохранённого анализа; источники цен и базы не менялись",
+  "sources": {
+    "reference": "inputs/production-calculator-handoff/reference/Производственная_калькуляция.json",
+    "model": "inputs/production-calculator-handoff/CALCULATION_MODEL.json",
+    "handoff": "inputs/production-calculator-handoff/HANDOFF.json",
+    "task": "inputs/production-calculator-handoff/CODEX_UPDATE_TASK.json",
+    "catalog": "source-project/dist/production-catalog.js",
+    "builder": "source-project/tools/build-production-model.cjs",
+    "core": "source-project/dist/production-model-core.js",
+    "ui": "source-project/dist/production-model-ui.js",
+    "dataset": "outputs/shop-data-2026-11-19/dataset.json",
+    "installed_pointer": "outputs/installed-latest-portable.json",
+    "primary_data_accessible": true,
+    "primary_workbook": "C:/Users/Danil.S/Desktop/Личная папка ДАНИЛ.С/1. - Рассчеты/Рассчеты изделий/calculation data/Данные.xlsx",
+    "primary_workbook_sha256": "f998d351e955069727839036b33347aca8b948ab3da4ad87821e72aa874449c0",
+    "network_primary_data_accessible": false
+  },
+  "checks": {
+    "audited_active_operations": 23,
+    "plywood_thickness_count": 11,
+    "marketEvidence_exact_equal": true,
+    "comparisons_exact_equal": true,
+    "installed_catalog_exact_equal": true,
+    "installed_catalog_sha256": "b25849369996dea8ea5a1a58e8f0b0e38d67394cc11802f28f4a40cb17cb9f84",
+    "dataset_operation_mismatches": [
+      {
+        "code": "Р146.4",
+        "intentional": true,
+        "reason": "Новая норма пользователя:два прохода вместоодного;остальные определения неизменны"
+      }
+    ],
+    "installed_db_read_only": true,
+    "installed_db_entities": 40,
+    "installed_db_production_snapshots": 80,
+    "installed_db_milling_snapshots": 0,
+    "primary_workbook_read_only": true,
+    "primary_exact_norms_confirmed": true,
+    "panel_saw_screenshot_all_six_values_match": true,
+    "installed_catalog_comparison_note": "После установки новой сборки каталог полностью совпадает с исходниками"
+  },
+  "market_evidence": [
+    {
+      "id": "Ф1",
+      "supplier": "ottoshmidt",
+      "comparison": "Фанера 3–6 / 7–10 / 11–18 / 19–24 / ≥25 мм",
+      "region": "Владивосток",
+      "low": 30,
+      "high": 90,
+      "unit": "₽/м контура",
+      "application": "Исторический прайс 28.12.2024, объявление в архиве. Ступени 30 / 35 / 45 / 67 / 90, минимум 2 500 ₽. Состав подготовки по договору.",
+      "url": "https://www.farpost.ru/vladivostok/service/construction/wood/rezka-raskroj-fanery-dsp-mdf-na-frezernom-stanke-s-chpu-88814324.html",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "id": "Ф2",
+      "supplier": "Poly-Box",
+      "comparison": "Фанера/дерево 1–4 / 5–6 / 8–10 / от 15 мм",
+      "region": "Страница для Владивостока",
+      "low": 17,
+      "high": 50,
+      "unit": "₽/м реза",
+      "application": "Ступени 17 / 26 / 41 / от 50. Исполнитель описывает длину прохода. Число проходов и состав цены сверять до сравнения.",
+      "url": "https://vld.poly-box.ru/produkcija-i-uslugi/figurnaya-frezerovka/",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "id": "Ф3",
+      "supplier": "Вираж",
+      "comparison": "3D-фрезеровка, час станка",
+      "region": "Санкт-Петербург",
+      "low": 1300,
+      "high": 1300,
+      "unit": "₽/ч",
+      "application": "Внерегиональная точка. Рельеф, масштаб серии и состав подготовки отличаются. Цену 5 000 ₽/м² определило производство.",
+      "url": "https://www.viraj-spb.ru/media/freza.pdf",
+      "checked_on": "2026-11-18"
+    },
+    {
+      "id": "ГР",
+      "supplier": "Профи",
+      "comparison": "Лазерная гравировка металла",
+      "region": "Владивосток",
+      "low": 20,
+      "high": null,
+      "unit": "₽/см² от",
+      "application": "Площадной ориентир. Уровень закраски и глубина влияют на время.",
+      "url": "https://profi.ru/geo-primorie/remont/lazernaya-gravirovka-na-metalle/",
+      "checked_on": "2026-11-18"
+    }
+  ],
+  "saved_comparisons": [
+    {
+      "operator_basis": "Сопровождение ЧПУ",
+      "market_ref": "Ф1",
+      "work": "Фанера 6 мм, 2 прохода",
+      "unit": "м реза",
+      "machine_unit_rate_rub": 0.7407407407407408,
+      "accompaniment_unit_rub": 7.707407407407407,
+      "basis_before_final_markup": 8.448148148148148,
+      "published_benchmark_rub": 30,
+      "terms": "Исторический местный ориентир за метр контура. Внутренняя УП рассчитывается отдельно по уникальному метражу."
+    },
+    {
+      "operator_basis": "Сопровождение ЧПУ",
+      "market_ref": "Ф1",
+      "work": "Фанера 18 мм, 6 проходов",
+      "unit": "м реза",
+      "machine_unit_rate_rub": 2.2222222222222223,
+      "accompaniment_unit_rub": 23.122222222222224,
+      "basis_before_final_markup": 25.344444444444445,
+      "published_benchmark_rub": 45,
+      "terms": "Прайс 2024, источник в архиве. Условия партии и состав УП влияют на сопоставимость."
+    },
+    {
+      "operator_basis": "Сопровождение ЧПУ",
+      "market_ref": "Ф3",
+      "work": "Изопинк 3D • единица площади",
+      "unit": "м²",
+      "machine_unit_rate_rub": 5000,
+      "accompaniment_unit_rub": 1849.7777777777776,
+      "basis_before_final_markup": 6849.777777777777,
+      "published_benchmark_rub": null,
+      "terms": "При 0,75 м²/ч внутренний цикл 80 мин/м². Публичного местного аналога той же геометрии и единицы не получено."
+    },
+    {
+      "operator_basis": "Сопровождение ЧПУ",
+      "market_ref": "ГР",
+      "work": "Гравировка металла",
+      "unit": "см²",
+      "machine_unit_rate_rub": 17.919,
+      "accompaniment_unit_rub": 2.081,
+      "basis_before_final_markup": 20,
+      "published_benchmark_rub": 20,
+      "terms": "Нижняя ставка агрегатора по площади. Плотность закраски определяется файлом."
+    }
+  ],
+  "operations": [
+    {
+      "code": "Р89",
+      "name": "Чертежи для фрезерной резки на ЧПУ",
+      "source_work_id": 89,
+      "post": "P07",
+      "unit": "м контура",
+      "displayed_resource_cost": 17.945106907894736,
+      "snapshot_planned_cost": 17.945106907894736,
+      "current_unit_price": 26.012500000000003,
+      "source_original_tariff": 2081,
+      "source_original_unit": "н/ч",
+      "source_row": 16,
+      "output_per_hour": 80,
+      "source_output": 80,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 26.012500000000003,
+          "formula_excel": "=M16*AA16",
+          "origin": "catalog"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F16),ROUND(F16*G16,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F16),ROUND(F16*(M16*S16*Z16+U16)+R16*T16,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "catalog"
+        },
+        "unit_planned_cost": {
+          "value": 17.945106907894736,
+          "formula_excel": "=M16*S16+N16*T16+U16",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 80,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 0.0125,
+          "formula_excel": "=1/L16",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Длина уникальных контуров / выработка подготовки. Тираж раскроя не увеличивает объём подготовки.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F89. Часовая ставка из справочника и физическая выработка из листа «Параметры».",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0,
+      "operator_tariff_per_unit": 0,
+      "operator_cost_per_unit": 0,
+      "tariff_with_operator_before_markup": 26.012500000000003,
+      "cost_with_operator": 17.945106907894736,
+      "illustrative_quote_with_operator_excluding_preparation": 36.417500000000004,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": []
+    },
+    {
+      "code": "Р117",
+      "name": "Управляющая программа для фрезерной резки фанеры",
+      "source_work_id": 117,
+      "post": "P07",
+      "unit": "м контура",
+      "displayed_resource_cost": 5.3170687134502925,
+      "snapshot_planned_cost": 5.3170687134502925,
+      "current_unit_price": 7.707407407407407,
+      "source_original_tariff": 2081,
+      "source_original_unit": "н/ч",
+      "source_row": 27,
+      "output_per_hour": 270,
+      "source_output": 810,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 7.707407407407407,
+          "formula_excel": "=M27*AA27",
+          "origin": "catalog"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F27),ROUND(F27*G27,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F27),ROUND(F27*(M27*S27*Z27+U27)+R27*T27,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "catalog"
+        },
+        "unit_planned_cost": {
+          "value": 5.3170687134502925,
+          "formula_excel": "=M27*S27+N27*T27+U27",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 270,
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 0.003703703703703704,
+          "formula_excel": "=1/L27",
+          "origin": "model"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Длина уникальных контуров / выработка подготовки. Тираж раскроя не увеличивает объём подготовки.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F117. Норма 270 м/ч из 4,5 листа × 60 м в примечании G117. Убран множитель 3 за совмещение. Это моё назначение для самостоятельной УП.",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0,
+      "operator_tariff_per_unit": 0,
+      "operator_cost_per_unit": 0,
+      "tariff_with_operator_before_markup": 7.707407407407407,
+      "cost_with_operator": 5.3170687134502925,
+      "illustrative_quote_with_operator_excluding_preparation": 10.79037037037037,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": []
+    },
+    {
+      "code": "Р146.3",
+      "name": "Фанера 3 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 0.9444444444444445,
+      "snapshot_planned_cost": 0.9444444444444445,
+      "current_unit_price": 0.3703703703703704,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 101,
+      "output_per_hour": 270,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 0.3703703703703704,
+          "formula_excel": "=N101*J101",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F101),ROUND(R101*J101,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F101),ROUND(F101*(M101*S101*Z101+U101)+R101*T101,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 0.9444444444444445,
+          "formula_excel": "=M101*S101+N101*T101+U101",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 270,
+          "formula_excel": "=270/IF(3<=4,1,ROUNDUP(3/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.003703703703703704,
+          "formula_excel": "=1/L101",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R101*O101/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F101),IF(ISNUMBER(Q101),Q101,F101*N101),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 1 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.001851851851851852,
+      "operator_tariff_per_unit": 3.8537037037037036,
+      "operator_cost_per_unit": 2.6585343567251463,
+      "tariff_with_operator_before_markup": 4.224074074074074,
+      "cost_with_operator": 3.602978801169591,
+      "illustrative_quote_with_operator_excluding_preparation": 5.913703703703703,
+      "thickness_mm": 3,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 30,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": 17,
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.4",
+      "name": "Фанера 4 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 1.888888888888889,
+      "snapshot_planned_cost": 1.888888888888889,
+      "current_unit_price": 0.7407407407407408,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 102,
+      "output_per_hour": 135,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 0.7407407407407408,
+          "formula_excel": "=N102*J102",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F102),ROUND(R102*J102,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F102),ROUND(F102*(M102*S102*Z102+U102)+R102*T102,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1.888888888888889,
+          "formula_excel": "=M102*S102+N102*T102+U102",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 135,
+          "origin": "dialogue",
+          "note": "270 м прохода/ч; 4 мм = 2 прохода с шагом 3 мм"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.007407407407407408,
+          "formula_excel": "=1/L102",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R102*O102/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F102),IF(ISNUMBER(Q102),Q102,F102*N102),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 2 прохода. 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.; уточнение пользователя 20.11.2026: 4 мм режется за 2 прохода по 3 мм",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.003703703703703704,
+      "operator_tariff_per_unit": 7.707407407407407,
+      "operator_cost_per_unit": 5.3170687134502925,
+      "tariff_with_operator_before_markup": 8.448148148148148,
+      "cost_with_operator": 7.205957602339182,
+      "illustrative_quote_with_operator_excluding_preparation": 11.827407407407406,
+      "thickness_mm": 4,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 30,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": 17,
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ],
+      "passes": 2,
+      "decision": "Пользователь20.11.2026:270м прохода/ч,ceil(толщина/3),4мм=2прохода"
+    },
+    {
+      "code": "Р146.6",
+      "name": "Фанера 6 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 1.888888888888889,
+      "snapshot_planned_cost": 1.888888888888889,
+      "current_unit_price": 0.7407407407407408,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 103,
+      "output_per_hour": 135,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 0.7407407407407408,
+          "formula_excel": "=N103*J103",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F103),ROUND(R103*J103,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F103),ROUND(F103*(M103*S103*Z103+U103)+R103*T103,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1.888888888888889,
+          "formula_excel": "=M103*S103+N103*T103+U103",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 135,
+          "formula_excel": "=270/IF(6<=4,1,ROUNDUP(6/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.007407407407407408,
+          "formula_excel": "=1/L103",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R103*O103/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F103),IF(ISNUMBER(Q103),Q103,F103*N103),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 2 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.003703703703703704,
+      "operator_tariff_per_unit": 7.707407407407407,
+      "operator_cost_per_unit": 5.3170687134502925,
+      "tariff_with_operator_before_markup": 8.448148148148148,
+      "cost_with_operator": 7.205957602339182,
+      "illustrative_quote_with_operator_excluding_preparation": 11.827407407407406,
+      "thickness_mm": 6,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 30,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": 26,
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.9",
+      "name": "Фанера 9 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 2.8333333333333335,
+      "snapshot_planned_cost": 2.8333333333333335,
+      "current_unit_price": 1.1111111111111112,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 104,
+      "output_per_hour": 90,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 1.1111111111111112,
+          "formula_excel": "=N104*J104",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F104),ROUND(R104*J104,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F104),ROUND(F104*(M104*S104*Z104+U104)+R104*T104,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 2.8333333333333335,
+          "formula_excel": "=M104*S104+N104*T104+U104",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 90,
+          "formula_excel": "=270/IF(9<=4,1,ROUNDUP(9/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.011111111111111112,
+          "formula_excel": "=1/L104",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R104*O104/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F104),IF(ISNUMBER(Q104),Q104,F104*N104),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 3 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.005555555555555556,
+      "operator_tariff_per_unit": 11.561111111111112,
+      "operator_cost_per_unit": 7.975603070175439,
+      "tariff_with_operator_before_markup": 12.672222222222222,
+      "cost_with_operator": 10.808936403508772,
+      "illustrative_quote_with_operator_excluding_preparation": 17.74111111111111,
+      "thickness_mm": 9,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 35,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": 41,
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.10",
+      "name": "Фанера 10 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 3.777777777777778,
+      "snapshot_planned_cost": 3.777777777777778,
+      "current_unit_price": 1.4814814814814816,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 105,
+      "output_per_hour": 67.5,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 1.4814814814814816,
+          "formula_excel": "=N105*J105",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F105),ROUND(R105*J105,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F105),ROUND(F105*(M105*S105*Z105+U105)+R105*T105,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 3.777777777777778,
+          "formula_excel": "=M105*S105+N105*T105+U105",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 67.5,
+          "formula_excel": "=270/IF(10<=4,1,ROUNDUP(10/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.014814814814814815,
+          "formula_excel": "=1/L105",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R105*O105/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F105),IF(ISNUMBER(Q105),Q105,F105*N105),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 4 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.007407407407407408,
+      "operator_tariff_per_unit": 15.414814814814815,
+      "operator_cost_per_unit": 10.634137426900585,
+      "tariff_with_operator_before_markup": 16.896296296296295,
+      "cost_with_operator": 14.411915204678364,
+      "illustrative_quote_with_operator_excluding_preparation": 23.654814814814813,
+      "thickness_mm": 10,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 35,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": 41,
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.12",
+      "name": "Фанера 12 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 3.777777777777778,
+      "snapshot_planned_cost": 3.777777777777778,
+      "current_unit_price": 1.4814814814814816,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 106,
+      "output_per_hour": 67.5,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 1.4814814814814816,
+          "formula_excel": "=N106*J106",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F106),ROUND(R106*J106,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F106),ROUND(F106*(M106*S106*Z106+U106)+R106*T106,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 3.777777777777778,
+          "formula_excel": "=M106*S106+N106*T106+U106",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 67.5,
+          "formula_excel": "=270/IF(12<=4,1,ROUNDUP(12/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.014814814814814815,
+          "formula_excel": "=1/L106",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R106*O106/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F106),IF(ISNUMBER(Q106),Q106,F106*N106),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 4 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.007407407407407408,
+      "operator_tariff_per_unit": 15.414814814814815,
+      "operator_cost_per_unit": 10.634137426900585,
+      "tariff_with_operator_before_markup": 16.896296296296295,
+      "cost_with_operator": 14.411915204678364,
+      "illustrative_quote_with_operator_excluding_preparation": 23.654814814814813,
+      "thickness_mm": 12,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 45,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": null,
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.15",
+      "name": "Фанера 15 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 4.722222222222222,
+      "snapshot_planned_cost": 4.722222222222222,
+      "current_unit_price": 1.8518518518518516,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 107,
+      "output_per_hour": 54,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 1.8518518518518516,
+          "formula_excel": "=N107*J107",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F107),ROUND(R107*J107,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F107),ROUND(F107*(M107*S107*Z107+U107)+R107*T107,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 4.722222222222222,
+          "formula_excel": "=M107*S107+N107*T107+U107",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 54,
+          "formula_excel": "=270/IF(15<=4,1,ROUNDUP(15/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.018518518518518517,
+          "formula_excel": "=1/L107",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R107*O107/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F107),IF(ISNUMBER(Q107),Q107,F107*N107),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 5 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.00925925925925926,
+      "operator_tariff_per_unit": 19.268518518518523,
+      "operator_cost_per_unit": 13.292671783625734,
+      "tariff_with_operator_before_markup": 21.120370370370374,
+      "cost_with_operator": 18.014894005847957,
+      "illustrative_quote_with_operator_excluding_preparation": 29.56851851851852,
+      "thickness_mm": 15,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 45,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": "от 50",
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.18",
+      "name": "Фанера 18 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 5.666666666666667,
+      "snapshot_planned_cost": 5.666666666666667,
+      "current_unit_price": 2.2222222222222223,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 108,
+      "output_per_hour": 45,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 2.2222222222222223,
+          "formula_excel": "=N108*J108",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F108),ROUND(R108*J108,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F108),ROUND(F108*(M108*S108*Z108+U108)+R108*T108,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 5.666666666666667,
+          "formula_excel": "=M108*S108+N108*T108+U108",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 45,
+          "formula_excel": "=270/IF(18<=4,1,ROUNDUP(18/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.022222222222222223,
+          "formula_excel": "=1/L108",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R108*O108/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F108),IF(ISNUMBER(Q108),Q108,F108*N108),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 6 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.011111111111111112,
+      "operator_tariff_per_unit": 23.122222222222224,
+      "operator_cost_per_unit": 15.951206140350878,
+      "tariff_with_operator_before_markup": 25.344444444444445,
+      "cost_with_operator": 21.617872807017545,
+      "illustrative_quote_with_operator_excluding_preparation": 35.48222222222222,
+      "thickness_mm": 18,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 45,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": "от 50",
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.21",
+      "name": "Фанера 21 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 6.611111111111112,
+      "snapshot_planned_cost": 6.611111111111112,
+      "current_unit_price": 2.592592592592593,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 109,
+      "output_per_hour": 38.57142857142857,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 2.592592592592593,
+          "formula_excel": "=N109*J109",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F109),ROUND(R109*J109,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F109),ROUND(F109*(M109*S109*Z109+U109)+R109*T109,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 6.611111111111112,
+          "formula_excel": "=M109*S109+N109*T109+U109",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 38.57142857142857,
+          "formula_excel": "=270/IF(21<=4,1,ROUNDUP(21/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.02592592592592593,
+          "formula_excel": "=1/L109",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R109*O109/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F109),IF(ISNUMBER(Q109),Q109,F109*N109),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 7 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.012962962962962964,
+      "operator_tariff_per_unit": 26.975925925925928,
+      "operator_cost_per_unit": 18.609740497076025,
+      "tariff_with_operator_before_markup": 29.56851851851852,
+      "cost_with_operator": 25.220851608187136,
+      "illustrative_quote_with_operator_excluding_preparation": 41.39592592592592,
+      "thickness_mm": 21,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 67,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": "от 50",
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.27",
+      "name": "Фанера 27 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 8.5,
+      "snapshot_planned_cost": 8.5,
+      "current_unit_price": 3.3333333333333335,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 110,
+      "output_per_hour": 30,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 3.3333333333333335,
+          "formula_excel": "=N110*J110",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F110),ROUND(R110*J110,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F110),ROUND(F110*(M110*S110*Z110+U110)+R110*T110,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 8.5,
+          "formula_excel": "=M110*S110+N110*T110+U110",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 30,
+          "formula_excel": "=270/IF(27<=4,1,ROUNDUP(27/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.03333333333333333,
+          "formula_excel": "=1/L110",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R110*O110/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F110),IF(ISNUMBER(Q110),Q110,F110*N110),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 9 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.016666666666666666,
+      "operator_tariff_per_unit": 34.68333333333333,
+      "operator_cost_per_unit": 23.926809210526315,
+      "tariff_with_operator_before_markup": 38.016666666666666,
+      "cost_with_operator": 32.426809210526315,
+      "illustrative_quote_with_operator_excluding_preparation": 53.22333333333333,
+      "thickness_mm": 27,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 90,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": "от 50",
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р146.30",
+      "name": "Фанера 30 мм • фрезерный раскрой",
+      "source_work_id": 146,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 9.444444444444445,
+      "snapshot_planned_cost": 9.444444444444445,
+      "current_unit_price": 3.7037037037037033,
+      "source_original_tariff": 25.658823529411766,
+      "source_original_unit": "м.п.",
+      "source_row": 111,
+      "output_per_hour": 27,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 3.7037037037037033,
+          "formula_excel": "=N111*J111",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F111),ROUND(R111*J111,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F111),ROUND(F111*(M111*S111*Z111+U111)+R111*T111,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 9.444444444444445,
+          "formula_excel": "=M111*S111+N111*T111+U111",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 27,
+          "formula_excel": "=270/IF(30<=4,1,ROUNDUP(30/3,0))",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.037037037037037035,
+          "formula_excel": "=1/L111",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R111*O111/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F111),IF(ISNUMBER(Q111),Q111,F111*N111),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "На метр готового контура 10 проход(а). 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.",
+      "financial_basis": "Решения по обработке фанеры. База 100 ₽/маш.-ч. Стоимость ресурса фрезы в бюджете станка. Рыночная проверка Ф1/Ф2.",
+      "technical_reference": {
+        "url": "https://swyftrobotics.com/docs/cnc-manual",
+        "basis": "85 м за час прямо указаны в примечании. Временно для одного станка. Сверить толщину фанеры и число проходов."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.01851851851851852,
+      "operator_tariff_per_unit": 38.537037037037045,
+      "operator_cost_per_unit": 26.585343567251467,
+      "tariff_with_operator_before_markup": 42.24074074074075,
+      "cost_with_operator": 36.02978801169591,
+      "illustrative_quote_with_operator_excluding_preparation": 59.13703703703704,
+      "thickness_mm": 30,
+      "market_evidence": [
+        {
+          "id": "Ф1",
+          "price": 90,
+          "unit": "₽/м контура",
+          "comparable": "готовый контур; оператор и подготовка внутри предложения не раскрыты; минимум 2500; исторический 2024"
+        },
+        {
+          "id": "Ф2",
+          "price": "от 50",
+          "unit": "₽/м прохода",
+          "comparable": "дистанция прохода, не готовый контур; не умножено на число проходов без подтверждения состава"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р147",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р147",
+      "name": "Раскрой фанеры на ЧПУ фрезерном станке (ч/ч)",
+      "source_work_id": 147,
+      "post": "P07",
+      "unit": "маш.-ч",
+      "displayed_resource_cost": 255,
+      "snapshot_planned_cost": 255,
+      "current_unit_price": 100,
+      "source_original_tariff": 2181,
+      "source_original_unit": "н/ч",
+      "source_row": 112,
+      "output_per_hour": 1,
+      "source_output": 213,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 100,
+          "formula_excel": "=N112*J112",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F112),ROUND(R112*J112,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F112),ROUND(F112*(M112*S112*Z112+U112)+R112*T112,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 255,
+          "formula_excel": "=M112*S112+N112*T112+U112",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L112",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R112*O112/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F112),IF(ISNUMBER(Q112),Q112,F112*N112),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Длина всех внешних и внутренних контуров партии / выработка. Сопровождение в №103 на посту.",
+      "financial_basis": "Часовой вариант №146 по известному времени или сумме длин проходов / 270. Выбрать одно представление для одной партии.",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.5,
+      "operator_tariff_per_unit": 1040.5,
+      "operator_cost_per_unit": 717.8042763157895,
+      "tariff_with_operator_before_markup": 1140.5,
+      "cost_with_operator": 972.8042763157895,
+      "illustrative_quote_with_operator_excluding_preparation": 1596.6999999999998,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": [
+        "Р146.10",
+        "Р146.12",
+        "Р146.15",
+        "Р146.18",
+        "Р146.21",
+        "Р146.27",
+        "Р146.3",
+        "Р146.30",
+        "Р146.4",
+        "Р146.6",
+        "Р146.9",
+        "ФРС.1",
+        "ФРС.2",
+        "ФРС.3"
+      ]
+    },
+    {
+      "code": "Р143",
+      "name": "Раскрой погонажного деревянного изделия на ЧПУ фрезерном станке",
+      "source_work_id": 143,
+      "post": "P07",
+      "unit": "м реза",
+      "displayed_resource_cost": 1.1971830985915493,
+      "snapshot_planned_cost": 1.1971830985915493,
+      "current_unit_price": 0.4694835680751174,
+      "source_original_tariff": 2181,
+      "source_original_unit": "н/ч",
+      "source_row": 113,
+      "output_per_hour": 213,
+      "source_output": 213,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 0.4694835680751174,
+          "formula_excel": "=N113*J113",
+          "origin": "catalog"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F113),ROUND(R113*J113,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F113),ROUND(F113*(M113*S113*Z113+U113)+R113*T113,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "catalog"
+        },
+        "unit_planned_cost": {
+          "value": 1.1971830985915493,
+          "formula_excel": "=M113*S113+N113*T113+U113",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 213,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.004694835680751174,
+          "formula_excel": "=1/L113",
+          "origin": "catalog"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$13",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R113*O113/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F113),IF(ISNUMBER(Q113),Q113,F113*N113),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 255,
+          "formula_excel": "='Станки'!$J$13",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Длина всех внешних и внутренних контуров партии / выработка. Сопровождение в №103 на посту.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F143. P143 = 100 ₽/ч станка. 213 м/ч — лист «Параметры». Итоговый труд отдельно.",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.002347417840375587,
+      "operator_tariff_per_unit": 4.884976525821596,
+      "operator_cost_per_unit": 3.369973128243143,
+      "tariff_with_operator_before_markup": 5.354460093896713,
+      "cost_with_operator": 4.567156226834692,
+      "illustrative_quote_with_operator_excluding_preparation": 7.496244131455398,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": []
+    },
+    {
+      "code": "Р128.П",
+      "name": "Изопинк • плоский раскрой",
+      "source_work_id": 128,
+      "post": "P08",
+      "unit": "м реза",
+      "displayed_resource_cost": 0.9389671361502347,
+      "snapshot_planned_cost": 0.9389671361502347,
+      "current_unit_price": 0.4694835680751174,
+      "source_original_tariff": 10.23943661971831,
+      "source_original_unit": "м.п.",
+      "source_row": 114,
+      "output_per_hour": 213,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 0.4694835680751174,
+          "formula_excel": "=N114*J114",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F114),ROUND(R114*J114,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F114),ROUND(F114*(M114*S114*Z114+U114)+R114*T114,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 100,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 0.9389671361502347,
+          "formula_excel": "=M114*S114+N114*T114+U114",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 213,
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.004694835680751174,
+          "formula_excel": "=1/L114",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 30,
+          "formula_excel": "='Станки'!$L$14",
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R114*O114/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F114),IF(ISNUMBER(Q114),Q114,F114*N114),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 200,
+          "formula_excel": "='Станки'!$J$14",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Длина всех внешних и внутренних контуров партии / выработка. Сопровождение в №103 на посту.",
+      "financial_basis": "Решения по №128. Старый комплекс 10,24 ₽/м заменён на 100 ₽/маш.-ч и отдельную №103.",
+      "technical_reference": {
+        "url": "https://art.cmu.edu/content/uploads/2017/12/CNC_Router-Feeds_and_Speeds.pdf",
+        "basis": "Подача для XPS/EPS зависит от фрезы и глубины прохода. Уточнить плоский раскрой или 3D. Для 3D взять время из УП или замера типовой детали."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.002347417840375587,
+      "operator_tariff_per_unit": 4.884976525821596,
+      "operator_cost_per_unit": 3.369973128243143,
+      "tariff_with_operator_before_markup": 5.354460093896713,
+      "cost_with_operator": 4.308940264393378,
+      "illustrative_quote_with_operator_excluding_preparation": 7.496244131455398,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": []
+    },
+    {
+      "code": "Р128.3D",
+      "name": "Изопинк • 3D-фрезеровка",
+      "source_work_id": 128,
+      "post": "P08",
+      "unit": "м²",
+      "displayed_resource_cost": 266.66666666666663,
+      "snapshot_planned_cost": 266.66666666666663,
+      "current_unit_price": 5000,
+      "source_original_tariff": 10.23943661971831,
+      "source_original_unit": "м.п.",
+      "source_row": 115,
+      "output_per_hour": 0.75,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 5000,
+          "formula_excel": "=J115",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F115),ROUND(F115*G115,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F115),ROUND(F115*(M115*S115*Z115+U115)+R115*T115,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 5000,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 266.66666666666663,
+          "formula_excel": "=M115*S115+N115*T115+U115",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 0.75,
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 1.3333333333333333,
+          "formula_excel": "=1/L115",
+          "origin": "dialogue"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 40,
+          "origin": "dialogue"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R115*O115/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F115),IF(ISNUMBER(Q115),Q115,F115*N115),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 200,
+          "formula_excel": "='Станки'!$J$14",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Площадь рельефа × 5 000 ₽. Время из УП или замера в Q, при отсутствии — площадь / 0,75.",
+      "financial_basis": "5 000 ₽ = 200 м траектории × 25 ₽. Шаг 5 мм. Ориентир 0,75 м²/маш.-ч. №103 добавляется за 40 мин/ч.",
+      "technical_reference": {
+        "url": "https://art.cmu.edu/content/uploads/2017/12/CNC_Router-Feeds_and_Speeds.pdf",
+        "basis": "Подача для XPS/EPS зависит от фрезы и глубины прохода. Уточнить плоский раскрой или 3D. Для 3D взять время из УП или замера типовой детали."
+      },
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.8888888888888888,
+      "operator_tariff_per_unit": 1849.7777777777776,
+      "operator_cost_per_unit": 1276.0964912280701,
+      "tariff_with_operator_before_markup": 6849.777777777777,
+      "cost_with_operator": 1542.7631578947367,
+      "illustrative_quote_with_operator_excluding_preparation": 9589.688888888888,
+      "thickness_mm": null,
+      "market_evidence": [
+        {
+          "id": "Ф3",
+          "price": 1300,
+          "unit": "₽/ч",
+          "comparable": "иной регион, иная единица; пересчёт не выполнен"
+        }
+      ],
+      "incompatible_in_same_work_package": [
+        "Р23"
+      ]
+    },
+    {
+      "code": "Р17",
+      "name": "Гравировка",
+      "source_work_id": 17,
+      "post": "P41",
+      "unit": "см²",
+      "displayed_resource_cost": 0.63,
+      "snapshot_planned_cost": 0.63,
+      "current_unit_price": 17.919,
+      "source_original_tariff": 6,
+      "source_original_unit": "см2",
+      "source_row": 124,
+      "output_per_hour": 250,
+      "source_output": null,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 17.919,
+          "formula_excel": "=MAX(0,J124-N124*O124/60*'Экономика'!$B$27)",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F124),ROUND(F124*G124,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F124),ROUND(F124*(M124*S124*Z124+U124)+R124*T124,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 20,
+          "origin": "model"
+        },
+        "unit_planned_cost": {
+          "value": 0.63,
+          "formula_excel": "=M124*S124+N124*T124+U124",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 250,
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.004,
+          "formula_excel": "=1/L124",
+          "origin": "model"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 15,
+          "formula_excel": "='Станки'!$L$17",
+          "origin": "model"
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=R124*O124/60"
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F124),IF(ISNUMBER(Q124),Q124,F124*N124),0)"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 157.5,
+          "formula_excel": "='Станки'!$J$17",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Площадь фактической гравировки. При плотной заливке, углублении или нескольких проходах вводить время УП.",
+      "financial_basis": "ГР. Рыночный нижний ориентир 20 ₽/см² и 250 см²/ч как план прохода. В цене разделены станок и №103. Исходные 6 ₽/см² сохранены в JSON.",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0.001,
+      "operator_tariff_per_unit": 2.081,
+      "operator_cost_per_unit": 1.435608552631579,
+      "tariff_with_operator_before_markup": 20,
+      "cost_with_operator": 2.065608552631579,
+      "illustrative_quote_with_operator_excluding_preparation": 28,
+      "thickness_mm": null,
+      "market_evidence": [
+        {
+          "id": "ГР",
+          "price": 20,
+          "unit": "₽/см² от",
+          "comparable": "лазерная гравировка металла; не погонное фрезерование"
+        }
+      ],
+      "incompatible_in_same_work_package": []
+    },
+    {
+      "code": "Р103.P07",
+      "name": "Сопровождение станковой работы • P07",
+      "source_work_id": 103,
+      "post": "P07",
+      "unit": "н·ч",
+      "displayed_resource_cost": 1435.608552631579,
+      "snapshot_planned_cost": 1435.608552631579,
+      "current_unit_price": 2081,
+      "source_original_tariff": 2481,
+      "source_original_unit": "н/ч",
+      "source_row": 132,
+      "output_per_hour": 1,
+      "source_output": 10,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(Q132),Q132,IF(COUNTIF('Занятость'!$B$7:$B$86,C132)>0,SUMIF('Занятость'!$B$7:$B$86,C132,'Занятость'!$G$7:$G$86),IF(ISNUMBER(Q132),Q132,IF(SUM(P101,P102,P103,P104,P105,P106,P107,P108,P109,P110,P111,P112,P113)>0,SUM(P101,P102,P103,P104,P105,P106,P107,P108,P109,P110,P111,P112,P113),\"\"))))",
+          "origin": "dialogue"
+        },
+        "working_unit_rate": {
+          "value": 2081,
+          "formula_excel": "=AA132",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F132),ROUND(F132*G132,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F132),ROUND(F132*(M132*S132*Z132+U132)+R132*T132,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1435.608552631579,
+          "formula_excel": "=M132*S132+N132*T132+U132",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L132",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "dialogue"
+        }
+      },
+      "quantity_basis": "Занятость собственных станочных операций данного поста. При пересечении у одного сотрудника укажите в Q фактические часы, распределённые один раз.",
+      "financial_basis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно.",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0,
+      "operator_tariff_per_unit": 0,
+      "operator_cost_per_unit": 0,
+      "tariff_with_operator_before_markup": 2081,
+      "cost_with_operator": 1435.608552631579,
+      "illustrative_quote_with_operator_excluding_preparation": 2913.3999999999996,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": []
+    },
+    {
+      "code": "Р103.P08",
+      "name": "Сопровождение станковой работы • P08",
+      "source_work_id": 103,
+      "post": "P08",
+      "unit": "н·ч",
+      "displayed_resource_cost": 1435.608552631579,
+      "snapshot_planned_cost": 1435.608552631579,
+      "current_unit_price": 2081,
+      "source_original_tariff": 2481,
+      "source_original_unit": "н/ч",
+      "source_row": 133,
+      "output_per_hour": 1,
+      "source_output": 10,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(Q133),Q133,IF(COUNTIF('Занятость'!$B$7:$B$86,C133)>0,SUMIF('Занятость'!$B$7:$B$86,C133,'Занятость'!$G$7:$G$86),IF((SUM(P114,P115)+IF(ISNUMBER(F259),F259*'Комплексы'!$E$9,0))>0,(SUM(P114,P115)+IF(ISNUMBER(F259),F259*'Комплексы'!$E$9,0)),\"\")))",
+          "origin": "dialogue"
+        },
+        "working_unit_rate": {
+          "value": 2081,
+          "formula_excel": "=AA133",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F133),ROUND(F133*G133,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F133),ROUND(F133*(M133*S133*Z133+U133)+R133*T133,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1435.608552631579,
+          "formula_excel": "=M133*S133+N133*T133+U133",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L133",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "dialogue"
+        }
+      },
+      "quantity_basis": "Занятость собственных станочных операций данного поста. При пересечении у одного сотрудника укажите в Q фактические часы, распределённые один раз.",
+      "financial_basis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно.",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0,
+      "operator_tariff_per_unit": 0,
+      "operator_cost_per_unit": 0,
+      "tariff_with_operator_before_markup": 2081,
+      "cost_with_operator": 1435.608552631579,
+      "illustrative_quote_with_operator_excluding_preparation": 2913.3999999999996,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": []
+    },
+    {
+      "code": "Р158",
+      "name": "Снятие фаски у фанеры",
+      "source_work_id": 158,
+      "post": "P26",
+      "unit": "м",
+      "displayed_resource_cost": 3.901110197368421,
+      "snapshot_planned_cost": 3.901110197368421,
+      "current_unit_price": 5.65625,
+      "source_original_tariff": 1810,
+      "source_original_unit": "н/ч",
+      "source_row": 151,
+      "output_per_hour": 320,
+      "source_output": 320,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 5.65625,
+          "formula_excel": "=M151*AA151",
+          "origin": "catalog"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F151),ROUND(F151*G151,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F151),ROUND(F151*(M151*S151*Z151+U151)+R151*T151,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 1810,
+          "origin": "catalog"
+        },
+        "unit_planned_cost": {
+          "value": 3.901110197368421,
+          "formula_excel": "=M151*S151+N151*T151+U151",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 320,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 0.003125,
+          "formula_excel": "=1/L151",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1248.3552631578946,
+          "formula_excel": "='Экономика'!$C$25",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Длина фасок фанеры. Часы = объём / выработка.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F158. Часовая ставка и выработка из «Параметров».",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0,
+      "operator_tariff_per_unit": 0,
+      "operator_cost_per_unit": 0,
+      "tariff_with_operator_before_markup": 5.65625,
+      "cost_with_operator": 3.901110197368421,
+      "illustrative_quote_with_operator_excluding_preparation": 7.918749999999999,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": []
+    },
+    {
+      "code": "Р185",
+      "name": "Фрезерование (снятие фаски) по длине ручным фрезеровочным станком",
+      "source_work_id": 185,
+      "post": "P26",
+      "unit": "м",
+      "displayed_resource_cost": 3.901110197368421,
+      "snapshot_planned_cost": 3.901110197368421,
+      "current_unit_price": 5.65625,
+      "source_original_tariff": 1810,
+      "source_original_unit": "н/ч",
+      "source_row": 152,
+      "output_per_hour": 320,
+      "source_output": 320,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 5.65625,
+          "formula_excel": "=M152*AA152",
+          "origin": "catalog"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F152),ROUND(F152*G152,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F152),ROUND(F152*(M152*S152*Z152+U152)+R152*T152,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 1810,
+          "origin": "catalog"
+        },
+        "unit_planned_cost": {
+          "value": 3.901110197368421,
+          "formula_excel": "=M152*S152+N152*T152+U152",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 320,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 0.003125,
+          "formula_excel": "=1/L152",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1248.3552631578946,
+          "formula_excel": "='Экономика'!$C$25",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Длина продольных фасок. Часы = объём / выработка.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F185. Часовая ставка и выработка из «Параметров».",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0,
+      "operator_tariff_per_unit": 0,
+      "operator_cost_per_unit": 0,
+      "tariff_with_operator_before_markup": 5.65625,
+      "cost_with_operator": 3.901110197368421,
+      "illustrative_quote_with_operator_excluding_preparation": 7.918749999999999,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": [
+        "Р99"
+      ]
+    },
+    {
+      "code": "Р186",
+      "name": "Фрезерование (снятие фаски) по торцу стационарным шлифовальным станком",
+      "source_work_id": 186,
+      "post": "P26",
+      "unit": "торец",
+      "displayed_resource_cost": 5.944548872180451,
+      "snapshot_planned_cost": 5.944548872180451,
+      "current_unit_price": 8.61904761904762,
+      "source_original_tariff": 1810,
+      "source_original_unit": "н/ч",
+      "source_row": 153,
+      "output_per_hour": 210,
+      "source_output": 210,
+      "resource_parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 8.61904761904762,
+          "formula_excel": "=M153*AA153",
+          "origin": "catalog"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F153),ROUND(F153*G153,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F153),ROUND(F153*(M153*S153*Z153+U153)+R153*T153,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 1810,
+          "origin": "catalog"
+        },
+        "unit_planned_cost": {
+          "value": 5.944548872180451,
+          "formula_excel": "=M153*S153+N153*T153+U153",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 210,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 0.004761904761904762,
+          "formula_excel": "=1/L153",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1248.3552631578946,
+          "formula_excel": "='Экономика'!$C$25",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      },
+      "quantity_basis": "Число обрабатываемых торцов без повторного пересчёта в метры. Часы = объём / выработка.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F186. Часовая ставка и выработка из «Параметров».",
+      "technical_reference": [],
+      "technical_reference_is_market_price": false,
+      "operator_hours_per_unit": 0,
+      "operator_tariff_per_unit": 0,
+      "operator_cost_per_unit": 0,
+      "tariff_with_operator_before_markup": 8.61904761904762,
+      "cost_with_operator": 5.944548872180451,
+      "illustrative_quote_with_operator_excluding_preparation": 12.066666666666668,
+      "thickness_mm": null,
+      "market_evidence": [],
+      "incompatible_in_same_work_package": []
+    }
+  ],
+  "peripheral_operations": [
+    {
+      "code": "Р23",
+      "name": "Изготовление бетонных слэбов с индивидуальной опалубкой из пенополистирола под эпоксидным покрытием",
+      "unit": "м³",
+      "tariff": 194450.66666666666,
+      "cost": 43966.83740601504,
+      "reason": "Комплекс, не отдельная цена фрезерования за метр; включён для контроля границ и дублирования"
+    },
+    {
+      "code": "Р99",
+      "name": "Производство деревянных конструкций (резка, сборка, шлифовка, фаска)",
+      "unit": "м²",
+      "tariff": 925,
+      "cost": 599.4687499999999,
+      "reason": "Комплекс, не отдельная цена фрезерования за метр; включён для контроля границ и дублирования"
+    }
+  ],
+  "excluded_source44": {
+    "tariff": 90,
+    "unit": "м.п.",
+    "status": "outside_active",
+    "reason": "Комплексная строка выведена. Раскрой по действующим материалам и толщине."
+  },
+  "issues": [
+    {
+      "id": "MILL-01",
+      "status": "explained",
+      "finding": "Рыночный прайс, внутренний тариф и ресурсная себестоимость — три разных показателя. UI показывает COST, а не сохранённую цену рынка.",
+      "evidence": [
+        "reference/Производственная_калькуляция.json#economics",
+        "source-project/dist/production-model-ui.js#productionCatalogResults",
+        "source-project/dist/production-model-core.js#resourceUnitCost"
+      ]
+    },
+    {
+      "id": "MILL-02",
+      "status": "resolved_by_direct_user_norm",
+      "finding": "В доступном локальном Данные.xlsx для одиночной фанеры G146/L146=85 м/ч, а H147=ROUNDUP(85*2.5,0)=213 — агрегированная работа трёх станков на одного оператора (G147). В модели назначено270м прохода/ч одному станку с толщинными проходами; первичной формулы, выводящей эту норму, нет. 270 в G117 относится к УП до коэффициента3. Нужен замер/УП или найденное первичное согласование.",
+      "evidence": [
+        "reference.operations[code=Р146.6]",
+        "dataset.Исходные работы:Перечень_работ:146",
+        "dataset.Исходные работы:Перечень_работ:117"
+      ],
+      "latest_decision": "270м прохода/ч,ceil(толщина/3),4мм=2прохода;прямое уточнение пользователя вышеисторической85"
+    },
+    {
+      "id": "MILL-03",
+      "status": "cost_recovery_risk",
+      "finding": "Тариф станка P07=100 ₽/ч, модельная стоимость 255 ₽/ч; P08=100 против 200. Отдельная станковая строка не покрывает модельную себестоимость даже после ×1,40. Это не доказательство убытка всего заказа: оператор и остальные строки считаются отдельно."
+    },
+    {
+      "id": "MILL-04",
+      "status": "confirmed_stale_source_metadata",
+      "finding": "Первичный локальный Данные.xlsx подтверждает E128=н/ч, F128=2181. reference.source_id_mapping/source_original_tariff10.2394366197₽/м.п. и скопированная metadata каталога не соответствуют этому первичнику; свежая выгрузка «Исходные работы» верна. Самая новая действующая версия первичника определяется пользователем, файл не менялся."
+    },
+    {
+      "id": "MILL-05",
+      "status": "user_confirmed_base_without_concurrency",
+      "finding": "Исходный файл содержит810=270×3, модель уже использует270после снятия коэффициента3. Пользователь20.11.2026 прямо отменил коэффициенты совмещения:УП270согласована. Это не подтверждает270м/ч станка."
+    },
+    {
+      "id": "MILL-06",
+      "status": "traceability_gap",
+      "finding": "market_evidence_refs содержит технические URL SWYFT/CMU, не IDs Ф1/Ф2/Ф3. Связь с Ф1/Ф2 дана лишь в financial_basis; comparisons содержит только 6 и 18 мм, 3D, гравировку. Для остальных толщин прямая строка сравнения отсутствует; данный аудит строит её из сохранённых ступеней."
+    },
+    {
+      "id": "MILL-07",
+      "status": "unconfirmed_market_basis",
+      "finding": "Ф1/Ф2 налоговая база и полный состав УП/оператора не раскрыты. Ф3 включает НДС и компоновку/такелаж, а внутренняя модель отдельный выходной НДС не начисляет. Прямое равенство цен или нормативной себестоимости не доказано."
+    },
+    {
+      "id": "MILL-08",
+      "status": "confirmed_distinct_numbering",
+      "finding": "Скриншот позиции144 совпадает с A147=144 в Данные.xlsx. ID приложения147 — физическая строка Excel147, не порядковый номерA. В appsource144 — ленточная пила; это разные ключи, нельзя выбирать операцию только по показанному номеру."
+    },
+    {
+      "id": "MILL-09",
+      "status": "resolved_by_direct_user_norm",
+      "finding": "Пользователь отменил×3/×2.5; одиночная база раскроя85м/ч,УП270м/ч. ВG146/L146 иG147/H147 не задана толщина и не указано85м/ч проходов или готового контура конкретной толщины. Ни85/n длявсехтолщин,ни85готовыхм/ч длявсехтолщин нельзя объявить первичной нормой без отдельногооснования. Текущая270/n не подтверждена.",
+      "latest_decision": "270м прохода/ч,ceil(толщина/3),4мм=2прохода;прямое уточнение пользователя вышеисторической85"
+    }
+  ],
+  "external_source_retrieval": {
+    "purpose": "Проверка смысла уже сохранённых ссылок; новые тарифы в модель не переносились",
+    "Ф1": "Открыто: архивное объявление от 28.12.2024, ступени и минимум подтверждены",
+    "Ф2": "Открыто: ступени подтверждены, единица — дистанция прохода; материал исключён",
+    "Ф3": "Открыт PDF: 1300 ₽/ч, НДС и компоновка/такелаж включены",
+    "SWYFT": "Открыто: Plywood/MDF 1500–2500 мм/мин, стартовые режимы для иного станка; 270 м/ч и промышленная норма 85 м/ч не подтверждены",
+    "CMU": "Инструмент веб-доступа вернул Internal Error; содержание не проверено",
+    "ГР": "Сверена только сохранённая запись; новое состояние агрегатора не исследовалось"
+  },
+  "primary_workbook": {
+    "file": "C:/Users/Danil.S/Desktop/Личная папка ДАНИЛ.С/1. - Рассчеты/Рассчеты изделий/calculation data/Данные.xlsx",
+    "sha256": "f998d351e955069727839036b33347aca8b948ab3da4ad87821e72aa874449c0",
+    "sheets": [
+      {
+        "sheet": "Перечень_работ",
+        "rows": [
+          [
+            {
+              "cell": "A23",
+              "value": "21",
+              "formula": null
+            },
+            {
+              "cell": "B23",
+              "value": "Бетонирование ",
+              "formula": null
+            },
+            {
+              "cell": "C23",
+              "value": "-",
+              "formula": null
+            },
+            {
+              "cell": "D23",
+              "value": "Изготовление бетонных слэбов с производством, покрытой эпоксидными смолами, индивидуальной фрезерованной опалубки из пенополистирола",
+              "formula": null
+            },
+            {
+              "cell": "E23",
+              "value": "м3",
+              "formula": null
+            },
+            {
+              "cell": "F23",
+              "value": "200000",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A44",
+              "value": "42",
+              "formula": null
+            },
+            {
+              "cell": "B44",
+              "value": "-",
+              "formula": null
+            },
+            {
+              "cell": "C44",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "D44",
+              "value": "Нарезка изделий на станках с ЧПУ (фрезеровка, плоттер)",
+              "formula": null
+            },
+            {
+              "cell": "E44",
+              "value": "м.п.",
+              "formula": null
+            },
+            {
+              "cell": "F44",
+              "value": "90",
+              "formula": null
+            },
+            {
+              "cell": "G44",
+              "value": "50 м.п. в 1 листе фанеры. Или 16м.п на 1 м2 ",
+              "formula": null
+            },
+            {
+              "cell": "H44",
+              "value": "16",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A89",
+              "value": "87",
+              "formula": null
+            },
+            {
+              "cell": "B89",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "C89",
+              "value": "Подготовка",
+              "formula": null
+            },
+            {
+              "cell": "D89",
+              "value": "Подготовка чертежей для резки на фрезерном ЧПУ станке",
+              "formula": null
+            },
+            {
+              "cell": "E89",
+              "value": "н/ч",
+              "formula": null
+            },
+            {
+              "cell": "F89",
+              "value": "2081",
+              "formula": "СЕБЕСТОИМ(K89)"
+            },
+            {
+              "cell": "G89",
+              "value": "ДОПУСТИМ за 1 час проектируется 80м.п.",
+              "formula": null
+            },
+            {
+              "cell": "H89",
+              "value": "80",
+              "formula": null
+            },
+            {
+              "cell": "I89",
+              "value": "м.п.",
+              "formula": null
+            },
+            {
+              "cell": "K89",
+              "value": "115000",
+              "formula": null
+            },
+            {
+              "cell": "L89",
+              "value": "1",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A117",
+              "value": "115",
+              "formula": null
+            },
+            {
+              "cell": "B117",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "C117",
+              "value": "Подготовка",
+              "formula": null
+            },
+            {
+              "cell": "D117",
+              "value": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для резки фанеры на фрезерном ЧПУ станке",
+              "formula": null
+            },
+            {
+              "cell": "E117",
+              "value": "н/ч",
+              "formula": null
+            },
+            {
+              "cell": "F117",
+              "value": "2081",
+              "formula": "СЕБЕСТОИМ(K117)"
+            },
+            {
+              "cell": "G117",
+              "value": "10 мин 1 лист. В 1 листе в среднем 60м.п контура. С учетом простоев за час берем 4,5 листа или 270 м.п. контура. Так как это делается во время пилежки то можем взять тройной коэфициент по времени",
+              "formula": null
+            },
+            {
+              "cell": "H117",
+              "value": "810",
+              "formula": "270*3"
+            },
+            {
+              "cell": "I117",
+              "value": "м.п.",
+              "formula": null
+            },
+            {
+              "cell": "K117",
+              "value": "115000",
+              "formula": null
+            },
+            {
+              "cell": "L117",
+              "value": "1",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A128",
+              "value": "125",
+              "formula": null
+            },
+            {
+              "cell": "B128",
+              "value": "Обработка Изопинка",
+              "formula": null
+            },
+            {
+              "cell": "C128",
+              "value": "Станок",
+              "formula": null
+            },
+            {
+              "cell": "D128",
+              "value": "Раскрой изопинка на ЧПУ фрезерном станке",
+              "formula": null
+            },
+            {
+              "cell": "E128",
+              "value": "н/ч",
+              "formula": null
+            },
+            {
+              "cell": "F128",
+              "value": "2181",
+              "formula": "СЕБЕСТОИМ(K128)+P128"
+            },
+            {
+              "cell": "K128",
+              "value": "115000",
+              "formula": null
+            },
+            {
+              "cell": "L128",
+              "value": "1",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A143",
+              "value": "140",
+              "formula": null
+            },
+            {
+              "cell": "B143",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "C143",
+              "value": "Станок",
+              "formula": null
+            },
+            {
+              "cell": "D143",
+              "value": "Раскрой погонажного деревянного изделия на ЧПУ фрезерном станке",
+              "formula": null
+            },
+            {
+              "cell": "E143",
+              "value": "н/ч",
+              "formula": null
+            },
+            {
+              "cell": "F143",
+              "value": "2181",
+              "formula": "СЕБЕСТОИМ(K143)+P143"
+            },
+            {
+              "cell": "G143",
+              "value": "В среднем берем что в 1 м.п доски 1,2 м.п. Контура\n\nТипа 1м.п прохода 33рубля",
+              "formula": null
+            },
+            {
+              "cell": "H143",
+              "value": "213",
+              "formula": "ROUNDUP(85*2.5,0)"
+            },
+            {
+              "cell": "I143",
+              "value": "м.п.",
+              "formula": null
+            },
+            {
+              "cell": "K143",
+              "value": "115000",
+              "formula": null
+            },
+            {
+              "cell": "L143",
+              "value": "1",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A146",
+              "value": "143",
+              "formula": null
+            },
+            {
+              "cell": "B146",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "C146",
+              "value": "Станок",
+              "formula": null
+            },
+            {
+              "cell": "D146",
+              "value": "Раскрой фанеры на ЧПУ фрезерном станке",
+              "formula": null
+            },
+            {
+              "cell": "E146",
+              "value": "м.п.",
+              "formula": null
+            },
+            {
+              "cell": "F146",
+              "value": "25.658823529411766",
+              "formula": "Перечень_работ[[#This Row],[Столбец4]]/Перечень_работ[[#This Row],[Кол-во вып. работы за 1ч]]"
+            },
+            {
+              "cell": "G146",
+              "value": "В среднем берем что в 1 листе фанеры 60 м.п. Контура\nЗа час режится 85м.п",
+              "formula": null
+            },
+            {
+              "cell": "K146",
+              "value": "115000",
+              "formula": null
+            },
+            {
+              "cell": "L146",
+              "value": "85",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A147",
+              "value": "144",
+              "formula": null
+            },
+            {
+              "cell": "B147",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "C147",
+              "value": "Станок",
+              "formula": null
+            },
+            {
+              "cell": "D147",
+              "value": "Раскрой фанеры на ЧПУ фрезерном станке (ч/ч)",
+              "formula": null
+            },
+            {
+              "cell": "E147",
+              "value": "н/ч",
+              "formula": null
+            },
+            {
+              "cell": "F147",
+              "value": "2181",
+              "formula": "СЕБЕСТОИМ(K147)+P147"
+            },
+            {
+              "cell": "G147",
+              "value": "Тут мы берем в расчет что у нас 3 станка и один оператор на три станка работающих одновременно. Итого его время не в три раза больше а допустим в 2,5",
+              "formula": null
+            },
+            {
+              "cell": "H147",
+              "value": "213",
+              "formula": "ROUNDUP(85*2.5,0)"
+            },
+            {
+              "cell": "I147",
+              "value": "м.п.",
+              "formula": null
+            },
+            {
+              "cell": "K147",
+              "value": "115000",
+              "formula": null
+            },
+            {
+              "cell": "L147",
+              "value": "1",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A158",
+              "value": "155",
+              "formula": null
+            },
+            {
+              "cell": "B158",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "C158",
+              "value": "Обработка",
+              "formula": null
+            },
+            {
+              "cell": "D158",
+              "value": "Снятие фаски у фанеры",
+              "formula": null
+            },
+            {
+              "cell": "E158",
+              "value": "н/ч",
+              "formula": null
+            },
+            {
+              "cell": "F158",
+              "value": "1810",
+              "formula": "СЕБЕСТОИМ(K158)/Перечень_работ[[#This Row],[Кол-во вып. работы за 1ч]]"
+            },
+            {
+              "cell": "G158",
+              "value": "ПРЕДПОЛОЖЕНИЕ:\n1м.п. фаска снимается 10 секунд\nЗа 1 минуту сделает 6м.п.\nЗа 1 час снимет где то 320 м.п\nВ 1 листе в среднем берем 60м.п. контура",
+              "formula": null
+            },
+            {
+              "cell": "H158",
+              "value": "320",
+              "formula": null
+            },
+            {
+              "cell": "I158",
+              "value": "м.п.",
+              "formula": null
+            },
+            {
+              "cell": "K158",
+              "value": "100000",
+              "formula": null
+            },
+            {
+              "cell": "L158",
+              "value": "1",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A185",
+              "value": "182",
+              "formula": null
+            },
+            {
+              "cell": "B185",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "C185",
+              "value": "Обработка",
+              "formula": null
+            },
+            {
+              "cell": "D185",
+              "value": "Фрезерование (снятие фаски) по длине ручным фрезеровочным станком",
+              "formula": null
+            },
+            {
+              "cell": "E185",
+              "value": "н/ч",
+              "formula": null
+            },
+            {
+              "cell": "F185",
+              "value": "1810",
+              "formula": "СЕБЕСТОИМ(K185)/Перечень_работ[[#This Row],[Кол-во вып. работы за 1ч]]"
+            },
+            {
+              "cell": "G185",
+              "value": "ПРЕДПОЛОЖЕНИЕ:\n1м.п обрабатывается 10 секунд\nЗа 1 час сделает 320м.п",
+              "formula": null
+            },
+            {
+              "cell": "H185",
+              "value": "320",
+              "formula": null
+            },
+            {
+              "cell": "I185",
+              "value": "м.п.",
+              "formula": null
+            },
+            {
+              "cell": "K185",
+              "value": "100000",
+              "formula": null
+            },
+            {
+              "cell": "L185",
+              "value": "1",
+              "formula": null
+            }
+          ],
+          [
+            {
+              "cell": "A186",
+              "value": "183",
+              "formula": null
+            },
+            {
+              "cell": "B186",
+              "value": "Деревообработка",
+              "formula": null
+            },
+            {
+              "cell": "C186",
+              "value": "Обработка",
+              "formula": null
+            },
+            {
+              "cell": "D186",
+              "value": "Фрезерование (снятие фаски) по торцу стационарным шлифовальным станком ",
+              "formula": null
+            },
+            {
+              "cell": "E186",
+              "value": "н/ч",
+              "formula": null
+            },
+            {
+              "cell": "F186",
+              "value": "1810",
+              "formula": "СЕБЕСТОИМ(K186)/Перечень_работ[[#This Row],[Кол-во вып. работы за 1ч]]"
+            },
+            {
+              "cell": "G186",
+              "value": "За 1 минуту сделает 4 торца\nЗа 1 час 210 торцов",
+              "formula": null
+            },
+            {
+              "cell": "H186",
+              "value": "210",
+              "formula": null
+            },
+            {
+              "cell": "I186",
+              "value": "шт.",
+              "formula": null
+            },
+            {
+              "cell": "K186",
+              "value": "100000",
+              "formula": null
+            },
+            {
+              "cell": "L186",
+              "value": "1",
+              "formula": null
+            }
+          ]
+        ]
+      }
+    ],
+    "read_only": true,
+    "formula_values": "Прочитаны формулы и сохранённые Excel значения OOXML; UDF СЕБЕСТОИМ не исполнялась"
+  },
+  "user_screenshot_evidence": [
+    {
+      "description": "Подтверждён пользователем как ФОРМАТНИК P43",
+      "bands": [
+        {
+          "thickness": "3–6",
+          "price": 29.32,
+          "output": 72.5
+        },
+        {
+          "thickness": ">6–18",
+          "price": 34.4,
+          "output": 61
+        },
+        {
+          "thickness": ">18–30",
+          "price": 42.29,
+          "output": 49
+        }
+      ],
+      "matched": true
+    },
+    {
+      "description": "Нормативы ЧПУ-фрезеровки из Данные.xlsx",
+      "plywood_position": 144,
+      "output": 213,
+      "program_output": 810,
+      "matched_primary_cells": [
+        "Перечень_работ!A147",
+        "Перечень_работ!H147",
+        "Перечень_работ!H117"
+      ]
+    }
+  ],
+  "panel_saw_screenshot": {
+    "post": "P43",
+    "unit": "м физического прямого пропила",
+    "norm_formula": "q=3600*stroke/(60*stroke/forward+60*stroke/backward+position_seconds)",
+    "tariff_formula": "148.5044/q +2.3 +1810/q",
+    "cost_formula": "148.5044/q +2.3 +1248.3552631578946/q",
+    "basis": "До наладки/подачи листов, помощника, карты, общей наценки40%",
+    "bands": [
+      {
+        "id": "ФРС.1",
+        "min_thickness_mm": 3,
+        "max_thickness_mm": 6,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "output_m_per_hour": 72.48322147651007,
+        "machine_and_blade_rub_per_m": 4.348810703703704,
+        "operator_rub_per_m": 24.971296296296295,
+        "cut_total_before_setup_and_markup_rub_per_m": 29.320107,
+        "forward": 12,
+        "backward": 20,
+        "position_seconds": 50,
+        "stroke_m": 1.2,
+        "source_sheet": "Форматник",
+        "source_row": 24,
+        "source_output_cell": "G24",
+        "source_total_cell": "L24",
+        "resource_cost_total": 21.571489797270953,
+        "quote_cut_only": 41.0481498
+      },
+      {
+        "id": "ФРС.2",
+        "min_thickness_mm": 6,
+        "max_thickness_mm": 18,
+        "min_inclusive": false,
+        "max_inclusive": true,
+        "output_m_per_hour": 61.016949152542374,
+        "machine_and_blade_rub_per_m": 4.733822111111111,
+        "operator_rub_per_m": 29.663888888888888,
+        "cut_total_before_setup_and_markup_rub_per_m": 34.397711,
+        "forward": 10,
+        "backward": 20,
+        "position_seconds": 60,
+        "stroke_m": 1.2,
+        "source_sheet": "Форматник",
+        "source_row": 25,
+        "source_output_cell": "G25",
+        "source_total_cell": "L25",
+        "resource_cost_total": 25.192977812865497,
+        "quote_cut_only": 48.156795399999986
+      },
+      {
+        "id": "ФРС.3",
+        "min_thickness_mm": 18,
+        "max_thickness_mm": 30,
+        "min_inclusive": false,
+        "max_inclusive": true,
+        "output_m_per_hour": 48.97959183673469,
+        "machine_and_blade_rub_per_m": 5.331964833333334,
+        "operator_rub_per_m": 36.954166666666666,
+        "cut_total_before_setup_and_markup_rub_per_m": 42.2861315,
+        "forward": 7.5,
+        "backward": 20,
+        "position_seconds": 75,
+        "stroke_m": 1.2,
+        "source_sheet": "Форматник",
+        "source_row": 26,
+        "source_output_cell": "G26",
+        "source_total_cell": "L26",
+        "resource_cost_total": 30.819218122807015,
+        "quote_cut_only": 59.2005841
+      }
+    ],
+    "saved_market_evidence": [
+      {
+        "id": "ФР1",
+        "supplier": "Expoprints",
+        "comparison": "Прямой распил МДФ / фанеры",
+        "region": "Страница Владивостока, адрес Москва",
+        "low": 50,
+        "high": 50,
+        "unit": "₽/м",
+        "application": "Без разбивки по толщине. Действующее КП местного цеха не раскрыто. Сопоставлять готовый заказ и состав услуг.",
+        "url": "https://vladivostok.expoprints.ru/raspilovka-ldsp-po-razmeram",
+        "checked_on": "2026-11-19"
+      },
+      {
+        "id": "ФР2",
+        "supplier": "Эксполес",
+        "comparison": "Распил ЛДСП на пильных центрах Altendorf F45",
+        "region": "Владивосток",
+        "low": 115,
+        "high": 115.5,
+        "unit": "₽/м",
+        "application": "20–26 мм — 115 ₽/м, 10–16 мм — 115,50 ₽/м. Смежный материал. Минимум заказа 750 ₽ — условие этого цеха.",
+        "url": "https://vl.expolesdv.ru/services/raskroy-ldsp-kromkovanie/",
+        "checked_on": "2026-11-19"
+      },
+      {
+        "id": "ФР3",
+        "supplier": "MebelVesta",
+        "comparison": "Распил фанеры, МДФ и ЛДСП",
+        "region": "Владивосток",
+        "low": 1000,
+        "high": null,
+        "unit": "₽ за услугу от",
+        "application": "Цена входа в заказ. Погонная ставка, метраж, толщина и состав партии не опубликованы.",
+        "url": "https://www.farpost.ru/vladivostok/service/furniture/raskroj-raspil-ldsp-dsp-mdf-fanera-94303320.html",
+        "checked_on": "2026-11-19"
+      }
+    ],
+    "interpretation": "29.32/34.40/42.29 точно совпадают с внутренним тарифом полного реза P43: станок, пила, станочник. Это не тариф P07 и не внешняя цена."
+  },
+  "primary_norms": {
+    "plywood_single_machine": {
+      "cells": [
+        "Перечень_работ!D146",
+        "Перечень_работ!G146",
+        "Перечень_работ!L146",
+        "Перечень_работ!F146"
+      ],
+      "output": 85,
+      "unit": "м.п./ч",
+      "tariff": 25.658823529411766,
+      "thickness_unspecified": true,
+      "exact_cells": {
+        "G146": "В среднем берем что в 1 листе фанеры 60 м.п. Контура\nЗа час режится 85м.п",
+        "H146": null,
+        "L146": 85,
+        "thickness_or_pass_count_defined": false
+      }
+    },
+    "plywood_multi_machine": {
+      "position_cell": "Перечень_работ!A147",
+      "position_value": 144,
+      "excel_row": 147,
+      "app_source_id": 147,
+      "output_cell": "Перечень_работ!H147",
+      "output": 213,
+      "formula": "ROUNDUP(85*2.5,0)",
+      "note_cell": "Перечень_работ!G147",
+      "basis": "три станка, один оператор, коэффициент2.5; не213м/ч одного станка",
+      "exact_cells": {
+        "G147": "Тут мы берем в расчет что у нас 3 станка и один оператор на три станка работающих одновременно. Итого его время не в три раза больше а допустим в 2,5",
+        "H147": {
+          "formula": "ROUNDUP(85*2.5,0)",
+          "cached": 213
+        },
+        "A147": 144
+      }
+    },
+    "program": {
+      "cells": [
+        "Перечень_работ!D117",
+        "Перечень_работ!G117",
+        "Перечень_работ!H117"
+      ],
+      "output": 810,
+      "formula": "270*3",
+      "base_output": 270,
+      "multiplier": 3,
+      "basis": "совмещение программирования во время пиления; подтверждение коэффициента3 не найдено",
+      "multiplier_user_decision": "Коэффициент3 отменён пользователем20.11.2026; использовать270для самостоятельнойУП"
+    },
+    "current_model": {
+      "plywood_pass_m_per_machine_hour": 270,
+      "thickness_rule": "ceil(t/3)",
+      "program_unique_m_per_person_hour": 270,
+      "comment": "270 и шаг3мм прямо подтверждены пользователем20.11.2026;исключение4мм исправлено.85/213 из первичника остаются историческими."
+    }
+  },
+  "user_decisions": [
+    {
+      "date": "2026-11-20",
+      "quote": "Коэфициент нахуй",
+      "interpretation_confirmed_in_main_chat": "Убрать коэффициенты совмещения×3 дляУП и×2.5 длятрёх станков",
+      "program_unique_contour_m_per_person_hour": 270,
+      "implementation": "Аудит не меняет приложение и справочник; требование записано основной веткой в docs/OPERATION_AUTOMATION_REQUIREMENTS.md",
+      "historical_primary_base": 85
+    },
+    {
+      "date": "2026-11-20",
+      "quote": "Стандартно один проход контура270м/ч для фанеры;все что<4мм пилит в один проход остальное+1проход на3мм толщины",
+      "pass_m_per_machine_hour": 270,
+      "passes_formula": "ceil(thickness_mm/3)",
+      "plywood4_passes": 2,
+      "scope": "Только станочные позиции и связанная стоимость исполнителя;остальные позиции не менять"
+    }
+  ],
+  "station_automation": {
+    "posts": 11,
+    "machine_variants": 83,
+    "market_comparisons": 13,
+    "full_base_matches_saved_analysis": true,
+    "report": "2026-11-20-labor-automation-audit.json",
+    "installed_build": "Calculator-Windows-x64-2026-11-19T16-06-43-366Z",
+    "preserved_records": 40
+  }
+}

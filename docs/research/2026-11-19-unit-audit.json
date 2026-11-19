@@ -1,0 +1,1024 @@
+{
+  "date": "2026-11-19",
+  "savedRecords": 40,
+  "distinctSpellings": 105,
+  "changedSpellings": 20,
+  "emptyFields": 264,
+  "values": [
+    {
+      "value": "шт",
+      "label": "шт.",
+      "count": 3316,
+      "sources": [
+        "CATALOG:unit",
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "шт.",
+      "label": "шт.",
+      "count": 2750,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:productivityUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_output_unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "izdelie-library-v2:source_unit",
+        "izdelie-library-v2:unit",
+        "izdelie-variants-v4:unit",
+        "izdelie-working-drafts-v1:source_unit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "м.п.",
+      "label": "м.п.",
+      "count": 1039,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:productivityUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_output_unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "izdelie-library-v2:physicalUnit",
+        "izdelie-library-v2:productivityUnit",
+        "izdelie-library-v2:source_unit",
+        "izdelie-library-v2:unit",
+        "izdelie-variants-v4:unit",
+        "izdelie-working-drafts-v1:physicalUnit",
+        "izdelie-working-drafts-v1:productivityUnit",
+        "izdelie-working-drafts-v1:source_unit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "м2",
+      "label": "м²",
+      "count": 652,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:productivityUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_output_unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "PURCHASE_DATA:unit",
+        "izdelie-library-v2:source_unit",
+        "izdelie-library-v2:unit",
+        "izdelie-variants-v4:unit",
+        "izdelie-working-drafts-v1:source_unit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "н/ч",
+      "label": "н·ч",
+      "count": 499,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "izdelie-library-v2:source_unit",
+        "izdelie-library-v2:unit",
+        "izdelie-variants-v4:unit",
+        "izdelie-working-drafts-v1:source_unit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "м",
+      "label": "м.п.",
+      "count": 349,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "PURCHASE_DATA:unit",
+        "izdelie-library-v2:baseUnit",
+        "izdelie-library-v2:unit",
+        "izdelie-working-drafts-v1:baseUnit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "кг",
+      "label": "кг",
+      "count": 195,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "м реза",
+      "label": "м реза",
+      "count": 172,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "izdelie-library-v2:baseUnit",
+        "izdelie-library-v2:unit",
+        "izdelie-working-drafts-v1:baseUnit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "пог. м",
+      "label": "м.п.",
+      "count": 147,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "м²",
+      "label": "м²",
+      "count": 122,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "izdelie-library-v2:baseUnit",
+        "izdelie-library-v2:unit",
+        "izdelie-working-drafts-v1:baseUnit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "м3",
+      "label": "м³",
+      "count": 97,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "л",
+      "label": "л",
+      "count": 65,
+      "sources": [
+        "CATALOG:unit",
+        "izdelie-library-v2:unit",
+        "izdelie-variants-v4:unit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "мп.",
+      "label": "м.п.",
+      "count": 64,
+      "sources": [
+        "izdelie-library-v2:unit",
+        "izdelie-variants-v4:unit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "л (дм3)",
+      "label": "л",
+      "count": 55,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "гиб",
+      "label": "гиб",
+      "count": 52,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "izdelie-operation-rates-v2:unit"
+      ]
+    },
+    {
+      "value": "чел·ч",
+      "label": "чел·ч",
+      "count": 50,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "izdelie-library-v2:baseUnit",
+        "izdelie-library-v2:unit",
+        "izdelie-working-drafts-v1:baseUnit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "пар",
+      "label": "пар",
+      "count": 47,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "лист",
+      "label": "лист",
+      "count": 46,
+      "sources": [
+        "CATALOG:productivityUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_output_unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "м контура",
+      "label": "м контура",
+      "count": 36,
+      "sources": [
+        "PRODUCTION_CATALOG:unit",
+        "izdelie-library-v2:baseUnit",
+        "izdelie-library-v2:unit",
+        "izdelie-working-drafts-v1:baseUnit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "упак",
+      "label": "уп.",
+      "count": 33,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "рул",
+      "label": "рул.",
+      "count": 32,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "т",
+      "label": "т",
+      "count": 25,
+      "sources": [
+        "CATALOG:unit",
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "прожиг",
+      "label": "прожиг",
+      "count": 24,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "рез",
+      "label": "рез",
+      "count": 24,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "izdelie-library-v2:baseUnit",
+        "izdelie-library-v2:unit",
+        "izdelie-working-drafts-v1:baseUnit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "н·ч",
+      "label": "н·ч",
+      "count": 22,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "торец",
+      "label": "торец",
+      "count": 22,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit",
+        "izdelie-library-v2:baseUnit",
+        "izdelie-library-v2:source_unit",
+        "izdelie-library-v2:unit",
+        "izdelie-working-drafts-v1:baseUnit",
+        "izdelie-working-drafts-v1:source_unit",
+        "izdelie-working-drafts-v1:unit"
+      ]
+    },
+    {
+      "value": "кг.",
+      "label": "кг",
+      "count": 18,
+      "sources": [
+        "CATALOG:productivityUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_output_unit"
+      ]
+    },
+    {
+      "value": "элемент",
+      "label": "элемент",
+      "count": 16,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "соед.",
+      "label": "соед.",
+      "count": 16,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "компл.",
+      "label": "компл.",
+      "count": 15,
+      "sources": [
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "узел",
+      "label": "узел",
+      "count": 14,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽",
+      "label": "₽",
+      "count": 14,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "шуруп",
+      "label": "шуруп",
+      "count": 13,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "мл (см3)",
+      "label": "мл",
+      "count": 13,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "маш.-ч",
+      "label": "маш.-ч",
+      "count": 10,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "м пропила",
+      "label": "м пропила",
+      "count": 9,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "ч/ч",
+      "label": "ч/ч",
+      "count": 8,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit"
+      ]
+    },
+    {
+      "value": "зона",
+      "label": "зона",
+      "count": 8,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "мл",
+      "label": "мл",
+      "count": 8,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "компл",
+      "label": "компл.",
+      "count": 8,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "м.п",
+      "label": "м.п.",
+      "count": 7,
+      "sources": [
+        "CATALOG:unit"
+      ]
+    },
+    {
+      "value": "м³",
+      "label": "м³",
+      "count": 7,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "выезд",
+      "label": "выезд",
+      "count": 7,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "шов",
+      "label": "шов",
+      "count": 7,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽ закупки",
+      "label": "₽ закупки",
+      "count": 7,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "???",
+      "label": "Не указана",
+      "count": 6,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit"
+      ]
+    },
+    {
+      "value": "гиб.",
+      "label": "гиб",
+      "count": 6,
+      "sources": [
+        "CATALOG:productivityUnit",
+        "PRODUCTION_CATALOG:source_output_unit"
+      ]
+    },
+    {
+      "value": "точка",
+      "label": "точка",
+      "count": 6,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "отв.",
+      "label": "отверстие",
+      "count": 6,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/м",
+      "label": "₽/м",
+      "count": 6,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "см2",
+      "label": "см²",
+      "count": 5,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit"
+      ]
+    },
+    {
+      "value": "%",
+      "label": "%",
+      "count": 5,
+      "sources": [
+        "CATALOG:baseUnit",
+        "CATALOG:priceUnit",
+        "CATALOG:unit",
+        "PRODUCTION_CATALOG:source_unit"
+      ]
+    },
+    {
+      "value": "место",
+      "label": "место",
+      "count": 5,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "стык",
+      "label": "стык",
+      "count": 5,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "бухта",
+      "label": "бухта",
+      "count": 5,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "отверстие",
+      "label": "отверстие",
+      "count": 4,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "рейс",
+      "label": "рейс",
+      "count": 4,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "подъём",
+      "label": "подъём",
+      "count": 4,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "м лаги",
+      "label": "м лаги",
+      "count": 4,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "рама",
+      "label": "рама",
+      "count": 4,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "пруток",
+      "label": "пруток",
+      "count": 3,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "заклёпка",
+      "label": "заклёпка",
+      "count": 3,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "инстр.-ч",
+      "label": "инстр.-ч",
+      "count": 3,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "набор",
+      "label": "набор",
+      "count": 3,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "рул.",
+      "label": "рул.",
+      "count": 2,
+      "sources": [
+        "CATALOG:unit"
+      ]
+    },
+    {
+      "value": "л.",
+      "label": "л",
+      "count": 2,
+      "sources": [
+        "CATALOG:unit"
+      ]
+    },
+    {
+      "value": "см²",
+      "label": "см²",
+      "count": 2,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽ затрат",
+      "label": "₽ затрат",
+      "count": 2,
+      "sources": [
+        "PRODUCTION_CATALOG:source_unit",
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/м от",
+      "label": "₽/м от",
+      "count": 2,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "USD/м²",
+      "label": "USD/м²",
+      "count": 2,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "метод",
+      "label": "метод",
+      "count": 2,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "пач",
+      "label": "пач",
+      "count": 2,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "кВт",
+      "label": "кВт",
+      "count": 2,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "уп.",
+      "label": "уп.",
+      "count": 1,
+      "sources": [
+        "CATALOG:unit"
+      ]
+    },
+    {
+      "value": "ч",
+      "label": "ч",
+      "count": 1,
+      "sources": [
+        "CATALOG:unit"
+      ]
+    },
+    {
+      "value": "кондуктор",
+      "label": "кондуктор",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "изделие",
+      "label": "изделие",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "петля",
+      "label": "петля",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽ базы",
+      "label": "₽ базы",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "проход",
+      "label": "проход",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "карта",
+      "label": "карта",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "=E8*'Калькуляция'!$N$115*'Калькуляция'!$O$115/60",
+      "label": "=E8*'Калькуляция'!$N$115*'Калькуляция'!$O$115/60",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:quantity_per_complex_unit"
+      ]
+    },
+    {
+      "value": "₽/деталь",
+      "label": "₽/деталь",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/прожиг",
+      "label": "₽/прожиг",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/мешок",
+      "label": "₽/мешок",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/м контура",
+      "label": "₽/м контура",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/м реза",
+      "label": "₽/м реза",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/ч",
+      "label": "₽/ч",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/м²",
+      "label": "₽/м²",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/мес. до удержаний",
+      "label": "₽/мес. до удержаний",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/маш.-ч",
+      "label": "₽/маш.-ч",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/маш.-ч от",
+      "label": "₽/маш.-ч от",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/см от",
+      "label": "₽/см от",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/м Ø12",
+      "label": "₽/м Ø12",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/гиб",
+      "label": "₽/гиб",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/прямой рез",
+      "label": "₽/прямой рез",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/см² от",
+      "label": "₽/см² от",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/м² от",
+      "label": "₽/м² от",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽ за услугу от",
+      "label": "₽ за услугу от",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/станок",
+      "label": "₽/станок",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/комплект",
+      "label": "₽/комплект",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "₽/зуб",
+      "label": "₽/зуб",
+      "count": 1,
+      "sources": [
+        "PRODUCTION_CATALOG:unit"
+      ]
+    },
+    {
+      "value": "ящ",
+      "label": "ящ",
+      "count": 1,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "г",
+      "label": "г",
+      "count": 1,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    },
+    {
+      "value": "не указана",
+      "label": "Не указана",
+      "count": 1,
+      "sources": [
+        "PURCHASE_DATA:unit"
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "Перечень_работ:6",
+      "name": "Вальцовка листового металла",
+      "unit": "???",
+      "reason": "Единица отсутствует в источнике"
+    },
+    {
+      "id": "Перечень_работ:7",
+      "name": "Вальцовка металлопроката",
+      "unit": "???",
+      "reason": "Единица отсутствует в источнике"
+    },
+    {
+      "id": "Перечень_работ:94",
+      "name": "Проектирование МАФа",
+      "unit": "ч/ч",
+      "reason": "Неоднозначное обозначение: без подтверждения не переводится в чел·ч"
+    },
+    {
+      "id": "Перечень_работ:97",
+      "name": "Производство (ч/ч)",
+      "unit": "ч/ч",
+      "reason": "Неоднозначное обозначение: без подтверждения не переводится в чел·ч"
+    }
+  ]
+}

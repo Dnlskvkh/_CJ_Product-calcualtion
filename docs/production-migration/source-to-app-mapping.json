@@ -1,0 +1,2676 @@
+{
+  "source": "bundled reference; primary Данные.xlsx inaccessible",
+  "counts": {
+    "catalog": 3180,
+    "works": 190,
+    "sourceRecords": 151,
+    "calculationRows": 284,
+    "installationTemplates": 46
+  },
+  "mapping": [
+    {
+      "work_id": 3,
+      "source_unit": "м2",
+      "source_price": 238.10526315789474,
+      "source_output": 1,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р3"
+      ],
+      "appId": "Перечень_работ:3",
+      "appName": "Антисептирование деталей пропиткой-антисептиком для дерева",
+      "appUnit": "м2",
+      "appPrice": 238.10526315789474,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 4,
+      "source_unit": "кг",
+      "source_price": 24,
+      "source_output": 40,
+      "source_output_unit": "кг.",
+      "active_codes": [
+        "Р4"
+      ],
+      "appId": "Перечень_работ:4",
+      "appName": "Базировка армокаркасов в опалубку",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": true,
+      "outsideActive": false
+    },
+    {
+      "work_id": 5,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 4.5,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р5"
+      ],
+      "appId": "Перечень_работ:5",
+      "appName": "Брашировка поверхности фанеры",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 9,
+      "source_unit": "гиб",
+      "source_price": 100,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р9"
+      ],
+      "appId": "Перечень_работ:9",
+      "appName": "Гибка на ЧПУ листогибе стали 10мм",
+      "appUnit": "гиб",
+      "appPrice": 100,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 10,
+      "source_unit": "гиб",
+      "source_price": 100,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р10"
+      ],
+      "appId": "Перечень_работ:10",
+      "appName": "Гибка на ЧПУ листогибе стали 3мм",
+      "appUnit": "гиб",
+      "appPrice": 100,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 11,
+      "source_unit": "гиб",
+      "source_price": 100,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р11"
+      ],
+      "appId": "Перечень_работ:11",
+      "appName": "Гибка на ЧПУ листогибе стали 4мм",
+      "appUnit": "гиб",
+      "appPrice": 100,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 12,
+      "source_unit": "гиб",
+      "source_price": 100,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р12"
+      ],
+      "appId": "Перечень_работ:12",
+      "appName": "Гибка на ЧПУ листогибе стали 5мм",
+      "appUnit": "гиб",
+      "appPrice": 100,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 13,
+      "source_unit": "гиб",
+      "source_price": 100,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р13"
+      ],
+      "appId": "Перечень_работ:13",
+      "appName": "Гибка на ЧПУ листогибе стали 6мм",
+      "appUnit": "гиб",
+      "appPrice": 100,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 14,
+      "source_unit": "гиб",
+      "source_price": 100,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р14"
+      ],
+      "appId": "Перечень_работ:14",
+      "appName": "Гибка на ЧПУ листогибе стали 8мм",
+      "appUnit": "гиб",
+      "appPrice": 100,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 15,
+      "source_unit": "гиб",
+      "source_price": 100,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р15"
+      ],
+      "appId": "Перечень_работ:15",
+      "appName": "Гибка на ЧПУ листогибе стали до 3хмм",
+      "appUnit": "гиб",
+      "appPrice": 100,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 16,
+      "source_unit": "м.п.",
+      "source_price": 3000,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р16.С",
+        "Р16.А",
+        "Р16.П"
+      ],
+      "appId": "Перечень_работ:16",
+      "appName": "Гидроабразивная резка Ст3-20мм",
+      "appUnit": "м.п.",
+      "appPrice": 3000,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 17,
+      "source_unit": "см2",
+      "source_price": 6,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р17"
+      ],
+      "appId": "Перечень_работ:17",
+      "appName": "Гравировка",
+      "appUnit": "см2",
+      "appPrice": 6,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 18,
+      "source_unit": "н/ч",
+      "source_price": 3262,
+      "source_output": 4,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р18"
+      ],
+      "appId": "Перечень_работ:18",
+      "appName": "Дробеструйная обработка металлоконструкций стальной дробью колотой",
+      "appUnit": "н/ч",
+      "appPrice": 3262,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 19,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": 84,
+      "source_output_unit": "кг.",
+      "active_codes": [
+        "Р19"
+      ],
+      "appId": "Перечень_работ:19",
+      "appName": "Зачистка и шлифовка швов",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 20,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 900,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р20"
+      ],
+      "appId": "Перечень_работ:20",
+      "appName": "Зенковка отверстий на доске",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 21,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 1000,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р21"
+      ],
+      "appId": "Перечень_работ:21",
+      "appName": "Зенковка отверстий на фанере",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 22,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р22"
+      ],
+      "appId": "Перечень_работ:22",
+      "appName": "Изготовление армокаркасов",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 23,
+      "source_unit": "м3",
+      "source_price": 200000,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р23"
+      ],
+      "appId": "Перечень_работ:23",
+      "appName": "Изготовление бетонных слэбов с производством, покрытой эпоксидными смолами, индивидуальной фрезерованной опалубки из пенополистирола",
+      "appUnit": "м3",
+      "appPrice": 200000,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 24,
+      "source_unit": "шт.",
+      "source_price": 13600,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р24"
+      ],
+      "appId": "Перечень_работ:24",
+      "appName": "Изготовление светового короба",
+      "appUnit": "шт.",
+      "appPrice": 13600,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 25,
+      "source_unit": "м.п.",
+      "source_price": 70,
+      "source_output": 320,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р25"
+      ],
+      "appId": "Перечень_работ:25",
+      "appName": "Изоляция торцов герметизирующей массой на водной основе",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": true,
+      "outsideActive": false
+    },
+    {
+      "work_id": 34,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р34"
+      ],
+      "appId": "Перечень_работ:34",
+      "appName": "Монтаж (ч/ч)",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 35,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р35"
+      ],
+      "appId": "Перечень_работ:35",
+      "appName": "Монтаж изделия",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 36,
+      "source_unit": "м.п.",
+      "source_price": 2400,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р36",
+        "ОГР"
+      ],
+      "appId": "Перечень_работ:36",
+      "appName": "Монтаж металлического ограждения",
+      "appUnit": "м.п.",
+      "appPrice": 2400,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 37,
+      "source_unit": "м2",
+      "source_price": 2300,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [],
+      "appId": "Перечень_работ:37",
+      "appName": "Монтаж настила (бетонирование основания, монтаж металлорам, монтаж лаг, монтаж палубной доски)",
+      "appUnit": "м2",
+      "appPrice": 2300,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 38,
+      "source_unit": "м2",
+      "source_price": 2400,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р38"
+      ],
+      "appId": "Перечень_работ:38",
+      "appName": "Монтаж ограждения из прутьев",
+      "appUnit": "м2",
+      "appPrice": 2400,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 39,
+      "source_unit": "м2",
+      "source_price": 2400,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р39"
+      ],
+      "appId": "Перечень_работ:39",
+      "appName": "Монтаж ограждения из трубы",
+      "appUnit": "м2",
+      "appPrice": 2400,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 40,
+      "source_unit": "м2",
+      "source_price": 2400,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р40"
+      ],
+      "appId": "Перечень_работ:40",
+      "appName": "Монтаж реечного ограждения",
+      "appUnit": "м2",
+      "appPrice": 2400,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 41,
+      "source_unit": "м2",
+      "source_price": 2400,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р41"
+      ],
+      "appId": "Перечень_работ:41",
+      "appName": "Монтаж сетчатого ограждения из сетки ПВ",
+      "appUnit": "м2",
+      "appPrice": 2400,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 42,
+      "source_unit": "м2",
+      "source_price": 226.2,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р42"
+      ],
+      "appId": "Перечень_работ:42",
+      "appName": "Нанесение финишного покрытия на деревянные изделия",
+      "appUnit": "м2",
+      "appPrice": 226.2,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 43,
+      "source_unit": "м2",
+      "source_price": 200,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р43"
+      ],
+      "appId": "Перечень_работ:43",
+      "appName": "Нанесение финишного покрытия на стальные конструкции",
+      "appUnit": "м2",
+      "appPrice": 200,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 44,
+      "source_unit": "м.п.",
+      "source_price": 90,
+      "source_output": 16,
+      "source_output_unit": "м.п.",
+      "active_codes": [],
+      "appId": "Перечень_работ:44",
+      "appName": "Нарезка изделий на станках с ЧПУ (фрезеровка, плоттер)",
+      "appUnit": "м.п.",
+      "appPrice": 90,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 45,
+      "source_unit": "м.п.",
+      "source_price": 150,
+      "source_output": 0.08,
+      "source_output_unit": "м.п.",
+      "active_codes": [],
+      "appId": "Перечень_работ:45",
+      "appName": "Нарезка на станках с ЧПУ (плазморез)",
+      "appUnit": "м.п.",
+      "appPrice": 150,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 46,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": 2,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р46"
+      ],
+      "appId": "Перечень_работ:46",
+      "appName": "Обработка бетонной формы после снятия опалубки",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 47,
+      "source_unit": "м2",
+      "source_price": 1629,
+      "source_output": 2,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р47"
+      ],
+      "appId": "Перечень_работ:47",
+      "appName": "Обработка опалубочной формы перед заливкой",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": true,
+      "outsideActive": false
+    },
+    {
+      "work_id": 48,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 0.1,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р48"
+      ],
+      "appId": "Перечень_работ:48",
+      "appName": "Обработка поверхности бревна (Строгание, Шлифовка, Заделка трещин - с использованием однокомпонентного полиуретанового герметика, Торцовка)",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 49,
+      "source_unit": "%",
+      "source_price": 20,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р49"
+      ],
+      "appId": "Перечень_работ:49",
+      "appName": "Общий монтаж",
+      "appUnit": "%",
+      "appPrice": 20,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 52,
+      "source_unit": "н/ч",
+      "source_price": 814.5,
+      "source_output": 4,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р52"
+      ],
+      "appId": "Перечень_работ:52",
+      "appName": "Пассивация деталей (Восстановление антикоррозионных свойств нержавеющей стали концентрированными кислотами) из аустенитной стали AISI-304 смесью Лимонной кислоты с водой, в соотношении 1/15 при температуре раствора 30 градусов продолжительностью 20 минут",
+      "appUnit": "н/ч",
+      "appPrice": 814.5,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 53,
+      "source_unit": "м.п.",
+      "source_price": 118,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р53",
+        "П53"
+      ],
+      "appId": "Перечень_работ:53",
+      "appName": "Плазменная резка Ст3-10мм",
+      "appUnit": "м.п.",
+      "appPrice": 118,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 54,
+      "source_unit": "м.п.",
+      "source_price": 6.5,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р54",
+        "П54"
+      ],
+      "appId": "Перечень_работ:54",
+      "appName": "Плазменная резка Ст3-10мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 6.5,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 55,
+      "source_unit": "м.п.",
+      "source_price": 142,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р55",
+        "П55"
+      ],
+      "appId": "Перечень_работ:55",
+      "appName": "Плазменная резка Ст3-12мм",
+      "appUnit": "м.п.",
+      "appPrice": 142,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 56,
+      "source_unit": "м.п.",
+      "source_price": 38,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р56",
+        "П56"
+      ],
+      "appId": "Перечень_работ:56",
+      "appName": "Плазменная резка Ст3-1-2мм",
+      "appUnit": "м.п.",
+      "appPrice": 38,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 57,
+      "source_unit": "м.п.",
+      "source_price": 9.5,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р57",
+        "П57"
+      ],
+      "appId": "Перечень_работ:57",
+      "appName": "Плазменная резка Ст3-12мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 9.5,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 58,
+      "source_unit": "м.п.",
+      "source_price": 2.5,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р58",
+        "П58"
+      ],
+      "appId": "Перечень_работ:58",
+      "appName": "Плазменная резка Ст3-1-2мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 2.5,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 59,
+      "source_unit": "м.п.",
+      "source_price": 187,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р59",
+        "П59"
+      ],
+      "appId": "Перечень_работ:59",
+      "appName": "Плазменная резка Ст3-14мм",
+      "appUnit": "м.п.",
+      "appPrice": 187,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 60,
+      "source_unit": "м.п.",
+      "source_price": 15,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р60",
+        "П60"
+      ],
+      "appId": "Перечень_работ:60",
+      "appName": "Плазменная резка Ст3-14мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 15,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 61,
+      "source_unit": "м.п.",
+      "source_price": 215,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р61",
+        "П61"
+      ],
+      "appId": "Перечень_работ:61",
+      "appName": "Плазменная резка Ст3-16мм",
+      "appUnit": "м.п.",
+      "appPrice": 215,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 62,
+      "source_unit": "м.п.",
+      "source_price": 50,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р62",
+        "П62"
+      ],
+      "appId": "Перечень_работ:62",
+      "appName": "Плазменная резка Ст3-16мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 50,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 63,
+      "source_unit": "м.п.",
+      "source_price": 237,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р63",
+        "П63"
+      ],
+      "appId": "Перечень_работ:63",
+      "appName": "Плазменная резка Ст3-18мм",
+      "appUnit": "м.п.",
+      "appPrice": 237,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 64,
+      "source_unit": "м.п.",
+      "source_price": 50,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р64",
+        "П64"
+      ],
+      "appId": "Перечень_работ:64",
+      "appName": "Плазменная резка Ст3-18мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 50,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 65,
+      "source_unit": "м.п.",
+      "source_price": 44,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р65",
+        "П65"
+      ],
+      "appId": "Перечень_работ:65",
+      "appName": "Плазменная резка Ст3-2,5-3мм",
+      "appUnit": "м.п.",
+      "appPrice": 44,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 66,
+      "source_unit": "м.п.",
+      "source_price": 3.5,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р66",
+        "П66"
+      ],
+      "appId": "Перечень_работ:66",
+      "appName": "Плазменная резка Ст3-2,5-3мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 3.5,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 67,
+      "source_unit": "м.п.",
+      "source_price": 265,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р67",
+        "П67"
+      ],
+      "appId": "Перечень_работ:67",
+      "appName": "Плазменная резка Ст3-20мм",
+      "appUnit": "м.п.",
+      "appPrice": 265,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 68,
+      "source_unit": "м.п.",
+      "source_price": 50,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р68",
+        "П68"
+      ],
+      "appId": "Перечень_работ:68",
+      "appName": "Плазменная резка Ст3-20мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 50,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 69,
+      "source_unit": "м.п.",
+      "source_price": 54,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р69",
+        "П69"
+      ],
+      "appId": "Перечень_работ:69",
+      "appName": "Плазменная резка Ст3-4мм",
+      "appUnit": "м.п.",
+      "appPrice": 54,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 70,
+      "source_unit": "м.п.",
+      "source_price": 3.7,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р70",
+        "П70"
+      ],
+      "appId": "Перечень_работ:70",
+      "appName": "Плазменная резка Ст3-4мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 3.7,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 71,
+      "source_unit": "м.п.",
+      "source_price": 66,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р71",
+        "П71"
+      ],
+      "appId": "Перечень_работ:71",
+      "appName": "Плазменная резка Ст3-5мм",
+      "appUnit": "м.п.",
+      "appPrice": 66,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 72,
+      "source_unit": "м.п.",
+      "source_price": 4,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р72",
+        "П72"
+      ],
+      "appId": "Перечень_работ:72",
+      "appName": "Плазменная резка Ст3-5мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 4,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 73,
+      "source_unit": "м.п.",
+      "source_price": 76,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р73",
+        "П73"
+      ],
+      "appId": "Перечень_работ:73",
+      "appName": "Плазменная резка Ст3-6мм",
+      "appUnit": "м.п.",
+      "appPrice": 76,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 74,
+      "source_unit": "м.п.",
+      "source_price": 4.4,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р74",
+        "П74"
+      ],
+      "appId": "Перечень_работ:74",
+      "appName": "Плазменная резка Ст3-6мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 4.4,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 75,
+      "source_unit": "м.п.",
+      "source_price": 92,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р75",
+        "П75"
+      ],
+      "appId": "Перечень_работ:75",
+      "appName": "Плазменная резка Ст3-8мм",
+      "appUnit": "м.п.",
+      "appPrice": 92,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 76,
+      "source_unit": "м.п.",
+      "source_price": 5.8,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р76",
+        "П76"
+      ],
+      "appId": "Перечень_работ:76",
+      "appName": "Плазменная резка Ст3-8мм (Врезка)",
+      "appUnit": "м.п.",
+      "appPrice": 5.8,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 77,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р77"
+      ],
+      "appId": "Перечень_работ:77",
+      "appName": "Подготовка бетонной смеси",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 78,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": 350,
+      "source_output_unit": "кг.",
+      "active_codes": [
+        "Р78"
+      ],
+      "appId": "Перечень_работ:78",
+      "appName": "Подготовка металлоконструкций к нанесению защитного покрытия, герметизация швов",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 79,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": 50,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р79"
+      ],
+      "appId": "Перечень_работ:79",
+      "appName": "Подготовка металлоконструкций к нанесению защитного покрытия, обеспыливание воздухом под давлением, обезжиривание органическими растворителями",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 80,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": 53,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р80"
+      ],
+      "appId": "Перечень_работ:80",
+      "appName": "Подготовка металлоконструкций к нанесению защитного покрытия, фосфатирование поверхности фосфатами (антикоррозийная обработка) 15% раствором ортофосфорной кислоты с водой",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 81,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р81"
+      ],
+      "appId": "Перечень_работ:81",
+      "appName": "Подготовка производственной документации (чертежей для оператора станка) для вальцевания деталей на ЧПУ вальцовом станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 82,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 10,
+      "source_output_unit": "гиб.",
+      "active_codes": [
+        "Р82"
+      ],
+      "appId": "Перечень_работ:82",
+      "appName": "Подготовка производственной документации (чертежей для оператора станка) для гибки деталей на ЧПУ листогибе",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 83,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 80,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р83"
+      ],
+      "appId": "Перечень_работ:83",
+      "appName": "Подготовка чертежей для резки на гидроабразивном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 84,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 90,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р84"
+      ],
+      "appId": "Перечень_работ:84",
+      "appName": "Подготовка чертежей для резки на лазерном ЧПУ станке листовой стали",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 85,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 100,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р85"
+      ],
+      "appId": "Перечень_работ:85",
+      "appName": "Подготовка чертежей для резки на лазерном ЧПУ станке паронита",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 86,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 75,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р86"
+      ],
+      "appId": "Перечень_работ:86",
+      "appName": "Подготовка чертежей для резки на лазерном ЧПУ станке профильного металлопроката",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 87,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 100,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р87"
+      ],
+      "appId": "Перечень_работ:87",
+      "appName": "Подготовка чертежей для резки на лазерном ЧПУ станке резины",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 88,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 30,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р88"
+      ],
+      "appId": "Перечень_работ:88",
+      "appName": "Подготовка чертежей для резки на плазменном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 89,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 80,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р89"
+      ],
+      "appId": "Перечень_работ:89",
+      "appName": "Подготовка чертежей для резки на фрезерном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 91,
+      "source_unit": "м2",
+      "source_price": 500,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р91",
+        "Р91.Ф",
+        "Р91.Б"
+      ],
+      "appId": "Перечень_работ:91",
+      "appName": "Покрытие фанеры эмульсией и гидрофобизирование поверхности бетона",
+      "appUnit": "м2",
+      "appPrice": 500,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 92,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 12,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р92"
+      ],
+      "appId": "Перечень_работ:92",
+      "appName": "Покрытие эпоксидным двухкомпонентным базовым составом",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 93,
+      "source_unit": "м2",
+      "source_price": 1140.5,
+      "source_output": 4,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р93"
+      ],
+      "appId": "Перечень_работ:93",
+      "appName": "Порошковая покраска",
+      "appUnit": "м2",
+      "appPrice": 1140.5,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 94,
+      "source_unit": "н/ч",
+      "source_price": 1250,
+      "source_output": 0.05,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р94"
+      ],
+      "appId": "Перечень_работ:94",
+      "appName": "Проектирование МАФа",
+      "appUnit": "ч/ч",
+      "appPrice": 1250,
+      "unitChanged": true,
+      "outsideActive": false
+    },
+    {
+      "work_id": 95,
+      "source_unit": "н/ч",
+      "source_price": 1991,
+      "source_output": 25,
+      "source_output_unit": "кг.",
+      "active_codes": [
+        "Р95"
+      ],
+      "appId": "Перечень_работ:95",
+      "appName": "Производство (Слесарные и сварочные работы) металлоконструкций",
+      "appUnit": "н/ч",
+      "appPrice": 1991,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 96,
+      "source_unit": "н/ч",
+      "source_price": 2172,
+      "source_output": 10,
+      "source_output_unit": "кг.",
+      "active_codes": [
+        "Р96"
+      ],
+      "appId": "Перечень_работ:96",
+      "appName": "Производство (Слесарные и сварочные работы) металлоконструкций из аустенитной стали AISI-304",
+      "appUnit": "н/ч",
+      "appPrice": 2172,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 97,
+      "source_unit": "ч/ч",
+      "source_price": 860,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р97"
+      ],
+      "appId": "Перечень_работ:97",
+      "appName": "Производство (ч/ч)",
+      "appUnit": "ч/ч",
+      "appPrice": 860,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 98,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р98"
+      ],
+      "appId": "Перечень_работ:98",
+      "appName": "Производство бетонных работ, заливка бетонной смеси в изготовленную опалубку",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 99,
+      "source_unit": "м2",
+      "source_price": 925,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р99"
+      ],
+      "appId": "Перечень_работ:99",
+      "appName": "Производство деревянных конструкций (резка, сборка, шлифовка, фаска)",
+      "appUnit": "м2",
+      "appPrice": 925,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 100,
+      "source_unit": "н/ч",
+      "source_price": 3062,
+      "source_output": 4.5,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р100"
+      ],
+      "appId": "Перечень_работ:100",
+      "appName": "Производство дробеструйных работ (стеклянной дробью фракция 70-100 мкм)",
+      "appUnit": "н/ч",
+      "appPrice": 3062,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 101,
+      "source_unit": "м2",
+      "source_price": 950,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р101"
+      ],
+      "appId": "Перечень_работ:101",
+      "appName": "Производство сборных деревянных конструкций (резка, сборка, шлифовка, оклейка, брашировка)",
+      "appUnit": "м2",
+      "appPrice": 950,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 103,
+      "source_unit": "н/ч",
+      "source_price": 2481,
+      "source_output": 10,
+      "source_output_unit": "лист",
+      "active_codes": [
+        "Р103.P01",
+        "Р103.P02",
+        "Р103.P03",
+        "Р103.P04",
+        "Р103.P05",
+        "Р103.P06",
+        "Р103.P07",
+        "Р103.P08",
+        "Р103.P09",
+        "Р103.P10",
+        "Р103.P41"
+      ],
+      "appId": "Перечень_работ:103",
+      "appName": "Работа ЧПУ оператора при раскрое листового металла",
+      "appUnit": "н/ч",
+      "appPrice": 2481,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 104,
+      "source_unit": "м2",
+      "source_price": 100,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [],
+      "appId": "Перечень_работ:104",
+      "appName": "Разбивка и геодезия по площади (работа с тахеометром на строительной площадке, для позиционирования изделий)",
+      "appUnit": "м2",
+      "appPrice": 100,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 105,
+      "source_unit": "точка",
+      "source_price": 300,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [],
+      "appId": "Перечень_работ:105",
+      "appName": "Разбивка и геодезия по точкам (работа с тахеометром на строительной площадке, для позиционирования изделий)",
+      "appUnit": "точка",
+      "appPrice": 300,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 106,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [],
+      "appId": "Перечень_работ:106",
+      "appName": "Разметка на местности, подготовка площадки к монтажу",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 107,
+      "source_unit": "н/ч",
+      "source_price": 54.3,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р107"
+      ],
+      "appId": "Перечень_работ:107",
+      "appName": "Разопалбука",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 108,
+      "source_unit": "н/ч",
+      "source_price": 2443,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р108"
+      ],
+      "appId": "Перечень_работ:108",
+      "appName": "Разработка и выдача конструкторской документации на изделие",
+      "appUnit": "н/ч",
+      "appPrice": 2443,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 110,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 20,
+      "source_output_unit": "гиб.",
+      "active_codes": [
+        "Р110"
+      ],
+      "appId": "Перечень_работ:110",
+      "appName": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для гибки деталей на ЧПУ листогибе",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 111,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 110,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р111"
+      ],
+      "appId": "Перечень_работ:111",
+      "appName": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для резки на гидроабразивном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 112,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 120,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р112"
+      ],
+      "appId": "Перечень_работ:112",
+      "appName": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для резки на лазерном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 113,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 30,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р113"
+      ],
+      "appId": "Перечень_работ:113",
+      "appName": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для резки на лазерном ЧПУ станке профильного металлопроката",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 114,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 40,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р114"
+      ],
+      "appId": "Перечень_работ:114",
+      "appName": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для резки на плазменном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 115,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 120,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р115"
+      ],
+      "appId": "Перечень_работ:115",
+      "appName": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для резки паронита на лазерном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 116,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 120,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р116"
+      ],
+      "appId": "Перечень_работ:116",
+      "appName": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для резки резины на лазерном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 117,
+      "source_unit": "н/ч",
+      "source_price": 2081,
+      "source_output": 810,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р117"
+      ],
+      "appId": "Перечень_работ:117",
+      "appName": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для резки фанеры на фрезерном ЧПУ станке",
+      "appUnit": "н/ч",
+      "appPrice": 2081,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 118,
+      "source_unit": "м.п.",
+      "source_price": 647.584541062802,
+      "source_output": 8,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р118"
+      ],
+      "appId": "Перечень_работ:118",
+      "appName": "Раскрой 3го класса точности аустенитной стали AISI-304 толщиной 10мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 647.584541062802,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 119,
+      "source_unit": "м.п.",
+      "source_price": 104.8904538341158,
+      "source_output": 34,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р119"
+      ],
+      "appId": "Перечень_работ:119",
+      "appName": "Раскрой 3го класса точности аустенитной стали AISI-304 толщиной 2мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 104.8904538341158,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 120,
+      "source_unit": "м.п.",
+      "source_price": 164.27696078431373,
+      "source_output": 30,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р120"
+      ],
+      "appId": "Перечень_работ:120",
+      "appName": "Раскрой 3го класса точности аустенитной стали AISI-304 толщиной 3мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 164.27696078431373,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 121,
+      "source_unit": "м.п.",
+      "source_price": 223.78964941569282,
+      "source_output": 26,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р121"
+      ],
+      "appId": "Перечень_работ:121",
+      "appName": "Раскрой 3го класса точности аустенитной стали AISI-304 толщиной 4мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 223.78964941569282,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 122,
+      "source_unit": "м.п.",
+      "source_price": 284.30540827147405,
+      "source_output": 22,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р122"
+      ],
+      "appId": "Перечень_работ:122",
+      "appName": "Раскрой 3го класса точности аустенитной стали AISI-304 толщиной 5мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 284.30540827147405,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 123,
+      "source_unit": "м.п.",
+      "source_price": 357.46666666666664,
+      "source_output": 17,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р123"
+      ],
+      "appId": "Перечень_работ:123",
+      "appName": "Раскрой 3го класса точности аустенитной стали AISI-304 толщиной 6мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 357.46666666666664,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 124,
+      "source_unit": "м.п.",
+      "source_price": 501.1214953271028,
+      "source_output": 13,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р124"
+      ],
+      "appId": "Перечень_работ:124",
+      "appName": "Раскрой 3го класса точности аустенитной стали AISI-304 толщиной 8мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 501.1214953271028,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 125,
+      "source_unit": "м.п.",
+      "source_price": 45.45608680908783,
+      "source_output": 40,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р125"
+      ],
+      "appId": "Перечень_работ:125",
+      "appName": "Раскрой 3го класса точности аустенитной стали AISI-304 толщиной до 2мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 45.45608680908783,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 126,
+      "source_unit": "м.п.",
+      "source_price": 1890.448717948718,
+      "source_output": 40,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р126"
+      ],
+      "appId": "Перечень_работ:126",
+      "appName": "Раскрой Ст3 толщиной 30мм на гидроабразивном станке",
+      "appUnit": "м.п.",
+      "appPrice": 1890.448717948718,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 127,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 40,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р127"
+      ],
+      "appId": "Перечень_работ:127",
+      "appName": "Раскрой доски на стационарной циркулярной пиле",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 128,
+      "source_unit": "м.п.",
+      "source_price": 10.23943661971831,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р128.П",
+        "Р128.3D"
+      ],
+      "appId": "Перечень_работ:128",
+      "appName": "Раскрой изопинка на ЧПУ фрезерном станке",
+      "appUnit": "н/ч",
+      "appPrice": 2181,
+      "unitChanged": true,
+      "outsideActive": false
+    },
+    {
+      "work_id": 129,
+      "source_unit": "м.п.",
+      "source_price": 25,
+      "source_output": 10,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р129"
+      ],
+      "appId": "Перечень_работ:129",
+      "appName": "Раскрой листовой стали толщиной  до 2х мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 25,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 130,
+      "source_unit": "м.п.",
+      "source_price": 115.71828358208954,
+      "source_output": 21,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р130"
+      ],
+      "appId": "Перечень_работ:130",
+      "appName": "Раскрой листовой стали толщиной 10мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 115.71828358208954,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 131,
+      "source_unit": "м.п.",
+      "source_price": 142.1776504297994,
+      "source_output": 17,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р131"
+      ],
+      "appId": "Перечень_работ:131",
+      "appName": "Раскрой листовой стали толщиной 12мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 142.1776504297994,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 132,
+      "source_unit": "м.п.",
+      "source_price": 217.06036745406826,
+      "source_output": 11,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р132"
+      ],
+      "appId": "Перечень_работ:132",
+      "appName": "Раскрой листовой стали толщиной 16мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 217.06036745406826,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 133,
+      "source_unit": "м.п.",
+      "source_price": 31.309944472488638,
+      "source_output": 80,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р133"
+      ],
+      "appId": "Перечень_работ:133",
+      "appName": "Раскрой листовой стали толщиной 2мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 31.309944472488638,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 134,
+      "source_unit": "м.п.",
+      "source_price": 37.95318953648462,
+      "source_output": 65,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р134"
+      ],
+      "appId": "Перечень_работ:134",
+      "appName": "Раскрой листовой стали толщиной 3мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 37.95318953648462,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 135,
+      "source_unit": "м.п.",
+      "source_price": 47.43785850860421,
+      "source_output": 52,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р135"
+      ],
+      "appId": "Перечень_работ:135",
+      "appName": "Раскрой листовой стали толщиной 4мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 47.43785850860421,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 136,
+      "source_unit": "м.п.",
+      "source_price": 61.65506958250498,
+      "source_output": 40,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р136"
+      ],
+      "appId": "Перечень_работ:136",
+      "appName": "Раскрой листовой стали толщиной 5мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 61.65506958250498,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 137,
+      "source_unit": "м.п.",
+      "source_price": 71.14998566102668,
+      "source_output": 34,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р137"
+      ],
+      "appId": "Перечень_работ:137",
+      "appName": "Раскрой листовой стали толщиной 6мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 71.14998566102668,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 138,
+      "source_unit": "м.п.",
+      "source_price": 88.22901849217638,
+      "source_output": 26,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р138"
+      ],
+      "appId": "Перечень_работ:138",
+      "appName": "Раскрой листовой стали толщиной 8мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 88.22901849217638,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 139,
+      "source_unit": "кг",
+      "source_price": 20,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [],
+      "appId": "Перечень_работ:139",
+      "appName": "Раскрой металла",
+      "appUnit": "кг",
+      "appPrice": 20,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 140,
+      "source_unit": "м.п.",
+      "source_price": 165.4,
+      "source_output": 5,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р140.1",
+        "Р140.2",
+        "Р140.3",
+        "Р140.4",
+        "Р140.5",
+        "Р140.6",
+        "Р140.8",
+        "Р140.10",
+        "Р140.12",
+        "Р140.16",
+        "Р140.20"
+      ],
+      "appId": "Перечень_работ:140",
+      "appName": "Раскрой металлопроката на ЧПУ лазерном станке",
+      "appUnit": "м.п.",
+      "appPrice": 165.4,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 141,
+      "source_unit": "н/ч",
+      "source_price": 2181,
+      "source_output": 15,
+      "source_output_unit": "м.п.",
+      "active_codes": [],
+      "appId": "Перечень_работ:141",
+      "appName": "Раскрой металлопроката на ЧПУ плазменном станке",
+      "appUnit": "н/ч",
+      "appPrice": 2181,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 142,
+      "source_unit": "м.п.",
+      "source_price": 35.44285714285714,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р142"
+      ],
+      "appId": "Перечень_работ:142",
+      "appName": "Раскрой паронита на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 35.44285714285714,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 143,
+      "source_unit": "н/ч",
+      "source_price": 2181,
+      "source_output": 213,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р143"
+      ],
+      "appId": "Перечень_работ:143",
+      "appName": "Раскрой погонажного деревянного изделия на ЧПУ фрезерном станке",
+      "appUnit": "н/ч",
+      "appPrice": 2181,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 144,
+      "source_unit": "шт.",
+      "source_price": 79.64,
+      "source_output": 0.06,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р144",
+        "Р144.П"
+      ],
+      "appId": "Перечень_работ:144",
+      "appName": "Раскрой профильного металлопроката на стационарной ленточной пиле",
+      "appUnit": "н/ч",
+      "appPrice": 1991,
+      "unitChanged": true,
+      "outsideActive": false
+    },
+    {
+      "work_id": 145,
+      "source_unit": "м.п.",
+      "source_price": 27.566666666666666,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р145"
+      ],
+      "appId": "Перечень_работ:145",
+      "appName": "Раскрой резины на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 27.566666666666666,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 146,
+      "source_unit": "м.п.",
+      "source_price": 25.658823529411766,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р146.3",
+        "Р146.4",
+        "Р146.6",
+        "Р146.9",
+        "Р146.10",
+        "Р146.12",
+        "Р146.15",
+        "Р146.18",
+        "Р146.21",
+        "Р146.27",
+        "Р146.30"
+      ],
+      "appId": "Перечень_работ:146",
+      "appName": "Раскрой фанеры на ЧПУ фрезерном станке",
+      "appUnit": "м.п.",
+      "appPrice": 25.658823529411766,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 147,
+      "source_unit": "н/ч",
+      "source_price": 2181,
+      "source_output": 213,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р147"
+      ],
+      "appId": "Перечень_работ:147",
+      "appName": "Раскрой фанеры на ЧПУ фрезерном станке (ч/ч)",
+      "appUnit": "н/ч",
+      "appPrice": 2181,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 149,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р149"
+      ],
+      "appId": "Перечень_работ:149",
+      "appName": "Сборка деталей",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 150,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 5,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р150"
+      ],
+      "appId": "Перечень_работ:150",
+      "appName": "Сборка кондуктора",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 151,
+      "source_unit": "кг",
+      "source_price": 15,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р151"
+      ],
+      "appId": "Перечень_работ:151",
+      "appName": "Сборка металла",
+      "appUnit": "кг",
+      "appPrice": 15,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 152,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 100,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р152"
+      ],
+      "appId": "Перечень_работ:152",
+      "appName": "Сверление отверстий на стационарном сверлильном станке",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 153,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 20,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р153"
+      ],
+      "appId": "Перечень_работ:153",
+      "appName": "Сверление отверстий стационарным сверлильным станком",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 154,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р154"
+      ],
+      "appId": "Перечень_работ:154",
+      "appName": "Складирование для набора прочности",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 155,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 200,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р155"
+      ],
+      "appId": "Перечень_работ:155",
+      "appName": "Снятие кромок после лазерной резки угловой шлифовальной машиной для подготовки к производству сварных работ",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 156,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 30,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р156"
+      ],
+      "appId": "Перечень_работ:156",
+      "appName": "Снятие кромок после плазменной резки угловой шлифовальной машиной для подготовки к производству сварных работ",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 157,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 12,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р157"
+      ],
+      "appId": "Перечень_работ:157",
+      "appName": "Снятие кромок после резки на ленточной пиле угловой шлифовальной машиной для подготовки к производству сварных работ",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 158,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 320,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р158"
+      ],
+      "appId": "Перечень_работ:158",
+      "appName": "Снятие фаски у фанеры",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 161,
+      "source_unit": "н/ч",
+      "source_price": 1629,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р161"
+      ],
+      "appId": "Перечень_работ:161",
+      "appName": "Упаковка деталей",
+      "appUnit": "н/ч",
+      "appPrice": 1629,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 163,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 67,
+      "source_output_unit": "кг.",
+      "active_codes": [
+        "Р163"
+      ],
+      "appId": "Перечень_работ:163",
+      "appName": "Устранение температурных деформаций после сварочных работ (Рихтование)",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 175,
+      "source_unit": "м3",
+      "source_price": 23000,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [],
+      "appId": "Перечень_работ:175",
+      "appName": "Устройство криволинейных клумб и парапетов (укладка пленки, монтаж опалубки, армирование, бетонирование, затирка роторными машинами, нарезка температурных и ложных швов, герметизация швов)",
+      "appUnit": "м3",
+      "appPrice": 23000,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 177,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р177"
+      ],
+      "appId": "Перечень_работ:177",
+      "appName": "Устройство петель",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 185,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 320,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р185"
+      ],
+      "appId": "Перечень_работ:185",
+      "appName": "Фрезерование (снятие фаски) по длине ручным фрезеровочным станком",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 186,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 210,
+      "source_output_unit": "шт.",
+      "active_codes": [
+        "Р186"
+      ],
+      "appId": "Перечень_работ:186",
+      "appName": "Фрезерование (снятие фаски) по торцу стационарным шлифовальным станком",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 187,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 4,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р187"
+      ],
+      "appId": "Перечень_работ:187",
+      "appName": "Шлифовка поверхности доски",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 188,
+      "source_unit": "н/ч",
+      "source_price": 1810,
+      "source_output": 7.5,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р188"
+      ],
+      "appId": "Перечень_работ:188",
+      "appName": "Шлифовка поверхности фанеры",
+      "appUnit": "н/ч",
+      "appPrice": 1810,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 189,
+      "source_unit": "н/ч",
+      "source_price": 2534,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р189"
+      ],
+      "appId": "Перечень_работ:189",
+      "appName": "Электромонтажные работы",
+      "appUnit": "н/ч",
+      "appPrice": 2534,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 190,
+      "source_unit": "н/ч",
+      "source_price": 3062,
+      "source_output": 6,
+      "source_output_unit": "м2",
+      "active_codes": [
+        "Р190"
+      ],
+      "appId": "Перечень_работ:190",
+      "appName": "Цинкование ПРАНС",
+      "appUnit": "н/ч",
+      "appPrice": 3062,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 191,
+      "source_unit": "м.п.",
+      "source_price": 300,
+      "source_output": 10,
+      "source_output_unit": "м.п.",
+      "active_codes": [
+        "Р191"
+      ],
+      "appId": "Перечень_работ:191",
+      "appName": "Раскрой листовой стали толщиной 20мм на лазерном ЧПУ станке",
+      "appUnit": "м.п.",
+      "appPrice": 300,
+      "unitChanged": false,
+      "outsideActive": false
+    },
+    {
+      "work_id": 192,
+      "source_unit": "н/ч",
+      "source_price": 2381,
+      "source_output": null,
+      "source_output_unit": null,
+      "active_codes": [
+        "Р192"
+      ],
+      "appId": "Перечень_работ:192",
+      "appName": "Гибка на ЧПУ листогибе",
+      "appUnit": "н/ч",
+      "appPrice": 2381,
+      "unitChanged": false,
+      "outsideActive": false
+    }
+  ],
+  "appOnly": [
+    {
+      "id": "Перечень_работ:6",
+      "name": "Вальцовка листового металла",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:7",
+      "name": "Вальцовка металлопроката",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:8",
+      "name": "Выборка и вывоз грунта",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:26",
+      "name": "Лазер вход 10мм (Азия.Трак)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:27",
+      "name": "Лазер вход 16мм (Азия.Трак)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:28",
+      "name": "Лазер вход 5мм (Азия.Трак)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:29",
+      "name": "Лазер вход 8мм (Азия.Трак)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:30",
+      "name": "Лазер рез 10мм (Азия.Трак)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:31",
+      "name": "Лазер рез 16мм (Азия.Трак)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:32",
+      "name": "Лазер рез 5мм (Азия.Трак)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:33",
+      "name": "Лазер рез 8мм (Азия.Трак)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:50",
+      "name": "Отсыпка галькой",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:51",
+      "name": "Отсыпка песка",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:90",
+      "name": "Подрезка брусчатки (тротуарной плитки)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:102",
+      "name": "Проливка основания битумом",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:109",
+      "name": "Разработка управляющей программы (программирование последовательности команд для работы ЧПУ станка) для вальцевания деталей на ЧПУ вальцовом станке",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:148",
+      "name": "Ручная шлифовка кромки",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:159",
+      "name": "Укладка брусчатки (тротуарной плитки)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:160",
+      "name": "Укладка геотекстиля",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:162",
+      "name": "Установка бордюр",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:164",
+      "name": "Устройство асфальтобетонного покрытия",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:165",
+      "name": "Устройство бетонной подготовки (монтаж опалубки, бетонирование)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:166",
+      "name": "Устройство гидроизоляционного слоя (обмазочная)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:167",
+      "name": "Устройство ж/б лестницы по грунту (укладка пленки, монтаж опалубки, армирование, бетонирование, шлифовка поверхности ступеней)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:168",
+      "name": "Устройство ж/б покрытия толщ. ___ мм (монтаж опалубки, укладка пленки, армирование, бетонирование, затирка роторными машинами, нарезка температурных и ложных швов, герметизация швов, снятие фаски)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:169",
+      "name": "Устройство ж/б покрытия толщ. 100 мм (монтаж опалубки, укладка пленки, армирование, бетонирование)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:170",
+      "name": "Устройство ж/б покрытия толщ. 100 мм (монтаж опалубки, укладка пленки, армирование, бетонирование, затирка роторными машинами, нарезка температурных и ложных швов, герметизация швов, снятие фаски)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:171",
+      "name": "Устройство ж/б покрытия толщ. 150 мм (монтаж опалубки, укладка пленки, армирование, бетонирование)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:172",
+      "name": "Устройство ж/б покрытия толщ. 150 мм (монтаж опалубки, укладка пленки, армирование, бетонирование, затирка роторными машинами, нарезка температурных и ложных швов, герметизация швов, снятие фаски)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:173",
+      "name": "Устройство ж/б покрытия толщ. 200 мм (монтаж опалубки, укладка пленки, армирование, бетонирование)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:174",
+      "name": "Устройство ж/б покрытия толщ. 200 мм (монтаж опалубки, укладка пленки, армирование, бетонирование, затирка роторными машинами, нарезка температурных и ложных швов, герметизация швов, снятие фаски)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:176",
+      "name": "Устройство песчаного покрытия",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:178",
+      "name": "Устройство плодородного слоя",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:179",
+      "name": "Устройство покрытия из гальки",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:180",
+      "name": "Устройство резинового покрытия толщиной 3см",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:181",
+      "name": "Устройство скального основания",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:182",
+      "name": "Устройство фигурного холма (бетонные работы, с учетом материала)",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:183",
+      "name": "Устройство цементно-песчаного слоя",
+      "sourceExcluded": true
+    },
+    {
+      "id": "Перечень_работ:184",
+      "name": "Устройство щебеночного основания",
+      "sourceExcluded": true
+    }
+  ],
+  "protectedHashes": {
+    "dist/catalog.js": "1cdf498e56bbbe11b734b9dde2e32eb8100fe0fdb354986847ee07d448d16f7e",
+    "dist/purchases-data.js": "a86ccc59031adbbe764844235cfe5e90987bba3504defa74df4efa3a776f0b5d",
+    "dist/metal-catalog.js": "79a0afeb461ccfcbd49c1d7eeccfc22d96305d6bbc3cf54081d2ed767c09739f",
+    "materialRecords": "24d868dc6e0a7cdf56d45d01afa30b467c1585afd5e3596a1739e9f4b8acad7e"
+  },
+  "bundledReferenceHash": "530515f34ecbfd6b254d18b6319a8c8015f64604dbbed598036337d2b1e71898",
+  "downloadReferenceHash": "530515f34ecbfd6b254d18b6319a8c8015f64604dbbed598036337d2b1e71898"
+}

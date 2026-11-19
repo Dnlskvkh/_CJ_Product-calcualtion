@@ -1,0 +1,11 @@
+{
+  "releaseDate": "2026-11-20",
+  "timezone": "Asia/Vladivostok",
+  "repository": "https://github.com/Dnlskvkh/_CJ_Product-calcualtion",
+  "build": "Calculator-Windows-x64-2026-11-19T16-06-43-366Z",
+  "archive": "Calculator-Windows-x64-2026-11-19T16-06-43-366Z.zip",
+  "archiveBytes": 37029414,
+  "sha256": "c6ba49f704fe31952d6d10524182a11e5dde9fbf2813e7237768b6d95640b6dc",
+  "checks": ["node run-checks.cjs", "node portable-check.cjs outputs/Calculator-Windows-x64-2026-11-19T16-06-43-366Z"],
+  "userDatabaseIncluded": false
+}

@@ -1,0 +1,17 @@
+// Read-only evidence for the grouping proposal; never writes to the application database.
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const {DatabaseSync}=require('node:sqlite');
+const workspace=path.resolve(__dirname,'../..'),source=path.join(workspace,'source-project'),context={};context.window=context;vm.createContext(context);
+for(const file of ['catalog.js','metal-catalog.js'])vm.runInContext(fs.readFileSync(path.join(source,'dist',file),'utf8'),context,{filename:file});
+const materials=context.CATALOG.filter(c=>c.kind==='material');
+const countBy=(items,key)=>Object.entries(items.reduce((a,c)=>{const v=String(key(c)||'').trim();a[v]=(a[v]||0)+1;return a;},{})).sort((a,b)=>b[1]-a[1]);
+const database=JSON.parse(fs.readFileSync(path.join(workspace,'outputs/installed-latest-portable.json'),'utf8')).database;
+const db=new DatabaseSync(database,{readOnly:true}),records=db.prepare('SELECT collection,payload FROM entity_records').all();db.close();
+const draft=records.filter(r=>r.collection==='izdelie-working-drafts-v1').map(r=>JSON.parse(r.payload)).find(v=>v.calculation?.name==='Навес ТПУ');assert.ok(draft);
+const lines=draft.calculation.lines.filter(l=>l.kind==='material');
+const exampleType=l=>/^труба/i.test(l.name)?'Металл / Профильные трубы':/^лист г\/к/i.test(l.name)?'Металл / Листовой металл':/профнастил|профлист/i.test(l.name)?'Металл / Профнастил':/палубная доска/i.test(l.name)?'Древесина и фанера / Доски':/краска для дерева/i.test(l.name)?'ЛКМ и химия / Покрытия для дерева':'Без группы';
+const examples=lines.map(l=>{const c=materials.find(c=>c.id===l.catalogId);return {name:l.name,catalogId:l.catalogId,existingGroup:l.group,sourceCategory:c?.category??null,proposedPath:exampleType(l)};});
+assert.equal(examples.filter(l=>l.proposedPath==='Без группы').length,0,'Example proposal must account for every project material');
+const report={checkedAt:new Date().toISOString(),method:'Built-in catalog plus metal additions; installed SQLite read-only. Counts describe entries, not deduplicated purchasing SKUs. Proposed paths are a project example, not a production classifier.',database,catalog:{entries:context.CATALOG.length,materials:materials.length,categories:countBy(materials,c=>c.category).length,sheets:countBy(materials,c=>c.sheet),categoryCounts:countBy(materials,c=>c.category)},naves:{materials:lines.length,withoutCatalog:lines.filter(l=>!l.catalogId).length,unknownCatalog:lines.filter(l=>l.catalogId&&!materials.some(c=>c.id===l.catalogId)).length,existingGroups:countBy(lines,l=>l.group),proposedCounts:countBy(examples,l=>l.proposedPath),examples},exceptions:{misleadingWorkCategory:materials.filter(c=>c.sheet==='Сопутствующие_материалы'&&c.category==='Работы').map(c=>({id:c.id,name:c.name})),mixedHdpe:{entries:materials.filter(c=>c.category==='HDPE и соединители').length,sheetStock:materials.filter(c=>c.category==='HDPE и соединители'&&c.details?.['Материал']==='Листовой полиэтилен низкого давления ПНД (высокой плотности - HDPE)').length},machine:materials.filter(c=>c.category==='Машины и механизмы').map(c=>({id:c.id,name:c.name,unit:c.unit}))}};
+fs.writeFileSync(path.join(__dirname,'2026-11-19-material-grouping-audit.json'),JSON.stringify(report,null,2));
+console.log(JSON.stringify({materials:report.catalog.materials,categories:report.catalog.categories,sourceSheets:report.catalog.sheets.length,naves:report.naves.materials,manual:report.naves.withoutCatalog,proposedCounts:report.naves.proposedCounts},null,2));

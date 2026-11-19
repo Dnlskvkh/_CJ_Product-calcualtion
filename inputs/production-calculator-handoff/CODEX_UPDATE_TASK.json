@@ -1,0 +1,254 @@
+{
+  "document_type": "codex_implementation_task",
+  "task_title": "Update the existing production cost calculator to the approved operation hierarchy and calculation model",
+  "language": "ru",
+  "target_application": {
+    "name": "Калькулятор стоимости изделий",
+    "known_local_url": "http://127.0.0.1:4189/#/section/2",
+    "known_workspace_path_windows": "C:\\Users\\Danil.S\\Desktop\\Личная папка ДАНИЛ.С\\1. - Рассчеты\\Рассчеты изделий\\Калькулятор стоимости",
+    "source_data_directory_windows": "P:\\Производство\\- Процессы\\Расчет стоимости изделий\\- Сметный калькулятор",
+    "stack_and_repository_details": "Not established in the recovered context. Codex must inspect the actual project before editing; do not assume framework, database, API or entry point.",
+    "implementation_rule": "Update the existing application and preserve its current core and architecture. Do not create a new calculator or substitute an Excel application."
+  },
+  "read_first": [
+    "HANDOFF.json",
+    "CALCULATION_MODEL.json",
+    "reference/Производственная_калькуляция.json",
+    "reference/Производственная_калькуляция.xlsx",
+    "Данные.xlsx",
+    "Согласование_цехов_постов_и_расчётов.xlsx",
+    "Сметный калькулятор СК-V-3.06.xlsx"
+  ],
+  "primary_objective": "Update the existing application without rewriting its core. Introduce the approved separation between operation catalog hierarchy and order calculation hierarchy; support production and installation operations, their variants, resource calculations, financial basis, provenance and no-double-count validation.",
+  "mandatory_preflight": [
+    "Open and inspect the actual workspace path and currently running local app before editing.",
+    "Identify the real repository root, framework, routes, persistence layer, API, data schema and current operation model from source code. Do not guess or invent these details.",
+    "Confirm that the workspace is the existing product cost calculator at the known path/URL. If the path resolves to a different project, stop and report the mismatch instead of editing another calculator.",
+    "Read project instructions (AGENTS.md, README, package scripts, existing migration rules) and preserve established conventions.",
+    "Create a safe checkpoint/branch or use the project-approved backup method before schema/data migration.",
+    "Produce a concise current-state map: existing hierarchy, operation data flow, price persistence, configuration save flow and UI entry points."
+  ],
+  "implementation_scope": {
+    "included": [
+      "Operation catalog hierarchy: catalog -> shop -> post -> work -> variant -> parameters.",
+      "Order calculation hierarchy: order -> product/assembly -> scope -> stage -> shop -> post -> operation line -> cost components.",
+      "Operation creation/editing for manufacturing and site installation.",
+      "Calculation methods for direct rates, productivity, person-hours, crew cycles, machine-hours, CNC operator support, batch setup, unique program preparation, composites and external quotes.",
+      "Order-level total, planned cost, profit and margin calculation with one global 40% markup.",
+      "Provenance colors and preliminary/confirmed statuses.",
+      "Unit synchronization and price source UI behavior.",
+      "No-double-count validation for alternatives, composite parents/children, CNC operators and overlapping employee intervals.",
+      "Import/mapping of the existing calculation model, including format-saw P43 and installation templates.",
+      "Show profitability as incomplete when one or more selected operations have missing planned-cost data."
+    ],
+    "excluded": [
+      "Do not create a new calculator or replace the existing app with Excel.",
+      "Do not rewrite the existing application architecture or switch technology stack.",
+      "Do not bulk-update material or fastener catalogs.",
+      "Do not restore the 39 source records previously excluded by the user.",
+      "Do not add 40% to individual operations or groups.",
+      "Do not activate legacy 20% installation work 49 together with detailed installation."
+    ]
+  },
+  "implementation_phases": [
+    {
+      "phase": 1,
+      "name": "Audit and mapping",
+      "tasks": [
+        "Map current app data structures and UI.",
+        "Compare current app operations with Данные.xlsx.",
+        "Map existing source IDs, names, units, shops and posts.",
+        "Identify app-only operations and preserve them.",
+        "Identify all places where price, formula, unit and note are stored."
+      ],
+      "deliverable": "Current-state report and source-to-app mapping; no destructive changes."
+    },
+    {
+      "phase": 2,
+      "name": "Data model extension",
+      "tasks": [
+        "Add distinct catalog hierarchy and estimate tree using existing architecture.",
+        "Add scope, stage, shop, post, operation instance, variant and cost-component relations.",
+        "Add provenance, status, source formula, source parameters, base price, current price and manual override fields.",
+        "Add alternative group, segment/work package and incompatibility metadata.",
+        "Implement non-destructive migration with stable source IDs."
+      ],
+      "deliverable": "Schema/migration and backward-compatible mapping."
+    },
+    {
+      "phase": 3,
+      "name": "Operation editor and synchronization",
+      "tasks": [
+        "Add operation creation/editing workflow from CALCULATION_MODEL.json.",
+        "Auto-add missing source works to existing matching categories.",
+        "Preserve app-only operations.",
+        "Synchronize units from Данные.xlsx and show the agreed warning until next configuration save.",
+        "Keep source formulas/parameters separate from current price; do not recalculate source Excel formulas in the UI.",
+        "Add base-price reset and individual-price note."
+      ],
+      "deliverable": "Working operation editor and source synchronization."
+    },
+    {
+      "phase": 4,
+      "name": "Calculation engine and hierarchy",
+      "tasks": [
+        "Implement calculation methods and dimensional validation.",
+        "Separate product manufacturing from site installation and construction.",
+        "Add shop/post grouping and aggregate summaries without duplicate sums.",
+        "Implement alternatives and aggregate-vs-detail conflict detection.",
+        "Implement CNC operator support and employee interval union.",
+        "Implement one-time setup and unique-program preparation."
+      ],
+      "deliverable": "Deterministic calculation engine with unit tests."
+    },
+    {
+      "phase": 5,
+      "name": "Format saw and installation",
+      "tasks": [
+        "Implement P43 format-saw calculation card with up to 12 map/batch rows and three thickness bands.",
+        "Implement physical cut length, strokes, sheet count, measured cycle override, setup/feed, operator, helper and optional new map development as separate cost components.",
+        "Import existing M01-M46 installation templates and preserve their cycle/crew/boundary data.",
+        "Keep decking installation separate from manufacturing and foundation works in construction scope."
+      ],
+      "deliverable": "Format saw and installation workflows integrated with the estimate tree."
+    },
+    {
+      "phase": 6,
+      "name": "Verification and handoff",
+      "tasks": [
+        "Run all acceptance tests below.",
+        "Compare representative results with the previous workbook.",
+        "Verify that 40% is applied once at order level.",
+        "Verify no material catalog changes.",
+        "Document migration, changed files, known assumptions and test results."
+      ],
+      "deliverable": "Updated application, migration notes, test report and change log."
+    }
+  ],
+  "critical_rules": [
+    "40% is applied exactly once after summing all selected order lines. No line-level or group-level 40% markup.",
+    "Every operation has a measurable quantity basis, calculation method, financial basis and provenance.",
+    "The source catalog is Данные.xlsx; Сметный калькулятор СК-V-3.06.xlsx is auxiliary only.",
+    "The source unit replaces the app unit. Unit changes do not change price and do not auto-convert existing quantities.",
+    "A numeric zero price or \"по запросу\" means absent price; numeric zero quantity means known zero volume.",
+    "Keep full precision internally; display money to two decimals.",
+    "Manual price edits preserve the base price and show the exact agreed note; reset restores the base value/formula/note.",
+    "CNC operator accompaniment is a separate line per CNC post; rate 2081 RUB/person-hour and post-specific occupancy factors from CALCULATION_MODEL.json.",
+    "Work 112 and 113 are separate unique-program preparation lines and are not included in cutting tariffs.",
+    "Work 139 is inactive; work 144 is the bandsaw operation; package cut uses the 0.8 multiplier and package size.",
+    "Work 35 is preliminary aggregate installation; detailed child operations replace it for the same segment.",
+    "Work 37 is site installation/construction scope, not product manufacturing; remove the 2300 RUB/m2 bundled tariff.",
+    "Work 175 is out of scope; individual formwork production is costed by its actual production operations.",
+    "Work 49 is a legacy 20% installation alternative and must not be active with detailed installation unless explicitly confirmed.",
+    "Do not count the same employee overlapping on multiple CNC posts twice.",
+    "Do not count composite parent plus child operations, alternate routes or duplicate physical segments twice.",
+    "If a selected line has no planned cost basis, mark profitability incomplete; never treat unknown cost as zero.",
+    "Keep source tariff reproduction and planned labor cost formulas separate. Do not mix the 1.1776187 / 1.10 source-tariff factors with the planned cost formula."
+  ],
+  "ui_requirements": {
+    "pricing_panel": {
+      "label": "Ценообразование",
+      "collapsed_by_default": true,
+      "show_source_formula_and_basis": true
+    },
+    "manual_price_note": "Стоимость за ед. указана индивидуально",
+    "reset_base_price_label": "Сброс стоимости к базовым значениям",
+    "unit_change_warning": "Единица измерения изменена на базовую. Требуется проверка стоимости и корректности расчёта"
+  },
+  "acceptance_tests": [
+    {
+      "id": "AT-01",
+      "name": "Global markup",
+      "test": "For line bases 100 and 200 RUB, display line bases 100 and 200; order quote must be 420 RUB. No line may independently receive 40%."
+    },
+    {
+      "id": "AT-02",
+      "name": "Operator support P01",
+      "test": "For 10 machine-hours at 15 min/hour, operator time is 2.5 person-hours and operator amount is 5202.50 RUB at 2081 RUB/person-hour."
+    },
+    {
+      "id": "AT-03",
+      "name": "Operator support P07/P08",
+      "test": "For 10 machine-hours, P07 flat milling at 30 min/hour gives 5 person-hours; P08 3D mode at 40 min/hour gives 6.666666... person-hours."
+    },
+    {
+      "id": "AT-04",
+      "name": "Operator overlap",
+      "test": "If one employee has overlapping intervals on two posts, count the union of intervals once; different employees sum."
+    },
+    {
+      "id": "AT-05",
+      "name": "Unique programming",
+      "test": "For 240 m contour on work 112, calculate 2 person-hours and 4162 RUB; for 90 m contour on work 113, calculate 3 person-hours and 6243 RUB. Repeated identical parts do not multiply unique programming volume."
+    },
+    {
+      "id": "AT-06",
+      "name": "Band saw package",
+      "test": "With single cut rate 79.64 RUB and 4 profiles per package, one package pass rate is 0.8*79.64*4 = 254.848 RUB; different package sizes are separate batches."
+    },
+    {
+      "id": "AT-07",
+      "name": "Work 37 separation",
+      "test": "Deck installation appears under site-installation/construction scope and does not increase product manufacturing subtotal; foundation is construction scope."
+    },
+    {
+      "id": "AT-08",
+      "name": "Work 175 exclusion",
+      "test": "Work 175 bundled tariff is not selectable in active product estimate."
+    },
+    {
+      "id": "AT-09",
+      "name": "Aggregate versus detailed installation",
+      "test": "Work 35 or 34 or legacy work 49 cannot be summed with detailed installation children for the same segment."
+    },
+    {
+      "id": "AT-10",
+      "name": "Unit synchronization",
+      "test": "When source unit changes, update unit, preserve price, show warning until next configuration save and do not auto-convert quantity."
+    },
+    {
+      "id": "AT-11",
+      "name": "Manual price override",
+      "test": "Manual price edit changes current price only; base price/formula remain unchanged; reset restores base and source note."
+    },
+    {
+      "id": "AT-12",
+      "name": "Missing price",
+      "test": "Source price 0 or \"по запросу\" displays as absent, not 0 RUB."
+    },
+    {
+      "id": "AT-13",
+      "name": "Format saw",
+      "test": "Three thickness bands, up to 12 card rows, physical cut length, stroke/sheet counts, cycle override, setup, operator, helper and optional map creation calculate independently; no double operator charge."
+    },
+    {
+      "id": "AT-14",
+      "name": "Provenance colors",
+      "test": "Dialogue-origin values are green, model-assigned values amber, catalog values gray, order inputs editable; model-assigned norms are not shown as confirmed."
+    },
+    {
+      "id": "AT-15",
+      "name": "No material catalog changes",
+      "test": "Existing material and fastener catalog records remain unchanged by this update."
+    },
+    {
+      "id": "AT-16",
+      "name": "Unknown planned cost",
+      "test": "A selected line with a quote price but missing planned cost must not be treated as zero cost; order profit and margin are shown as incomplete."
+    }
+  ],
+  "stop_conditions": [
+    "If the known path or URL opens a different application, stop before editing and report the mismatch.",
+    "If source data is inaccessible, do not fabricate it; continue only with the bundled reference artifacts and report missing source access.",
+    "If the current schema cannot represent the new hierarchy without destructive migration, stop and propose a migration plan before applying it.",
+    "If an operation has no reliable unit/productivity/rate, mark it missing or preliminary; do not silently set a zero or invented rate."
+  ],
+  "required_deliverables": [
+    "Updated existing application.",
+    "Non-destructive data migration or mapping script.",
+    "Updated operation and calculation schema documentation.",
+    "Automated tests for the acceptance cases.",
+    "A concise change log with changed files and migrations.",
+    "A report of unresolved preliminary norms and missing source data."
+  ]
+}

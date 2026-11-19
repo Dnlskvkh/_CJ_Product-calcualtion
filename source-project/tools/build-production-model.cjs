@@ -1,0 +1,40 @@
+// Generate read-only reference data; never modify the existing material/work catalog.
+const fs=require('node:fs'),path=require('node:path');
+const input=path.resolve(__dirname,'../../inputs/production-calculator-handoff'),read=f=>JSON.parse(fs.readFileSync(path.join(input,f),'utf8'));
+const model=read('CALCULATION_MODEL.json'),base=read('reference/Производственная_калькуляция.json');
+const cell=(sheet,address)=>{const c=base.reference_schedules[sheet]?.cells[address];return c?.value??c?.base_value??null};
+const scope=op=>/^П\d/.test(op.code)||/подряд/i.test(op.name)?'external_subcontract':op.kind==='purchase'?'procurement_materials':op.shop==='Стройка'?'construction':op.post==='P31'||op.shop==='Монтажная группа'||/^М\d|^НАСТ|^ОГР/.test(op.code)?'site_installation':op.shop==='Проектирование'?'product_design':op.post==='P29'?'packaging':op.shop==='Сборочный'&&op.post==='P28'?'inhouse_assembly_and_finishing':'product_manufacturing';
+const operations=base.operations.map(op=>{
+ const template=model.existing_installation_operation_templates.find(x=>x.code===op.code),operator=op.kind==='operator',program=[112,113].includes(op.source_id),p=op.parameters||{},source=base.source_id_mapping.find(x=>x.work_id===op.source_id);
+ const origin=operator||program?'dialogue':template||Object.values(p).some(x=>x.origin==='model')?'model':'catalog';
+ const method=operator?'operator_support':program?'unique_program_prep':template?'crew_cycle':op.kind==='kit'?'composite':scope(op)==='external_subcontract'?'external_quote':'direct_unit_rate';
+ const d={id:'production-'+op.code,code:op.code,source_work_id:op.source_id??null,source_record:op.source_record??null,source_name:op.name,source_unit:source?.source_unit??op.source_original_unit??op.unit,source_original_tariff:op.source_original_tariff??null,name:op.name,scope:template?.scope||scope(op),stage:template?.stage||(operator?'machining':program?'preparation':scope(op)==='site_installation'?'installation':scope(op)==='product_design'?'engineering':'machining'),shop_id:op.shop,post_id:op.post||null,unit:op.unit,quantity_basis:op.quantity_basis,financial_basis:op.financial_basis,calculation_method:method,resource_type:operator?'operator_support':op.kind==='machine'?'machine':op.kind==='labor'?'labor':'consumable',origin,status:op.source_id===49?'inactive':origin==='model'||[35,144].includes(op.source_id)?'preliminary':'needs_review',pricing:{base_unit_price:op.unit_rate_before_order_markup_rub||null,current_unit_price:op.unit_rate_before_order_markup_rub||null,manual_override:false,source_formula:p.working_unit_rate?.formula_excel||template?.base_unit_price_formula||'',source_parameters:p,formula_note:op.financial_basis,note:op.financial_basis},cost_model:{unit_cost:op.planned_unit_cost_rub??null},incompatible_in_same_work_package:op.incompatible_in_same_work_package||[],parameters:p,market_evidence_refs:op.technical_reference||[],...(template?{cycle:{workers:template.crew_size_people,minutes_per_unit:template.cycle_minutes_per_unit,origin:'model'},operation_boundary:template.operation_boundary}:{}),...(program?{productivity:{value:op.source_id===112?120:30,unit:op.unit,period:'hour',basis:'person',origin:'dialogue'}}:{})};
+ if(template){d.pricing.hourly_rate=cell('Монтаж','H'+template.source_row);d.pricing.consumables_per_unit=template.consumables_rub_per_unit;d.cost_model.labor_cost_per_person_hour=p.cost_per_person_hour?.value??null;d.cost_model.consumables_per_unit=template.consumables_rub_per_unit;}
+ if(program)d.pricing.hourly_rate=2081;
+ if(op.source_id===144){d.origin='dialogue';d.status='preliminary';d.pricing.base_unit_price=d.pricing.current_unit_price=79.64;d.quantity_basis='Число одиночных резов или проходов пакета';}
+ // User clarified 20.11.2026: 4 mm takes two 3 mm passes; preserve the original source snapshot.
+ if(op.code==='Р146.4'){
+  d.parameters=structuredClone(p);d.parameters.output_per_hour={value:135,origin:'dialogue',note:'270 м прохода/ч; 4 мм = 2 прохода с шагом 3 мм'};
+  for(const key of ['machine_hours_per_unit','working_unit_rate','unit_planned_cost'])d.parameters[key].value*=2;
+  d.pricing.base_unit_price*=2;d.pricing.current_unit_price*=2;d.cost_model.unit_cost*=2;
+  d.quantity_basis='На метр готового контура 2 прохода. 270 м прохода/ч. УП №117 отдельно, №103 за плоский раскрой.';
+  d.financial_basis+='; уточнение пользователя 20.11.2026: 4 мм режется за 2 прохода по 3 мм';d.pricing.formula_note=d.pricing.note=d.financial_basis;
+ }
+ if(op.kind==='kit'){const reference=model.existing_composite_templates.find(t=>t.source_number===op.source_id);d.reference_components=reference?.children||[];if(op.component_bill_rows){const [first,last]=op.component_bill_rows,sheet=op.component_sheet||'Комплексы';d.reference_components=Array.from({length:last-first+1},(_,index)=>{const row=first+index;return {name:cell(sheet,'C'+row)||'Ресурс',unit:cell(sheet,'D'+row),quantity:cell(sheet,'E'+row),unit_rate:cell(sheet,'F'+row),unit_cost:cell(sheet,'G'+row),financial_basis:cell(sheet,'J'+row)||'',source_sheet:sheet,source_row:row};});}}
+ if(operator){d.pricing.hourly_rate=2081;d.origin='dialogue';d.status='needs_review';}
+ if(d.pricing.hourly_rate!==undefined)d.pricing.base_hourly_rate=d.pricing.hourly_rate;
+ d.resource_costing=true;
+ return d;
+});
+const woodTrimming=structuredClone(operations.find(d=>d.code==='М09'));
+Object.assign(woodTrimming,{id:'production-wood-board-trimming',code:'ДР.ТОРЦ',scope:'product_manufacturing',stage:'machining',shop_id:'Древообработка',post_id:'P44',source_definition_id:'production-М09'});
+woodTrimming.financial_basis+='; та же операция применяется в древообработке по уточнению пользователя 19.11.2026';
+operations.push(woodTrimming);
+const panelSaw={bands:model.panel_saw_43_detail.thickness_bands.map((band,i)=>({...band,forward:cell('Форматник','C'+(24+i)),backward:cell('Форматник','D'+(24+i)),position_seconds:cell('Форматник','E'+(24+i)),stroke_m:cell('Форматник','F'+(24+i))})),setup_minutes:cell('Форматник','B33'),sheet_minutes:cell('Форматник','B34'),meters_per_sheet:cell('Форматник','B37'),kerf_mm:3,machine_rate:cell('Форматник','B49'),setup_machine_rate:cell('Форматник','B50'),blade_per_m:cell('Форматник','B48'),operator_rate:cell('Форматник','B51'),helper_rate:cell('Форматник','B52'),map_rate:cell('Форматник','B53'),operator_cost:cell('Экономика','C25'),helper_cost:cell('Экономика','C25'),origin:'model',status:'preliminary'};
+panelSaw.helper_cost=base.operations.find(op=>op.code==='ФРС.ПОМ').planned_unit_cost_rub;
+operations.push({id:'panel-saw-card',code:'ФРС.КАРТА-ЗАКАЗА',source_work_id:null,name:'Форматный раскрой по карте',scope:'product_manufacturing',stage:'machining',shop_id:'Древообработка',post_id:'P43',unit:'карта',quantity_basis:'Фактические прямые пропилы; общая кромка считается один раз',financial_basis:'Вложенная калькуляция / Форматник',calculation_method:'panel_saw',resource_type:'machine',origin:'model',status:'preliminary',resource_costing:true,pricing:{base_unit_price:null,current_unit_price:null,source_parameters:{}},cost_model:{unit_cost:null}});
+const data={version:1,source:'Вложенный снимок 19.11.2026; актуальный Данные.xlsx недоступен',operations,sourceMapping:base.source_id_mapping,outsideActive:base.excluded_work_ids,installationTemplates:model.existing_installation_operation_templates,composites:model.existing_composite_templates,deck:model.deck_installation_card_reference,panelSaw,operatorMinutes:model.cnc_operator_support.minutes_per_machine_hour,marketEvidence:base.market_evidence,comparisons:base.price_comparisons};
+data.postNames=JSON.parse(fs.readFileSync(path.join(__dirname,'production-post-names.json'),'utf8')).names;
+data.postNames.P44='Торцевание доски';
+fs.writeFileSync(path.resolve(__dirname,'../dist/production-catalog.js'),'(function(root){const data='+JSON.stringify(data)+';root.PRODUCTION_CATALOG=data;if(typeof module!=="undefined")module.exports=data;})(typeof window!=="undefined"?window:globalThis);\n');
+console.log('Generated production catalog:',operations.length,'variants,',data.installationTemplates.length,'installation templates');

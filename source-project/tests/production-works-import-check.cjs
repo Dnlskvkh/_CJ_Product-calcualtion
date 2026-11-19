@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),{classifyWorkshop,moveWorkLine,reorderWorkLine,normHours}=require('../dist/production-work-core.js');
+assert.equal(classifyWorkshop({name:'Гибка на ЧПУ листогибе',details:{'Тип работ':'Станок'}}).workshop,'ЧПУ цех');
+assert.equal(classifyWorkshop({name:'Производство сварочных работ',details:{'Тип работ':'Обработка'}}).workshop,'Металлоцех');
+assert.equal(classifyWorkshop({name:'Порошковая покраска',details:{'Тип работ':'Покрытия'}}).workshop,'Лакокрасочный');
+assert.equal(classifyWorkshop({name:'Монтаж подрядчика',details:{'Тип работ':'Подрядчик'}}).workshop,'Подрядные');
+const lines=[{id:'a',kind:'work',workshop:'ЧПУ цех',productionOrder:0},{id:'b',kind:'work',workshop:'ЧПУ цех',productionOrder:1}];assert.equal(moveWorkLine(lines,'b',-1),true);assert.equal(lines[0].productionOrder,1);assert.equal(lines[1].productionOrder,0);
+const dragLines=[{id:'a',kind:'work',workshop:'ЧПУ цех',productionOrder:0},{id:'b',kind:'work',workshop:'ЧПУ цех',productionOrder:1},{id:'m',kind:'work',workshop:'Металлоцех',productionOrder:0}];assert.equal(reorderWorkLine(dragLines,'b','a'),true);assert.deepEqual(dragLines.filter(x=>x.workshop==='ЧПУ цех').sort((a,b)=>a.productionOrder-b.productionOrder).map(x=>x.id),['b','a']);assert.equal(reorderWorkLine(dragLines,'b','m'),false);
+assert.equal(normHours({productivityStatus:'approved',physicalQuantity:18,physicalUnit:'м2',productivity:4.5,productivityUnit:'м2'}).value,4);
+assert.equal(normHours({productivityStatus:'conflict',physicalQuantity:18,physicalUnit:'м2',productivity:4.5,productivityUnit:'м2'}).enabled,false);
+console.log('Production works core: workshop classification, ordering and norm-hour guard passed.');

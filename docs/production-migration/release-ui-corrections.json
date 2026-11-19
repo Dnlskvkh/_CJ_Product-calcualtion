@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-19",
+  "archive": "C:\\Users\\Danil.S\\Documents\\ChatGPT\\_CJ_Product-calcualtion\\source-project\\outputs\\Calculator-Windows-x64-2026-11-19T07-18-43-132Z.zip",
+  "bytes": 37006316,
+  "sha256": "0f923e702a57d14cde6e182faf717cc217be3df5d2df7cf3581a0d123267fbb1",
+  "pwa": "094ed43e21606edb",
+  "tests": "node run-checks.cjs: passed; node build-portable.cjs: passed, including portable/API/SQLite checks",
+  "browser": "1440x1000 and 390x844; named shop/post hierarchy, zinc 8 m2 = 3147.26 RUB, inline quantity recalculation, panel saw ordinary catalog selection and fixed norms",
+  "screenshots": [
+    "../docs/production-migration/ui-corrections-preview.jpg",
+    "../docs/production-migration/ui-corrections-narrow.jpg"
+  ],
+  "limits": [
+    "Independent reviewer failed due service credit limit; implementation self-reviewed and regression tested.",
+    "Unchanged React Flow bundle reused because esbuild unavailable.",
+    "Installed app and archived records not overwritten.",
+    "Existing migrated lines require explicit original-method preview/application; incompatible quantity is cleared."
+  ]
+}

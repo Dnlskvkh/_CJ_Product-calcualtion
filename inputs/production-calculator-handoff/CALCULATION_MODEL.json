@@ -1,0 +1,4080 @@
+{
+  "document_type": "calculation_model_specification",
+  "project": "Пром-дизайн",
+  "version_date": "2026-11-19",
+  "language": "ru",
+  "core_principle": "Keep the operation catalog hierarchy separate from the order calculation tree. The catalog classifies reusable operations; the estimate tree places selected operation instances into a specific product, project scope, stage and cost group.",
+  "hierarchies": {
+    "operation_catalog": [
+      "catalog",
+      "shop",
+      "post",
+      "work",
+      "variant",
+      "parameters"
+    ],
+    "order_calculation": [
+      "order",
+      "product_or_assembly",
+      "scope",
+      "stage",
+      "shop",
+      "post",
+      "operation_line",
+      "cost_components"
+    ],
+    "scope_types": [
+      {
+        "id": "product_design",
+        "label": "Design and engineering",
+        "included_in_product_total": true
+      },
+      {
+        "id": "product_manufacturing",
+        "label": "In-house manufacturing",
+        "included_in_product_total": true
+      },
+      {
+        "id": "inhouse_assembly_and_finishing",
+        "label": "In-house assembly and finishing",
+        "included_in_product_total": true
+      },
+      {
+        "id": "packaging",
+        "label": "Packaging",
+        "included_in_product_total": true
+      },
+      {
+        "id": "site_installation",
+        "label": "Site installation",
+        "included_in_product_manufacturing_total": false,
+        "included_in_project_total_when_selected": true
+      },
+      {
+        "id": "construction",
+        "label": "Construction and site preparation",
+        "included_in_product_manufacturing_total": false,
+        "included_in_project_total_when_selected": true
+      },
+      {
+        "id": "external_subcontract",
+        "label": "External subcontracting",
+        "included_in_product_total_when_selected": true,
+        "requires_supplier_cost_basis": true
+      },
+      {
+        "id": "procurement_materials",
+        "label": "Materials and purchased items",
+        "catalog_update_in_this_task": false
+      }
+    ]
+  },
+  "grouping_rules": [
+    "The primary estimate view groups by scope, then product/assembly, stage, shop, post and operation.",
+    "The same line items may be summarized by product, stage, shop or post, but every summary must be derived from the same underlying line items and must not create duplicate amounts.",
+    "A composite/bundle is a reusable recipe of child operations/resources. Its displayed parent total equals the sum of children; the parent total is not added again when children are present.",
+    "For the same physical scope and segment, select either a composite tariff or its detailed children, never both.",
+    "Alternative machine routes, thickness variants, manual/machine methods and aggregate/detailed installation representations must be mutually exclusive for the same work package and physical segment.",
+    "Use a segment_id/work_package_id to distinguish different physical parts or site areas. Blank segment IDs belong to the same default segment and are checked for overlap.",
+    "Site installation and construction must remain separate from product manufacturing, even when linked to the same order or product."
+  ],
+  "operation_entity_schema": {
+    "required_fields": [
+      "id",
+      "name",
+      "scope",
+      "stage",
+      "shop_id",
+      "post_id",
+      "unit",
+      "calculation_method",
+      "quantity_basis",
+      "financial_basis",
+      "origin",
+      "status"
+    ],
+    "fields": {
+      "id": "Stable internal identifier. Preserve source work ID when present; app-only operations get an internal ID and must not receive a fabricated source ID.",
+      "source_work_id": "Nullable reference to the source work number in Данные.xlsx.",
+      "code": "Human-readable source or internal operation code.",
+      "name": "Display name; source name remains separately stored when customized.",
+      "description": "What physical work is performed.",
+      "scope": "product_design | product_manufacturing | inhouse_assembly_and_finishing | packaging | site_installation | construction | external_subcontract.",
+      "stage": "Engineering/preparation/machining/manual processing/assembly/finishing/packaging/logistics/installation/construction.",
+      "shop_id": "Department/workshop reference.",
+      "post_id": "Work center/post reference; nullable only for genuinely non-post work.",
+      "resource_type": "labor | machine | operator_support | consumable | purchased_item | equipment_rental | subcontract | fixed_setup.",
+      "unit": "Authoritative unit from Данные.xlsx for source operations; explicit unit for app-only operations.",
+      "quantity_basis": "Physical measure and its boundary: area, length, contour length, cut, hole, piece, set, person-hour, machine-hour, sheet, trip, etc.",
+      "calculation_method": "direct_unit_rate | output_per_hour | crew_cycle | person_hours | machine_hours | operator_support | setup_per_batch | unique_program_prep | composite | external_quote | manual.",
+      "productivity": {
+        "value": "Numeric or null",
+        "unit": "Output unit",
+        "period": "hour",
+        "basis": "person | crew | machine",
+        "origin": "dialogue | model | catalog"
+      },
+      "cycle": {
+        "workers": "Number of workers",
+        "minutes_per_unit": "Cycle duration",
+        "origin": "dialogue | model | catalog"
+      },
+      "pricing": {
+        "base_unit_price": "Source/base rate",
+        "current_unit_price": "Current editable rate",
+        "manual_override": "Boolean",
+        "source_formula": "Stored source formula text; not recalculated by UI",
+        "source_parameters": "Stored source formula inputs",
+        "formula_note": "Static explanatory text"
+      },
+      "cost_model": {
+        "labor_cost_per_person_hour": "Cost basis",
+        "machine_cost_per_machine_hour": "Cost basis",
+        "consumables_per_unit": "Cost basis",
+        "purchased_cost_per_unit": "Cost basis",
+        "rental_cost_per_hour": "Cost basis",
+        "fixed_setup_cost_per_batch": "Cost basis"
+      },
+      "quantity_rule": "Input, calculated expression, or linked measurement; preserve full precision.",
+      "financial_basis": "Human-readable resource and pricing explanation.",
+      "market_evidence_refs": "References to comparable external price evidence, with comparability notes.",
+      "alternative_group_id": "Mutually exclusive route/variant group, nullable.",
+      "incompatible_in_same_work_package": "List of operation IDs or codes that cannot be selected with this line for the same segment.",
+      "origin": "dialogue | model | catalog | input.",
+      "status": "confirmed | preliminary | missing | needs_review | inactive | out_of_scope.",
+      "effective_from": "Optional date/version for rate changes.",
+      "audit": "Who/when changed source data, base price, current price, productivity or status."
+    }
+  },
+  "new_operation_entry_workflow": [
+    {
+      "step": 1,
+      "action": "Classify scope",
+      "rule": "Decide whether the operation belongs to product design, in-house manufacturing, in-house assembly/finishing, site installation, construction or external subcontracting."
+    },
+    {
+      "step": 2,
+      "action": "Search for an existing operation",
+      "rule": "Check source ID, name synonyms, shop, post, unit and physical boundary. Reuse an existing operation or add a variant if only a parameter differs; do not create duplicates."
+    },
+    {
+      "step": 3,
+      "action": "Define atomic work boundary",
+      "rule": "One operation must represent one physical action with one measurable output and one cost driver. If the description contains multiple independent actions, decompose it into atomic operations."
+    },
+    {
+      "step": 4,
+      "action": "Assign hierarchy",
+      "rule": "Place it under an existing shop and post whenever possible. New categories/posts require explicit evidence; missing source work is added to matching existing categories automatically."
+    },
+    {
+      "step": 5,
+      "action": "Select unit and quantity driver",
+      "rule": "Use the source unit. Define exactly what is measured and what is included. No implicit unit conversion; require an explicit conversion coefficient when dimensions differ."
+    },
+    {
+      "step": 6,
+      "action": "Choose calculation method",
+      "rule": "Select direct rate, output/hour, crew cycle, person-hours, machine-hours, operator support, fixed batch setup, unique program preparation, composite or external quote."
+    },
+    {
+      "step": 7,
+      "action": "Build financial basis",
+      "rule": "Separate labor, machine, operator, consumables, purchased resources, equipment rental and subcontract costs. Identify which resources are already included elsewhere to avoid double counting."
+    },
+    {
+      "step": 8,
+      "action": "Run market comparison",
+      "rule": "Compare like-for-like operation, material, thickness, geometry, unit, batch size, setup, preparation and included resources. Competitor prices are benchmarks, not automatic internal rates."
+    },
+    {
+      "step": 9,
+      "action": "Record provenance and confidence",
+      "rule": "Tag every value as dialogue, catalog, model or input; mark model-assigned norms as preliminary until measured or confirmed."
+    },
+    {
+      "step": 10,
+      "action": "Validate and publish",
+      "rule": "Check units, formula dimensions, duplicate scope, alternatives, cost components, price/cost separation and order-level markup before activating the operation."
+    }
+  ],
+  "calculation_methods": {
+    "direct_unit_rate": {
+      "formula": "line_base_amount = quantity * current_unit_price",
+      "use_when": "The source or approved tariff already defines a price per physical unit."
+    },
+    "output_per_hour": {
+      "formula": "person_or_crew_hours = quantity / output_per_hour; labor_amount = hours * labor_rate",
+      "requirement": "Productivity basis must explicitly state person or crew."
+    },
+    "crew_cycle": {
+      "formula": "person_hours = quantity * workers * cycle_minutes / 60; labor_amount = person_hours * labor_rate",
+      "requirement": "Cycle duration applies to one output unit and crew size is explicit."
+    },
+    "person_hours": {
+      "formula": "labor_amount = entered_person_hours * labor_rate",
+      "requirement": "Use sum of time of all workers, not elapsed crew time."
+    },
+    "machine_hours": {
+      "formula": "machine_hours = quantity / machine_output_per_hour OR explicit_cycle_time; machine_cost = machine_hours * machine_rate",
+      "requirement": "Machine rate excludes separately calculated operator support."
+    },
+    "operator_support": {
+      "formula": "operator_person_hours = machine_hours * operator_minutes_per_machine_hour / 60; operator_amount = operator_person_hours * operator_rate",
+      "requirement": "Separate line per CNC post; resolve same-employee overlapping intervals by interval union."
+    },
+    "setup_per_batch": {
+      "formula": "setup_amount = setup_hours_per_batch * applicable_rate",
+      "requirement": "Charge once per actual batch, not once per unit."
+    },
+    "unique_program_prep": {
+      "formula": "program_hours = unique_contour_length / programming_output_per_hour; program_amount = program_hours * programming_person_hour_rate",
+      "requirement": "Charge once per unique program/contour set, not per repeated physical copy."
+    },
+    "composite": {
+      "formula": "bundle_amount = sum(child_quantity * child_unit_rate)",
+      "requirement": "Parent is a non-additive display total when child rows are included."
+    },
+    "external_quote": {
+      "formula": "external_amount = supplier_quote_or_quantity * supplier_rate",
+      "requirement": "Do not add in-house machine and operator costs for work performed by an external supplier."
+    }
+  },
+  "order_financial_rules": {
+    "line_base_amount": "quantity * effective_unit_price",
+    "pre_markup_order_basis": "sum(selected_line_base_amounts)",
+    "order_markup": {
+      "value": 0.4,
+      "origin": "dialogue",
+      "formula": "applied once after all selected lines and bundles are consolidated"
+    },
+    "order_quote": "round(pre_markup_order_basis * 1.40, 2)",
+    "planned_order_cost": "sum(selected_line_planned_costs)",
+    "profit": "order_quote - planned_order_cost",
+    "margin": "profit / order_quote",
+    "precision": "Store full precision; display monetary values to 2 decimals.",
+    "no_per_line_markup": true,
+    "missing_cost_handling": "If any selected line has no planned cost basis, mark order cost/profit/margin as incomplete; never silently treat unknown cost as zero."
+  },
+  "no_double_count_rules": [
+    "Do not select an aggregate operation and its detailed child operations for the same scope.",
+    "Do not select two alternative machine routes for the same physical segment.",
+    "Do not count CNC operator support inside machine rate and again as a separate operator line.",
+    "Do not count one employee overlapping on multiple posts twice.",
+    "Do not charge unique drawings/programs once per repeated part when one prepared set is reused.",
+    "Do not count setup once per unit when the setup applies to a batch.",
+    "Do not apply height/winter multipliers to equipment rental, machine cost, materials, purchased items or subcontracting; the current model applies them only to eligible labor.",
+    "Do not add the composite parent total to the sum of its child operations."
+  ],
+  "provenance_and_ui": {
+    "origin_values": {
+      "dialogue": {
+        "meaning": "User-confirmed in conversation",
+        "color": "green"
+      },
+      "model": {
+        "meaning": "Assistant/engineering assignment; preliminary until measured",
+        "color": "amber"
+      },
+      "catalog": {
+        "meaning": "Existing source catalog value",
+        "color": "gray"
+      },
+      "input": {
+        "meaning": "Order-specific user input",
+        "color": "editable_input"
+      }
+    },
+    "pricing_panel": {
+      "label": "Ценообразование",
+      "collapsed_by_default": true,
+      "show": [
+        "source note",
+        "source formula text",
+        "substituted formula explanation",
+        "source parameters",
+        "base price",
+        "current price"
+      ]
+    },
+    "manual_price_note": "Стоимость за ед. указана индивидуально",
+    "reset_base_price_label": "Сброс стоимости к базовым значениям",
+    "unit_change_warning": "Единица измерения изменена на базовую. Требуется проверка стоимости и корректности расчёта",
+    "unit_change_rule": "Update unit from primary source, keep price unchanged, show warning until next configuration save; do not auto-convert quantities.",
+    "missing_price_rule": "Price numeric zero and text \"по запросу\" are treated as absent values, not as free operations.",
+    "quantity_zero_rule": "An empty quantity is not entered; numeric 0 is a known zero quantity.",
+    "formula_rule": "Store source formula and parameters separately; show the original formula text and explanatory substitution without recalculating the original Excel formula in the UI.",
+    "precision_rule": "Full internal precision; 2 decimals in display."
+  },
+  "cnc_operator_support": {
+    "source_work_id": 103,
+    "rate_rub_per_person_hour": 2081,
+    "separate_operation_per_post": true,
+    "minutes_per_machine_hour": {
+      "P01": 15,
+      "P02": 15,
+      "P03": 15,
+      "P04": 15,
+      "P05": 15,
+      "P06": 15,
+      "P07": 30,
+      "P08_flat": 30,
+      "P08_3d": 40,
+      "P09": 60,
+      "P10": 60,
+      "P41": 15
+    },
+    "overlap_handling": "Union overlapping intervals per employee; sum different employees.",
+    "source_original_tariff_note": "Previous calculation artifact retains 2481 RUB as source_original_tariff metadata for work 103, while the user-confirmed working operator rate used in the calculation is 2081 RUB/person-hour. Keep source metadata and effective working rate in separate fields; do not conflate them."
+  },
+  "program_preparation": {
+    "separate_from_machine_cutting": true,
+    "charge_basis": "unique contour length / preparation productivity",
+    "work_112": {
+      "code": "Р112",
+      "post": "P02",
+      "unit": "м контура",
+      "productivity_m_per_hour": 120,
+      "labor_rate_rub_per_person_hour": 2081
+    },
+    "work_113": {
+      "code": "Р113",
+      "post": "P03",
+      "unit": "м контура",
+      "productivity_m_per_hour": 30,
+      "labor_rate_rub_per_person_hour": 2081
+    },
+    "repeat_quantity_multiplier": 1,
+    "note": "Only genuinely unique program sets increase preparation quantity."
+  },
+  "band_saw_144": {
+    "source_work_id": 144,
+    "post": "P23",
+    "shop": "Металлоцех",
+    "temporary_productivity_cuts_per_hour": 25,
+    "single_cut_rate_rub": 79.64,
+    "package_control": "checkbox",
+    "package_formula": "0.8 * single_cut_rate_rub * profiles_per_package",
+    "package_size_must_be_integer_and_at_least": 2,
+    "different_package_sizes": "Calculate as separate batches.",
+    "excluded_work_id": 139
+  },
+  "panel_saw_43": {
+    "post": "P43",
+    "shop": "Древообработка",
+    "sheet": "Форматник",
+    "input_unit": "м реального прямого пропила",
+    "codes": [
+      "ФРС.1",
+      "ФРС.2",
+      "ФРС.3",
+      "ФРС.ПЗ",
+      "ФРС.ОП",
+      "ФРС.ПОМ",
+      "ФРС.КАРТА"
+    ],
+    "batches": "12 строк карты, толщина 3–30 мм по факту, чистый рез по одному слою",
+    "kerf_mm": 3,
+    "pricing": "Ресурс станка и пил по метражу и рабочему времени, наладка и листы, полное время станочника, отдельно вспомогательный труд и разработка новой карты по потребности. 40% только в итоге всего заказа.",
+    "cycle_hours": "length_m/(60*forward_m_per_min) + length_m/(60*return_m_per_min) + strokes*position_seconds/3600",
+    "override": "Чистое время цикла заменяет формулу. Измерение исключает наладку и подачу листа.",
+    "market_ids": [
+      "ФР1",
+      "ФР2",
+      "ФР3",
+      "ФР4",
+      "ФР5",
+      "ФР6",
+      "ФР7",
+      "ФР8"
+    ],
+    "rule_origin": "model",
+    "payroll_reference": "Данные.xlsx / Перечень_работ!F127",
+    "rates_by_thickness": [
+      {
+        "band": "3–6 мм",
+        "output_m_per_hour": 72.48322147651007,
+        "machine_and_blades_rub_per_m": 4.348810703703704,
+        "operator_rub_per_m": 24.971296296296295,
+        "cut_before_setup_and_order_markup_rub_per_m": 29.320107
+      },
+      {
+        "band": "свыше 6 до 18 мм",
+        "output_m_per_hour": 61.016949152542374,
+        "machine_and_blades_rub_per_m": 4.733822111111111,
+        "operator_rub_per_m": 29.663888888888888,
+        "cut_before_setup_and_order_markup_rub_per_m": 34.397711
+      },
+      {
+        "band": "свыше 18 до 30 мм",
+        "output_m_per_hour": 48.97959183673469,
+        "machine_and_blades_rub_per_m": 5.331964833333334,
+        "operator_rub_per_m": 36.954166666666666,
+        "cut_before_setup_and_order_markup_rub_per_m": 42.286131499999996
+      }
+    ]
+  },
+  "existing_installation_operation_templates": [
+    {
+      "code": "М01",
+      "name": "Разгрузка одного места",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "место",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 7,
+      "crew_units_per_hour": 8.571428571428571,
+      "person_hours_per_unit": 0.23333333333333334,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G7*H7+I7",
+      "operation_boundary": "Доступное однотипное место у машины. Особый такелаж и техника отдельно.",
+      "source_sheet": "Монтаж",
+      "source_row": 7,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М02",
+      "name": "Организация зоны хранения",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "зона",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 30,
+      "crew_units_per_hour": 2.0,
+      "person_hours_per_unit": 1.0,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G8*H8+I8",
+      "operation_boundary": "Разовая подготовка площадки хранения, раскладка подкладок.",
+      "source_sheet": "Монтаж",
+      "source_row": 8,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М03",
+      "name": "Перемещение по объекту",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "рейс",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 10,
+      "crew_units_per_hour": 6.0,
+      "person_hours_per_unit": 0.3333333333333333,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G9*H9+I9",
+      "operation_boundary": "Один горизонтальный перенос по маршруту до 30 м. Уточнить расстояние и груз.",
+      "source_sheet": "Монтаж",
+      "source_row": 9,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М04",
+      "name": "Мобилизация бригады и инструмента",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "выезд",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 30,
+      "crew_units_per_hour": 2.0,
+      "person_hours_per_unit": 1.0,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G10*H10+I10",
+      "operation_boundary": "Сбор и развёртывание инструмента. Пробег и доставка отдельно.",
+      "source_sheet": "Монтаж",
+      "source_row": 10,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М05",
+      "name": "Сборка плоского шаблона",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 10,
+      "crew_units_per_hour": 6.0,
+      "person_hours_per_unit": 0.16666666666666666,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G11*H11+I11",
+      "operation_boundary": "Простой повторяемый контур. Материал оснастки по ведомости.",
+      "source_sheet": "Монтаж",
+      "source_row": 11,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М06",
+      "name": "Сложный объёмный шаблон",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "чел·ч",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 60,
+      "crew_units_per_hour": 1.0,
+      "person_hours_per_unit": 1.0,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G12*H12+I12",
+      "operation_boundary": "Индивидуальный бюджет в человеко-часах по проекту.",
+      "source_sheet": "Монтаж",
+      "source_row": 12,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М07",
+      "name": "Снятие временных фиксаторов",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "компл.",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 12,
+      "crew_units_per_hour": 5.0,
+      "person_hours_per_unit": 0.2,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G13*H13+I13",
+      "operation_boundary": "Один типовой узел после установки.",
+      "source_sheet": "Монтаж",
+      "source_row": 13,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М08",
+      "name": "Подрезка стального профиля",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "рез",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 4.5,
+      "crew_units_per_hour": 13.333333333333334,
+      "person_hours_per_unit": 0.075,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 3.15,
+      "base_unit_price_formula": "=G14*H14+I14",
+      "operation_boundary": "Один доступный профиль. Диск 63 ₽ / 20 резов, ресурс оценочный.",
+      "source_sheet": "Монтаж",
+      "source_row": 14,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М09",
+      "name": "Торцевание доски",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "торец",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 2.25,
+      "crew_units_per_hour": 26.666666666666668,
+      "person_hours_per_unit": 0.0375,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G15*H15+I15",
+      "operation_boundary": "Прямой рез размеченной доски.",
+      "source_sheet": "Монтаж",
+      "source_row": 15,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М10",
+      "name": "Подрезка метрической шпильки",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "рез",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 3,
+      "crew_units_per_hour": 20.0,
+      "person_hours_per_unit": 0.05,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 1.58,
+      "base_unit_price_formula": "=G16*H16+I16",
+      "operation_boundary": "Рез с проверкой резьбы. Диск 63 ₽ / 40 резов.",
+      "source_sheet": "Монтаж",
+      "source_row": 16,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М11",
+      "name": "Подрезка алюминиевого профиля",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "рез",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 3,
+      "crew_units_per_hour": 20.0,
+      "person_hours_per_unit": 0.05,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 2,
+      "base_unit_price_formula": "=G17*H17+I17",
+      "operation_boundary": "Рез доступного профиля, износ диска 2 ₽/рез.",
+      "source_sheet": "Монтаж",
+      "source_row": 17,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М12",
+      "name": "Подрезка композитного или листового элемента",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м реза",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 4,
+      "crew_units_per_hour": 15.0,
+      "person_hours_per_unit": 0.06666666666666667,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 2,
+      "base_unit_price_formula": "=G18*H18+I18",
+      "operation_boundary": "Размеченная линия. Материал и число фигурных вырезов по проекту.",
+      "source_sheet": "Монтаж",
+      "source_row": 18,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М13",
+      "name": "Подгонка узла по месту",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "узел",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 13,
+      "crew_units_per_hour": 4.615384615384615,
+      "person_hours_per_unit": 0.21666666666666667,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G19*H19+I19",
+      "operation_boundary": "Примерка и корректировка. Уже включённый рез повторно исключить.",
+      "source_sheet": "Монтаж",
+      "source_row": 19,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М14",
+      "name": "Снятие заусенца и защита среза",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "торец",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 2.5,
+      "crew_units_per_hour": 24.0,
+      "person_hours_per_unit": 0.041666666666666664,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 3,
+      "base_unit_price_formula": "=G20*H20+I20",
+      "operation_boundary": "Зачистка и локальная защита среза.",
+      "source_sheet": "Монтаж",
+      "source_row": 20,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М15",
+      "name": "Позиционирование элемента до 45 кг",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "элемент",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 8,
+      "crew_units_per_hour": 7.5,
+      "person_hours_per_unit": 0.26666666666666666,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G21*H21+I21",
+      "operation_boundary": "Выверка и временная фиксация. Вес — сметная группа, состав бригады определяется ППР.",
+      "source_sheet": "Монтаж",
+      "source_row": 21,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М16",
+      "name": "Позиционирование элемента свыше 45 кг",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "элемент",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 18,
+      "crew_units_per_hour": 3.3333333333333335,
+      "person_hours_per_unit": 0.6,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G22*H22+I22",
+      "operation_boundary": "Только работа монтажной бригады по плану производства. При подъёме техникой выбрать М17.",
+      "source_sheet": "Монтаж",
+      "source_row": 22,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М17",
+      "name": "Позиционирование с применением техники",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "подъём",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 13,
+      "crew_units_per_hour": 4.615384615384615,
+      "person_hours_per_unit": 0.43333333333333335,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G23*H23+I23",
+      "operation_boundary": "Подача, выверка, отпуск. Время оплачиваемой техники отдельно.",
+      "source_sheet": "Монтаж",
+      "source_row": 23,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М19",
+      "name": "Сборка резьбового соединения",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "соед.",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 1.125,
+      "crew_units_per_hour": 53.333333333333336,
+      "person_hours_per_unit": 0.01875,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G24*H24+I24",
+      "operation_boundary": "Вставка крепежа и наживление в готовом узле. Крепёж по спецификации.",
+      "source_sheet": "Монтаж",
+      "source_row": 24,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М20",
+      "name": "Смазка резьбы",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "соед.",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 0.3,
+      "crew_units_per_hour": 200.0,
+      "person_hours_per_unit": 0.005,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0.8,
+      "base_unit_price_formula": "=G25*H25+I25",
+      "operation_boundary": "Нанесение 0,5 г по 1,60 ₽/г, бюджет.",
+      "source_sheet": "Монтаж",
+      "source_row": 25,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М21",
+      "name": "Окончательная обтяжка",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "соед.",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 0.55,
+      "crew_units_per_hour": 109.09090909090908,
+      "person_hours_per_unit": 0.009166666666666667,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G26*H26+I26",
+      "operation_boundary": "Доступная точка после наживления.",
+      "source_sheet": "Монтаж",
+      "source_row": 26,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М22",
+      "name": "Бурение отверстия 80 мм",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "отв.",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 4.5,
+      "crew_units_per_hour": 13.333333333333334,
+      "person_hours_per_unit": 0.075,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 7,
+      "base_unit_price_formula": "=G27*H27+I27",
+      "operation_boundary": "Перфоратор. Износ бура 700 ₽ / 100 отверстий. Алмазное бурение отдельное КП.",
+      "source_sheet": "Монтаж",
+      "source_row": 27,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М23",
+      "name": "Очистка отверстия и установка на химанкер",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "пруток",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 3.5,
+      "crew_units_per_hour": 17.142857142857142,
+      "person_hours_per_unit": 0.058333333333333334,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G28*H28+I28",
+      "operation_boundary": "В готовое отверстие. Состав анкера в мл отдельно.",
+      "source_sheet": "Монтаж",
+      "source_row": 28,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М24",
+      "name": "Подача и выставление листа",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "лист",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 5,
+      "crew_units_per_hour": 12.0,
+      "person_hours_per_unit": 0.16666666666666666,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G29*H29+I29",
+      "operation_boundary": "Выверка до крепления. Шурупы и заклёпки отдельно.",
+      "source_sheet": "Монтаж",
+      "source_row": 29,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М25А",
+      "name": "Завинчивание шурупа • нержавеющий",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "шуруп",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 0.4,
+      "crew_units_per_hour": 150.0,
+      "person_hours_per_unit": 0.006666666666666667,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G30*H30+I30",
+      "operation_boundary": "В подготовленное место. Материал крепежа отдельной строкой.",
+      "source_sheet": "Монтаж",
+      "source_row": 30,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М25Б",
+      "name": "Завинчивание шурупа • чёрный",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "шуруп",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 0.35,
+      "crew_units_per_hour": 171.42857142857144,
+      "person_hours_per_unit": 0.005833333333333333,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G31*H31+I31",
+      "operation_boundary": "В подготовленное место. Материал крепежа отдельной строкой.",
+      "source_sheet": "Монтаж",
+      "source_row": 31,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М26",
+      "name": "Кровельный саморез с шайбой",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "шуруп",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 0.5,
+      "crew_units_per_hour": 120.0,
+      "person_hours_per_unit": 0.008333333333333333,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G32*H32+I32",
+      "operation_boundary": "Работа на выставленном листе.",
+      "source_sheet": "Монтаж",
+      "source_row": 32,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М27",
+      "name": "Сантехнический шуруп",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "шуруп",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 0.65,
+      "crew_units_per_hour": 92.3076923076923,
+      "person_hours_per_unit": 0.010833333333333334,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G33*H33+I33",
+      "operation_boundary": "В подготовленное место. Сверление и дюбель учитываются по проекту.",
+      "source_sheet": "Монтаж",
+      "source_row": 33,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М28",
+      "name": "Монтаж шурупа с дюбелем",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "компл.",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 0.75,
+      "crew_units_per_hour": 80.0,
+      "person_hours_per_unit": 0.0125,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G34*H34+I34",
+      "operation_boundary": "Установка в готовое отверстие.",
+      "source_sheet": "Монтаж",
+      "source_row": 34,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М29",
+      "name": "Установка вытяжной заклёпки",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "заклёпка",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 0.75,
+      "crew_units_per_hour": 80.0,
+      "person_hours_per_unit": 0.0125,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G35*H35+I35",
+      "operation_boundary": "Детали совмещены, отверстие подготовлено.",
+      "source_sheet": "Монтаж",
+      "source_row": 35,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М30",
+      "name": "Герметизация стыка",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 6,
+      "crew_units_per_hour": 10.0,
+      "person_hours_per_unit": 0.1,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G36*H36+I36",
+      "operation_boundary": "Обычная очистка, нанесение и формирование шва. Все материалы по карте расхода.",
+      "source_sheet": "Монтаж",
+      "source_row": 36,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М31",
+      "name": "Сбор и уборка зоны",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "зона",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 15,
+      "crew_units_per_hour": 4.0,
+      "person_hours_per_unit": 0.5,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G37*H37+I37",
+      "operation_boundary": "Конец этапа монтажа. Вывоз мусора по факту.",
+      "source_sheet": "Монтаж",
+      "source_row": 37,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М32",
+      "name": "Монтаж тросовой сетки",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м²",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 12,
+      "crew_units_per_hour": 5.0,
+      "person_hours_per_unit": 0.4,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G38*H38+I38",
+      "operation_boundary": "Развесить, выровнять и натянуть полотно. Для отдельного периметрального троса — М41.",
+      "source_sheet": "Монтаж",
+      "source_row": 38,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М33",
+      "name": "Выставление досок настила",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м²",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 10,
+      "crew_units_per_hour": 6.0,
+      "person_hours_per_unit": 0.3333333333333333,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G39*H39+I39",
+      "operation_boundary": "На готовые лаги. Метизы и завинчивание отдельно.",
+      "source_sheet": "Монтаж",
+      "source_row": 39,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М34",
+      "name": "Монтаж сложной индивидуальной опалубки",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "чел·ч",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 60,
+      "crew_units_per_hour": 1.0,
+      "person_hours_per_unit": 1.0,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G40*H40+I40",
+      "operation_boundary": "Время каждого участника по конкретной форме. Материал и изготовление опалубки отдельно.",
+      "source_sheet": "Монтаж",
+      "source_row": 40,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М35",
+      "name": "Выставление и выверка лаг",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м лаги",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 3.5,
+      "crew_units_per_hour": 17.142857142857142,
+      "person_hours_per_unit": 0.11666666666666667,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G41*H41+I41",
+      "operation_boundary": "Готовые опоры. Крепление в смежных строках.",
+      "source_sheet": "Монтаж",
+      "source_row": 41,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М36",
+      "name": "Вальцовка поручня по месту",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 9,
+      "crew_units_per_hour": 6.666666666666667,
+      "person_hours_per_unit": 0.3,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 12,
+      "base_unit_price_formula": "=G42*H42+I42",
+      "operation_boundary": "Только выгибаемые участки. Передвижные вальцы (60 000 ₽ / 1 200 ч + 30 ₽/ч ТО) × 0,15 ч/м = 12 ₽/м.",
+      "source_sheet": "Монтаж",
+      "source_row": 42,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М37",
+      "name": "Шлифование монтажного шва",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "шов",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 5,
+      "crew_units_per_hour": 12.0,
+      "person_hours_per_unit": 0.08333333333333333,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 8,
+      "base_unit_price_formula": "=G43*H43+I43",
+      "operation_boundary": "Средний шов Ø38. Износ круга бюджетом, монтажная операция.",
+      "source_sheet": "Монтаж",
+      "source_row": 43,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М38",
+      "name": "Локальная пассивация",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 4,
+      "crew_units_per_hour": 15.0,
+      "person_hours_per_unit": 0.06666666666666667,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 8,
+      "base_unit_price_formula": "=G44*H44+I44",
+      "operation_boundary": "Нанесение и смывка на фактической длине. Ванна №52 — другой процесс.",
+      "source_sheet": "Монтаж",
+      "source_row": 44,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М39",
+      "name": "Финишная полировка по месту",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 6,
+      "crew_units_per_hour": 10.0,
+      "person_hours_per_unit": 0.1,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 10,
+      "base_unit_price_formula": "=G45*H45+I45",
+      "operation_boundary": "Обработка после монтажа по фактической длине. Заводская полировка уже в трубе.",
+      "source_sheet": "Монтаж",
+      "source_row": 45,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М40",
+      "name": "Вварка заглушки Ø38",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "шт.",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 8,
+      "crew_units_per_hour": 7.5,
+      "person_hours_per_unit": 0.13333333333333333,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 18,
+      "base_unit_price_formula": "=G46*H46+I46",
+      "operation_boundary": "Вварка заготовки. Изготовление и финиш отдельно.",
+      "source_sheet": "Монтаж",
+      "source_row": 46,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М41",
+      "name": "Запасовка отдельного троса",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "м",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 3,
+      "crew_units_per_hour": 20.0,
+      "person_hours_per_unit": 0.05,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G47*H47+I47",
+      "operation_boundary": "Разводка и пропуск по кромке. Само крепление полотна в М32.",
+      "source_sheet": "Монтаж",
+      "source_row": 47,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М42",
+      "name": "Контроль геометрии металлорамы",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "рама",
+      "crew_size_people": 2,
+      "cycle_minutes_per_unit": 6,
+      "crew_units_per_hour": 10.0,
+      "person_hours_per_unit": 0.2,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 0,
+      "base_unit_price_formula": "=G48*H48+I48",
+      "operation_boundary": "Выверка после укрупнения, отдельно от разовой установки.",
+      "source_sheet": "Монтаж",
+      "source_row": 48,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М43",
+      "name": "Сварка прутка Ø12 к трубе",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "узел",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 5,
+      "crew_units_per_hour": 12.0,
+      "person_hours_per_unit": 0.08333333333333333,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 9,
+      "base_unit_price_formula": "=G49*H49+I49",
+      "operation_boundary": "Работа и расход аргона/присадки. Сверка по фактической длине шва.",
+      "source_sheet": "Монтаж",
+      "source_row": 49,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М44",
+      "name": "Сварка прутка Ø18 к трубе",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "узел",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 7,
+      "crew_units_per_hour": 8.571428571428571,
+      "person_hours_per_unit": 0.11666666666666667,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 12,
+      "base_unit_price_formula": "=G50*H50+I50",
+      "operation_boundary": "Работа и расход аргона/присадки.",
+      "source_sheet": "Монтаж",
+      "source_row": 50,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М45",
+      "name": "Кольцевой стык трубы Ø38",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "стык",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 14,
+      "crew_units_per_hour": 4.285714285714286,
+      "person_hours_per_unit": 0.23333333333333334,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 25,
+      "base_unit_price_formula": "=G51*H51+I51",
+      "operation_boundary": "Позиционирование и сварка кольцевого шва. Рыночная проверка по 11,94 см на стык.",
+      "source_sheet": "Монтаж",
+      "source_row": 51,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    },
+    {
+      "code": "М46",
+      "name": "Снятие заусенца с заглушки",
+      "scope": "site_installation",
+      "stage": "installation",
+      "unit": "шт.",
+      "crew_size_people": 1,
+      "cycle_minutes_per_unit": 1.5,
+      "crew_units_per_hour": 40.0,
+      "person_hours_per_unit": 0.025,
+      "labor_rate_source": "Экономика!B25 (tariff per person-hour; previous workbook formula)",
+      "consumables_rub_per_unit": 1,
+      "base_unit_price_formula": "=G52*H52+I52",
+      "operation_boundary": "Зачистка лазерной заготовки перед вваркой.",
+      "source_sheet": "Монтаж",
+      "source_row": 52,
+      "status": "preliminary_or_model_assigned_until_replaced_by_actual_measurement"
+    }
+  ],
+  "deck_installation_card_reference": [
+    {
+      "operation_or_resource": "Мобилизация бригады и инструмента",
+      "unit": "выезд",
+      "source_sheet": "Настил",
+      "source_row": 8,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Сбор и развёртывание инструмента. Пробег и доставка отдельно."
+    },
+    {
+      "operation_or_resource": "Разгрузка одного места",
+      "unit": "место",
+      "source_sheet": "Настил",
+      "source_row": 9,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Доступное однотипное место у машины. Особый такелаж и техника отдельно."
+    },
+    {
+      "operation_or_resource": "Организация зоны хранения",
+      "unit": "зона",
+      "source_sheet": "Настил",
+      "source_row": 10,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Разовая подготовка площадки хранения, раскладка подкладок."
+    },
+    {
+      "operation_or_resource": "Перемещение по объекту",
+      "unit": "рейс",
+      "source_sheet": "Настил",
+      "source_row": 11,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Один горизонтальный перенос по маршруту до 30 м. Уточнить расстояние и груз."
+    },
+    {
+      "operation_or_resource": "Сборка плоского шаблона",
+      "unit": "м",
+      "source_sheet": "Настил",
+      "source_row": 12,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Простой повторяемый контур. Материал оснастки по ведомости."
+    },
+    {
+      "operation_or_resource": "Позиционирование элемента до 45 кг",
+      "unit": "элемент",
+      "source_sheet": "Настил",
+      "source_row": 13,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Выверка и временная фиксация. Вес — сметная группа, состав бригады определяется ППР."
+    },
+    {
+      "operation_or_resource": "Позиционирование элемента свыше 45 кг",
+      "unit": "элемент",
+      "source_sheet": "Настил",
+      "source_row": 14,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Только работа монтажной бригады по плану производства. При подъёме техникой выбрать М17."
+    },
+    {
+      "operation_or_resource": "Позиционирование с применением техники",
+      "unit": "подъём",
+      "source_sheet": "Настил",
+      "source_row": 15,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Подача, выверка, отпуск. Время оплачиваемой техники отдельно."
+    },
+    {
+      "operation_or_resource": "Манипулятор с экипажем",
+      "unit": "маш.-ч",
+      "source_sheet": "Настил",
+      "source_row": 16,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. Часы по заявке с учётом минимального заказа и экипажа."
+    },
+    {
+      "operation_or_resource": "Подача техники",
+      "unit": "выезд",
+      "source_sheet": "Настил",
+      "source_row": 17,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Контроль геометрии металлорамы",
+      "unit": "рама",
+      "source_sheet": "Настил",
+      "source_row": 18,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Выверка после укрупнения, отдельно от разовой установки."
+    },
+    {
+      "operation_or_resource": "Выставление и выверка лаг",
+      "unit": "м лаги",
+      "source_sheet": "Настил",
+      "source_row": 19,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Готовые опоры. Крепление в смежных строках."
+    },
+    {
+      "operation_or_resource": "Выставление досок настила",
+      "unit": "м²",
+      "source_sheet": "Настил",
+      "source_row": 20,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "На готовые лаги. Метизы и завинчивание отдельно."
+    },
+    {
+      "operation_or_resource": "Торцевание доски",
+      "unit": "торец",
+      "source_sheet": "Настил",
+      "source_row": 21,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Прямой рез размеченной доски."
+    },
+    {
+      "operation_or_resource": "Подгонка узла по месту",
+      "unit": "узел",
+      "source_sheet": "Настил",
+      "source_row": 22,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Примерка и корректировка. Уже включённый рез повторно исключить."
+    },
+    {
+      "operation_or_resource": "Сборка резьбового соединения",
+      "unit": "соед.",
+      "source_sheet": "Настил",
+      "source_row": 23,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Вставка крепежа и наживление в готовом узле. Крепёж по спецификации."
+    },
+    {
+      "operation_or_resource": "Смазка резьбы",
+      "unit": "соед.",
+      "source_sheet": "Настил",
+      "source_row": 24,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Нанесение 0,5 г по 1,60 ₽/г, бюджет."
+    },
+    {
+      "operation_or_resource": "Окончательная обтяжка",
+      "unit": "соед.",
+      "source_sheet": "Настил",
+      "source_row": 25,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Доступная точка после наживления."
+    },
+    {
+      "operation_or_resource": "Завинчивание шурупа • нержавеющий",
+      "unit": "шуруп",
+      "source_sheet": "Настил",
+      "source_row": 26,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "В подготовленное место. Материал крепежа отдельной строкой."
+    },
+    {
+      "operation_or_resource": "Саморез нержавеющий A2 5×45",
+      "unit": "шт.",
+      "source_sheet": "Настил",
+      "source_row": 27,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Бурение отверстия 80 мм",
+      "unit": "отв.",
+      "source_sheet": "Настил",
+      "source_row": 28,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Перфоратор. Износ бура 700 ₽ / 100 отверстий. Алмазное бурение отдельное КП."
+    },
+    {
+      "operation_or_resource": "Монтаж шурупа с дюбелем",
+      "unit": "компл.",
+      "source_sheet": "Настил",
+      "source_row": 29,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Установка в готовое отверстие."
+    },
+    {
+      "operation_or_resource": "Шуруп и дюбель",
+      "unit": "компл.",
+      "source_sheet": "Настил",
+      "source_row": 30,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Герметизация стыка",
+      "unit": "м",
+      "source_sheet": "Настил",
+      "source_row": 31,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Обычная очистка, нанесение и формирование шва. Все материалы по карте расхода."
+    },
+    {
+      "operation_or_resource": "Герметик U-SEAL 290 мл",
+      "unit": "мл",
+      "source_sheet": "Настил",
+      "source_row": 32,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Сменный носик",
+      "unit": "шт.",
+      "source_sheet": "Настил",
+      "source_row": 33,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Шпатель расходный",
+      "unit": "шт.",
+      "source_sheet": "Настил",
+      "source_row": 34,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Обезжириватель",
+      "unit": "мл",
+      "source_sheet": "Настил",
+      "source_row": 35,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Ветошь",
+      "unit": "кг",
+      "source_sheet": "Настил",
+      "source_row": 36,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Инструмент монтажный • амортизация",
+      "unit": "инстр.-ч",
+      "source_sheet": "Настил",
+      "source_row": 37,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    },
+    {
+      "operation_or_resource": "Сбор и уборка зоны",
+      "unit": "зона",
+      "source_sheet": "Настил",
+      "source_row": 38,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Конец этапа монтажа. Вывоз мусора по факту."
+    },
+    {
+      "operation_or_resource": "Проектные материалы и комплектующие",
+      "unit": "₽ закупки",
+      "source_sheet": "Настил",
+      "source_row": 39,
+      "scope": "site_installation_or_construction_estimate",
+      "note": "Оплачиваемый объём по спецификации × закупочная ставка. "
+    }
+  ],
+  "existing_composite_templates": [
+    {
+      "source_number": 23,
+      "name": "Изготовление бетонных слэбов с индивидуальной опалубкой из пенополистирола под эпоксидным покрытием",
+      "children": [
+        {
+          "resource_or_operation": "Фанера / пенополистирол опалубки",
+          "unit": "₽",
+          "quantity_per_complex_unit": 14000,
+          "base_rate_rub_per_unit": 1,
+          "planned_cost_rub_per_unit": 1,
+          "base_amount_formula": "=E7*F7",
+          "planned_cost_formula": "=E7*G7",
+          "financial_basis": "Бюджет одной индивидуальной формы на 1 м³, уточнить раскладкой."
+        },
+        {
+          "resource_or_operation": "3D-фрезеровка",
+          "unit": "м²",
+          "quantity_per_complex_unit": 3,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$115",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$115",
+          "base_amount_formula": "=E8*F8",
+          "planned_cost_formula": "=E8*G8",
+          "financial_basis": "Обрабатываемая площадь формы на 1 м³ изделия, по модели."
+        },
+        {
+          "resource_or_operation": "№103 при 3D на форме",
+          "unit": "н·ч",
+          "quantity_per_complex_unit": "=E8*'Калькуляция'!$N$115*'Калькуляция'!$O$115/60",
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$133",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$133",
+          "base_amount_formula": "=E9*F9",
+          "planned_cost_formula": "=E9*G9",
+          "financial_basis": "Та же площадь / 0,75 × 40/60. Отдельная работа оператора."
+        },
+        {
+          "resource_or_operation": "Состав эпоксидного покрытия",
+          "unit": "₽",
+          "quantity_per_complex_unit": 3500,
+          "base_rate_rub_per_unit": 1,
+          "planned_cost_rub_per_unit": 1,
+          "base_amount_formula": "=E10*F10",
+          "planned_cost_formula": "=E10*G10",
+          "financial_basis": "Закупка по расходу на площадь формы."
+        },
+        {
+          "resource_or_operation": "Покрытие формы",
+          "unit": "м²",
+          "quantity_per_complex_unit": 3,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$145",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$145",
+          "base_amount_formula": "=E11*F11",
+          "planned_cost_formula": "=E11*G11",
+          "financial_basis": "Площадь нанесения."
+        },
+        {
+          "resource_or_operation": "Бетон и арматура",
+          "unit": "₽",
+          "quantity_per_complex_unit": 17500,
+          "base_rate_rub_per_unit": 1,
+          "planned_cost_rub_per_unit": 1,
+          "base_amount_formula": "=E12*F12",
+          "planned_cost_formula": "=E12*G12",
+          "financial_basis": "Бюджет смеси и стали, заменить спецификацией."
+        },
+        {
+          "resource_or_operation": "Армокаркас",
+          "unit": "кг",
+          "quantity_per_complex_unit": 65,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$174",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$174",
+          "base_amount_formula": "=E13*F13",
+          "planned_cost_formula": "=E13*G13",
+          "financial_basis": "Масса армирования из проекта."
+        },
+        {
+          "resource_or_operation": "Приготовление и заливка смеси",
+          "unit": "м³",
+          "quantity_per_complex_unit": 1,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$175",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$175",
+          "base_amount_formula": "=E14*F14",
+          "planned_cost_formula": "=E14*G14",
+          "financial_basis": "Подготовка одного кубометра."
+        },
+        {
+          "resource_or_operation": "Заливка",
+          "unit": "м³",
+          "quantity_per_complex_unit": 1,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$176",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$176",
+          "base_amount_formula": "=E15*F15",
+          "planned_cost_formula": "=E15*G15",
+          "financial_basis": "Укладка одного кубометра."
+        },
+        {
+          "resource_or_operation": "Распалубка",
+          "unit": "м²",
+          "quantity_per_complex_unit": 4,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$172",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$172",
+          "base_amount_formula": "=E16*F16",
+          "planned_cost_formula": "=E16*G16",
+          "financial_basis": "Площадь контакта."
+        }
+      ]
+    },
+    {
+      "source_number": 24,
+      "name": "Изготовление светового короба",
+      "children": [
+        {
+          "resource_or_operation": "Материалы корпуса и рассеиватель",
+          "unit": "₽",
+          "quantity_per_complex_unit": 3600,
+          "base_rate_rub_per_unit": 1,
+          "planned_cost_rub_per_unit": 1,
+          "base_amount_formula": "=E17*F17",
+          "planned_cost_formula": "=E17*G17",
+          "financial_basis": "Бюджет на один типовой короб."
+        },
+        {
+          "resource_or_operation": "Электрокомплект",
+          "unit": "₽",
+          "quantity_per_complex_unit": 2300,
+          "base_rate_rub_per_unit": 1,
+          "planned_cost_rub_per_unit": 1,
+          "base_amount_formula": "=E18*F18",
+          "planned_cost_formula": "=E18*G18",
+          "financial_basis": "Блок питания, LED и проводка."
+        },
+        {
+          "resource_or_operation": "Сборка",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 2.5,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$179",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$179",
+          "base_amount_formula": "=E19*F19",
+          "planned_cost_formula": "=E19*G19",
+          "financial_basis": "Бюджет сборки по деталировке."
+        },
+        {
+          "resource_or_operation": "Проверка и подключение",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 0.6,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$184",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$184",
+          "base_amount_formula": "=E20*F20",
+          "planned_cost_formula": "=E20*G20",
+          "financial_basis": "Время электромонтажника."
+        }
+      ]
+    },
+    {
+      "source_number": 48,
+      "name": "Обработка бревна, строгание, шлифовка, герметизация трещин и торцовка",
+      "children": [
+        {
+          "resource_or_operation": "Строгание",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 3,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$179",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$179",
+          "base_amount_formula": "=E21*F21",
+          "planned_cost_formula": "=E21*G21",
+          "financial_basis": "На 1 м² фактической поверхности бревна."
+        },
+        {
+          "resource_or_operation": "Шлифование",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 3,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$179",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$179",
+          "base_amount_formula": "=E22*F22",
+          "planned_cost_formula": "=E22*G22",
+          "financial_basis": "Припуск на геометрию бревна."
+        },
+        {
+          "resource_or_operation": "Заделка трещин",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 3,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$179",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$179",
+          "base_amount_formula": "=E23*F23",
+          "planned_cost_formula": "=E23*G23",
+          "financial_basis": "Сушка и выдержка не являются трудом."
+        },
+        {
+          "resource_or_operation": "Торцевание и финиш",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 1,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$179",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$179",
+          "base_amount_formula": "=E24*F24",
+          "planned_cost_formula": "=E24*G24",
+          "financial_basis": "Суммарно 10 чел·ч/м², соответствует 0,1 м²/ч."
+        },
+        {
+          "resource_or_operation": "Герметик и абразив",
+          "unit": "₽",
+          "quantity_per_complex_unit": 125,
+          "base_rate_rub_per_unit": 1,
+          "planned_cost_rub_per_unit": 1,
+          "base_amount_formula": "=E25*F25",
+          "planned_cost_formula": "=E25*G25",
+          "financial_basis": "Бюджет на обработку 1 м²."
+        }
+      ]
+    },
+    {
+      "source_number": 91,
+      "name": "Покрытие фанеры эмульсией и гидрофобизирование поверхности бетона",
+      "children": [
+        {
+          "resource_or_operation": "Эмульсия опалубки • нанесение",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 0.1,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$181",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$181",
+          "base_amount_formula": "=E26*F26",
+          "planned_cost_formula": "=E26*G26",
+          "financial_basis": "На м² фанеры."
+        },
+        {
+          "resource_or_operation": "Эмульсия формы",
+          "unit": "м²",
+          "quantity_per_complex_unit": 1,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$256",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$256",
+          "base_amount_formula": "=E27*F27",
+          "planned_cost_formula": "=E27*G27",
+          "financial_basis": "Доля площади фанеры."
+        },
+        {
+          "resource_or_operation": "Гидрофобизация бетона • нанесение",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 0.12,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$181",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$181",
+          "base_amount_formula": "=E28*F28",
+          "planned_cost_formula": "=E28*G28",
+          "financial_basis": "На м² бетона."
+        },
+        {
+          "resource_or_operation": "Гидрофобизатор",
+          "unit": "м²",
+          "quantity_per_complex_unit": 1,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$257",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$257",
+          "base_amount_formula": "=E29*F29",
+          "planned_cost_formula": "=E29*G29",
+          "financial_basis": "Доля поверхности бетона. Для разных площадей использовать два варианта №91."
+        }
+      ]
+    },
+    {
+      "source_number": 99,
+      "name": "Производство деревянных конструкций (резка, сборка, шлифовка, фаска)",
+      "children": [
+        {
+          "resource_or_operation": "Раскрой доски",
+          "unit": "рез",
+          "quantity_per_complex_unit": 4,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$146",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$146",
+          "base_amount_formula": "=E30*F30",
+          "planned_cost_formula": "=E30*G30",
+          "financial_basis": "Типовой расход на м²."
+        },
+        {
+          "resource_or_operation": "Сборка",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 0.2,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$179",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$179",
+          "base_amount_formula": "=E31*F31",
+          "planned_cost_formula": "=E31*G31",
+          "financial_basis": "Подготовленные детали."
+        },
+        {
+          "resource_or_operation": "Шлифовка",
+          "unit": "м²",
+          "quantity_per_complex_unit": 0.65,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$154",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$154",
+          "base_amount_formula": "=E32*F32",
+          "planned_cost_formula": "=E32*G32",
+          "financial_basis": "Фактически затронутая площадь."
+        },
+        {
+          "resource_or_operation": "Продольная фаска",
+          "unit": "м",
+          "quantity_per_complex_unit": 4,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$152",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$152",
+          "base_amount_formula": "=E33*F33",
+          "planned_cost_formula": "=E33*G33",
+          "financial_basis": "Обрабатываемые кромки."
+        }
+      ]
+    },
+    {
+      "source_number": 101,
+      "name": "Производство сборных деревянных конструкций (резка, сборка, шлифовка, оклейка, брашировка)",
+      "children": [
+        {
+          "resource_or_operation": "Раскрой доски",
+          "unit": "рез",
+          "quantity_per_complex_unit": 4,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$146",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$146",
+          "base_amount_formula": "=E34*F34",
+          "planned_cost_formula": "=E34*G34",
+          "financial_basis": "Типовой модуль 1 м²."
+        },
+        {
+          "resource_or_operation": "Сборка и оклейка",
+          "unit": "чел·ч",
+          "quantity_per_complex_unit": 0.3,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$179",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$179",
+          "base_amount_formula": "=E35*F35",
+          "planned_cost_formula": "=E35*G35",
+          "financial_basis": "Сборка подготовленных элементов и нанесение клея."
+        },
+        {
+          "resource_or_operation": "Шлифование",
+          "unit": "м²",
+          "quantity_per_complex_unit": 0.55,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$154",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$154",
+          "base_amount_formula": "=E36*F36",
+          "planned_cost_formula": "=E36*G36",
+          "financial_basis": "Площадь обработки."
+        },
+        {
+          "resource_or_operation": "Брашировка",
+          "unit": "м²",
+          "quantity_per_complex_unit": 0.65,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$150",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$150",
+          "base_amount_formula": "=E37*F37",
+          "planned_cost_formula": "=E37*G37",
+          "financial_basis": "Площадь с фактурой."
+        },
+        {
+          "resource_or_operation": "Клей",
+          "unit": "₽",
+          "quantity_per_complex_unit": 22,
+          "base_rate_rub_per_unit": 1,
+          "planned_cost_rub_per_unit": 1,
+          "base_amount_formula": "=E38*F38",
+          "planned_cost_formula": "=E38*G38",
+          "financial_basis": "Бюджет клея на м²."
+        }
+      ]
+    },
+    {
+      "source_number": 36,
+      "name": "Монтаж металлического ограждения",
+      "children": [
+        {
+          "resource_or_operation": "Установка секций",
+          "unit": "элемент",
+          "quantity_per_complex_unit": 0.5,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$202",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$202",
+          "base_amount_formula": "=E39*F39",
+          "planned_cost_formula": "=E39*G39",
+          "financial_basis": "Оценка две погонные единицы на секцию."
+        },
+        {
+          "resource_or_operation": "Анкерные отверстия",
+          "unit": "отв.",
+          "quantity_per_complex_unit": 2,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$208",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$208",
+          "base_amount_formula": "=E40*F40",
+          "planned_cost_formula": "=E40*G40",
+          "financial_basis": "На метр ограждения."
+        },
+        {
+          "resource_or_operation": "Анкеровка",
+          "unit": "шт.",
+          "quantity_per_complex_unit": 2,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$209",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$209",
+          "base_amount_formula": "=E41*F41",
+          "planned_cost_formula": "=E41*G41",
+          "financial_basis": "Готовые отверстия."
+        },
+        {
+          "resource_or_operation": "Подгонка и стыковка",
+          "unit": "узел",
+          "quantity_per_complex_unit": 0.5,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$200",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$200",
+          "base_amount_formula": "=E42*F42",
+          "planned_cost_formula": "=E42*G42",
+          "financial_basis": "На фактическое число узлов."
+        }
+      ]
+    },
+    {
+      "source_number": 38,
+      "name": "Монтаж ограждения из прутьев",
+      "children": [
+        {
+          "resource_or_operation": "Позиционирование",
+          "unit": "элемент",
+          "quantity_per_complex_unit": 0.5,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$202",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$202",
+          "base_amount_formula": "=E43*F43",
+          "planned_cost_formula": "=E43*G43",
+          "financial_basis": "На м² смонтированного ограждения."
+        },
+        {
+          "resource_or_operation": "Сварка прутьев",
+          "unit": "узел",
+          "quantity_per_complex_unit": 6,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$230",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$230",
+          "base_amount_formula": "=E44*F44",
+          "planned_cost_formula": "=E44*G44",
+          "financial_basis": "Изменить по ведомости."
+        },
+        {
+          "resource_or_operation": "Финиш швов",
+          "unit": "шов",
+          "quantity_per_complex_unit": 3,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$224",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$224",
+          "base_amount_formula": "=E45*F45",
+          "planned_cost_formula": "=E45*G45",
+          "financial_basis": "До фактического объёма финиша."
+        }
+      ]
+    },
+    {
+      "source_number": 39,
+      "name": "Монтаж ограждения из трубы",
+      "children": [
+        {
+          "resource_or_operation": "Позиционирование",
+          "unit": "элемент",
+          "quantity_per_complex_unit": 0.5,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$202",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$202",
+          "base_amount_formula": "=E46*F46",
+          "planned_cost_formula": "=E46*G46",
+          "financial_basis": "На м² ограждения."
+        },
+        {
+          "resource_or_operation": "Сварка кольцевых стыков",
+          "unit": "стык",
+          "quantity_per_complex_unit": 2,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$232",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$232",
+          "base_amount_formula": "=E47*F47",
+          "planned_cost_formula": "=E47*G47",
+          "financial_basis": "Изменить по ведомости."
+        },
+        {
+          "resource_or_operation": "Финиш швов",
+          "unit": "шов",
+          "quantity_per_complex_unit": 2,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$224",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$224",
+          "base_amount_formula": "=E48*F48",
+          "planned_cost_formula": "=E48*G48",
+          "financial_basis": "По проекту."
+        }
+      ]
+    },
+    {
+      "source_number": 40,
+      "name": "Монтаж реечного ограждения",
+      "children": [
+        {
+          "resource_or_operation": "Выставление реек",
+          "unit": "элемент",
+          "quantity_per_complex_unit": 2,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$202",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$202",
+          "base_amount_formula": "=E49*F49",
+          "planned_cost_formula": "=E49*G49",
+          "financial_basis": "Нормативный набор на м²."
+        },
+        {
+          "resource_or_operation": "Крепление",
+          "unit": "точка",
+          "quantity_per_complex_unit": 12,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$211",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$211",
+          "base_amount_formula": "=E50*F50",
+          "planned_cost_formula": "=E50*G50",
+          "financial_basis": "Крепёж по спецификации."
+        }
+      ]
+    },
+    {
+      "source_number": 41,
+      "name": "Монтаж сетчатого ограждения из сетки ПВ",
+      "children": [
+        {
+          "resource_or_operation": "Выставление панели ПВ",
+          "unit": "лист",
+          "quantity_per_complex_unit": 0.5,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$210",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$210",
+          "base_amount_formula": "=E51*F51",
+          "planned_cost_formula": "=E51*G51",
+          "financial_basis": "Заводская панель, на м²."
+        },
+        {
+          "resource_or_operation": "Сборка резьбовых соединений",
+          "unit": "соед.",
+          "quantity_per_complex_unit": 6,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$205",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$205",
+          "base_amount_formula": "=E52*F52",
+          "planned_cost_formula": "=E52*G52",
+          "financial_basis": "По спецификации."
+        },
+        {
+          "resource_or_operation": "Окончательная обтяжка",
+          "unit": "соед.",
+          "quantity_per_complex_unit": 6,
+          "base_rate_rub_per_unit": "='Калькуляция'!$G$207",
+          "planned_cost_rub_per_unit": "='Калькуляция'!$K$207",
+          "base_amount_formula": "=E53*F53",
+          "planned_cost_formula": "=E53*G53",
+          "financial_basis": "Расчёт по числу точек."
+        }
+      ]
+    }
+  ],
+  "selected_existing_operation_examples": [
+    {
+      "code": "Р112",
+      "source_id": 112,
+      "source_record": "Перечень_работ:112",
+      "shop": "ЧПУ цех",
+      "post": "P02",
+      "name": "Управляющая программа для лазерной резки",
+      "unit": "м контура",
+      "kind": "labor",
+      "source_original_tariff": 2081,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [],
+      "row": 22,
+      "quantity_basis": "Длина уникальных контуров / выработка подготовки. Тираж раскроя не увеличивает объём подготовки.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F112. Часовая ставка из справочника и физическая выработка из листа «Параметры».",
+      "unit_rate_before_order_markup_rub": 17.341666666666665,
+      "planned_unit_cost_rub": 11.963404605263158,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 17.341666666666665,
+          "formula_excel": "=M22*AA22",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F22),ROUND(F22*G22,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F22),ROUND(F22*(M22*S22*Z22+U22)+R22*T22,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 11.963404605263158,
+          "formula_excel": "=M22*S22+N22*T22+U22",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 120,
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0.008333333333333333,
+          "formula_excel": "=1/L22",
+          "origin": "dialogue"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "Р113",
+      "source_id": 113,
+      "source_record": "Перечень_работ:113",
+      "shop": "ЧПУ цех",
+      "post": "P03",
+      "name": "Управляющая программа для лазерной резки профильного металлопроката",
+      "unit": "м контура",
+      "kind": "labor",
+      "source_original_tariff": 2081,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [],
+      "row": 23,
+      "quantity_basis": "Длина уникальных контуров / выработка подготовки. Тираж раскроя не увеличивает объём подготовки.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F113. Часовая ставка из справочника и физическая выработка из листа «Параметры».",
+      "unit_rate_before_order_markup_rub": 69.36666666666666,
+      "planned_unit_cost_rub": 47.85361842105263,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 69.36666666666666,
+          "formula_excel": "=M23*AA23",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F23),ROUND(F23*G23,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F23),ROUND(F23*(M23*S23*Z23+U23)+R23*T23,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 47.85361842105263,
+          "formula_excel": "=M23*S23+N23*T23+U23",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 30,
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0.03333333333333333,
+          "formula_excel": "=1/L23",
+          "origin": "dialogue"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "Р103.P01",
+      "source_id": 103,
+      "source_record": "Перечень_работ:103",
+      "shop": "ЧПУ цех",
+      "post": "P01",
+      "name": "Сопровождение станковой работы • P01",
+      "unit": "н·ч",
+      "kind": "operator",
+      "source_original_tariff": 2481,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [],
+      "row": 126,
+      "quantity_basis": "Занятость собственных станочных операций данного поста. При пересечении у одного сотрудника укажите в Q фактические часы, распределённые один раз.",
+      "financial_basis": "Перечень_работ!O118, O126 — ставка сотрудника до станочной надбавки. 15 мин/маш.-ч по диалогу.",
+      "unit_rate_before_order_markup_rub": 2081,
+      "planned_unit_cost_rub": 1435.608552631579,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(Q126),Q126,IF(COUNTIF('Занятость'!$B$7:$B$86,C126)>0,SUMIF('Занятость'!$B$7:$B$86,C126,'Занятость'!$G$7:$G$86),IF(ISNUMBER(Q126),Q126,IF(SUM(P29,P30,P31,P32,P33,P34,P35,P36,P37,P49)>0,SUM(P29,P30,P31,P32,P33,P34,P35,P36,P37,P49),\"\"))))",
+          "origin": "dialogue"
+        },
+        "working_unit_rate": {
+          "value": 2081,
+          "formula_excel": "=AA126",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F126),ROUND(F126*G126,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F126),ROUND(F126*(M126*S126*Z126+U126)+R126*T126,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1435.608552631579,
+          "formula_excel": "=M126*S126+N126*T126+U126",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L126",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "dialogue"
+        }
+      }
+    },
+    {
+      "code": "Р103.P07",
+      "source_id": 103,
+      "source_record": "Перечень_работ:103",
+      "shop": "ЧПУ цех",
+      "post": "P07",
+      "name": "Сопровождение станковой работы • P07",
+      "unit": "н·ч",
+      "kind": "operator",
+      "source_original_tariff": 2481,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [],
+      "row": 132,
+      "quantity_basis": "Занятость собственных станочных операций данного поста. При пересечении у одного сотрудника укажите в Q фактические часы, распределённые один раз.",
+      "financial_basis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно.",
+      "unit_rate_before_order_markup_rub": 2081,
+      "planned_unit_cost_rub": 1435.608552631579,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(Q132),Q132,IF(COUNTIF('Занятость'!$B$7:$B$86,C132)>0,SUMIF('Занятость'!$B$7:$B$86,C132,'Занятость'!$G$7:$G$86),IF(ISNUMBER(Q132),Q132,IF(SUM(P101,P102,P103,P104,P105,P106,P107,P108,P109,P110,P111,P112,P113)>0,SUM(P101,P102,P103,P104,P105,P106,P107,P108,P109,P110,P111,P112,P113),\"\"))))",
+          "origin": "dialogue"
+        },
+        "working_unit_rate": {
+          "value": 2081,
+          "formula_excel": "=AA132",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F132),ROUND(F132*G132,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F132),ROUND(F132*(M132*S132*Z132+U132)+R132*T132,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1435.608552631579,
+          "formula_excel": "=M132*S132+N132*T132+U132",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L132",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "dialogue"
+        }
+      }
+    },
+    {
+      "code": "Р103.P08",
+      "source_id": 103,
+      "source_record": "Перечень_работ:103",
+      "shop": "ЧПУ цех",
+      "post": "P08",
+      "name": "Сопровождение станковой работы • P08",
+      "unit": "н·ч",
+      "kind": "operator",
+      "source_original_tariff": 2481,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [],
+      "row": 133,
+      "quantity_basis": "Занятость собственных станочных операций данного поста. При пересечении у одного сотрудника укажите в Q фактические часы, распределённые один раз.",
+      "financial_basis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно.",
+      "unit_rate_before_order_markup_rub": 2081,
+      "planned_unit_cost_rub": 1435.608552631579,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(Q133),Q133,IF(COUNTIF('Занятость'!$B$7:$B$86,C133)>0,SUMIF('Занятость'!$B$7:$B$86,C133,'Занятость'!$G$7:$G$86),IF((SUM(P114,P115)+IF(ISNUMBER(F259),F259*'Комплексы'!$E$9,0))>0,(SUM(P114,P115)+IF(ISNUMBER(F259),F259*'Комплексы'!$E$9,0)),\"\")))",
+          "origin": "dialogue"
+        },
+        "working_unit_rate": {
+          "value": 2081,
+          "formula_excel": "=AA133",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F133),ROUND(F133*G133,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F133),ROUND(F133*(M133*S133*Z133+U133)+R133*T133,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1435.608552631579,
+          "formula_excel": "=M133*S133+N133*T133+U133",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L133",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "dialogue"
+        }
+      }
+    },
+    {
+      "code": "Р103.P09",
+      "source_id": 103,
+      "source_record": "Перечень_работ:103",
+      "shop": "ЧПУ цех",
+      "post": "P09",
+      "name": "Сопровождение станковой работы • P09",
+      "unit": "н·ч",
+      "kind": "operator",
+      "source_original_tariff": 2481,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [],
+      "row": 134,
+      "quantity_basis": "Занятость собственных станочных операций данного поста. При пересечении у одного сотрудника укажите в Q фактические часы, распределённые один раз.",
+      "financial_basis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно.",
+      "unit_rate_before_order_markup_rub": 2081,
+      "planned_unit_cost_rub": 1435.608552631579,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(Q134),Q134,IF(COUNTIF('Занятость'!$B$7:$B$86,C134)>0,SUMIF('Занятость'!$B$7:$B$86,C134,'Занятость'!$G$7:$G$86),IF(ISNUMBER(Q134),Q134,IF(SUM(P116,P117,P118,P119,P120,P121,P122,P123)>0,SUM(P116,P117,P118,P119,P120,P121,P122,P123),\"\"))))",
+          "origin": "dialogue"
+        },
+        "working_unit_rate": {
+          "value": 2081,
+          "formula_excel": "=AA134",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F134),ROUND(F134*G134,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F134),ROUND(F134*(M134*S134*Z134+U134)+R134*T134,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1435.608552631579,
+          "formula_excel": "=M134*S134+N134*T134+U134",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L134",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "dialogue"
+        }
+      }
+    },
+    {
+      "code": "Р103.P10",
+      "source_id": 103,
+      "source_record": "Перечень_работ:103",
+      "shop": "ЧПУ цех",
+      "post": "P10",
+      "name": "Сопровождение станковой работы • P10",
+      "unit": "н·ч",
+      "kind": "operator",
+      "source_original_tariff": 2481,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [],
+      "row": 135,
+      "quantity_basis": "Занятость собственных станочных операций данного поста. При пересечении у одного сотрудника укажите в Q фактические часы, распределённые один раз.",
+      "financial_basis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно.",
+      "unit_rate_before_order_markup_rub": 2081,
+      "planned_unit_cost_rub": 1435.608552631579,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(Q135),Q135,IF(COUNTIF('Занятость'!$B$7:$B$86,C135)>0,SUMIF('Занятость'!$B$7:$B$86,C135,'Занятость'!$G$7:$G$86),IF(ISNUMBER(Q135),Q135,IF(SUM(P125)>0,SUM(P125),\"\"))))",
+          "origin": "dialogue"
+        },
+        "working_unit_rate": {
+          "value": 2081,
+          "formula_excel": "=AA135",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F135),ROUND(F135*G135,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F135),ROUND(F135*(M135*S135*Z135+U135)+R135*T135,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "model"
+        },
+        "unit_planned_cost": {
+          "value": 1435.608552631579,
+          "formula_excel": "=M135*S135+N135*T135+U135",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L135",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "dialogue"
+        }
+      }
+    },
+    {
+      "code": "Р103.P41",
+      "source_id": 103,
+      "source_record": "Перечень_работ:103",
+      "shop": "ЧПУ цех",
+      "post": "P41",
+      "name": "Сопровождение станковой работы • P41",
+      "unit": "н·ч",
+      "kind": "operator",
+      "source_original_tariff": 2481,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [],
+      "row": 136,
+      "quantity_basis": "Занятость собственных станочных операций данного поста. При пересечении у одного сотрудника укажите в Q фактические часы, распределённые один раз.",
+      "financial_basis": "Данные.xlsx, ставка оператора из F103 − P103 / F114 / O146. У П07/П08 режим определяет 30 или 40 мин. Для P09, P10, P41 плановая занятость назначена отдельно.",
+      "unit_rate_before_order_markup_rub": 2081,
+      "planned_unit_cost_rub": 1435.608552631579,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(Q136),Q136,IF(COUNTIF('Занятость'!$B$7:$B$86,C136)>0,SUMIF('Занятость'!$B$7:$B$86,C136,'Занятость'!$G$7:$G$86),IF(ISNUMBER(Q136),Q136,IF(SUM(P124)>0,SUM(P124),\"\"))))",
+          "origin": "dialogue"
+        },
+        "working_unit_rate": {
+          "value": 2081,
+          "formula_excel": "=AA136",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F136),ROUND(F136*G136,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F136),ROUND(F136*(M136*S136*Z136+U136)+R136*T136,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 2081,
+          "origin": "model"
+        },
+        "unit_planned_cost": {
+          "value": 1435.608552631579,
+          "formula_excel": "=M136*S136+N136*T136+U136",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L136",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1435.608552631579,
+          "formula_excel": "='Экономика'!$C$27",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 2081,
+          "formula_excel": "='Экономика'!$B$27",
+          "origin": "dialogue"
+        }
+      }
+    },
+    {
+      "code": "Р34",
+      "source_id": 34,
+      "source_record": "Перечень_работ:34",
+      "shop": "Монтажная группа",
+      "post": "P31",
+      "name": "Монтаж (ч/ч)",
+      "unit": "чел·ч",
+      "kind": "labor",
+      "source_original_tariff": 1810,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [
+        "М01",
+        "М02",
+        "М03",
+        "М04",
+        "М05",
+        "М06",
+        "М07",
+        "М08",
+        "М09",
+        "М10",
+        "М11",
+        "М12",
+        "М13",
+        "М14",
+        "М15",
+        "М16",
+        "М17",
+        "М19",
+        "М20",
+        "М21",
+        "М22",
+        "М23",
+        "М24",
+        "М25А",
+        "М25Б",
+        "М26",
+        "М27",
+        "М28",
+        "М29",
+        "М30",
+        "М31",
+        "М32",
+        "М33",
+        "М34",
+        "М35",
+        "М36",
+        "М37",
+        "М38",
+        "М39",
+        "М40",
+        "М41",
+        "М42",
+        "М43",
+        "М44",
+        "М45",
+        "М46",
+        "НАСТ",
+        "ОГР",
+        "Р35",
+        "Р36",
+        "Р38",
+        "Р39",
+        "Р40",
+        "Р41",
+        "Р49",
+        "Р91"
+      ],
+      "row": 181,
+      "quantity_basis": "Подтверждённая сумма часов работников бригады. Альтернатива предварительной №35 и детализации.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F34. Ставка за час из рабочих данных. Труд учитывается по введённым человеко-часам.",
+      "unit_rate_before_order_markup_rub": 1810,
+      "planned_unit_cost_rub": 1248.3552631578946,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 1810,
+          "formula_excel": "=M181*AA181",
+          "origin": "catalog"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F181),ROUND(F181*G181+F181*M181*AA181*(Z181-1),2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F181),ROUND(F181*(M181*S181*Z181+U181)+R181*T181,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 1810,
+          "origin": "catalog"
+        },
+        "unit_planned_cost": {
+          "value": 1248.3552631578946,
+          "formula_excel": "=M181*S181+N181*T181+U181",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "catalog"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L181",
+          "origin": "catalog"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1248.3552631578946,
+          "formula_excel": "='Экономика'!$C$25",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1,
+          "formula_excel": "=IF(X181=1,'Экономика'!$B$15,1)*IF(Y181=1,'Экономика'!$B$16,1)",
+          "origin": "model"
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "Р35",
+      "source_id": 35,
+      "source_record": "Перечень_работ:35",
+      "shop": "Монтажная группа",
+      "post": "P31",
+      "name": "Монтаж изделия",
+      "unit": "чел·ч",
+      "kind": "labor",
+      "source_original_tariff": 1810,
+      "source_original_unit": "н/ч",
+      "incompatible_in_same_work_package": [
+        "М01",
+        "М02",
+        "М03",
+        "М04",
+        "М05",
+        "М06",
+        "М07",
+        "М08",
+        "М09",
+        "М10",
+        "М11",
+        "М12",
+        "М13",
+        "М14",
+        "М15",
+        "М16",
+        "М17",
+        "М19",
+        "М20",
+        "М21",
+        "М22",
+        "М23",
+        "М24",
+        "М25А",
+        "М25Б",
+        "М26",
+        "М27",
+        "М28",
+        "М29",
+        "М30",
+        "М31",
+        "М32",
+        "М33",
+        "М34",
+        "М35",
+        "М36",
+        "М37",
+        "М38",
+        "М39",
+        "М40",
+        "М41",
+        "М42",
+        "М43",
+        "М44",
+        "М45",
+        "М46",
+        "НАСТ",
+        "ОГР",
+        "Р34",
+        "Р36",
+        "Р38",
+        "Р39",
+        "Р40",
+        "Р41",
+        "Р49"
+      ],
+      "row": 182,
+      "quantity_basis": "Предварительная оценка по сумме времени участников. При разборе объёма заменить детальными работами.",
+      "financial_basis": "Данные.xlsx, Перечень_работ!F35. Ставка за час из рабочих данных. Труд учитывается по введённым человеко-часам.",
+      "unit_rate_before_order_markup_rub": 1810,
+      "planned_unit_cost_rub": 1248.3552631578946,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 1810,
+          "formula_excel": "=M182*AA182",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F182),ROUND(F182*G182+F182*M182*AA182*(Z182-1),2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F182),ROUND(F182*(M182*S182*Z182+U182)+R182*T182,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 1810,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 1248.3552631578946,
+          "formula_excel": "=M182*S182+N182*T182+U182",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "formula_excel": "=1/L182",
+          "origin": "dialogue"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1248.3552631578946,
+          "formula_excel": "='Экономика'!$C$25",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1,
+          "formula_excel": "=IF(X182=1,'Экономика'!$B$15,1)*IF(Y182=1,'Экономика'!$B$16,1)",
+          "origin": "model"
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "Р49",
+      "source_id": 49,
+      "source_record": "Перечень_работ:49",
+      "shop": "Монтажная группа",
+      "post": "P31",
+      "name": "Общий монтаж • процентная оценка",
+      "unit": "₽ базы",
+      "kind": "unit",
+      "source_original_tariff": 20,
+      "source_original_unit": "%",
+      "incompatible_in_same_work_package": [
+        "М01",
+        "М02",
+        "М03",
+        "М04",
+        "М05",
+        "М06",
+        "М07",
+        "М08",
+        "М09",
+        "М10",
+        "М11",
+        "М12",
+        "М13",
+        "М14",
+        "М15",
+        "М16",
+        "М17",
+        "М19",
+        "М20",
+        "М21",
+        "М22",
+        "М23",
+        "М24",
+        "М25А",
+        "М25Б",
+        "М26",
+        "М27",
+        "М28",
+        "М29",
+        "М30",
+        "М31",
+        "М32",
+        "М33",
+        "М34",
+        "М35",
+        "М36",
+        "М37",
+        "М38",
+        "М39",
+        "М40",
+        "М41",
+        "М42",
+        "М43",
+        "М44",
+        "М45",
+        "М46",
+        "НАСТ",
+        "ОГР",
+        "Р34",
+        "Р35",
+        "Р36",
+        "Р38",
+        "Р39",
+        "Р40",
+        "Р41"
+      ],
+      "row": 185,
+      "quantity_basis": "Ввести рублёвую базу работ и материалов до итоговой наценки. 20% — способ оценки монтажа. Для того же монтажа альтернативен №35 и детализации.",
+      "financial_basis": "Перечень_работ!F49. План затрат по эквивалентным часам монтажника при 1 810 ₽/ч. Для проекта с известной бригадой выбрать детализацию.",
+      "unit_rate_before_order_markup_rub": 0.2,
+      "planned_unit_cost_rub": 0.13793980808374526,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 0.2,
+          "formula_excel": "=J185",
+          "origin": "catalog"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F185),ROUND(F185*G185,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F185),ROUND(F185*(M185*S185*Z185+U185)+R185*T185,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 0.2,
+          "origin": "catalog"
+        },
+        "unit_planned_cost": {
+          "value": 0.13793980808374526,
+          "formula_excel": "=M185*S185+N185*T185+U185",
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0.13793980808374526,
+          "formula_excel": "=0.20*'Экономика'!$C$25/1810",
+          "origin": "model"
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "Р144",
+      "source_id": 144,
+      "source_record": "Перечень_работ:144",
+      "shop": "Металлоцех",
+      "post": "P23",
+      "name": "Раскрой профильного металлопроката на стационарной ленточной пиле • одиночный",
+      "unit": "рез",
+      "kind": "unit",
+      "source_original_tariff": 79.64,
+      "source_original_unit": "шт.",
+      "incompatible_in_same_work_package": [],
+      "row": 186,
+      "quantity_basis": "Один пропил одного профиля. До замеров номенклатуры 25 резов/ч.",
+      "financial_basis": "Диалог. База №144 равна 79,64 ₽/рез. ЛП — внешний контроль по размерам.",
+      "unit_rate_before_order_markup_rub": 79.64,
+      "planned_unit_cost_rub": 54.927631578947356,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 79.64,
+          "formula_excel": "='Профили'!$F$4",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F186),ROUND(F186*G186,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F186),ROUND(F186*(M186*S186*Z186+U186)+R186*T186,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 79.64,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 54.927631578947356,
+          "formula_excel": "=M186*S186+N186*T186+U186",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 25,
+          "formula_excel": "='Профили'!$D$4",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0.04,
+          "formula_excel": "=IF(L186>0,1/L186,0)",
+          "origin": "dialogue"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1373.190789473684,
+          "formula_excel": "='Экономика'!$C$26",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1991,
+          "formula_excel": "='Экономика'!$B$26",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "Р144.П",
+      "source_id": 144,
+      "source_record": "Перечень_работ:144",
+      "shop": "Металлоцех",
+      "post": "P23",
+      "name": "Ленточная пила • пакет одинаковых профилей",
+      "unit": "проход",
+      "kind": "unit",
+      "source_original_tariff": 79.64,
+      "source_original_unit": "шт.",
+      "incompatible_in_same_work_package": [],
+      "row": 187,
+      "quantity_basis": "F — число проходов, AB — число профилей в пакете. 0,8 × цена одиночного реза × n. Для будущего калькулятора переключатель «Пакетный распил».",
+      "financial_basis": "Коэффициент 0,8 и выработка из диалога; 4 профиля — изменяемый пример. Пакеты разного размера рассчитывать по партиям.",
+      "unit_rate_before_order_markup_rub": 254.848,
+      "planned_unit_cost_rub": 54.927631578947356,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "origin": "input"
+        },
+        "working_unit_rate": {
+          "value": 254.848,
+          "formula_excel": "=0.8*'Калькуляция'!$G$186*AB187",
+          "origin": "dialogue"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F187),ROUND(F187*G187,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F187),ROUND(F187*(M187*S187*Z187+U187)+R187*T187,2),\"\")"
+        },
+        "price_anchor": {
+          "value": 79.64,
+          "origin": "dialogue"
+        },
+        "unit_planned_cost": {
+          "value": 54.927631578947356,
+          "formula_excel": "=M187*S187+N187*T187+U187",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 25,
+          "formula_excel": "='Профили'!$D$4",
+          "origin": "dialogue"
+        },
+        "person_hours_per_unit": {
+          "value": 0.04,
+          "formula_excel": "=IF(L187>0,1/L187,0)",
+          "origin": "dialogue"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1373.190789473684,
+          "formula_excel": "='Экономика'!$C$26",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1991,
+          "formula_excel": "='Экономика'!$B$26",
+          "origin": "catalog"
+        },
+        "uncovered_abrasive_per_unit_or_profiles_per_pack": {
+          "value": 4,
+          "origin": "model"
+        }
+      }
+    },
+    {
+      "code": "ФРС.1",
+      "source_id": null,
+      "source_record": null,
+      "shop": "Древообработка",
+      "post": "P43",
+      "name": "Раскрой фанеры на форматнике • 3–6 мм",
+      "unit": "м пропила",
+      "kind": "manual_saw",
+      "source_original_tariff": null,
+      "source_original_unit": null,
+      "incompatible_in_same_work_package": [
+        "Р146.10",
+        "Р146.12",
+        "Р146.15",
+        "Р146.18",
+        "Р146.21",
+        "Р146.27",
+        "Р146.3",
+        "Р146.30",
+        "Р146.4",
+        "Р146.6",
+        "Р146.9",
+        "Р147",
+        "Р99"
+      ],
+      "row": 287,
+      "quantity_basis": "Метры фактических прямых пропилов по карте. Совпадающая граница деталей — один ход. Свои часы и число ходов вводятся на листе «Форматник».",
+      "financial_basis": "Форматник, строка 24. Часы реза × час станка + длина × ресурс пил. Полный труд оператора в ФРС.ОП. Рыночные ориентиры ФР1–ФР3.",
+      "unit_rate_before_order_markup_rub": 4.348810703703704,
+      "planned_unit_cost_rub": 4.348810703703704,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF('Форматник'!$H$24>0,'Форматник'!$H$24,IF(COUNTIF('Форматник'!$K$8:$K$19,1)>0,0,\"\"))",
+          "origin": "model"
+        },
+        "working_unit_rate": {
+          "value": 4.348810703703704,
+          "formula_excel": "=N287*T287+U287",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F287),ROUND(F287*G287,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F287),ROUND(R287*T287+F287*U287,2),\"\")"
+        },
+        "unit_planned_cost": {
+          "value": 4.348810703703704,
+          "formula_excel": "=M287*S287+N287*T287+U287",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 72.48322147651007,
+          "formula_excel": "='Форматник'!$G$24",
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.013796296296296296,
+          "formula_excel": "=IFERROR(IF('Форматник'!$H$24>0,'Форматник'!$I$24/'Форматник'!$H$24,1/L287),0)",
+          "origin": "model"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "='Форматник'!$I$24",
+          "origin": "model"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 148.5044,
+          "formula_excel": "='Форматник'!$B$49",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 2.3,
+          "formula_excel": "='Форматник'!$B$48",
+          "origin": "model"
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "ФРС.2",
+      "source_id": null,
+      "source_record": null,
+      "shop": "Древообработка",
+      "post": "P43",
+      "name": "Раскрой фанеры на форматнике • свыше 6 до 18 мм",
+      "unit": "м пропила",
+      "kind": "manual_saw",
+      "source_original_tariff": null,
+      "source_original_unit": null,
+      "incompatible_in_same_work_package": [
+        "Р146.10",
+        "Р146.12",
+        "Р146.15",
+        "Р146.18",
+        "Р146.21",
+        "Р146.27",
+        "Р146.3",
+        "Р146.30",
+        "Р146.4",
+        "Р146.6",
+        "Р146.9",
+        "Р147",
+        "Р99"
+      ],
+      "row": 288,
+      "quantity_basis": "Метры фактических прямых пропилов по карте. Совпадающая граница деталей — один ход. Свои часы и число ходов вводятся на листе «Форматник».",
+      "financial_basis": "Форматник, строка 25. Часы реза × час станка + длина × ресурс пил. Полный труд оператора в ФРС.ОП. Рыночные ориентиры ФР1–ФР3.",
+      "unit_rate_before_order_markup_rub": 4.733822111111111,
+      "planned_unit_cost_rub": 4.733822111111111,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF('Форматник'!$H$25>0,'Форматник'!$H$25,IF(COUNTIF('Форматник'!$K$8:$K$19,2)>0,0,\"\"))",
+          "origin": "model"
+        },
+        "working_unit_rate": {
+          "value": 4.733822111111111,
+          "formula_excel": "=N288*T288+U288",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F288),ROUND(F288*G288,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F288),ROUND(R288*T288+F288*U288,2),\"\")"
+        },
+        "unit_planned_cost": {
+          "value": 4.733822111111111,
+          "formula_excel": "=M288*S288+N288*T288+U288",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 61.016949152542374,
+          "formula_excel": "='Форматник'!$G$25",
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.01638888888888889,
+          "formula_excel": "=IFERROR(IF('Форматник'!$H$25>0,'Форматник'!$I$25/'Форматник'!$H$25,1/L288),0)",
+          "origin": "model"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "='Форматник'!$I$25",
+          "origin": "model"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 148.5044,
+          "formula_excel": "='Форматник'!$B$49",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 2.3,
+          "formula_excel": "='Форматник'!$B$48",
+          "origin": "model"
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "ФРС.3",
+      "source_id": null,
+      "source_record": null,
+      "shop": "Древообработка",
+      "post": "P43",
+      "name": "Раскрой фанеры на форматнике • свыше 18 до 30 мм",
+      "unit": "м пропила",
+      "kind": "manual_saw",
+      "source_original_tariff": null,
+      "source_original_unit": null,
+      "incompatible_in_same_work_package": [
+        "Р146.10",
+        "Р146.12",
+        "Р146.15",
+        "Р146.18",
+        "Р146.21",
+        "Р146.27",
+        "Р146.3",
+        "Р146.30",
+        "Р146.4",
+        "Р146.6",
+        "Р146.9",
+        "Р147",
+        "Р99"
+      ],
+      "row": 289,
+      "quantity_basis": "Метры фактических прямых пропилов по карте. Совпадающая граница деталей — один ход. Свои часы и число ходов вводятся на листе «Форматник».",
+      "financial_basis": "Форматник, строка 26. Часы реза × час станка + длина × ресурс пил. Полный труд оператора в ФРС.ОП. Рыночные ориентиры ФР1–ФР3.",
+      "unit_rate_before_order_markup_rub": 5.331964833333333,
+      "planned_unit_cost_rub": 5.331964833333333,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IF('Форматник'!$H$26>0,'Форматник'!$H$26,IF(COUNTIF('Форматник'!$K$8:$K$19,3)>0,0,\"\"))",
+          "origin": "model"
+        },
+        "working_unit_rate": {
+          "value": 5.331964833333333,
+          "formula_excel": "=N289*T289+U289",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F289),ROUND(F289*G289,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F289),ROUND(R289*T289+F289*U289,2),\"\")"
+        },
+        "unit_planned_cost": {
+          "value": 5.331964833333333,
+          "formula_excel": "=M289*S289+N289*T289+U289",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 48.97959183673469,
+          "formula_excel": "='Форматник'!$G$26",
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 0.020416666666666666,
+          "formula_excel": "=IFERROR(IF('Форматник'!$H$26>0,'Форматник'!$I$26/'Форматник'!$H$26,1/L289),0)",
+          "origin": "model"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "='Форматник'!$I$26",
+          "origin": "model"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 148.5044,
+          "formula_excel": "='Форматник'!$B$49",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 2.3,
+          "formula_excel": "='Форматник'!$B$48",
+          "origin": "model"
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "ФРС.ПЗ",
+      "source_id": null,
+      "source_record": null,
+      "shop": "Древообработка",
+      "post": "P43",
+      "name": "Форматник • наладка и подача листов, станок",
+      "unit": "маш.-ч",
+      "kind": "manual_setup",
+      "source_original_tariff": null,
+      "source_original_unit": null,
+      "incompatible_in_same_work_package": [],
+      "row": 290,
+      "quantity_basis": "Один период наладки на партию плюс подача и снятие фактически распиленных листов.",
+      "financial_basis": "Форматник B32–B34, B50, B54. Относится амортизация поста, ТО и энергия при наладке.",
+      "unit_rate_before_order_markup_rub": 108.5044,
+      "planned_unit_cost_rub": 108.5044,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IFERROR(IF(AND(ISNUMBER('Форматник'!$B$54),'Форматник'!$B$54>0),'Форматник'!$B$54,\"\"),\"\")",
+          "origin": "model"
+        },
+        "working_unit_rate": {
+          "value": 108.5044,
+          "formula_excel": "='Форматник'!$B$50",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F290),ROUND(F290*G290,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F290),ROUND(F290*(M290*S290*Z290+U290)+R290*T290,2),\"\")"
+        },
+        "unit_planned_cost": {
+          "value": 108.5044,
+          "formula_excel": "=M290*S290+N290*T290+U290",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 0
+        },
+        "machine_hours_per_unit": {
+          "value": 1,
+          "origin": "model"
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0,
+          "formula_excel": "=IF(ISNUMBER(F290),F290,0)",
+          "origin": "model"
+        },
+        "cost_per_person_hour": {
+          "value": 0
+        },
+        "cost_per_machine_hour": {
+          "value": 108.5044,
+          "formula_excel": "='Форматник'!$B$50",
+          "origin": "model"
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Экономика'!$B$25",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "ФРС.ОП",
+      "source_id": null,
+      "source_record": null,
+      "shop": "Древообработка",
+      "post": "P43",
+      "name": "Сопровождение форматного раскроя • станочник",
+      "unit": "н·ч",
+      "kind": "manual_labor",
+      "source_original_tariff": null,
+      "source_original_unit": null,
+      "incompatible_in_same_work_package": [],
+      "row": 291,
+      "quantity_basis": "Полный ручной цикл в B55. Ставка деревообработки по №127. Второй №103 для этой операции не возникает.",
+      "financial_basis": "Лист «Форматник», B51. Тариф сотрудника × занятые человеко-часы. Затраты из листа «Экономика».",
+      "unit_rate_before_order_markup_rub": 1810,
+      "planned_unit_cost_rub": 1248.3552631578946,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IFERROR(IF(AND(ISNUMBER('Форматник'!$B$55),'Форматник'!$B$55>0),'Форматник'!$B$55,\"\"),\"\")",
+          "origin": "model"
+        },
+        "working_unit_rate": {
+          "value": 1810,
+          "formula_excel": "='Форматник'!$B$51",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F291),ROUND(F291*G291,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F291),ROUND(F291*(M291*S291*Z291+U291)+R291*T291,2),\"\")"
+        },
+        "unit_planned_cost": {
+          "value": 1248.3552631578946,
+          "formula_excel": "=M291*S291+N291*T291+U291",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "origin": "model"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1248.3552631578946,
+          "formula_excel": "='Экономика'!$C$25",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Форматник'!$B$51",
+          "origin": "catalog"
+        }
+      }
+    },
+    {
+      "code": "ФРС.ПОМ",
+      "source_id": null,
+      "source_record": null,
+      "shop": "Древообработка",
+      "post": "P43",
+      "name": "Форматник • помощь при подаче тяжёлых листов",
+      "unit": "н·ч",
+      "kind": "manual_labor",
+      "source_original_tariff": null,
+      "source_original_unit": null,
+      "incompatible_in_same_work_package": [],
+      "row": 292,
+      "quantity_basis": "Фактические человеко-часы второго сотрудника по B36.",
+      "financial_basis": "Лист «Форматник», B52. Тариф сотрудника × занятые человеко-часы. Затраты из листа «Экономика».",
+      "unit_rate_before_order_markup_rub": 1448,
+      "planned_unit_cost_rub": 998.6842105263155,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IFERROR(IF(AND(ISNUMBER('Форматник'!$B$36),'Форматник'!$B$36>0),'Форматник'!$B$36,\"\"),\"\")",
+          "origin": "model"
+        },
+        "working_unit_rate": {
+          "value": 1448,
+          "formula_excel": "='Форматник'!$B$52",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F292),ROUND(F292*G292,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F292),ROUND(F292*(M292*S292*Z292+U292)+R292*T292,2),\"\")"
+        },
+        "unit_planned_cost": {
+          "value": 998.6842105263155,
+          "formula_excel": "=M292*S292+N292*T292+U292",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "origin": "model"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 998.6842105263155,
+          "formula_excel": "='Экономика'!$C$23",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1448,
+          "formula_excel": "='Форматник'!$B$52",
+          "origin": "model"
+        }
+      }
+    },
+    {
+      "code": "ФРС.КАРТА",
+      "source_id": null,
+      "source_record": null,
+      "shop": "Древообработка",
+      "post": "P43",
+      "name": "Форматник • разработка карты раскроя",
+      "unit": "н·ч",
+      "kind": "manual_labor",
+      "source_original_tariff": null,
+      "source_original_unit": null,
+      "incompatible_in_same_work_package": [],
+      "row": 293,
+      "quantity_basis": "Только время разработки новой уникальной карты по B35. Чтение готовой карты входит в наладку.",
+      "financial_basis": "Лист «Форматник», B53. Тариф сотрудника × занятые человеко-часы. Затраты из листа «Экономика».",
+      "unit_rate_before_order_markup_rub": 1810,
+      "planned_unit_cost_rub": 1248.3552631578946,
+      "parameters": {
+        "order_quantity": {
+          "value": null,
+          "formula_excel": "=IFERROR(IF(AND(ISNUMBER('Форматник'!$B$35),'Форматник'!$B$35>0),'Форматник'!$B$35,\"\"),\"\")",
+          "origin": "model"
+        },
+        "working_unit_rate": {
+          "value": 1810,
+          "formula_excel": "='Форматник'!$B$53",
+          "origin": "model"
+        },
+        "order_base": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F293),ROUND(F293*G293,2),\"\")"
+        },
+        "order_planned_cost": {
+          "value": null,
+          "formula_excel": "=IF(ISNUMBER(F293),ROUND(F293*(M293*S293*Z293+U293)+R293*T293,2),\"\")"
+        },
+        "unit_planned_cost": {
+          "value": 1248.3552631578946,
+          "formula_excel": "=M293*S293+N293*T293+U293",
+          "origin": "model"
+        },
+        "output_per_hour": {
+          "value": 1,
+          "origin": "model"
+        },
+        "person_hours_per_unit": {
+          "value": 1,
+          "origin": "model"
+        },
+        "machine_hours_per_unit": {
+          "value": 0
+        },
+        "operator_minutes_per_machine_hour": {
+          "value": 0
+        },
+        "norm_operator_hours_in_order": {
+          "value": 0
+        },
+        "machine_hours_in_order": {
+          "value": 0
+        },
+        "cost_per_person_hour": {
+          "value": 1248.3552631578946,
+          "formula_excel": "='Экономика'!$C$25",
+          "origin": "model"
+        },
+        "cost_per_machine_hour": {
+          "value": 0
+        },
+        "supplies_or_purchased_cost_per_unit": {
+          "value": 0
+        },
+        "working_conditions_factor": {
+          "value": 1
+        },
+        "internal_person_hour_tariff": {
+          "value": 1810,
+          "formula_excel": "='Форматник'!$B$53",
+          "origin": "model"
+        }
+      }
+    }
+  ],
+  "validation_rules": [
+    "Reject missing unit, missing physical quantity basis or incompatible unit/productivity dimensions.",
+    "If productivity is missing or zero, do not invent it; require manual person-hours or mark the rate as missing.",
+    "Reject negative quantity, negative hours and invalid integer-only counts such as cuts, holes, sheets or packages.",
+    "Warn when the same segment has overlapping alternative routes or aggregate and detailed operations.",
+    "Require explicit batch/unique-program identity for setup and program preparation.",
+    "Require operator support line for every selected in-house CNC post with nonzero machine time.",
+    "For subcontracted work, suppress in-house machine and operator lines for the same physical operation.",
+    "Do not activate a model-assigned norm as confirmed without a measured or user-approved origin.",
+    "If a selected operation has a price but no planned cost basis, show price normally but mark profitability incomplete; do not report a false profit or margin."
+  ],
+  "labor_rate_financial_model": {
+    "source_tariff_reproduction": {
+      "formula": "round_up(monthly_salary * 12 / (working_days * hours_per_day) * (1 + additional_personnel_cost_factor + additional_source_tariff_multiplier_component) * source_tariff_last_multiplier, 0)",
+      "parameters": {
+        "working_days": 247,
+        "hours_per_day": 8,
+        "additional_personnel_cost_factor": 0.43,
+        "additional_source_tariff_multiplier_component": 0.1,
+        "source_tariff_last_multiplier": 1.17761873780091
+      },
+      "purpose": "Reproduce historical catalog hourly tariffs only."
+    },
+    "planned_labor_cost": {
+      "formula": "monthly_salary * 12 / (working_days * hours_per_day * useful_load) * (1 + additional_personnel_cost_factor) * (1 + shop_overhead_factor)",
+      "parameters": {
+        "working_days": 247,
+        "hours_per_day": 8,
+        "useful_load": 0.8,
+        "additional_personnel_cost_factor": 0.43,
+        "shop_overhead_factor": 0.15
+      },
+      "purpose": "Planned labor cost for profitability analysis. Replace budget parameters with actual accounting data when available."
+    },
+    "important": "Do not mix source tariff reproduction with planned cost. The 40% markup is applied only once at order level and is not part of either hourly formula."
+  },
+  "panel_saw_43_detail": {
+    "post": "P43",
+    "shop": "Древообработка",
+    "card_rows": 12,
+    "thickness_range_mm": [
+      3,
+      30
+    ],
+    "kerf_mm": 3,
+    "physical_cut_length_rule": "Count actual physical straight saw cuts. A shared edge between adjacent parts is one cut; do not add kerf width to the measured cut length.",
+    "cycle_formula": "cut_hours = length_m/(60*forward_feed_m_per_min) + length_m/(60*return_feed_m_per_min) + strokes*position_seconds/3600",
+    "measured_cycle_override": "A measured clean cutting cycle replaces the calculated cutting time and excludes setup, sheet loading and unloading.",
+    "separate_cost_lines": [
+      "cutting_machine_and_blade_wear",
+      "setup_and_sheet_handling",
+      "full_manual_operator_cycle",
+      "helper_for_heavy_sheets_when_required",
+      "new_unique_cut_map_development_when_required"
+    ],
+    "operator_rule": "The format-saw operator is charged for the full manual cycle in ФРС.ОП. Do not create an additional CNC work-103 operator-support line for P43.",
+    "thickness_bands": [
+      {
+        "id": "ФРС.1",
+        "min_thickness_mm": 3,
+        "max_thickness_mm": 6,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "output_m_per_hour": 72.48322147651007,
+        "machine_and_blade_rub_per_m": 4.348810703703704,
+        "operator_rub_per_m": 24.971296296296295,
+        "cut_total_before_setup_and_markup_rub_per_m": 29.320107
+      },
+      {
+        "id": "ФРС.2",
+        "min_thickness_mm": 6,
+        "max_thickness_mm": 18,
+        "min_inclusive": false,
+        "max_inclusive": true,
+        "output_m_per_hour": 61.016949152542374,
+        "machine_and_blade_rub_per_m": 4.733822111111111,
+        "operator_rub_per_m": 29.663888888888888,
+        "cut_total_before_setup_and_markup_rub_per_m": 34.397711
+      },
+      {
+        "id": "ФРС.3",
+        "min_thickness_mm": 18,
+        "max_thickness_mm": 30,
+        "min_inclusive": false,
+        "max_inclusive": true,
+        "output_m_per_hour": 48.97959183673469,
+        "machine_and_blade_rub_per_m": 5.331964833333334,
+        "operator_rub_per_m": 36.954166666666666,
+        "cut_total_before_setup_and_markup_rub_per_m": 42.2861315
+      }
+    ],
+    "codes": [
+      "ФРС.1",
+      "ФРС.2",
+      "ФРС.3",
+      "ФРС.ПЗ",
+      "ФРС.ОП",
+      "ФРС.ПОМ",
+      "ФРС.КАРТА"
+    ],
+    "status": "model_assigned_preliminary_until_actual_cycle_and_resource_measurements"
+  }
+}

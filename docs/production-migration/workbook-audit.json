@@ -1,0 +1,4012 @@
+{
+  "sheets": [
+    "Калькуляция",
+    "Экономика",
+    "Станки",
+    "Форматник",
+    "Монтаж",
+    "Ограждение",
+    "Настил",
+    "Комплексы",
+    "Расходники",
+    "Занятость",
+    "Профили",
+    "Рынок",
+    "Перечень"
+  ],
+  "comparisons": 568,
+  "mismatches": [],
+  "checked": [
+    {
+      "code": "Р83",
+      "cell": "G10",
+      "json": 22.625,
+      "workbook": 22.625,
+      "matches": true
+    },
+    {
+      "code": "Р83",
+      "cell": "K10",
+      "json": 15.604440789473683,
+      "workbook": 15.604440789473683,
+      "matches": true
+    },
+    {
+      "code": "Р84",
+      "cell": "G11",
+      "json": 23.122222222222224,
+      "workbook": 23.122222222222224,
+      "matches": true
+    },
+    {
+      "code": "Р84",
+      "cell": "K11",
+      "json": 15.951206140350878,
+      "workbook": 15.951206140350878,
+      "matches": true
+    },
+    {
+      "code": "Р86",
+      "cell": "G12",
+      "json": 27.74666666666667,
+      "workbook": 27.74666666666667,
+      "matches": true
+    },
+    {
+      "code": "Р86",
+      "cell": "K12",
+      "json": 19.141447368421055,
+      "workbook": 19.141447368421055,
+      "matches": true
+    },
+    {
+      "code": "Р85",
+      "cell": "G13",
+      "json": 20.81,
+      "workbook": 20.81,
+      "matches": true
+    },
+    {
+      "code": "Р85",
+      "cell": "K13",
+      "json": 14.35608552631579,
+      "workbook": 14.35608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р87",
+      "cell": "G14",
+      "json": 20.81,
+      "workbook": 20.81,
+      "matches": true
+    },
+    {
+      "code": "Р87",
+      "cell": "K14",
+      "json": 14.35608552631579,
+      "workbook": 14.35608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р88",
+      "cell": "G15",
+      "json": 69.36666666666666,
+      "workbook": 69.36666666666666,
+      "matches": true
+    },
+    {
+      "code": "Р88",
+      "cell": "K15",
+      "json": 47.85361842105263,
+      "workbook": 47.85361842105263,
+      "matches": true
+    },
+    {
+      "code": "Р89",
+      "cell": "G16",
+      "json": 26.012500000000003,
+      "workbook": 26.012500000000003,
+      "matches": true
+    },
+    {
+      "code": "Р89",
+      "cell": "K16",
+      "json": 17.945106907894736,
+      "workbook": 17.945106907894736,
+      "matches": true
+    },
+    {
+      "code": "Р82",
+      "cell": "G17",
+      "json": 208.10000000000002,
+      "workbook": 208.10000000000002,
+      "matches": true
+    },
+    {
+      "code": "Р82",
+      "cell": "K17",
+      "json": 143.5608552631579,
+      "workbook": 143.5608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р81",
+      "cell": "G18",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р81",
+      "cell": "K18",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р94",
+      "cell": "G19",
+      "json": 1250,
+      "workbook": 1250,
+      "matches": true
+    },
+    {
+      "code": "Р94",
+      "cell": "K19",
+      "json": 749.0131578947367,
+      "workbook": 749.0131578947367,
+      "matches": true
+    },
+    {
+      "code": "Р108",
+      "cell": "G20",
+      "json": 2443,
+      "workbook": 2443,
+      "matches": true
+    },
+    {
+      "code": "Р108",
+      "cell": "K20",
+      "json": 1685.2796052631577,
+      "workbook": 1685.2796052631577,
+      "matches": true
+    },
+    {
+      "code": "Р111",
+      "cell": "G21",
+      "json": 18.918181818181818,
+      "workbook": 18.918181818181818,
+      "matches": true
+    },
+    {
+      "code": "Р111",
+      "cell": "K21",
+      "json": 13.050986842105262,
+      "workbook": 13.050986842105262,
+      "matches": true
+    },
+    {
+      "code": "Р112",
+      "cell": "G22",
+      "json": 17.341666666666665,
+      "workbook": 17.341666666666665,
+      "matches": true
+    },
+    {
+      "code": "Р112",
+      "cell": "K22",
+      "json": 11.963404605263158,
+      "workbook": 11.963404605263158,
+      "matches": true
+    },
+    {
+      "code": "Р113",
+      "cell": "G23",
+      "json": 69.36666666666666,
+      "workbook": 69.36666666666666,
+      "matches": true
+    },
+    {
+      "code": "Р113",
+      "cell": "K23",
+      "json": 47.85361842105263,
+      "workbook": 47.85361842105263,
+      "matches": true
+    },
+    {
+      "code": "Р115",
+      "cell": "G24",
+      "json": 17.341666666666665,
+      "workbook": 17.341666666666665,
+      "matches": true
+    },
+    {
+      "code": "Р115",
+      "cell": "K24",
+      "json": 11.963404605263158,
+      "workbook": 11.963404605263158,
+      "matches": true
+    },
+    {
+      "code": "Р116",
+      "cell": "G25",
+      "json": 17.341666666666665,
+      "workbook": 17.341666666666665,
+      "matches": true
+    },
+    {
+      "code": "Р116",
+      "cell": "K25",
+      "json": 11.963404605263158,
+      "workbook": 11.963404605263158,
+      "matches": true
+    },
+    {
+      "code": "Р114",
+      "cell": "G26",
+      "json": 57.80555555555555,
+      "workbook": 57.80555555555555,
+      "matches": true
+    },
+    {
+      "code": "Р114",
+      "cell": "K26",
+      "json": 39.87801535087719,
+      "workbook": 39.87801535087719,
+      "matches": true
+    },
+    {
+      "code": "Р117",
+      "cell": "G27",
+      "json": 7.707407407407407,
+      "workbook": 7.707407407407407,
+      "matches": true
+    },
+    {
+      "code": "Р117",
+      "cell": "K27",
+      "json": 5.3170687134502925,
+      "workbook": 5.3170687134502925,
+      "matches": true
+    },
+    {
+      "code": "Р110",
+      "cell": "G28",
+      "json": 104.05000000000001,
+      "workbook": 104.05000000000001,
+      "matches": true
+    },
+    {
+      "code": "Р110",
+      "cell": "K28",
+      "json": 71.78042763157895,
+      "workbook": 71.78042763157895,
+      "matches": true
+    },
+    {
+      "code": "Р118",
+      "cell": "G29",
+      "json": 582.553291062802,
+      "workbook": 582.553291062802,
+      "matches": true
+    },
+    {
+      "code": "Р118",
+      "cell": "K29",
+      "json": 414.5,
+      "workbook": 414.5,
+      "matches": true
+    },
+    {
+      "code": "Р119",
+      "cell": "G30",
+      "json": 89.58898324588051,
+      "workbook": 89.58898324588051,
+      "matches": true
+    },
+    {
+      "code": "Р119",
+      "cell": "K30",
+      "json": 89.5889832458805,
+      "workbook": 89.5889832458805,
+      "matches": true
+    },
+    {
+      "code": "Р120",
+      "cell": "G31",
+      "json": 146.93529411764706,
+      "workbook": 146.93529411764706,
+      "matches": true
+    },
+    {
+      "code": "Р120",
+      "cell": "K31",
+      "json": 110.53333333333333,
+      "workbook": 110.53333333333333,
+      "matches": true
+    },
+    {
+      "code": "Р121",
+      "cell": "G32",
+      "json": 203.78003403107743,
+      "workbook": 203.78003403107743,
+      "matches": true
+    },
+    {
+      "code": "Р121",
+      "cell": "K32",
+      "json": 127.53846153846155,
+      "workbook": 127.53846153846155,
+      "matches": true
+    },
+    {
+      "code": "Р122",
+      "cell": "G33",
+      "json": 260.6576809987468,
+      "workbook": 260.6576809987468,
+      "matches": true
+    },
+    {
+      "code": "Р122",
+      "cell": "K33",
+      "json": 150.72727272727272,
+      "workbook": 150.72727272727272,
+      "matches": true
+    },
+    {
+      "code": "Р123",
+      "cell": "G34",
+      "json": 326.86372549019603,
+      "workbook": 326.86372549019603,
+      "matches": true
+    },
+    {
+      "code": "Р123",
+      "cell": "K34",
+      "json": 195.05882352941177,
+      "workbook": 195.05882352941177,
+      "matches": true
+    },
+    {
+      "code": "Р124",
+      "cell": "G35",
+      "json": 461.10226455787205,
+      "workbook": 461.10226455787205,
+      "matches": true
+    },
+    {
+      "code": "Р124",
+      "cell": "K35",
+      "json": 255.0769230769231,
+      "workbook": 255.0769230769231,
+      "matches": true
+    },
+    {
+      "code": "Р125",
+      "cell": "G36",
+      "json": 32.44983680908783,
+      "workbook": 32.44983680908783,
+      "matches": true
+    },
+    {
+      "code": "Р125",
+      "cell": "K36",
+      "json": 32.44983680908782,
+      "workbook": 32.44983680908782,
+      "matches": true
+    },
+    {
+      "code": "Р126",
+      "cell": "G37",
+      "json": 1877.442467948718,
+      "workbook": 1877.442467948718,
+      "matches": true
+    },
+    {
+      "code": "Р126",
+      "cell": "K37",
+      "json": 82.9,
+      "workbook": 82.9,
+      "matches": true
+    },
+    {
+      "code": "Р129",
+      "cell": "G38",
+      "json": 40,
+      "workbook": 40,
+      "matches": true
+    },
+    {
+      "code": "Р129",
+      "cell": "K38",
+      "json": 66.33333333333333,
+      "workbook": 66.33333333333333,
+      "matches": true
+    },
+    {
+      "code": "Р133",
+      "cell": "G39",
+      "json": 24.806819472488638,
+      "workbook": 24.806819472488638,
+      "matches": true
+    },
+    {
+      "code": "Р133",
+      "cell": "K39",
+      "json": 8.291666666666666,
+      "workbook": 8.291666666666666,
+      "matches": true
+    },
+    {
+      "code": "Р134",
+      "cell": "G40",
+      "json": 29.949343382638467,
+      "workbook": 29.949343382638467,
+      "matches": true
+    },
+    {
+      "code": "Р134",
+      "cell": "K40",
+      "json": 10.205128205128204,
+      "workbook": 10.205128205128204,
+      "matches": true
+    },
+    {
+      "code": "Р135",
+      "cell": "G41",
+      "json": 37.433050816296515,
+      "workbook": 37.433050816296515,
+      "matches": true
+    },
+    {
+      "code": "Р135",
+      "cell": "K41",
+      "json": 12.756410256410255,
+      "workbook": 12.756410256410255,
+      "matches": true
+    },
+    {
+      "code": "Р136",
+      "cell": "G42",
+      "json": 48.64881958250498,
+      "workbook": 48.64881958250498,
+      "matches": true
+    },
+    {
+      "code": "Р136",
+      "cell": "K42",
+      "json": 16.583333333333332,
+      "workbook": 16.583333333333332,
+      "matches": true
+    },
+    {
+      "code": "Р137",
+      "cell": "G43",
+      "json": 55.848515072791386,
+      "workbook": 55.848515072791386,
+      "matches": true
+    },
+    {
+      "code": "Р137",
+      "cell": "K43",
+      "json": 19.509803921568626,
+      "workbook": 19.509803921568626,
+      "matches": true
+    },
+    {
+      "code": "Р138",
+      "cell": "G44",
+      "json": 68.21940310756099,
+      "workbook": 68.21940310756099,
+      "matches": true
+    },
+    {
+      "code": "Р138",
+      "cell": "K44",
+      "json": 25.51282051282051,
+      "workbook": 25.51282051282051,
+      "matches": true
+    },
+    {
+      "code": "Р130",
+      "cell": "G45",
+      "json": 90.94447405828002,
+      "workbook": 90.94447405828002,
+      "matches": true
+    },
+    {
+      "code": "Р130",
+      "cell": "K45",
+      "json": 31.58730158730158,
+      "workbook": 31.58730158730158,
+      "matches": true
+    },
+    {
+      "code": "Р131",
+      "cell": "G46",
+      "json": 111.57470925332882,
+      "workbook": 111.57470925332882,
+      "matches": true
+    },
+    {
+      "code": "Р131",
+      "cell": "K46",
+      "json": 39.01960784313725,
+      "workbook": 39.01960784313725,
+      "matches": true
+    },
+    {
+      "code": "Р132",
+      "cell": "G47",
+      "json": 169.76491290861372,
+      "workbook": 169.76491290861372,
+      "matches": true
+    },
+    {
+      "code": "Р132",
+      "cell": "K47",
+      "json": 60.3030303030303,
+      "workbook": 60.3030303030303,
+      "matches": true
+    },
+    {
+      "code": "Р191",
+      "cell": "G48",
+      "json": 247.975,
+      "workbook": 247.975,
+      "matches": true
+    },
+    {
+      "code": "Р191",
+      "cell": "K48",
+      "json": 66.33333333333333,
+      "workbook": 66.33333333333333,
+      "matches": true
+    },
+    {
+      "code": "Р16.С",
+      "cell": "G49",
+      "json": 123.45679012345678,
+      "workbook": 123.45679012345678,
+      "matches": true
+    },
+    {
+      "code": "Р16.С",
+      "cell": "K49",
+      "json": 168.72427983539092,
+      "workbook": 168.72427983539092,
+      "matches": true
+    },
+    {
+      "code": "Р16.А",
+      "cell": "G50",
+      "json": 2496,
+      "workbook": 2496,
+      "matches": true
+    },
+    {
+      "code": "Р16.А",
+      "cell": "K50",
+      "json": 2496,
+      "workbook": 2496,
+      "matches": true
+    },
+    {
+      "code": "Р16.П",
+      "cell": "G51",
+      "json": 3000,
+      "workbook": 3000,
+      "matches": true
+    },
+    {
+      "code": "Р16.П",
+      "cell": "K51",
+      "json": 3000,
+      "workbook": 3000,
+      "matches": true
+    },
+    {
+      "code": "Р140.1",
+      "cell": "G52",
+      "json": 40,
+      "workbook": 40,
+      "matches": true
+    },
+    {
+      "code": "Р140.1",
+      "cell": "K52",
+      "json": 67.16666666666667,
+      "workbook": 67.16666666666667,
+      "matches": true
+    },
+    {
+      "code": "Р140.2",
+      "cell": "G53",
+      "json": 24.806819472488638,
+      "workbook": 24.806819472488638,
+      "matches": true
+    },
+    {
+      "code": "Р140.2",
+      "cell": "K53",
+      "json": 8.395833333333334,
+      "workbook": 8.395833333333334,
+      "matches": true
+    },
+    {
+      "code": "Р140.3",
+      "cell": "G54",
+      "json": 29.949343382638467,
+      "workbook": 29.949343382638467,
+      "matches": true
+    },
+    {
+      "code": "Р140.3",
+      "cell": "K54",
+      "json": 10.333333333333336,
+      "workbook": 10.333333333333336,
+      "matches": true
+    },
+    {
+      "code": "Р140.4",
+      "cell": "G55",
+      "json": 37.433050816296515,
+      "workbook": 37.433050816296515,
+      "matches": true
+    },
+    {
+      "code": "Р140.4",
+      "cell": "K55",
+      "json": 12.91666666666667,
+      "workbook": 12.91666666666667,
+      "matches": true
+    },
+    {
+      "code": "Р140.5",
+      "cell": "G56",
+      "json": 48.64881958250498,
+      "workbook": 48.64881958250498,
+      "matches": true
+    },
+    {
+      "code": "Р140.5",
+      "cell": "K56",
+      "json": 16.791666666666668,
+      "workbook": 16.791666666666668,
+      "matches": true
+    },
+    {
+      "code": "Р140.6",
+      "cell": "G57",
+      "json": 55.848515072791386,
+      "workbook": 55.848515072791386,
+      "matches": true
+    },
+    {
+      "code": "Р140.6",
+      "cell": "K57",
+      "json": 19.754901960784316,
+      "workbook": 19.754901960784316,
+      "matches": true
+    },
+    {
+      "code": "Р140.8",
+      "cell": "G58",
+      "json": 68.21940310756099,
+      "workbook": 68.21940310756099,
+      "matches": true
+    },
+    {
+      "code": "Р140.8",
+      "cell": "K58",
+      "json": 25.83333333333334,
+      "workbook": 25.83333333333334,
+      "matches": true
+    },
+    {
+      "code": "Р140.10",
+      "cell": "G59",
+      "json": 90.94447405828002,
+      "workbook": 90.94447405828002,
+      "matches": true
+    },
+    {
+      "code": "Р140.10",
+      "cell": "K59",
+      "json": 31.984126984126988,
+      "workbook": 31.984126984126988,
+      "matches": true
+    },
+    {
+      "code": "Р140.12",
+      "cell": "G60",
+      "json": 111.57470925332882,
+      "workbook": 111.57470925332882,
+      "matches": true
+    },
+    {
+      "code": "Р140.12",
+      "cell": "K60",
+      "json": 39.50980392156863,
+      "workbook": 39.50980392156863,
+      "matches": true
+    },
+    {
+      "code": "Р140.16",
+      "cell": "G61",
+      "json": 169.76491290861372,
+      "workbook": 169.76491290861372,
+      "matches": true
+    },
+    {
+      "code": "Р140.16",
+      "cell": "K61",
+      "json": 61.06060606060607,
+      "workbook": 61.06060606060607,
+      "matches": true
+    },
+    {
+      "code": "Р140.20",
+      "cell": "G62",
+      "json": 247.975,
+      "workbook": 247.975,
+      "matches": true
+    },
+    {
+      "code": "Р140.20",
+      "cell": "K62",
+      "json": 67.16666666666667,
+      "workbook": 67.16666666666667,
+      "matches": true
+    },
+    {
+      "code": "Р142",
+      "cell": "G63",
+      "json": 24.806819472488638,
+      "workbook": 24.806819472488638,
+      "matches": true
+    },
+    {
+      "code": "Р142",
+      "cell": "K63",
+      "json": 3.5,
+      "workbook": 3.5,
+      "matches": true
+    },
+    {
+      "code": "Р145",
+      "cell": "G64",
+      "json": 24.806819472488638,
+      "workbook": 24.806819472488638,
+      "matches": true
+    },
+    {
+      "code": "Р145",
+      "cell": "K64",
+      "json": 3.5,
+      "workbook": 3.5,
+      "matches": true
+    },
+    {
+      "code": "Р56",
+      "cell": "G65",
+      "json": 34.34142053445851,
+      "workbook": 34.34142053445851,
+      "matches": true
+    },
+    {
+      "code": "Р56",
+      "cell": "K65",
+      "json": 3.79746835443038,
+      "workbook": 3.79746835443038,
+      "matches": true
+    },
+    {
+      "code": "П56",
+      "cell": "G66",
+      "json": 38,
+      "workbook": 38,
+      "matches": true
+    },
+    {
+      "code": "П56",
+      "cell": "K66",
+      "json": 38,
+      "workbook": 38,
+      "matches": true
+    },
+    {
+      "code": "Р65",
+      "cell": "G67",
+      "json": 40.846969696969694,
+      "workbook": 40.846969696969694,
+      "matches": true
+    },
+    {
+      "code": "Р65",
+      "cell": "K67",
+      "json": 3.272727272727273,
+      "workbook": 3.272727272727273,
+      "matches": true
+    },
+    {
+      "code": "П65",
+      "cell": "G68",
+      "json": 44,
+      "workbook": 44,
+      "matches": true
+    },
+    {
+      "code": "П65",
+      "cell": "K68",
+      "json": 44,
+      "workbook": 44,
+      "matches": true
+    },
+    {
+      "code": "Р69",
+      "cell": "G69",
+      "json": 52.440497601918466,
+      "workbook": 52.440497601918466,
+      "matches": true
+    },
+    {
+      "code": "Р69",
+      "cell": "K69",
+      "json": 1.618705035971223,
+      "workbook": 1.618705035971223,
+      "matches": true
+    },
+    {
+      "code": "П69",
+      "cell": "G70",
+      "json": 54,
+      "workbook": 54,
+      "matches": true
+    },
+    {
+      "code": "П69",
+      "cell": "K70",
+      "json": 54,
+      "workbook": 54,
+      "matches": true
+    },
+    {
+      "code": "Р71",
+      "cell": "G71",
+      "json": 63.56437265917603,
+      "workbook": 63.56437265917603,
+      "matches": true
+    },
+    {
+      "code": "Р71",
+      "cell": "K71",
+      "json": 2.5280898876404496,
+      "workbook": 2.5280898876404496,
+      "matches": true
+    },
+    {
+      "code": "П71",
+      "cell": "G72",
+      "json": 66,
+      "workbook": 66,
+      "matches": true
+    },
+    {
+      "code": "П71",
+      "cell": "K72",
+      "json": 66,
+      "workbook": 66,
+      "matches": true
+    },
+    {
+      "code": "Р73",
+      "cell": "G73",
+      "json": 73.56437265917603,
+      "workbook": 73.56437265917603,
+      "matches": true
+    },
+    {
+      "code": "Р73",
+      "cell": "K73",
+      "json": 2.5280898876404496,
+      "workbook": 2.5280898876404496,
+      "matches": true
+    },
+    {
+      "code": "П73",
+      "cell": "G74",
+      "json": 76,
+      "workbook": 76,
+      "matches": true
+    },
+    {
+      "code": "П73",
+      "cell": "K74",
+      "json": 76,
+      "workbook": 76,
+      "matches": true
+    },
+    {
+      "code": "Р75",
+      "cell": "G75",
+      "json": 88.32591807909604,
+      "workbook": 88.32591807909604,
+      "matches": true
+    },
+    {
+      "code": "Р75",
+      "cell": "K75",
+      "json": 3.8135593220338984,
+      "workbook": 3.8135593220338984,
+      "matches": true
+    },
+    {
+      "code": "П75",
+      "cell": "G76",
+      "json": 92,
+      "workbook": 92,
+      "matches": true
+    },
+    {
+      "code": "П75",
+      "cell": "K76",
+      "json": 92,
+      "workbook": 92,
+      "matches": true
+    },
+    {
+      "code": "Р53",
+      "cell": "G77",
+      "json": 112.68047034764827,
+      "workbook": 112.68047034764827,
+      "matches": true
+    },
+    {
+      "code": "Р53",
+      "cell": "K77",
+      "json": 5.521472392638037,
+      "workbook": 5.521472392638037,
+      "matches": true
+    },
+    {
+      "code": "П53",
+      "cell": "G78",
+      "json": 118,
+      "workbook": 118,
+      "matches": true
+    },
+    {
+      "code": "П53",
+      "cell": "K78",
+      "json": 118,
+      "workbook": 118,
+      "matches": true
+    },
+    {
+      "code": "Р55",
+      "cell": "G79",
+      "json": 135.00739247311827,
+      "workbook": 135.00739247311827,
+      "matches": true
+    },
+    {
+      "code": "Р55",
+      "cell": "K79",
+      "json": 7.258064516129031,
+      "workbook": 7.258064516129031,
+      "matches": true
+    },
+    {
+      "code": "П55",
+      "cell": "G80",
+      "json": 142,
+      "workbook": 142,
+      "matches": true
+    },
+    {
+      "code": "П55",
+      "cell": "K80",
+      "json": 142,
+      "workbook": 142,
+      "matches": true
+    },
+    {
+      "code": "Р59",
+      "cell": "G81",
+      "json": 176.67757936507937,
+      "workbook": 176.67757936507937,
+      "matches": true
+    },
+    {
+      "code": "Р59",
+      "cell": "K81",
+      "json": 10.714285714285714,
+      "workbook": 10.714285714285714,
+      "matches": true
+    },
+    {
+      "code": "П59",
+      "cell": "G82",
+      "json": 187,
+      "workbook": 187,
+      "matches": true
+    },
+    {
+      "code": "П59",
+      "cell": "K82",
+      "json": 187,
+      "workbook": 187,
+      "matches": true
+    },
+    {
+      "code": "Р61",
+      "cell": "G83",
+      "json": 204.67757936507937,
+      "workbook": 204.67757936507937,
+      "matches": true
+    },
+    {
+      "code": "Р61",
+      "cell": "K83",
+      "json": 10.714285714285714,
+      "workbook": 10.714285714285714,
+      "matches": true
+    },
+    {
+      "code": "П61",
+      "cell": "G84",
+      "json": 215,
+      "workbook": 215,
+      "matches": true
+    },
+    {
+      "code": "П61",
+      "cell": "K84",
+      "json": 215,
+      "workbook": 215,
+      "matches": true
+    },
+    {
+      "code": "Р63",
+      "cell": "G85",
+      "json": 222.05028735632183,
+      "workbook": 222.05028735632183,
+      "matches": true
+    },
+    {
+      "code": "Р63",
+      "cell": "K85",
+      "json": 15.517241379310347,
+      "workbook": 15.517241379310347,
+      "matches": true
+    },
+    {
+      "code": "П63",
+      "cell": "G86",
+      "json": 237,
+      "workbook": 237,
+      "matches": true
+    },
+    {
+      "code": "П63",
+      "cell": "K86",
+      "json": 237,
+      "workbook": 237,
+      "matches": true
+    },
+    {
+      "code": "Р67",
+      "cell": "G87",
+      "json": 250.05028735632183,
+      "workbook": 250.05028735632183,
+      "matches": true
+    },
+    {
+      "code": "Р67",
+      "cell": "K87",
+      "json": 15.517241379310347,
+      "workbook": 15.517241379310347,
+      "matches": true
+    },
+    {
+      "code": "П67",
+      "cell": "G88",
+      "json": 265,
+      "workbook": 265,
+      "matches": true
+    },
+    {
+      "code": "П67",
+      "cell": "K88",
+      "json": 265,
+      "workbook": 265,
+      "matches": true
+    },
+    {
+      "code": "Р58",
+      "cell": "G89",
+      "json": 4.956645833333333,
+      "workbook": 4.956645833333333,
+      "matches": true
+    },
+    {
+      "code": "Р58",
+      "cell": "K89",
+      "json": 1.045,
+      "workbook": 1.045,
+      "matches": true
+    },
+    {
+      "code": "Р66",
+      "cell": "G90",
+      "json": 4.942194444444445,
+      "workbook": 4.942194444444445,
+      "matches": true
+    },
+    {
+      "code": "Р66",
+      "cell": "K90",
+      "json": 1.1099999999999999,
+      "workbook": 1.1099999999999999,
+      "matches": true
+    },
+    {
+      "code": "Р70",
+      "cell": "G91",
+      "json": 4.971097222222222,
+      "workbook": 4.971097222222222,
+      "matches": true
+    },
+    {
+      "code": "Р70",
+      "cell": "K91",
+      "json": 1.43,
+      "workbook": 1.43,
+      "matches": true
+    },
+    {
+      "code": "Р72",
+      "cell": "G92",
+      "json": 4.971097222222222,
+      "workbook": 4.971097222222222,
+      "matches": true
+    },
+    {
+      "code": "Р72",
+      "cell": "K92",
+      "json": 1.78,
+      "workbook": 1.78,
+      "matches": true
+    },
+    {
+      "code": "Р74",
+      "cell": "G93",
+      "json": 5.971097222222222,
+      "workbook": 5.971097222222222,
+      "matches": true
+    },
+    {
+      "code": "Р74",
+      "cell": "K93",
+      "json": 2.1299999999999994,
+      "workbook": 2.1299999999999994,
+      "matches": true
+    },
+    {
+      "code": "Р76",
+      "cell": "G94",
+      "json": 7.927743055555555,
+      "workbook": 7.927743055555555,
+      "matches": true
+    },
+    {
+      "code": "Р76",
+      "cell": "K94",
+      "json": 2.875,
+      "workbook": 2.875,
+      "matches": true
+    },
+    {
+      "code": "Р54",
+      "cell": "G95",
+      "json": 9.927743055555556,
+      "workbook": 9.927743055555556,
+      "matches": true
+    },
+    {
+      "code": "Р54",
+      "cell": "K95",
+      "json": 3.575,
+      "workbook": 3.575,
+      "matches": true
+    },
+    {
+      "code": "Р57",
+      "cell": "G96",
+      "json": 11.927743055555556,
+      "workbook": 11.927743055555556,
+      "matches": true
+    },
+    {
+      "code": "Р57",
+      "cell": "K96",
+      "json": 4.2749999999999995,
+      "workbook": 4.2749999999999995,
+      "matches": true
+    },
+    {
+      "code": "Р60",
+      "cell": "G97",
+      "json": 13.85548611111111,
+      "workbook": 13.85548611111111,
+      "matches": true
+    },
+    {
+      "code": "Р60",
+      "cell": "K97",
+      "json": 5.05,
+      "workbook": 5.05,
+      "matches": true
+    },
+    {
+      "code": "Р62",
+      "cell": "G98",
+      "json": 15.85548611111111,
+      "workbook": 15.85548611111111,
+      "matches": true
+    },
+    {
+      "code": "Р62",
+      "cell": "K98",
+      "json": 5.75,
+      "workbook": 5.75,
+      "matches": true
+    },
+    {
+      "code": "Р64",
+      "cell": "G99",
+      "json": 17.783229166666665,
+      "workbook": 17.783229166666665,
+      "matches": true
+    },
+    {
+      "code": "Р64",
+      "cell": "K99",
+      "json": 6.5249999999999995,
+      "workbook": 6.5249999999999995,
+      "matches": true
+    },
+    {
+      "code": "Р68",
+      "cell": "G100",
+      "json": 19.783229166666665,
+      "workbook": 19.783229166666665,
+      "matches": true
+    },
+    {
+      "code": "Р68",
+      "cell": "K100",
+      "json": 7.225,
+      "workbook": 7.225,
+      "matches": true
+    },
+    {
+      "code": "Р146.3",
+      "cell": "G101",
+      "json": 0.3703703703703704,
+      "workbook": 0.3703703703703704,
+      "matches": true
+    },
+    {
+      "code": "Р146.3",
+      "cell": "K101",
+      "json": 0.9444444444444445,
+      "workbook": 0.9444444444444445,
+      "matches": true
+    },
+    {
+      "code": "Р146.4",
+      "cell": "G102",
+      "json": 0.3703703703703704,
+      "workbook": 0.3703703703703704,
+      "matches": true
+    },
+    {
+      "code": "Р146.4",
+      "cell": "K102",
+      "json": 0.9444444444444445,
+      "workbook": 0.9444444444444445,
+      "matches": true
+    },
+    {
+      "code": "Р146.6",
+      "cell": "G103",
+      "json": 0.7407407407407408,
+      "workbook": 0.7407407407407408,
+      "matches": true
+    },
+    {
+      "code": "Р146.6",
+      "cell": "K103",
+      "json": 1.888888888888889,
+      "workbook": 1.888888888888889,
+      "matches": true
+    },
+    {
+      "code": "Р146.9",
+      "cell": "G104",
+      "json": 1.1111111111111112,
+      "workbook": 1.1111111111111112,
+      "matches": true
+    },
+    {
+      "code": "Р146.9",
+      "cell": "K104",
+      "json": 2.8333333333333335,
+      "workbook": 2.8333333333333335,
+      "matches": true
+    },
+    {
+      "code": "Р146.10",
+      "cell": "G105",
+      "json": 1.4814814814814816,
+      "workbook": 1.4814814814814816,
+      "matches": true
+    },
+    {
+      "code": "Р146.10",
+      "cell": "K105",
+      "json": 3.777777777777778,
+      "workbook": 3.777777777777778,
+      "matches": true
+    },
+    {
+      "code": "Р146.12",
+      "cell": "G106",
+      "json": 1.4814814814814816,
+      "workbook": 1.4814814814814816,
+      "matches": true
+    },
+    {
+      "code": "Р146.12",
+      "cell": "K106",
+      "json": 3.777777777777778,
+      "workbook": 3.777777777777778,
+      "matches": true
+    },
+    {
+      "code": "Р146.15",
+      "cell": "G107",
+      "json": 1.8518518518518516,
+      "workbook": 1.8518518518518516,
+      "matches": true
+    },
+    {
+      "code": "Р146.15",
+      "cell": "K107",
+      "json": 4.722222222222222,
+      "workbook": 4.722222222222222,
+      "matches": true
+    },
+    {
+      "code": "Р146.18",
+      "cell": "G108",
+      "json": 2.2222222222222223,
+      "workbook": 2.2222222222222223,
+      "matches": true
+    },
+    {
+      "code": "Р146.18",
+      "cell": "K108",
+      "json": 5.666666666666667,
+      "workbook": 5.666666666666667,
+      "matches": true
+    },
+    {
+      "code": "Р146.21",
+      "cell": "G109",
+      "json": 2.592592592592593,
+      "workbook": 2.592592592592593,
+      "matches": true
+    },
+    {
+      "code": "Р146.21",
+      "cell": "K109",
+      "json": 6.611111111111112,
+      "workbook": 6.611111111111112,
+      "matches": true
+    },
+    {
+      "code": "Р146.27",
+      "cell": "G110",
+      "json": 3.3333333333333335,
+      "workbook": 3.3333333333333335,
+      "matches": true
+    },
+    {
+      "code": "Р146.27",
+      "cell": "K110",
+      "json": 8.5,
+      "workbook": 8.5,
+      "matches": true
+    },
+    {
+      "code": "Р146.30",
+      "cell": "G111",
+      "json": 3.7037037037037033,
+      "workbook": 3.7037037037037033,
+      "matches": true
+    },
+    {
+      "code": "Р146.30",
+      "cell": "K111",
+      "json": 9.444444444444445,
+      "workbook": 9.444444444444445,
+      "matches": true
+    },
+    {
+      "code": "Р147",
+      "cell": "G112",
+      "json": 100,
+      "workbook": 100,
+      "matches": true
+    },
+    {
+      "code": "Р147",
+      "cell": "K112",
+      "json": 255,
+      "workbook": 255,
+      "matches": true
+    },
+    {
+      "code": "Р143",
+      "cell": "G113",
+      "json": 0.4694835680751174,
+      "workbook": 0.4694835680751174,
+      "matches": true
+    },
+    {
+      "code": "Р143",
+      "cell": "K113",
+      "json": 1.1971830985915493,
+      "workbook": 1.1971830985915493,
+      "matches": true
+    },
+    {
+      "code": "Р128.П",
+      "cell": "G114",
+      "json": 0.4694835680751174,
+      "workbook": 0.4694835680751174,
+      "matches": true
+    },
+    {
+      "code": "Р128.П",
+      "cell": "K114",
+      "json": 0.9389671361502347,
+      "workbook": 0.9389671361502347,
+      "matches": true
+    },
+    {
+      "code": "Р128.3D",
+      "cell": "G115",
+      "json": 5000,
+      "workbook": 5000,
+      "matches": true
+    },
+    {
+      "code": "Р128.3D",
+      "cell": "K115",
+      "json": 266.66666666666663,
+      "workbook": 266.66666666666663,
+      "matches": true
+    },
+    {
+      "code": "Р15",
+      "cell": "G116",
+      "json": 16.760000000000005,
+      "workbook": 16.760000000000005,
+      "matches": true
+    },
+    {
+      "code": "Р15",
+      "cell": "K116",
+      "json": 14.8,
+      "workbook": 14.8,
+      "matches": true
+    },
+    {
+      "code": "Р10",
+      "cell": "G117",
+      "json": 15,
+      "workbook": 15,
+      "matches": true
+    },
+    {
+      "code": "Р10",
+      "cell": "K117",
+      "json": 18.5,
+      "workbook": 18.5,
+      "matches": true
+    },
+    {
+      "code": "Р11",
+      "cell": "G118",
+      "json": 15.789473684210526,
+      "workbook": 15.789473684210526,
+      "matches": true
+    },
+    {
+      "code": "Р11",
+      "cell": "K118",
+      "json": 19.473684210526315,
+      "workbook": 19.473684210526315,
+      "matches": true
+    },
+    {
+      "code": "Р12",
+      "cell": "G119",
+      "json": 16.666666666666664,
+      "workbook": 16.666666666666664,
+      "matches": true
+    },
+    {
+      "code": "Р12",
+      "cell": "K119",
+      "json": 20.555555555555554,
+      "workbook": 20.555555555555554,
+      "matches": true
+    },
+    {
+      "code": "Р13",
+      "cell": "G120",
+      "json": 17.647058823529413,
+      "workbook": 17.647058823529413,
+      "matches": true
+    },
+    {
+      "code": "Р13",
+      "cell": "K120",
+      "json": 21.764705882352942,
+      "workbook": 21.764705882352942,
+      "matches": true
+    },
+    {
+      "code": "Р14",
+      "cell": "G121",
+      "json": 18.75,
+      "workbook": 18.75,
+      "matches": true
+    },
+    {
+      "code": "Р14",
+      "cell": "K121",
+      "json": 23.125,
+      "workbook": 23.125,
+      "matches": true
+    },
+    {
+      "code": "Р9",
+      "cell": "G122",
+      "json": 20,
+      "workbook": 20,
+      "matches": true
+    },
+    {
+      "code": "Р9",
+      "cell": "K122",
+      "json": 24.666666666666668,
+      "workbook": 24.666666666666668,
+      "matches": true
+    },
+    {
+      "code": "Р192",
+      "cell": "G123",
+      "json": 300,
+      "workbook": 300,
+      "matches": true
+    },
+    {
+      "code": "Р192",
+      "cell": "K123",
+      "json": 370,
+      "workbook": 370,
+      "matches": true
+    },
+    {
+      "code": "Р17",
+      "cell": "G124",
+      "json": 17.919,
+      "workbook": 17.919,
+      "matches": true
+    },
+    {
+      "code": "Р17",
+      "cell": "K124",
+      "json": 0.63,
+      "workbook": 0.63,
+      "matches": true
+    },
+    {
+      "code": "ВАЛ.Ч",
+      "cell": "G125",
+      "json": 200,
+      "workbook": 200,
+      "matches": true
+    },
+    {
+      "code": "ВАЛ.Ч",
+      "cell": "K125",
+      "json": 215,
+      "workbook": 215,
+      "matches": true
+    },
+    {
+      "code": "Р103.P01",
+      "cell": "G126",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P01",
+      "cell": "K126",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P02",
+      "cell": "G127",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P02",
+      "cell": "K127",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P03",
+      "cell": "G128",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P03",
+      "cell": "K128",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P04",
+      "cell": "G129",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P04",
+      "cell": "K129",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P05",
+      "cell": "G130",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P05",
+      "cell": "K130",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P06",
+      "cell": "G131",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P06",
+      "cell": "K131",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P07",
+      "cell": "G132",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P07",
+      "cell": "K132",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P08",
+      "cell": "G133",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P08",
+      "cell": "K133",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P09",
+      "cell": "G134",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P09",
+      "cell": "K134",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P10",
+      "cell": "G135",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P10",
+      "cell": "K135",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р103.P41",
+      "cell": "G136",
+      "json": 2081,
+      "workbook": 2081,
+      "matches": true
+    },
+    {
+      "code": "Р103.P41",
+      "cell": "K136",
+      "json": 1435.608552631579,
+      "workbook": 1435.608552631579,
+      "matches": true
+    },
+    {
+      "code": "Р19",
+      "cell": "G137",
+      "json": 19.392857142857142,
+      "workbook": 19.392857142857142,
+      "matches": true
+    },
+    {
+      "code": "Р19",
+      "cell": "K137",
+      "json": 13.925234962406014,
+      "workbook": 13.925234962406014,
+      "matches": true
+    },
+    {
+      "code": "Р95",
+      "cell": "G138",
+      "json": 79.64,
+      "workbook": 79.64,
+      "matches": true
+    },
+    {
+      "code": "Р95",
+      "cell": "K138",
+      "json": 54.927631578947356,
+      "workbook": 54.927631578947356,
+      "matches": true
+    },
+    {
+      "code": "Р96",
+      "cell": "G139",
+      "json": 217.20000000000002,
+      "workbook": 217.20000000000002,
+      "matches": true
+    },
+    {
+      "code": "Р96",
+      "cell": "K139",
+      "json": 149.80263157894734,
+      "workbook": 149.80263157894734,
+      "matches": true
+    },
+    {
+      "code": "Р163",
+      "cell": "G140",
+      "json": 27.01492537313433,
+      "workbook": 27.01492537313433,
+      "matches": true
+    },
+    {
+      "code": "Р163",
+      "cell": "K140",
+      "json": 18.632168106834246,
+      "workbook": 18.632168106834246,
+      "matches": true
+    },
+    {
+      "code": "Р155",
+      "cell": "G141",
+      "json": 18.1,
+      "workbook": 18.1,
+      "matches": true
+    },
+    {
+      "code": "Р155",
+      "cell": "K141",
+      "json": 13.033552631578946,
+      "workbook": 13.033552631578946,
+      "matches": true
+    },
+    {
+      "code": "Р157",
+      "cell": "G142",
+      "json": 150.83333333333331,
+      "workbook": 150.83333333333331,
+      "matches": true
+    },
+    {
+      "code": "Р157",
+      "cell": "K142",
+      "json": 105.42960526315788,
+      "workbook": 105.42960526315788,
+      "matches": true
+    },
+    {
+      "code": "Р156",
+      "cell": "G143",
+      "json": 60.333333333333336,
+      "workbook": 60.333333333333336,
+      "matches": true
+    },
+    {
+      "code": "Р156",
+      "cell": "K143",
+      "json": 42.81184210526315,
+      "workbook": 42.81184210526315,
+      "matches": true
+    },
+    {
+      "code": "Р153",
+      "cell": "G144",
+      "json": 90.5,
+      "workbook": 90.5,
+      "matches": true
+    },
+    {
+      "code": "Р153",
+      "cell": "K144",
+      "json": 62.41776315789473,
+      "workbook": 62.41776315789473,
+      "matches": true
+    },
+    {
+      "code": "Р92",
+      "cell": "G145",
+      "json": 150.83333333333331,
+      "workbook": 150.83333333333331,
+      "matches": true
+    },
+    {
+      "code": "Р92",
+      "cell": "K145",
+      "json": 104.02960526315788,
+      "workbook": 104.02960526315788,
+      "matches": true
+    },
+    {
+      "code": "Р127",
+      "cell": "G146",
+      "json": 45.25,
+      "workbook": 45.25,
+      "matches": true
+    },
+    {
+      "code": "Р127",
+      "cell": "K146",
+      "json": 31.208881578947366,
+      "workbook": 31.208881578947366,
+      "matches": true
+    },
+    {
+      "code": "Р20",
+      "cell": "G147",
+      "json": 2.011111111111111,
+      "workbook": 2.011111111111111,
+      "matches": true
+    },
+    {
+      "code": "Р20",
+      "cell": "K147",
+      "json": 1.3870614035087718,
+      "workbook": 1.3870614035087718,
+      "matches": true
+    },
+    {
+      "code": "Р21",
+      "cell": "G148",
+      "json": 1.81,
+      "workbook": 1.81,
+      "matches": true
+    },
+    {
+      "code": "Р21",
+      "cell": "K148",
+      "json": 1.2483552631578947,
+      "workbook": 1.2483552631578947,
+      "matches": true
+    },
+    {
+      "code": "Р152",
+      "cell": "G149",
+      "json": 18.1,
+      "workbook": 18.1,
+      "matches": true
+    },
+    {
+      "code": "Р152",
+      "cell": "K149",
+      "json": 12.483552631578945,
+      "workbook": 12.483552631578945,
+      "matches": true
+    },
+    {
+      "code": "Р5",
+      "cell": "G150",
+      "json": 402.2222222222222,
+      "workbook": 402.2222222222222,
+      "matches": true
+    },
+    {
+      "code": "Р5",
+      "cell": "K150",
+      "json": 277.41228070175436,
+      "workbook": 277.41228070175436,
+      "matches": true
+    },
+    {
+      "code": "Р158",
+      "cell": "G151",
+      "json": 5.65625,
+      "workbook": 5.65625,
+      "matches": true
+    },
+    {
+      "code": "Р158",
+      "cell": "K151",
+      "json": 3.901110197368421,
+      "workbook": 3.901110197368421,
+      "matches": true
+    },
+    {
+      "code": "Р185",
+      "cell": "G152",
+      "json": 5.65625,
+      "workbook": 5.65625,
+      "matches": true
+    },
+    {
+      "code": "Р185",
+      "cell": "K152",
+      "json": 3.901110197368421,
+      "workbook": 3.901110197368421,
+      "matches": true
+    },
+    {
+      "code": "Р186",
+      "cell": "G153",
+      "json": 8.61904761904762,
+      "workbook": 8.61904761904762,
+      "matches": true
+    },
+    {
+      "code": "Р186",
+      "cell": "K153",
+      "json": 5.944548872180451,
+      "workbook": 5.944548872180451,
+      "matches": true
+    },
+    {
+      "code": "Р187",
+      "cell": "G154",
+      "json": 452.5,
+      "workbook": 452.5,
+      "matches": true
+    },
+    {
+      "code": "Р187",
+      "cell": "K154",
+      "json": 322.08881578947364,
+      "workbook": 322.08881578947364,
+      "matches": true
+    },
+    {
+      "code": "Р188",
+      "cell": "G155",
+      "json": 241.33333333333334,
+      "workbook": 241.33333333333334,
+      "matches": true
+    },
+    {
+      "code": "Р188",
+      "cell": "K155",
+      "json": 173.4473684210526,
+      "workbook": 173.4473684210526,
+      "matches": true
+    },
+    {
+      "code": "Р18",
+      "cell": "G156",
+      "json": 815.5,
+      "workbook": 815.5,
+      "matches": true
+    },
+    {
+      "code": "Р18",
+      "cell": "K156",
+      "json": 640.1110197368421,
+      "workbook": 640.1110197368421,
+      "matches": true
+    },
+    {
+      "code": "Р100",
+      "cell": "G157",
+      "json": 680.4444444444445,
+      "workbook": 680.4444444444445,
+      "matches": true
+    },
+    {
+      "code": "Р100",
+      "cell": "K157",
+      "json": 524.5431286549706,
+      "workbook": 524.5431286549706,
+      "matches": true
+    },
+    {
+      "code": "Р190",
+      "cell": "G158",
+      "json": 510.3333333333333,
+      "workbook": 510.3333333333333,
+      "matches": true
+    },
+    {
+      "code": "Р190",
+      "cell": "K158",
+      "json": 393.40734649122805,
+      "workbook": 393.40734649122805,
+      "matches": true
+    },
+    {
+      "code": "Р79",
+      "cell": "G159",
+      "json": 32.58,
+      "workbook": 32.58,
+      "matches": true
+    },
+    {
+      "code": "Р79",
+      "cell": "K159",
+      "json": 22.470394736842106,
+      "workbook": 22.470394736842106,
+      "matches": true
+    },
+    {
+      "code": "Р80",
+      "cell": "G160",
+      "json": 30.735849056603772,
+      "workbook": 30.735849056603772,
+      "matches": true
+    },
+    {
+      "code": "Р80",
+      "cell": "K160",
+      "json": 21.198485600794438,
+      "workbook": 21.198485600794438,
+      "matches": true
+    },
+    {
+      "code": "Р78",
+      "cell": "G161",
+      "json": 4.654285714285714,
+      "workbook": 4.654285714285714,
+      "matches": true
+    },
+    {
+      "code": "Р78",
+      "cell": "K161",
+      "json": 3.2100563909774436,
+      "workbook": 3.2100563909774436,
+      "matches": true
+    },
+    {
+      "code": "Р46",
+      "cell": "G162",
+      "json": 814.5,
+      "workbook": 814.5,
+      "matches": true
+    },
+    {
+      "code": "Р46",
+      "cell": "K162",
+      "json": 561.7598684210526,
+      "workbook": 561.7598684210526,
+      "matches": true
+    },
+    {
+      "code": "Р150",
+      "cell": "G163",
+      "json": 362,
+      "workbook": 362,
+      "matches": true
+    },
+    {
+      "code": "Р150",
+      "cell": "K163",
+      "json": 249.67105263157893,
+      "workbook": 249.67105263157893,
+      "matches": true
+    },
+    {
+      "code": "Р3",
+      "cell": "G164",
+      "json": 238.10526315789474,
+      "workbook": 238.10526315789474,
+      "matches": true
+    },
+    {
+      "code": "Р3",
+      "cell": "K164",
+      "json": 176.257271468144,
+      "workbook": 176.257271468144,
+      "matches": true
+    },
+    {
+      "code": "Р4",
+      "cell": "G165",
+      "json": 24,
+      "workbook": 24,
+      "matches": true
+    },
+    {
+      "code": "Р4",
+      "cell": "K165",
+      "json": 28.08799342105263,
+      "workbook": 28.08799342105263,
+      "matches": true
+    },
+    {
+      "code": "Р25",
+      "cell": "G166",
+      "json": 70,
+      "workbook": 70,
+      "matches": true
+    },
+    {
+      "code": "Р25",
+      "cell": "K166",
+      "json": 45.345668859649116,
+      "workbook": 45.345668859649116,
+      "matches": true
+    },
+    {
+      "code": "Р42",
+      "cell": "G167",
+      "json": 226.2,
+      "workbook": 226.2,
+      "matches": true
+    },
+    {
+      "code": "Р42",
+      "cell": "K167",
+      "json": 170.04440789473682,
+      "workbook": 170.04440789473682,
+      "matches": true
+    },
+    {
+      "code": "Р43",
+      "cell": "G168",
+      "json": 200,
+      "workbook": 200,
+      "matches": true
+    },
+    {
+      "code": "Р43",
+      "cell": "K168",
+      "json": 59.61184210526315,
+      "workbook": 59.61184210526315,
+      "matches": true
+    },
+    {
+      "code": "Р47",
+      "cell": "G169",
+      "json": 1629,
+      "workbook": 1629,
+      "matches": true
+    },
+    {
+      "code": "Р47",
+      "cell": "K169",
+      "json": 571.7598684210526,
+      "workbook": 571.7598684210526,
+      "matches": true
+    },
+    {
+      "code": "Р52",
+      "cell": "G170",
+      "json": 203.625,
+      "workbook": 203.625,
+      "matches": true
+    },
+    {
+      "code": "Р52",
+      "cell": "K170",
+      "json": 152.43996710526315,
+      "workbook": 152.43996710526315,
+      "matches": true
+    },
+    {
+      "code": "Р93",
+      "cell": "G171",
+      "json": 1140.5,
+      "workbook": 1140.5,
+      "matches": true
+    },
+    {
+      "code": "Р93",
+      "cell": "K171",
+      "json": 1045.111019736842,
+      "workbook": 1045.111019736842,
+      "matches": true
+    },
+    {
+      "code": "Р107",
+      "cell": "G172",
+      "json": 54.3,
+      "workbook": 54.3,
+      "matches": true
+    },
+    {
+      "code": "Р107",
+      "cell": "K172",
+      "json": 37.45065789473684,
+      "workbook": 37.45065789473684,
+      "matches": true
+    },
+    {
+      "code": "Р151",
+      "cell": "G173",
+      "json": 15,
+      "workbook": 15,
+      "matches": true
+    },
+    {
+      "code": "Р151",
+      "cell": "K173",
+      "json": 15.604440789473683,
+      "workbook": 15.604440789473683,
+      "matches": true
+    },
+    {
+      "code": "Р22",
+      "cell": "G174",
+      "json": 90.5,
+      "workbook": 90.5,
+      "matches": true
+    },
+    {
+      "code": "Р22",
+      "cell": "K174",
+      "json": 62.41776315789473,
+      "workbook": 62.41776315789473,
+      "matches": true
+    },
+    {
+      "code": "Р77",
+      "cell": "G175",
+      "json": 2327.1428571428573,
+      "workbook": 2327.1428571428573,
+      "matches": true
+    },
+    {
+      "code": "Р77",
+      "cell": "K175",
+      "json": 1605.0281954887218,
+      "workbook": 1605.0281954887218,
+      "matches": true
+    },
+    {
+      "code": "Р98",
+      "cell": "G176",
+      "json": 2961.8181818181815,
+      "workbook": 2961.8181818181815,
+      "matches": true
+    },
+    {
+      "code": "Р98",
+      "cell": "K176",
+      "json": 2042.7631578947367,
+      "workbook": 2042.7631578947367,
+      "matches": true
+    },
+    {
+      "code": "Р154",
+      "cell": "G177",
+      "json": 271.5,
+      "workbook": 271.5,
+      "matches": true
+    },
+    {
+      "code": "Р154",
+      "cell": "K177",
+      "json": 187.2532894736842,
+      "workbook": 187.2532894736842,
+      "matches": true
+    },
+    {
+      "code": "Р177",
+      "cell": "G178",
+      "json": 181,
+      "workbook": 181,
+      "matches": true
+    },
+    {
+      "code": "Р177",
+      "cell": "K178",
+      "json": 124.83552631578947,
+      "workbook": 124.83552631578947,
+      "matches": true
+    },
+    {
+      "code": "Р149",
+      "cell": "G179",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "Р149",
+      "cell": "K179",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "Р161",
+      "cell": "G180",
+      "json": 407.25,
+      "workbook": 407.25,
+      "matches": true
+    },
+    {
+      "code": "Р161",
+      "cell": "K180",
+      "json": 280.8799342105263,
+      "workbook": 280.8799342105263,
+      "matches": true
+    },
+    {
+      "code": "Р34",
+      "cell": "G181",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "Р34",
+      "cell": "K181",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "Р35",
+      "cell": "G182",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "Р35",
+      "cell": "K182",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "Р97",
+      "cell": "G183",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "Р97",
+      "cell": "K183",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "Р189",
+      "cell": "G184",
+      "json": 2534,
+      "workbook": 2534,
+      "matches": true
+    },
+    {
+      "code": "Р189",
+      "cell": "K184",
+      "json": 1747.6973684210525,
+      "workbook": 1747.6973684210525,
+      "matches": true
+    },
+    {
+      "code": "Р49",
+      "cell": "G185",
+      "json": 0.2,
+      "workbook": 0.2,
+      "matches": true
+    },
+    {
+      "code": "Р49",
+      "cell": "K185",
+      "json": 0.13793980808374526,
+      "workbook": 0.13793980808374526,
+      "matches": true
+    },
+    {
+      "code": "Р144",
+      "cell": "G186",
+      "json": 79.64,
+      "workbook": 79.64,
+      "matches": true
+    },
+    {
+      "code": "Р144",
+      "cell": "K186",
+      "json": 54.927631578947356,
+      "workbook": 54.927631578947356,
+      "matches": true
+    },
+    {
+      "code": "Р144.П",
+      "cell": "G187",
+      "json": 254.848,
+      "workbook": 254.848,
+      "matches": true
+    },
+    {
+      "code": "Р144.П",
+      "cell": "K187",
+      "json": 54.927631578947356,
+      "workbook": 54.927631578947356,
+      "matches": true
+    },
+    {
+      "code": "М01",
+      "cell": "G188",
+      "json": 422.3333333333333,
+      "workbook": 422.3333333333333,
+      "matches": true
+    },
+    {
+      "code": "М01",
+      "cell": "K188",
+      "json": 291.2828947368421,
+      "workbook": 291.2828947368421,
+      "matches": true
+    },
+    {
+      "code": "М02",
+      "cell": "G189",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "М02",
+      "cell": "K189",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "М03",
+      "cell": "G190",
+      "json": 603.3333333333333,
+      "workbook": 603.3333333333333,
+      "matches": true
+    },
+    {
+      "code": "М03",
+      "cell": "K190",
+      "json": 416.1184210526315,
+      "workbook": 416.1184210526315,
+      "matches": true
+    },
+    {
+      "code": "М04",
+      "cell": "G191",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "М04",
+      "cell": "K191",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "М05",
+      "cell": "G192",
+      "json": 301.66666666666663,
+      "workbook": 301.66666666666663,
+      "matches": true
+    },
+    {
+      "code": "М05",
+      "cell": "K192",
+      "json": 208.05921052631575,
+      "workbook": 208.05921052631575,
+      "matches": true
+    },
+    {
+      "code": "М06",
+      "cell": "G193",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "М06",
+      "cell": "K193",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "М07",
+      "cell": "G194",
+      "json": 362,
+      "workbook": 362,
+      "matches": true
+    },
+    {
+      "code": "М07",
+      "cell": "K194",
+      "json": 249.67105263157893,
+      "workbook": 249.67105263157893,
+      "matches": true
+    },
+    {
+      "code": "М08",
+      "cell": "G195",
+      "json": 138.9,
+      "workbook": 138.9,
+      "matches": true
+    },
+    {
+      "code": "М08",
+      "cell": "K195",
+      "json": 96.7766447368421,
+      "workbook": 96.7766447368421,
+      "matches": true
+    },
+    {
+      "code": "М09",
+      "cell": "G196",
+      "json": 67.875,
+      "workbook": 67.875,
+      "matches": true
+    },
+    {
+      "code": "М09",
+      "cell": "K196",
+      "json": 46.81332236842105,
+      "workbook": 46.81332236842105,
+      "matches": true
+    },
+    {
+      "code": "М10",
+      "cell": "G197",
+      "json": 92.08,
+      "workbook": 92.08,
+      "matches": true
+    },
+    {
+      "code": "М10",
+      "cell": "K197",
+      "json": 63.99776315789473,
+      "workbook": 63.99776315789473,
+      "matches": true
+    },
+    {
+      "code": "М11",
+      "cell": "G198",
+      "json": 92.5,
+      "workbook": 92.5,
+      "matches": true
+    },
+    {
+      "code": "М11",
+      "cell": "K198",
+      "json": 64.41776315789474,
+      "workbook": 64.41776315789474,
+      "matches": true
+    },
+    {
+      "code": "М12",
+      "cell": "G199",
+      "json": 122.66666666666667,
+      "workbook": 122.66666666666667,
+      "matches": true
+    },
+    {
+      "code": "М12",
+      "cell": "K199",
+      "json": 85.2236842105263,
+      "workbook": 85.2236842105263,
+      "matches": true
+    },
+    {
+      "code": "М13",
+      "cell": "G200",
+      "json": 392.1666666666667,
+      "workbook": 392.1666666666667,
+      "matches": true
+    },
+    {
+      "code": "М13",
+      "cell": "K200",
+      "json": 270.4769736842105,
+      "workbook": 270.4769736842105,
+      "matches": true
+    },
+    {
+      "code": "М14",
+      "cell": "G201",
+      "json": 78.41666666666666,
+      "workbook": 78.41666666666666,
+      "matches": true
+    },
+    {
+      "code": "М14",
+      "cell": "K201",
+      "json": 55.01480263157894,
+      "workbook": 55.01480263157894,
+      "matches": true
+    },
+    {
+      "code": "М15",
+      "cell": "G202",
+      "json": 482.6666666666667,
+      "workbook": 482.6666666666667,
+      "matches": true
+    },
+    {
+      "code": "М15",
+      "cell": "K202",
+      "json": 332.8947368421052,
+      "workbook": 332.8947368421052,
+      "matches": true
+    },
+    {
+      "code": "М16",
+      "cell": "G203",
+      "json": 1086,
+      "workbook": 1086,
+      "matches": true
+    },
+    {
+      "code": "М16",
+      "cell": "K203",
+      "json": 749.0131578947368,
+      "workbook": 749.0131578947368,
+      "matches": true
+    },
+    {
+      "code": "М17",
+      "cell": "G204",
+      "json": 784.3333333333334,
+      "workbook": 784.3333333333334,
+      "matches": true
+    },
+    {
+      "code": "М17",
+      "cell": "K204",
+      "json": 540.953947368421,
+      "workbook": 540.953947368421,
+      "matches": true
+    },
+    {
+      "code": "М19",
+      "cell": "G205",
+      "json": 33.9375,
+      "workbook": 33.9375,
+      "matches": true
+    },
+    {
+      "code": "М19",
+      "cell": "K205",
+      "json": 23.406661184210524,
+      "workbook": 23.406661184210524,
+      "matches": true
+    },
+    {
+      "code": "М20",
+      "cell": "G206",
+      "json": 9.850000000000001,
+      "workbook": 9.850000000000001,
+      "matches": true
+    },
+    {
+      "code": "М20",
+      "cell": "K206",
+      "json": 7.041776315789472,
+      "workbook": 7.041776315789472,
+      "matches": true
+    },
+    {
+      "code": "М21",
+      "cell": "G207",
+      "json": 16.591666666666665,
+      "workbook": 16.591666666666665,
+      "matches": true
+    },
+    {
+      "code": "М21",
+      "cell": "K207",
+      "json": 11.443256578947366,
+      "workbook": 11.443256578947366,
+      "matches": true
+    },
+    {
+      "code": "М22",
+      "cell": "G208",
+      "json": 142.75,
+      "workbook": 142.75,
+      "matches": true
+    },
+    {
+      "code": "М22",
+      "cell": "K208",
+      "json": 100.6266447368421,
+      "workbook": 100.6266447368421,
+      "matches": true
+    },
+    {
+      "code": "М23",
+      "cell": "G209",
+      "json": 105.58333333333333,
+      "workbook": 105.58333333333333,
+      "matches": true
+    },
+    {
+      "code": "М23",
+      "cell": "K209",
+      "json": 72.82072368421052,
+      "workbook": 72.82072368421052,
+      "matches": true
+    },
+    {
+      "code": "М24",
+      "cell": "G210",
+      "json": 301.66666666666663,
+      "workbook": 301.66666666666663,
+      "matches": true
+    },
+    {
+      "code": "М24",
+      "cell": "K210",
+      "json": 208.05921052631575,
+      "workbook": 208.05921052631575,
+      "matches": true
+    },
+    {
+      "code": "М25А",
+      "cell": "G211",
+      "json": 12.066666666666668,
+      "workbook": 12.066666666666668,
+      "matches": true
+    },
+    {
+      "code": "М25А",
+      "cell": "K211",
+      "json": 8.322368421052632,
+      "workbook": 8.322368421052632,
+      "matches": true
+    },
+    {
+      "code": "М25Б",
+      "cell": "G212",
+      "json": 10.558333333333332,
+      "workbook": 10.558333333333332,
+      "matches": true
+    },
+    {
+      "code": "М25Б",
+      "cell": "K212",
+      "json": 7.282072368421051,
+      "workbook": 7.282072368421051,
+      "matches": true
+    },
+    {
+      "code": "М26",
+      "cell": "G213",
+      "json": 15.083333333333334,
+      "workbook": 15.083333333333334,
+      "matches": true
+    },
+    {
+      "code": "М26",
+      "cell": "K213",
+      "json": 10.402960526315788,
+      "workbook": 10.402960526315788,
+      "matches": true
+    },
+    {
+      "code": "М27",
+      "cell": "G214",
+      "json": 19.608333333333334,
+      "workbook": 19.608333333333334,
+      "matches": true
+    },
+    {
+      "code": "М27",
+      "cell": "K214",
+      "json": 13.523848684210526,
+      "workbook": 13.523848684210526,
+      "matches": true
+    },
+    {
+      "code": "М28",
+      "cell": "G215",
+      "json": 22.625,
+      "workbook": 22.625,
+      "matches": true
+    },
+    {
+      "code": "М28",
+      "cell": "K215",
+      "json": 15.604440789473683,
+      "workbook": 15.604440789473683,
+      "matches": true
+    },
+    {
+      "code": "М29",
+      "cell": "G216",
+      "json": 22.625,
+      "workbook": 22.625,
+      "matches": true
+    },
+    {
+      "code": "М29",
+      "cell": "K216",
+      "json": 15.604440789473683,
+      "workbook": 15.604440789473683,
+      "matches": true
+    },
+    {
+      "code": "М30",
+      "cell": "G217",
+      "json": 181,
+      "workbook": 181,
+      "matches": true
+    },
+    {
+      "code": "М30",
+      "cell": "K217",
+      "json": 124.83552631578947,
+      "workbook": 124.83552631578947,
+      "matches": true
+    },
+    {
+      "code": "М31",
+      "cell": "G218",
+      "json": 905,
+      "workbook": 905,
+      "matches": true
+    },
+    {
+      "code": "М31",
+      "cell": "K218",
+      "json": 624.1776315789473,
+      "workbook": 624.1776315789473,
+      "matches": true
+    },
+    {
+      "code": "М32",
+      "cell": "G219",
+      "json": 724,
+      "workbook": 724,
+      "matches": true
+    },
+    {
+      "code": "М32",
+      "cell": "K219",
+      "json": 499.34210526315786,
+      "workbook": 499.34210526315786,
+      "matches": true
+    },
+    {
+      "code": "М33",
+      "cell": "G220",
+      "json": 603.3333333333333,
+      "workbook": 603.3333333333333,
+      "matches": true
+    },
+    {
+      "code": "М33",
+      "cell": "K220",
+      "json": 416.1184210526315,
+      "workbook": 416.1184210526315,
+      "matches": true
+    },
+    {
+      "code": "М34",
+      "cell": "G221",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "М34",
+      "cell": "K221",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "М35",
+      "cell": "G222",
+      "json": 211.16666666666666,
+      "workbook": 211.16666666666666,
+      "matches": true
+    },
+    {
+      "code": "М35",
+      "cell": "K222",
+      "json": 145.64144736842104,
+      "workbook": 145.64144736842104,
+      "matches": true
+    },
+    {
+      "code": "М36",
+      "cell": "G223",
+      "json": 555,
+      "workbook": 555,
+      "matches": true
+    },
+    {
+      "code": "М36",
+      "cell": "K223",
+      "json": 386.5065789473684,
+      "workbook": 386.5065789473684,
+      "matches": true
+    },
+    {
+      "code": "М37",
+      "cell": "G224",
+      "json": 158.83333333333331,
+      "workbook": 158.83333333333331,
+      "matches": true
+    },
+    {
+      "code": "М37",
+      "cell": "K224",
+      "json": 112.02960526315788,
+      "workbook": 112.02960526315788,
+      "matches": true
+    },
+    {
+      "code": "М38",
+      "cell": "G225",
+      "json": 128.66666666666669,
+      "workbook": 128.66666666666669,
+      "matches": true
+    },
+    {
+      "code": "М38",
+      "cell": "K225",
+      "json": 91.2236842105263,
+      "workbook": 91.2236842105263,
+      "matches": true
+    },
+    {
+      "code": "М39",
+      "cell": "G226",
+      "json": 191,
+      "workbook": 191,
+      "matches": true
+    },
+    {
+      "code": "М39",
+      "cell": "K226",
+      "json": 134.83552631578948,
+      "workbook": 134.83552631578948,
+      "matches": true
+    },
+    {
+      "code": "М40",
+      "cell": "G227",
+      "json": 259.33333333333337,
+      "workbook": 259.33333333333337,
+      "matches": true
+    },
+    {
+      "code": "М40",
+      "cell": "K227",
+      "json": 184.4473684210526,
+      "workbook": 184.4473684210526,
+      "matches": true
+    },
+    {
+      "code": "М41",
+      "cell": "G228",
+      "json": 90.5,
+      "workbook": 90.5,
+      "matches": true
+    },
+    {
+      "code": "М41",
+      "cell": "K228",
+      "json": 62.41776315789473,
+      "workbook": 62.41776315789473,
+      "matches": true
+    },
+    {
+      "code": "М42",
+      "cell": "G229",
+      "json": 362,
+      "workbook": 362,
+      "matches": true
+    },
+    {
+      "code": "М42",
+      "cell": "K229",
+      "json": 249.67105263157893,
+      "workbook": 249.67105263157893,
+      "matches": true
+    },
+    {
+      "code": "М43",
+      "cell": "G230",
+      "json": 159.83333333333331,
+      "workbook": 159.83333333333331,
+      "matches": true
+    },
+    {
+      "code": "М43",
+      "cell": "K230",
+      "json": 113.02960526315788,
+      "workbook": 113.02960526315788,
+      "matches": true
+    },
+    {
+      "code": "М44",
+      "cell": "G231",
+      "json": 223.16666666666666,
+      "workbook": 223.16666666666666,
+      "matches": true
+    },
+    {
+      "code": "М44",
+      "cell": "K231",
+      "json": 157.64144736842104,
+      "workbook": 157.64144736842104,
+      "matches": true
+    },
+    {
+      "code": "М45",
+      "cell": "G232",
+      "json": 447.3333333333333,
+      "workbook": 447.3333333333333,
+      "matches": true
+    },
+    {
+      "code": "М45",
+      "cell": "K232",
+      "json": 316.2828947368421,
+      "workbook": 316.2828947368421,
+      "matches": true
+    },
+    {
+      "code": "М46",
+      "cell": "G233",
+      "json": 46.25,
+      "workbook": 46.25,
+      "matches": true
+    },
+    {
+      "code": "М46",
+      "cell": "K233",
+      "json": 32.20888157894737,
+      "workbook": 32.20888157894737,
+      "matches": true
+    },
+    {
+      "code": "Т01",
+      "cell": "G234",
+      "json": 1361.71875,
+      "workbook": 1361.71875,
+      "matches": true
+    },
+    {
+      "code": "Т01",
+      "cell": "K234",
+      "json": 1361.71875,
+      "workbook": 1361.71875,
+      "matches": true
+    },
+    {
+      "code": "Т02",
+      "cell": "G235",
+      "json": 415.8,
+      "workbook": 415.8,
+      "matches": true
+    },
+    {
+      "code": "Т02",
+      "cell": "K235",
+      "json": 415.8,
+      "workbook": 415.8,
+      "matches": true
+    },
+    {
+      "code": "Т03",
+      "cell": "G236",
+      "json": 904.4999999999999,
+      "workbook": 904.4999999999999,
+      "matches": true
+    },
+    {
+      "code": "Т03",
+      "cell": "K236",
+      "json": 904.4999999999999,
+      "workbook": 904.4999999999999,
+      "matches": true
+    },
+    {
+      "code": "Т04",
+      "cell": "G237",
+      "json": 110,
+      "workbook": 110,
+      "matches": true
+    },
+    {
+      "code": "Т04",
+      "cell": "K237",
+      "json": 110,
+      "workbook": 110,
+      "matches": true
+    },
+    {
+      "code": "Т05",
+      "cell": "G238",
+      "json": 4.455,
+      "workbook": 4.455,
+      "matches": true
+    },
+    {
+      "code": "Т05",
+      "cell": "K238",
+      "json": 4.455,
+      "workbook": 4.455,
+      "matches": true
+    },
+    {
+      "code": "Т06",
+      "cell": "G239",
+      "json": 15072,
+      "workbook": 15072,
+      "matches": true
+    },
+    {
+      "code": "Т06",
+      "cell": "K239",
+      "json": 15072,
+      "workbook": 15072,
+      "matches": true
+    },
+    {
+      "code": "Т07",
+      "cell": "G240",
+      "json": 3.9,
+      "workbook": 3.9,
+      "matches": true
+    },
+    {
+      "code": "Т07",
+      "cell": "K240",
+      "json": 3.9,
+      "workbook": 3.9,
+      "matches": true
+    },
+    {
+      "code": "Т08",
+      "cell": "G241",
+      "json": 0.51,
+      "workbook": 0.51,
+      "matches": true
+    },
+    {
+      "code": "Т08",
+      "cell": "K241",
+      "json": 0.51,
+      "workbook": 0.51,
+      "matches": true
+    },
+    {
+      "code": "Т09",
+      "cell": "G242",
+      "json": 2.5,
+      "workbook": 2.5,
+      "matches": true
+    },
+    {
+      "code": "Т09",
+      "cell": "K242",
+      "json": 2.5,
+      "workbook": 2.5,
+      "matches": true
+    },
+    {
+      "code": "Т10",
+      "cell": "G243",
+      "json": 15,
+      "workbook": 15,
+      "matches": true
+    },
+    {
+      "code": "Т10",
+      "cell": "K243",
+      "json": 15,
+      "workbook": 15,
+      "matches": true
+    },
+    {
+      "code": "Т11",
+      "cell": "G244",
+      "json": 12,
+      "workbook": 12,
+      "matches": true
+    },
+    {
+      "code": "Т11",
+      "cell": "K244",
+      "json": 12,
+      "workbook": 12,
+      "matches": true
+    },
+    {
+      "code": "Т12",
+      "cell": "G245",
+      "json": 6,
+      "workbook": 6,
+      "matches": true
+    },
+    {
+      "code": "Т12",
+      "cell": "K245",
+      "json": 6,
+      "workbook": 6,
+      "matches": true
+    },
+    {
+      "code": "Т13",
+      "cell": "G246",
+      "json": 2.689655172413793,
+      "workbook": 2.689655172413793,
+      "matches": true
+    },
+    {
+      "code": "Т13",
+      "cell": "K246",
+      "json": 2.689655172413793,
+      "workbook": 2.689655172413793,
+      "matches": true
+    },
+    {
+      "code": "Т14",
+      "cell": "G247",
+      "json": 15,
+      "workbook": 15,
+      "matches": true
+    },
+    {
+      "code": "Т14",
+      "cell": "K247",
+      "json": 15,
+      "workbook": 15,
+      "matches": true
+    },
+    {
+      "code": "Т15",
+      "cell": "G248",
+      "json": 55,
+      "workbook": 55,
+      "matches": true
+    },
+    {
+      "code": "Т15",
+      "cell": "K248",
+      "json": 55,
+      "workbook": 55,
+      "matches": true
+    },
+    {
+      "code": "Т16",
+      "cell": "G249",
+      "json": 0.84,
+      "workbook": 0.84,
+      "matches": true
+    },
+    {
+      "code": "Т16",
+      "cell": "K249",
+      "json": 0.84,
+      "workbook": 0.84,
+      "matches": true
+    },
+    {
+      "code": "Т17",
+      "cell": "G250",
+      "json": 180,
+      "workbook": 180,
+      "matches": true
+    },
+    {
+      "code": "Т17",
+      "cell": "K250",
+      "json": 180,
+      "workbook": 180,
+      "matches": true
+    },
+    {
+      "code": "Т18",
+      "cell": "G251",
+      "json": 38,
+      "workbook": 38,
+      "matches": true
+    },
+    {
+      "code": "Т18",
+      "cell": "K251",
+      "json": 38,
+      "workbook": 38,
+      "matches": true
+    },
+    {
+      "code": "Т19",
+      "cell": "G252",
+      "json": 2500,
+      "workbook": 2500,
+      "matches": true
+    },
+    {
+      "code": "Т19",
+      "cell": "K252",
+      "json": 2500,
+      "workbook": 2500,
+      "matches": true
+    },
+    {
+      "code": "Т20",
+      "cell": "G253",
+      "json": 3500,
+      "workbook": 3500,
+      "matches": true
+    },
+    {
+      "code": "Т20",
+      "cell": "K253",
+      "json": 3500,
+      "workbook": 3500,
+      "matches": true
+    },
+    {
+      "code": "Т21",
+      "cell": "G254",
+      "json": 1,
+      "workbook": 1,
+      "matches": true
+    },
+    {
+      "code": "Т21",
+      "cell": "K254",
+      "json": 1,
+      "workbook": 1,
+      "matches": true
+    },
+    {
+      "code": "Т22",
+      "cell": "G255",
+      "json": 1,
+      "workbook": 1,
+      "matches": true
+    },
+    {
+      "code": "Т22",
+      "cell": "K255",
+      "json": 1,
+      "workbook": 1,
+      "matches": true
+    },
+    {
+      "code": "Т23",
+      "cell": "G256",
+      "json": 42,
+      "workbook": 42,
+      "matches": true
+    },
+    {
+      "code": "Т23",
+      "cell": "K256",
+      "json": 42,
+      "workbook": 42,
+      "matches": true
+    },
+    {
+      "code": "Т24",
+      "cell": "G257",
+      "json": 75,
+      "workbook": 75,
+      "matches": true
+    },
+    {
+      "code": "Т24",
+      "cell": "K257",
+      "json": 75,
+      "workbook": 75,
+      "matches": true
+    },
+    {
+      "code": "Т25",
+      "cell": "G258",
+      "json": 1,
+      "workbook": 1,
+      "matches": true
+    },
+    {
+      "code": "Т25",
+      "cell": "K258",
+      "json": 1,
+      "workbook": 1,
+      "matches": true
+    },
+    {
+      "code": "Р23",
+      "cell": "G259",
+      "json": 194450.66666666666,
+      "workbook": 194450.66666666666,
+      "matches": true
+    },
+    {
+      "code": "Р23",
+      "cell": "K259",
+      "json": 43966.83740601504,
+      "workbook": 43966.83740601504,
+      "matches": true
+    },
+    {
+      "code": "Р24",
+      "cell": "G260",
+      "json": 13600,
+      "workbook": 13600,
+      "matches": true
+    },
+    {
+      "code": "Р24",
+      "cell": "K260",
+      "json": 10069.506578947368,
+      "workbook": 10069.506578947368,
+      "matches": true
+    },
+    {
+      "code": "Р48",
+      "cell": "G261",
+      "json": 18100,
+      "workbook": 18100,
+      "matches": true
+    },
+    {
+      "code": "Р48",
+      "cell": "K261",
+      "json": 12608.552631578947,
+      "workbook": 12608.552631578947,
+      "matches": true
+    },
+    {
+      "code": "Р91",
+      "cell": "G262",
+      "json": 500,
+      "workbook": 500,
+      "matches": true
+    },
+    {
+      "code": "Р91",
+      "cell": "K262",
+      "json": 391.6381578947368,
+      "workbook": 391.6381578947368,
+      "matches": true
+    },
+    {
+      "code": "Р99",
+      "cell": "G263",
+      "json": 925,
+      "workbook": 925,
+      "matches": true
+    },
+    {
+      "code": "Р99",
+      "cell": "K263",
+      "json": 599.4687499999999,
+      "workbook": 599.4687499999999,
+      "matches": true
+    },
+    {
+      "code": "Р101",
+      "cell": "G264",
+      "json": 950,
+      "workbook": 950,
+      "matches": true
+    },
+    {
+      "code": "Р101",
+      "cell": "K264",
+      "json": 878.8089364035086,
+      "workbook": 878.8089364035086,
+      "matches": true
+    },
+    {
+      "code": "Р36",
+      "cell": "G265",
+      "json": 2400,
+      "workbook": 2400,
+      "matches": true
+    },
+    {
+      "code": "Р36",
+      "cell": "K265",
+      "json": 648.5805921052631,
+      "workbook": 648.5805921052631,
+      "matches": true
+    },
+    {
+      "code": "Р38",
+      "cell": "G266",
+      "json": 2400,
+      "workbook": 2400,
+      "matches": true
+    },
+    {
+      "code": "Р38",
+      "cell": "K266",
+      "json": 1180.7138157894735,
+      "workbook": 1180.7138157894735,
+      "matches": true
+    },
+    {
+      "code": "Р39",
+      "cell": "G267",
+      "json": 2400,
+      "workbook": 2400,
+      "matches": true
+    },
+    {
+      "code": "Р39",
+      "cell": "K267",
+      "json": 1023.0723684210525,
+      "workbook": 1023.0723684210525,
+      "matches": true
+    },
+    {
+      "code": "Р40",
+      "cell": "G268",
+      "json": 2400,
+      "workbook": 2400,
+      "matches": true
+    },
+    {
+      "code": "Р40",
+      "cell": "K268",
+      "json": 765.657894736842,
+      "workbook": 765.657894736842,
+      "matches": true
+    },
+    {
+      "code": "Р41",
+      "cell": "G269",
+      "json": 2400,
+      "workbook": 2400,
+      "matches": true
+    },
+    {
+      "code": "Р41",
+      "cell": "K269",
+      "json": 313.1291118421052,
+      "workbook": 313.1291118421052,
+      "matches": true
+    },
+    {
+      "code": "Р91.Ф",
+      "cell": "G270",
+      "json": 223,
+      "workbook": 223,
+      "matches": true
+    },
+    {
+      "code": "Р91.Ф",
+      "cell": "K270",
+      "json": 166.83552631578948,
+      "workbook": 166.83552631578948,
+      "matches": true
+    },
+    {
+      "code": "Р91.Б",
+      "cell": "G271",
+      "json": 292.2,
+      "workbook": 292.2,
+      "matches": true
+    },
+    {
+      "code": "Р91.Б",
+      "cell": "K271",
+      "json": 224.80263157894734,
+      "workbook": 224.80263157894734,
+      "matches": true
+    },
+    {
+      "code": "ОГР",
+      "cell": "G272",
+      "json": null,
+      "workbook": null,
+      "matches": true
+    },
+    {
+      "code": "ОГР",
+      "cell": "K272",
+      "json": null,
+      "workbook": null,
+      "matches": true
+    },
+    {
+      "code": "НАСТ",
+      "cell": "G273",
+      "json": null,
+      "workbook": null,
+      "matches": true
+    },
+    {
+      "code": "НАСТ",
+      "cell": "K273",
+      "json": null,
+      "workbook": null,
+      "matches": true
+    },
+    {
+      "code": "П58",
+      "cell": "G274",
+      "json": 5,
+      "workbook": 5,
+      "matches": true
+    },
+    {
+      "code": "П58",
+      "cell": "K274",
+      "json": 5,
+      "workbook": 5,
+      "matches": true
+    },
+    {
+      "code": "П66",
+      "cell": "G275",
+      "json": 5,
+      "workbook": 5,
+      "matches": true
+    },
+    {
+      "code": "П66",
+      "cell": "K275",
+      "json": 5,
+      "workbook": 5,
+      "matches": true
+    },
+    {
+      "code": "П70",
+      "cell": "G276",
+      "json": 5,
+      "workbook": 5,
+      "matches": true
+    },
+    {
+      "code": "П70",
+      "cell": "K276",
+      "json": 5,
+      "workbook": 5,
+      "matches": true
+    },
+    {
+      "code": "П72",
+      "cell": "G277",
+      "json": 5,
+      "workbook": 5,
+      "matches": true
+    },
+    {
+      "code": "П72",
+      "cell": "K277",
+      "json": 5,
+      "workbook": 5,
+      "matches": true
+    },
+    {
+      "code": "П74",
+      "cell": "G278",
+      "json": 6,
+      "workbook": 6,
+      "matches": true
+    },
+    {
+      "code": "П74",
+      "cell": "K278",
+      "json": 6,
+      "workbook": 6,
+      "matches": true
+    },
+    {
+      "code": "П76",
+      "cell": "G279",
+      "json": 8,
+      "workbook": 8,
+      "matches": true
+    },
+    {
+      "code": "П76",
+      "cell": "K279",
+      "json": 8,
+      "workbook": 8,
+      "matches": true
+    },
+    {
+      "code": "П54",
+      "cell": "G280",
+      "json": 10,
+      "workbook": 10,
+      "matches": true
+    },
+    {
+      "code": "П54",
+      "cell": "K280",
+      "json": 10,
+      "workbook": 10,
+      "matches": true
+    },
+    {
+      "code": "П57",
+      "cell": "G281",
+      "json": 12,
+      "workbook": 12,
+      "matches": true
+    },
+    {
+      "code": "П57",
+      "cell": "K281",
+      "json": 12,
+      "workbook": 12,
+      "matches": true
+    },
+    {
+      "code": "П60",
+      "cell": "G282",
+      "json": 14,
+      "workbook": 14,
+      "matches": true
+    },
+    {
+      "code": "П60",
+      "cell": "K282",
+      "json": 14,
+      "workbook": 14,
+      "matches": true
+    },
+    {
+      "code": "П62",
+      "cell": "G283",
+      "json": 16,
+      "workbook": 16,
+      "matches": true
+    },
+    {
+      "code": "П62",
+      "cell": "K283",
+      "json": 16,
+      "workbook": 16,
+      "matches": true
+    },
+    {
+      "code": "П64",
+      "cell": "G284",
+      "json": 18,
+      "workbook": 18,
+      "matches": true
+    },
+    {
+      "code": "П64",
+      "cell": "K284",
+      "json": 18,
+      "workbook": 18,
+      "matches": true
+    },
+    {
+      "code": "П68",
+      "cell": "G285",
+      "json": 20,
+      "workbook": 20,
+      "matches": true
+    },
+    {
+      "code": "П68",
+      "cell": "K285",
+      "json": 20,
+      "workbook": 20,
+      "matches": true
+    },
+    {
+      "code": "АБР.P01",
+      "cell": "G286",
+      "json": 1,
+      "workbook": 1,
+      "matches": true
+    },
+    {
+      "code": "АБР.P01",
+      "cell": "K286",
+      "json": 1,
+      "workbook": 1,
+      "matches": true
+    },
+    {
+      "code": "ФРС.1",
+      "cell": "G287",
+      "json": 4.348810703703704,
+      "workbook": 4.348810703703704,
+      "matches": true
+    },
+    {
+      "code": "ФРС.1",
+      "cell": "K287",
+      "json": 4.348810703703704,
+      "workbook": 4.348810703703704,
+      "matches": true
+    },
+    {
+      "code": "ФРС.2",
+      "cell": "G288",
+      "json": 4.733822111111111,
+      "workbook": 4.733822111111111,
+      "matches": true
+    },
+    {
+      "code": "ФРС.2",
+      "cell": "K288",
+      "json": 4.733822111111111,
+      "workbook": 4.733822111111111,
+      "matches": true
+    },
+    {
+      "code": "ФРС.3",
+      "cell": "G289",
+      "json": 5.331964833333333,
+      "workbook": 5.331964833333333,
+      "matches": true
+    },
+    {
+      "code": "ФРС.3",
+      "cell": "K289",
+      "json": 5.331964833333333,
+      "workbook": 5.331964833333333,
+      "matches": true
+    },
+    {
+      "code": "ФРС.ПЗ",
+      "cell": "G290",
+      "json": 108.5044,
+      "workbook": 108.5044,
+      "matches": true
+    },
+    {
+      "code": "ФРС.ПЗ",
+      "cell": "K290",
+      "json": 108.5044,
+      "workbook": 108.5044,
+      "matches": true
+    },
+    {
+      "code": "ФРС.ОП",
+      "cell": "G291",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "ФРС.ОП",
+      "cell": "K291",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    },
+    {
+      "code": "ФРС.ПОМ",
+      "cell": "G292",
+      "json": 1448,
+      "workbook": 1448,
+      "matches": true
+    },
+    {
+      "code": "ФРС.ПОМ",
+      "cell": "K292",
+      "json": 998.6842105263155,
+      "workbook": 998.6842105263155,
+      "matches": true
+    },
+    {
+      "code": "ФРС.КАРТА",
+      "cell": "G293",
+      "json": 1810,
+      "workbook": 1810,
+      "matches": true
+    },
+    {
+      "code": "ФРС.КАРТА",
+      "cell": "K293",
+      "json": 1248.3552631578946,
+      "workbook": 1248.3552631578946,
+      "matches": true
+    }
+  ],
+  "installation_rows": 506,
+  "formula_example": "=M10*AA10",
+  "supporting_workbook": {
+    "name": "Согласование_цехов_постов_и_расчётов(1)(1).xlsx",
+    "sheets": [
+      "Согласование",
+      "Проверка",
+      "Параметры",
+      "Посты",
+      "Правила",
+      "Источник",
+      "Ограждение",
+      "Цены ограждения"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const {calculate}=require('./dist/engine.js'),{quoteTotals,publicDocument}=require('./dist/business-core.js');
+const m={id:'m',catalogId:'m',name:'Внутренний материал SECRET',unit:'шт.',group:'Группа',kind:'material',price:1050,qty:9.5,reserve:0,pack:1,scope:'unit',allocation:'whole',confirmed:true,mass:1,date:'2026-10-19',source:'Закупочная ставка SECRET'};
+const p={...m,id:'p',catalogId:'p',name:'Подготовка SECRET',kind:'work',price:1250,qty:2,scope:'batch'};
+const s={version:1,name:'Скамья',code:'СК01',client:'Клиент',type:'МАФ и мебель',qty:10,scope:'Изготовление',notes:'SECRET: прибыль',clientNotes:'Монтаж не включён',overhead:7,transport:6,markup:40,vat:22,lines:[m,p]};
+const draft={number:'КП-001',date:'2026-10-19',validUntil:'2026-10-30',subject:'Предложение',client:'Клиент',contact:'',payment:'50/50',delivery:'Самовывоз',leadtime:'20 дней',warranty:'12 месяцев',comment:'',discount:0,items:[{id:'one',name:s.name,description:'Комплект',qty:10,override:null,calculation:structuredClone(s)}]};
+let t=quoteTotals(draft,calculate);assert.equal(t.rows[0].unit,18516.43);assert.equal(t.total,185164.30);assert.equal(t.tax,33390.28);
+draft.items[0].qty=1;t=quoteTotals(draft,calculate);assert.equal(t.total,23578.94);
+draft.items[0].qty=10;draft.discount=10;t=quoteTotals(draft,calculate);assert.equal(t.total,166647.90);
+draft.items[0].override=20000;t=quoteTotals(draft,calculate);assert.equal(t.total,180000);
+const c={name:'Производство',details:'Реквизиты',contacts:'Контакты',signer:'Менеджер'},issued=publicDocument(draft,c,calculate),frozen=JSON.stringify(issued);assert.ok(!frozen.includes('SECRET'));assert.ok(!frozen.includes('markup'));assert.ok(!frozen.includes('calculation'));assert.equal(issued.items[0].limitations,'Монтаж не включён');
+draft.items[0].calculation.lines[0].price=99999;c.name='Изменено';assert.equal(JSON.stringify(issued),frozen);
+draft.items[0].qty=1.5;assert.ok(quoteTotals(draft,calculate).errors.length);assert.throws(()=>publicDocument(draft,c,calculate));draft.items[0].qty=10;
+draft.items[0].calculation.lines[0].price=null;assert.ok(quoteTotals(draft,calculate).errors.length);draft.items[0].calculation.lines[0].price=1050;draft.discount=-1;assert.ok(quoteTotals(draft,calculate).errors.length);
+// Exercise actual app storage, versioning, import/export, and issued snapshots.
+const storage=new Map(),elements={};let blob;
+const ctx={console,Intl,Date,Math,Number,Set,Map,JSON,crypto:require('node:crypto').webcrypto,structuredClone,Blob,setTimeout:()=>{},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},document:{getElementById:id=>elements[id]??={style:{},close(){},showModal(){},value:'',innerHTML:''},createElement:()=>({click(){}})},URL:{createObjectURL:b=>(blob=b,'blob:test'),revokeObjectURL(){}}};ctx.window=ctx;ctx.scrollTo=()=>{};
+vm.createContext(ctx);for(const f of ['catalog.js','engine.js','business-core.js','app.js','business.js'])vm.runInContext(fs.readFileSync(__dirname+'/dist/'+f,'utf8'),ctx,{filename:f});ctx.testCalculation=structuredClone(s);
+vm.runInContext('state=cleanCalculation(testCalculation);commitCalculation(true);state.lines[0].price=1500;commitCalculation(false);',ctx);
+let lib=JSON.parse(storage.get('izdelie-library-v2'));assert.equal(lib.length,1);assert.equal(lib[0].revisions.length,2);assert.equal(lib[0].revisions[0].calculation.lines[0].price,1050);assert.equal(lib[0].revisions[1].calculation.lines[0].price,1500);
+storage.set('izdelie-company-v2',JSON.stringify({name:'Компания',details:'',contacts:'',signer:''}));
+vm.runInContext("quoteDraft=newQuoteDraft();quoteDraft.client='Заказчик';quoteDraft.payment='50/50';quoteDraft.leadtime='20 дней';quoteDraft.delivery='Самовывоз';addQuoteCalculation(state,'one');issueQuote();",ctx);
+let records=JSON.parse(storage.get('izdelie-quotes-v2'));assert.equal(records.length,1);const first=JSON.stringify(records[0].document);vm.runInContext('state.lines[0].price=100000;quoteDraft.items[0].override=999;issueQuote()',ctx);records=JSON.parse(storage.get('izdelie-quotes-v2'));assert.equal(records.length,2);assert.equal(records[0].version,2);assert.equal(JSON.stringify(records[1].document),first);
+vm.runInContext('downloadQuote()',ctx);
+(async()=>{const html=await blob.text();assert.ok(!html.includes('SECRET'));assert.ok(!html.includes('window.CATALOG'));assert.ok(html.includes('Сохранить PDF'));const exported=JSON.stringify({format:'izdelie-quote-history',version:2,quotes:records});ctx.fakeEvent={target:{files:[{size:exported.length,text:async()=>exported}]}};await vm.runInContext('importQuoteHistory(fakeEvent)',ctx);assert.equal(JSON.parse(storage.get('izdelie-quotes-v2')).length,2,'reimport should not duplicate records');console.log('PASS: quote rounding, VAT, batch recalculation, discount, custom price, missing data, public whitelist, immutable issue, library versions, HTML export and registry restore deduplication.');})().catch(e=>{console.error(e.message);process.exitCode=1});
