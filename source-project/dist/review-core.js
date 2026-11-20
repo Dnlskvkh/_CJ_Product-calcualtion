@@ -16,8 +16,8 @@ const productionWork=r.rows.filter(l=>l.kind==='work'&&l.pricingMode!=='client'&
 r.productionCost=r.M+productionWork+productionWork*(s.overhead||0)/100+r.transport;
 const royalty=s.royalty??0;if(!finite(royalty)||royalty<0)r.errors.push('Роялти: укажите неотрицательный процент');r.royalty=r.productionCost*(finite(royalty)?royalty:0)/100;
 r.C+=r.royalty;if(r.markupMode==='cost')r.markupBase+=r.royalty;r.P=r.markupBase*(s.markup||0)/100;
-const factor=1+(s.vat||0)/100;r.fixedGross=fixedGross;r.net=r.C+r.P+fixedGross/factor;r.tax=r.net*(s.vat||0)/100;r.total=r.net+r.tax;r.unit=r.total/q;r.costUnit=r.C/q;r.margin=r.net?r.P/r.net*100:0;
-r.errors.push(...graph.errors);r.scopeIssues=requirements(s);r.approvalIssues=[...new Set([...r.errors,...r.warnings,...r.scopeIssues])];r.partial=r.errors.length>0;r.preliminary=!approved(graphOriginal,q)||r.approvalIssues.length>0;r.profitIncomplete=fixed.length>0;
+const factor=1+(s.vat||0)/100;r.fixedGross=fixedGross;r.net=r.C+r.P+fixedGross/factor;r.tax=r.net*(s.vat||0)/100;r.total=r.net+r.tax;r.unit=r.total/q;r.costUnit=r.C/q;r.margin=r.net?r.P/r.net*100:0;r.profitTax=finite(s.profitTax)?s.profitTax:25;r.priceWithProfit=r.partial?null:r.total;r.profitBeforeTax=r.partial||r.profitIncomplete?null:r.P;r.profitAfterTax=r.profitBeforeTax===null?null:r.profitBeforeTax*(1-r.profitTax/100);
+r.errors.push(...graph.errors);r.scopeIssues=requirements(s);r.approvalIssues=[...new Set([...r.errors,...r.warnings,...r.scopeIssues])];r.partial=r.errors.length>0;r.preliminary=!approved(graphOriginal,q)||r.approvalIssues.length>0;r.profitIncomplete=fixed.length>0;r.priceWithProfit=r.partial?null:r.total;r.profitBeforeTax=r.partial||r.profitIncomplete?null:r.P;r.profitAfterTax=r.profitBeforeTax===null?null:r.profitBeforeTax*(1-r.profitTax/100);
 return r;};}
 root.ReviewCore={normalize,dateLabel,category,signature,approved,requirements,install};if(typeof module!=='undefined')module.exports=root.ReviewCore;
 if(root.CostEngine)install(root.CostEngine);

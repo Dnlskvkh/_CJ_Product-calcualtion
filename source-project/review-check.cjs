@@ -1,9 +1,15 @@
 const assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
-const engine=require('./dist/engine.js'),core=require('./dist/review-core.js');core.install(engine);
+const engine=require('./dist/engine.js'),core=require('./dist/review-core.js'),schema=require('./dist/domain-schema.js');core.install(engine);
 const line=(x={})=>({id:'a',name:'Материал',kind:'material',group:'Детали',qty:1,price:100,unit:'м²',pack:1,scope:'unit',reserve:0,allocation:'share',confirmed:true,date:'2026-10-20',...x});
 const state=()=>({version:1,name:'Скамья',code:'УМ016-А',client:'',type:'Сервисные работы',scope:'Сервис',qty:10,notes:'',overhead:7,transport:6,markup:40,markupBase:'cost',vat:22,royalty:5,lines:[line()]});
 let s=state(),r=engine.calculate(s);assert.equal(r.productionCost,1060);assert.equal(r.royalty,53);assert.equal(r.C,1113);
-let before=r.total;s.lines.push(line({id:'d',name:'Доставка',kind:'work',costCategory:'delivery',pricingMode:'client',scope:'batch',qty:1,price:20000}));s.requiredServices={delivery:true,design:false,installation:false};r=engine.calculate(s);assert.ok(Math.abs(r.total-before-20000)<1e-8);assert.equal(r.royalty,53);assert.equal(r.fixedGross,20000);
+// Batch semantics: material purchase scales, work volume stays unit-based, work money scales.
+s=state();s.lines.push(line({id:'w-unit',name:'Изготовление',kind:'work',costCategory:'production',qty:2,price:30,unit:'ч',scope:'unit'}));
+r=engine.calculate(s,10);const work=r.rows.find(x=>x.id==='w-unit');assert.equal(work.qty,2);assert.equal(work.amount,600);assert.equal(r.manufacturing,600);assert.equal(r.manufacturingUnit,60);assert.equal(r.rows[0].need,10);assert.equal(r.rows[0].purchase,10);assert.equal(r.profitTax,25);assert.equal(r.priceWithProfit,r.total);assert.equal(r.profitAfterTax,r.P*.75);
+s.profitTax=25;r=engine.calculate(s,10);assert.equal(r.profitTax,25);assert.equal(r.priceWithProfit,r.total);assert.equal(r.profitAfterTax,r.P*.75);
+assert.doesNotThrow(()=>schema.calculation({...state()}));assert.throws(()=>schema.calculation({...state(),profitTax:-1}));
+s=state();s.lines.push(line({id:'w-batch',name:'Подготовка',kind:'work',costCategory:'production',qty:1,price:50,unit:'ч',scope:'batch'}));r=engine.calculate(s,10);assert.equal(r.rows.find(x=>x.id==='w-batch').amount,50);
+s=state();r=engine.calculate(s);let before=r.total;s.lines.push(line({id:'d',name:'Доставка',kind:'work',costCategory:'delivery',pricingMode:'client',scope:'batch',qty:1,price:20000}));s.requiredServices={delivery:true,design:false,installation:false};r=engine.calculate(s);assert.ok(Math.abs(r.total-before-20000)<1e-8);assert.equal(r.royalty,53);assert.equal(r.fixedGross,20000);
 assert.equal(r.approvalIssues.length,0);s.approval={signature:core.signature(s),date:'now'};assert.equal(engine.calculate(s).preliminary,false);assert.equal(engine.calculate(s,11).preliminary,true);s.lines[0].qty=2;assert.equal(engine.calculate(s).preliminary,true);
 s=state();s.requiredServices={installation:true};assert.ok(engine.calculate(s).scopeIssues.some(x=>x.includes('Монтаж')));s.lines[0].qty=null;assert.ok(engine.calculate(s).errors.length);
 s=state();s.lines[0].qty=.888;s.lines[0].pack=3.125;r=engine.calculate(s);assert.equal(r.rows[0].purchase,9.375);assert.ok(Math.abs(r.rows[0].need-8.88)<1e-8);assert.ok(Math.abs(r.M-888)<1e-8);s.lines[0].allocation='whole';assert.equal(engine.calculate(s).M,937.5);

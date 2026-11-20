@@ -1,0 +1,49 @@
+{
+  "document_type": "codex_implementation_task",
+  "language": "ru",
+  "task_title": "Партия, изготовление и подробная проверка цены",
+  "scope": {
+    "inline_volume_edit": ["materials", "work"],
+    "materials": "quantity_and_purchase_scale_with_batch",
+    "manufacturing": "unit_work_volume_preserved_and_cost_scales_with_batch",
+    "workshop_headers": "show_unit_and_batch_process_cost",
+    "price_review": [
+      "materials_unit_vat_included",
+      "materials_batch",
+      "manufacturing_unit_vat_included",
+      "manufacturing_batch_vat_included",
+      "cost_unit_with_vat",
+      "cost_batch",
+      "price_with_profit",
+      "profit_before_profit_tax",
+      "profit_after_profit_tax"
+    ],
+    "work_table_layout": "keep_cost_columns_inside_their_cells"
+  },
+  "decisions": {
+    "implementation": "minimal_current_model",
+    "manufacturing_category": "production_only",
+    "material_input_vat": "already_in_source_prices",
+    "profit_tax_percent": 25,
+    "unknown_values": "display_dash_and_keep_partial_state"
+  },
+  "files": [
+    "source-project/dist/engine.js",
+    "source-project/dist/app.js",
+    "source-project/dist/review-ui.js",
+    "source-project/dist/domain-schema.js",
+    "source-project/dist/business.js",
+    "source-project/dist/style.css",
+    "source-project/dist/workspace.css",
+    "source-project/ui-smoke-check.cjs"
+  ],
+  "acceptance": [
+    "Changing batch size changes material purchase quantities and money.",
+    "Changing batch size leaves displayed work volume unchanged and multiplies manufacturing money.",
+    "Every workshop header shows per-unit and batch cost.",
+    "Price review exposes all requested unit and batch metrics.",
+    "Profit after tax uses the editable 25% default.",
+    "Work cost columns no longer overflow into adjacent columns.",
+    "Old saved JSON without profitTax remains valid."
+  ]
+}

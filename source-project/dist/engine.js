@@ -31,7 +31,9 @@ function calculate(s,q=s.qty){
  });
  if(!s.lines.length)errors.push('Добавьте материалы или работы');
  const overhead=W*(s.overhead||0)/100,transport=transportBase*(s.transport||0)/100,C=M+W+overhead+transport,markupBase=markupMode==='work'?W:markupMode==='direct'?M+W:C,P=markupBase*(s.markup||0)/100,net=C+P,tax=net*(s.vat||0)/100,total=net+tax;
- return {q,rows,M,W,D,cash,overhead,transport,C,markupBase,markupMode,P,net,tax,total,unit:total/q,costUnit:C/q,margin:net?P/net*100:0,mass,massMissing,errors:[...new Set(errors)],warnings:[...new Set(warnings)],partial:errors.length>0,preliminary:true};
+ const productionRows=rows.filter(l=>{if(l.kind!=='work'||l.pricingMode==='client')return false;const category=root.ReviewCore?.category?.(l);return category?category==='production':(l.costCategory==='production'||(!l.costCategory&&!/монтаж|установк.*издел|доставк|перевоз|проектирован/i.test(l.name)));});
+ const manufacturing=productionRows.reduce((sum,l)=>sum+(num(l.amount)?l.amount:0),0),profitTax=num(s.profitTax)?s.profitTax:25,partial=errors.length>0,profitBeforeTax=partial?null:P,profitAfterTax=profitBeforeTax===null?null:profitBeforeTax*(1-profitTax/100);
+ return {q,rows,M,W,D,cash,overhead,transport,C,markupBase,markupMode,P,net,tax,total,unit:total/q,costUnit:C/q,margin:net?P/net*100:0,mass,massMissing,manufacturing,manufacturingUnit:manufacturing/q,profitTax,priceWithProfit:partial?null:total,profitBeforeTax,profitAfterTax,errors:[...new Set(errors)],warnings:[...new Set(warnings)],partial,preliminary:true};
 }
 root.CostEngine={calculate,MARKUP_BASES,VERSION:'cost-v1'};if(typeof module!=='undefined')module.exports=root.CostEngine;
 })(typeof window!=='undefined'?window:globalThis);
