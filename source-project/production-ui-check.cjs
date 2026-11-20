@@ -9,6 +9,8 @@ productionUseSource(0);if(productionDraft.production.inputs.quantity!==12)throw 
 productionDraft.unit='м';productionUseSource(0);if(productionDraft.production.inputs.quantity!==null)throw Error('Different source units retained an unconverted quantity');
 productionSourceDefinitions=source;productionEditor=editor;productionDraft=saved;})()`);
 assert.ok(scripts.includes('production-model-ui.js'),'Производственный редактор должен быть подключён');
+assert.equal(run(`ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(x=>x.scope==='product_manufacturing'),'unit-default',{quantity:2}).scope`),'unit','Изготовление должно хранить объём на изделие по умолчанию');
+assert.ok(run(`materialPurchaseRows([{id:'inline-material',name:'Материал',unit:'шт.',qty:1,price:10,need:1,purchase:1,amount:10,scope:'unit',allocation:'whole',group:'Детали'}])`).includes('inline-volume'),'Материалы должны редактировать объём прямо в строке');
 run('state=blank();productionEnable()');assert.ok(elements.get('modalBody').innerHTML.includes('Создать копию'));
 run('productionApplyMigration()');assert.equal(run('state.engineVersion'),'production-v1');assert.equal(JSON.parse(store.get('izdelie-recovery')).engineVersion,'cost-review-v1');
 run('productionCatalog()');assert.ok(elements.get('modalBody').innerHTML.includes('Цех'));assert.ok(elements.get('production-catalog-results').innerHTML.includes('Форматный раскрой по карте'));
@@ -18,6 +20,7 @@ assert.ok(elements.get('app').innerHTML.includes(run('productionMoney(2871.21710
 run('productionEdit(0)');assert.ok(elements.get('modalBody').innerHTML.includes('<summary>Ценообразование</summary>'));
 assert.ok(elements.get('app').innerHTML.includes('production-shop-group'),'Иерархия цехов должна быть видимой');
 assert.ok(elements.get('app').innerHTML.includes('production-post-group'),'Посты должны раскрываться внутри цеха');
+assert.ok(elements.get('app').innerHTML.includes('На изделие')&&elements.get('app').innerHTML.includes('На партию'),'Цех должен показывать стоимость на изделие и на партию');
 assert.ok(!elements.get('app').innerHTML.includes('Поднять операцию')&&!elements.get('app').innerHTML.includes('Опустить операцию'),'В таблице должна остаться только рукоятка');
 assert.ok(!elements.get('modalBody').innerHTML.includes('id="pr-code"'),'Код не является вводом заказа');
 assert.ok(!elements.get('modalBody').innerHTML.includes('id="pr-stage"'),'Этап назначается автоматически');
@@ -28,13 +31,14 @@ run(`productionSetQuantity('program-test','240')`);
 assert.equal(run('cleanCalculation(state).lines[0].production.inputs.quantity'),240);assert.equal(run('cleanCalculation(state).lines[0].id'),'program-test');
 run('state=CalculationArchive.capture(state)');assert.equal(run('validState(state)'),true);assert.equal(run('cleanCalculation(state).archive.result.total'),5826.8);
 run('go(4)');assert.ok(elements.get('app').innerHTML.includes('Плановая прибыль'));assert.ok(!elements.get('app').innerHTML.includes('Готовые клиентские цены'));
+for(const label of ['Проверка цены','Материалы / изделие','Материалы / партия','Изготовление / изделие','Изготовление / партия','Себестоимость с НДС / изделие','Стоимость с прибылью','Прибыль после налога на прибыль'])assert.ok(elements.get('app').innerHTML.includes(label),'Проверка цены: отсутствует '+label);
 run('productionPanelSaw()');assert.ok(elements.get('modalBody').innerHTML.includes('pr-saw-11-thickness_mm'));assert.ok(elements.get('modalBody').innerHTML.includes('Чистый цикл'));
 // Cutting metres and thickness must drive one automatically added operator row.
 run(`state=blank();Object.assign(state,{engineVersion:'production-v1',markup:40,vat:0,overhead:0,transport:0});
 const plywood6=PRODUCTION_CATALOG.operations.find(d=>d.code==='Р146.6'),plywood18=PRODUCTION_CATALOG.operations.find(d=>d.code==='Р146.18');
 productionStore({...state,lines:[ProductionModelCore.makeLine(plywood6,'plywood-6',{quantity:135}),ProductionModelCore.makeLine(plywood18,'plywood-18',{quantity:45})]});`);
 assert.equal(run(`state.lines.filter(l=>l.production.definition.calculation_method==='operator_support').length`),1,'Раскрой должен автоматически добавить сопровождение');
-assert.equal(run(`CostEngine.calculate(state).rows.find(l=>l.production.definition.calculation_method==='operator_support').personHours`),1);
+assert.ok(Math.abs(run(`CostEngine.calculate(state).rows.find(l=>l.production.definition.calculation_method==='operator_support').personHours`)-3.176470588235294)<1e-8);
 const supportHours=()=>run(`CostEngine.calculate(state).rows.find(l=>l.production.definition.calculation_method==='operator_support')?.personHours`);
 run(`const autoSupportId=state.lines.find(l=>l.production.autoSupport).id;go(2)`);
 assert.ok(run(`productionOperationRows([CostEngine.calculate(state).rows.find(l=>l.production.autoSupport)])`).includes(run(`productionMoney(1435.608552631579)`)),'Сопровождение показывает себестоимость человеко-часа');
@@ -48,14 +52,14 @@ assert.equal(run(`productionSetQuantity(autoSupportId,'Infinity')`),false);asser
 run(`const beforeHourWrite=localStorage.setItem;localStorage.setItem=()=>{throw Error('quota')};productionSetQuantity(autoSupportId,'10');localStorage.setItem=beforeHourWrite;`);assert.equal(run('JSON.stringify(state)'),manualHoursBefore);
 run(`productionSetQuantity(autoSupportId,'0')`);assert.equal(supportHours(),0);
 assert.ok(run(`productionOperationRows([CostEngine.calculate(state).rows.find(l=>l.production.autoSupport)])`).includes(run(`productionMoney(1435.608552631579)`)),'Нулевые часы не скрывают стоимость часа');
-run(`productionSetQuantity(autoSupportId,'')`);assert.equal(supportHours(),1,'Очистка часов возвращает расчёт по раскрою');
-assert.ok(Math.abs(run(`CostEngine.calculate(state).rows.find(l=>l.production.autoSupport).plannedCost`)-1435.608552631579)<1e-8);
-run(`productionSetQuantity('plywood-6','270')`);assert.equal(supportHours(),1.5);
+run(`productionSetQuantity(autoSupportId,'')`);assert.equal(supportHours(),3.176470588235294,'Очистка часов возвращает расчёт по раскрою');
+assert.ok(Math.abs(run(`CostEngine.calculate(state).rows.find(l=>l.production.autoSupport).plannedCost`)-3.176470588235294*1435.608552631579)<1e-8);
+run(`productionSetQuantity('plywood-6','270')`);assert.equal(supportHours(),4.764705882352941);
 assert.equal(run(`state.lines.filter(l=>l.production.autoSupport).length`),1,'Изменение метража не дублирует сопровождение');
-run(`productionToggle(state.lines.findIndex(l=>l.id==='plywood-18'),false)`);assert.equal(supportHours(),1);
+run(`productionToggle(state.lines.findIndex(l=>l.id==='plywood-18'),false)`);assert.equal(supportHours(),3.176470588235294);
 run(`productionToggle(state.lines.findIndex(l=>l.id==='plywood-6'),false)`);assert.equal(supportHours(),0);
 assert.equal(run(`CostEngine.calculate(state).errors.length`),0,'Исключённые раскрои дают ноль часов без ошибки связи');
-run(`productionToggle(state.lines.findIndex(l=>l.id==='plywood-6'),true);state.qty=3;state.lines.find(l=>l.id==='plywood-6').scope='unit';productionStore(structuredClone(state))`);assert.equal(supportHours(),3);
+run(`productionToggle(state.lines.findIndex(l=>l.id==='plywood-6'),true);state.qty=3;state.lines.find(l=>l.id==='plywood-6').scope='unit';productionStore(structuredClone(state))`);assert.equal(supportHours(),9.529411764705882);
 run(`productionRemove(state.lines.findIndex(l=>l.id==='plywood-6'));productionRemove(state.lines.findIndex(l=>l.id==='plywood-18'))`);
 assert.equal(run(`state.lines.length`),0,'Удаление последнего раскроя удаляет автоматически созданное сопровождение');
 run(`const manualSupport=ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р103.P07'),'manual-support',{machine_hours:4});
@@ -63,19 +67,32 @@ productionStore({...state,qty:1,lines:[ProductionModelCore.makeLine(plywood6,'pl
 assert.equal(run(`state.lines.length`),2);assert.equal(supportHours(),2,'Существующий ручной ввод часов сохраняется');
 run(`productionStore({...state,lines:[ProductionModelCore.makeLine(plywood6,'plywood-6',{quantity:135},{segment:'A'}),ProductionModelCore.makeLine(plywood18,'plywood-18',{quantity:45},{segment:'B'})]})`);
 assert.equal(run(`state.lines.filter(l=>l.production.autoSupport).length`),2,'Разные участки получают своё сопровождение');
-assert.equal(run(`CostEngine.calculate(state).rows.filter(l=>l.production.autoSupport).reduce((s,l)=>s+l.personHours,0)`),1);
+assert.equal(run(`CostEngine.calculate(state).rows.filter(l=>l.production.autoSupport).reduce((s,l)=>s+l.personHours,0)`),3.176470588235294);
 assert.equal(run(`cleanCalculation(state).lines.filter(l=>l.production.autoSupport).length`),2,'JSON сохраняет происхождение автоматических строк');
 run(`const program=ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р117'),'plywood-program',{quantity:270});productionStore({...state,lines:[program]})`);
 assert.equal(run(`state.lines.length`),1,'Подготовка УП сама по себе не добавляет сопровождение');
 const beforeStationCases=run('JSON.stringify(state)');
-for(const [code,quantity,hours]of [['Р129',10,.25],['Р128.3D',.75,2/3],['Р15',25,1],['ФРС.1',72.48322147651007,1]]){
+for(const [code,quantity,hours]of [['Р129',10,.25],['Р128.3D',1,1.5686274509803921],['Р15',25,1],['ФРС.1',72.48322147651007,1]]){
  run(`productionStore({...state,lines:[ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code===${JSON.stringify(code)}),'station-case',{quantity:${quantity}})]})`);
  assert.equal(run(`state.lines.filter(l=>l.production.autoSupport).length`),1,code+': станочная позиция должна включать исполнителя');
  assert.ok(Math.abs(run(`CostEngine.calculate(state).rows.find(l=>l.production.autoSupport).personHours`)-hours)<1e-8);
  assert.ok(run(`CostEngine.calculate(state).rows.find(l=>l.production.autoSupport).plannedCost`)>0,code+': время исполнителя должно попасть в себестоимость');
  assert.equal(run(`CostEngine.calculate(state).errors.length`),0);
 }
-run(`productionStore({...state,lines:[ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р128.П'),'foam-flat',{quantity:213}),ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р128.3D'),'foam-3d',{quantity:.75})]})`);
+run(`productionStore({...state,lines:[ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р146.6'),'milling-cut',{quantity:135})]});const millingRows=CostEngine.calculate(state).rows.filter(l=>l.production);`);
+assert.ok(run(`productionOperationRows(millingRows)`).includes(run(`productionMoney(6)`)),'Станочная строка показывает только ресурсную себестоимость');
+assert.ok(!run(`productionOperationRows(millingRows)`).includes('Рынок'),'Станочная строка не показывает рыночную подпись');
+assert.equal(run(`PRODUCTION_CATALOG.operations.find(d=>d.code==='Р146.6').pricing.current_unit_price`),50,'Фанера 6 мм имеет 25 ₽/м за два прохода');
+assert.equal(run(`CostEngine.calculate(state).preMarkupBase/135`),50+((135*2/85*.5*2081)/135),'Ставка станка и сопровождение считаются раздельно');
+run(`const stale=structuredClone(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р146.6'));stale.pricing.current_unit_price=.74;delete stale.pricing.pass_rate_per_pass;stale.parameters.output_per_hour.value=135;productionStore({...state,lines:[ProductionModelCore.makeLine(stale,'stale-milling',{quantity:135})]});go(2);`);
+assert.equal(run(`state.lines[0].production.definition.pricing.current_unit_price`),50,'Существующая станочная строка подтягивает согласованную ставку');
+assert.equal(run(`state.lines[0].production.definition.parameters.output_per_hour.value`),42.5,'Существующая станочная строка подтягивает новую выработку');
+assert.ok(elements.get('production-catalog-results').innerHTML.includes('6,00 ₽ / м'),'Каталог показывает себестоимость станочной позиции');
+run(`const stale3d=structuredClone(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р128.3D'));stale3d.pricing.current_unit_price=5000;stale3d.parameters.output_per_hour.value=.75;stale3d.parameters.machine_hours_per_unit.value=1.3333333333333333;stale3d.parameters.cost_per_machine_hour.value=200;productionStore({...state,lines:[ProductionModelCore.makeLine(stale3d,'stale-3d',{quantity:1})]});go(2);`);
+assert.equal(run(`state.lines[0].production.definition.pricing.current_unit_price`),7058.823529411765,'Существующая 3D-строка подтягивает новую машинную ставку');
+assert.equal(run(`state.lines[0].production.definition.parameters.cost_per_machine_hour.value`),3000,'Существующая 3D-строка подтягивает новую стоимость машино-часа');
+assert.ok(Math.abs(run(`state.lines[0].production.definition.parameters.machine_hours_per_unit.value`)-200/85)<1e-12,'Существующая 3D-строка подтягивает новую норму времени');
+run(`productionStore({...state,lines:[ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р128.П'),'foam-flat',{quantity:213}),ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р128.3D'),'foam-3d',{quantity:1/PRODUCTION_CATALOG.operations.find(d=>d.code==='Р128.3D').parameters.machine_hours_per_unit.value})]})`);
 assert.equal(run(`state.lines.filter(l=>l.production.autoSupport).length`),1);
 assert.ok(Math.abs(run(`CostEngine.calculate(state).rows.find(l=>l.production.autoSupport).personHours`)-7/6)<1e-8,'Смешанные режимы используют свою занятость исполнителя');
 run(`productionStore({...state,lines:[ProductionModelCore.makeLine(PRODUCTION_CATALOG.operations.find(d=>d.code==='Р129'),'laser-case',{quantity:10}),ProductionModelCore.makeLine(plywood6,'mill-case',{quantity:135})]})`);
