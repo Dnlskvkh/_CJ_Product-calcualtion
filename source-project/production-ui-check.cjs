@@ -31,7 +31,7 @@ run(`productionSetQuantity('program-test','240')`);
 assert.equal(run('cleanCalculation(state).lines[0].production.inputs.quantity'),240);assert.equal(run('cleanCalculation(state).lines[0].id'),'program-test');
 run('state=CalculationArchive.capture(state)');assert.equal(run('validState(state)'),true);assert.equal(run('cleanCalculation(state).archive.result.total'),5826.8);
 run('go(4)');assert.ok(elements.get('app').innerHTML.includes('Плановая прибыль'));assert.ok(!elements.get('app').innerHTML.includes('Готовые клиентские цены'));
-for(const label of ['Проверка цены','Материалы / изделие','Материалы / партия','Изготовление / изделие','Изготовление / партия','Себестоимость с НДС / изделие','Стоимость с прибылью','Прибыль после налога на прибыль'])assert.ok(elements.get('app').innerHTML.includes(label),'Проверка цены: отсутствует '+label);
+for(const label of ['Проверка цены','Себестоимость материалов','Изготовление','Себестоимость с НДС','Стоимость с прибылью','Прибыль до вычета налогов','Прибыль после налога на прибыль'])assert.ok(elements.get('app').innerHTML.includes(label),'Проверка цены: отсутствует '+label);
 run('productionPanelSaw()');assert.ok(elements.get('modalBody').innerHTML.includes('pr-saw-11-thickness_mm'));assert.ok(elements.get('modalBody').innerHTML.includes('Чистый цикл'));
 // Cutting metres and thickness must drive one automatically added operator row.
 run(`state=blank();Object.assign(state,{engineVersion:'production-v1',markup:40,vat:0,overhead:0,transport:0});
