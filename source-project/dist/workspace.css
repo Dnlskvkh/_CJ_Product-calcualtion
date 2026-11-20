@@ -108,3 +108,4 @@
 .material-group-content{padding:0 12px}.material-subgroup{margin:10px 0;border-radius:7px}.material-subgroup>summary{background:#fafafa;font-size:13px}
 @media(max-width:900px){.material-group-heading{display:inline-block}.material-group-total{display:block;text-align:left;margin-top:5px}.material-group>summary{padding:12px}.material-group-content{padding:0 10px}.material-subgroup .material-group-content{padding:0 6px}.material-group .material-table tbody tr{margin:12px 0}}
 @media(max-width:900px){#material-suggestions b{white-space:normal;overflow-wrap:anywhere}}
+@media screen and (min-width:901px){.material-table td:nth-child(n+2){vertical-align:middle}}
